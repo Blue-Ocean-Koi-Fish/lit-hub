@@ -1,7 +1,18 @@
 import React from 'react';
 
 function App() {
-  return <h1>Koi Fish!</h1>;
+  const msg = new SpeechSynthesisUtterance();
+  const speeehHandler = (e) => {
+    msg.text = e.target.innerText;
+    window.speechSynthesis.speak(msg);
+  };
+  return (
+    <div>
+      <h1 onMouseEnter={(e) => { console.log(e.target.innerText); speeehHandler(e); }}>
+        Koi Fish!
+      </h1>
+    </div>
+  );
 }
 
 export default App;
