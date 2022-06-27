@@ -11,11 +11,22 @@ function cancel() {
 }
 
 // use this function to set up pauseing on spacebar press.
+// let started = false;
+// let paused = false;
 // document.addEventListener('keypress', (event) => {
-//  if (event.key === 'Space') {
-//    event.preventDefault();
-//    pause();
-//  }
+//   if (event.code === 'Space') {
+//     event.preventDefault();
+//     if (started) {
+//       pause(paused);
+//       paused = !paused;
+//     } else {
+//       Speech(document.getElementById('test').innerText)
+//         .onend = () => {
+//           started = false;
+//         };
+//       started = true;
+//     }
+//   }
 // }, false);
 function pause(test) {
   if (!test) {
