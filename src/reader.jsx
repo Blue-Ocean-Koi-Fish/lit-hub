@@ -1,8 +1,20 @@
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
+import { addBook } from '../browser_db/books';
 
 function Reader() {
   const [font, setFont] = useState('font1');
   const [fontSize, setFontSize] = useState(12);
+
+  // this is just to test the browserdb
+  const getBook = () => {
+    console.log('DID I GET HERE');
+    axios.get('/txt')
+      .then((res) => {
+        console.log('Here ', res.data);
+        addBook('book name', res.data);
+      });
+  };
 
   const handleMinus = (e) => {
     if (e.key === 'Enter' || e.key === ' ') {
@@ -78,6 +90,7 @@ function Reader() {
           >
             +
           </span>
+          <button type="button" onClick={getBook}>Get BOOK: TESTING ONLY</button>
         </label>
       </div>
     </div>
