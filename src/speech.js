@@ -11,6 +11,7 @@ function cancel() {
   speechSynthesis.cancel();
 }
 
+//code for the reader
 // document.addEventListener('keypress', (event) => {
 //   if (event.code === 'Space') {
 //     event.preventDefault();
@@ -18,26 +19,22 @@ function cancel() {
 //       pause(paused);
 //       paused = !paused;
 //     } else {
-//       console.log('here');
 //       started = true;
-//       for (let i = 0; i < document.getElementById.children.length; i++) {
-//          
+//       // started = read(document.getElementById('big'));
+//       const doc = document.getElementById('big')
+//       for (let i = 0; i < doc.children.length; i++) {
+//         Speech(doc.children[i].innerText)
+//           // eslint-disable-next-line no-loop-func
+//           .onend = () => {
+//             if (i === doc.children.length - 1) {
+//               started = false;
+//             }
+//           };
 //       }
 //     }
 //   }
 // }, false);
-function read(doc, count) {
-  // eslint-disable-next-line no-param-reassign
-  count = count || 0;
-  console.log(doc.children[count].innerText);
-  Speech(doc.children[count].innerText)
-    .onend = () => {
-      if (count >= doc.children.length - 1) {
-        return false;
-      }
-      return count + 1;
-    };
-}
+
 
 // use this function to set up pauseing on spacebar press.
 // let started = false;
@@ -57,6 +54,7 @@ function read(doc, count) {
 //     }
 //   }
 // }, false);
+
 function pause(test) {
   if (!test) {
     speechSynthesis.pause();
