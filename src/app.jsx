@@ -23,7 +23,6 @@ function App() {
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showReader, setShowReader] = useState(true);
-
   // Store the raw HTML string for the current book
   // then pass to Reader as props.
   const [currentBook, setCurrentBook] = useState(sample1);
