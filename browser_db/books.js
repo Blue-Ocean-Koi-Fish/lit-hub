@@ -1,5 +1,7 @@
+/* eslint-disable quotes */
 const { Dexie } = require('dexie');
 
+// Creates a new indexedDb database
 const booksDb = new Dexie('booksDatabase');
 booksDb.version(1).stores({
   books: '++id, name, text',
@@ -12,14 +14,13 @@ const addBook = (bookName, bookStr) => {
   });
 };
 
-const getCurrentBook = async () => {
-  const book = await booksDb.books.where('name')
-    .equalsIgnoreCase('Some Book')
-    .toArray();
+const getCurrentBook = async (bookName) => {
+  const book = await booksDb.books.where("name") // THIS REQUIRES DOUBLE QUOTES
+    .equalsIgnoreCase(bookName)
+    .toArray(); // you have to use toArray or find another dexie method do not leave it off
   return book[0];
 };
 
 // remove book
-// add install updates button
 
 module.exports = { addBook, getCurrentBook };

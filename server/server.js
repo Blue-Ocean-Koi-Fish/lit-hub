@@ -8,7 +8,7 @@ const app = express();
 app.use(express.static(path.join(__dirname, '..', '/public')));
 app.use(express.json());
 
-//this is just for texting the browserdb
+// this is just for texting the browserdb
 app.get('/txt', (req, res) => {
   console.log(req.url);
   axios.get(`http://localhost:6000${req.url}`)

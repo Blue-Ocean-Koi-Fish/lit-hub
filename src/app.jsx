@@ -27,6 +27,9 @@ function App() {
     <div id="root">
       {loggedIn ? (
         <>
+          {/* This button only needs the update id to work */}
+          <button type="button" id="update"> Install App Updates </button>
+           <h1>Where did the fish go</h1>
           <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
           <SearchForm
             searchTerms={searchTerms}
