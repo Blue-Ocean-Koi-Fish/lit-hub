@@ -1,7 +1,8 @@
 // add to a onMouseEnter statment and pass in what you want to be said
-function Speech(target) {
+function Speech(target, lan) {
   const msg = new SpeechSynthesisUtterance();
   msg.text = target;
+  msg.lang = lan || 'en-US';
   speechSynthesis.speak(msg);
 }
 
