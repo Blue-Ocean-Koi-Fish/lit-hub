@@ -1,62 +1,61 @@
 import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'html-react-parser';
-// import sampleText from './book-sample';
-// const textURL = "https://www.gutenberg.org/files/1342/1342-0.txt";
+
+import './bookReader.css';
 
 function BookReader({ book }) {
-  const [bookText, setBookText] = useState();
-  const [bookInfo, setBookInfo] = useState();
-  // const [bookAuthor, setBookAuthor] = useState();
-  // const [contents, setContents] = useState();
-  // const [chapters, setChapters] = useState();
+  const bookSchema = {
+    title: [],
+    author: [],
+    chapters: [],
+    text: [],
+  };
+
+  const [bookContent, setBookContent] = useState(bookSchema);
 
   useEffect(() => {
-    const rawDiv = ReactHtmlParser(book).props.children[1].props.children;
-    // console.log(rawDiv);
-    const gutenbergInfo = [];
-    const contents = [];
-    const bookTitle = [];
-    const bookAuthor = [];
-    const chapters = [];
+    console.log(bookContent);
 
-    rawDiv.map((node) => {
+    const rawDiv = ReactHtmlParser(book).props.children[1].props.children;
+    const gutenbergInfo = [];
+    let newBook = {
+      title: [],
+      author: [],
+      chapters: [],
+      text: [],
+    };
+
+    rawDiv.forEach((node) => {
+      // First filter carriage returns and breaks,
       if (node !== '\n' && node.type !== 'hr') {
+        // the chapters are in the table tag,
         if (node.type === 'table') {
-          console.log(node.props.children.props.children)
-          contents.push(node.props.children.props.children);
-        } else if (node.type === 'h1') {
-          bookTitle.push(node);
-        } else if (node.type === 'h2') {
-          bookAuthor.push(node);
-        } else if (node.props && node.props.className === 'chapter') {
-          chapters.push(node);
-        } else {
-          gutenbergInfo.push(node);
+          console.log('table', node);
+          newBook.chapters.push(node);
         }
+        // else if (node.type === 'h1') {
+        //   // the title is h1 tag,
+        //   newBook.bookTitle.push(node);
+        // } else if (node.type === 'h2') {
+        //   // the author is the h2 tag,
+        //   newBook.bookAuthor.push(node);
+        // } else if (node.props && node.props.className === 'chapter') {
+        //   // and thhe text is split up into divs with the chapter class name.
+        //   newBook.text.push(node);
+        // }
       }
     });
 
-
-    const info = { title: bookTitle, author: bookAuthor };
-    const text = { content: contents, chapter: chapters};
-    // console.log(divs);
-    setBookText(text);
-    setBookInfo(info);
+    setBookContent(newBook);
   }, [book]);
 
   return (
-    <div>
-      <div className="book-info">
-        {bookInfo ? bookInfo.title : null}
-        {bookInfo ? bookInfo.author : null}
+    <div className="e-reader-div">
+      <div className="book-chapters">
+        {bookContent.chapters ? bookContent.chapters : null}
       </div>
-      <div className="book-text">
-        <div className="book-contents">
-          {bookText ? bookText.content.map((content) => { return <table>{content}</table> }) : null}
-        </div>
-        {/* <div className="book-contents">
-          {bookText ? bookText.chapter : null}
-        </div> */}
+      <div className="book-content">
+        {bookContent.text ? bookContent.text : null}
       </div>
     </div>
   );

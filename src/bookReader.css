@@ -1,0 +1,21 @@
+body {
+  font-family: monospace;
+}
+
+.e-reader-div {
+  margin: auto;
+  width: 90vw;
+  display: flex;
+  border: 2px solid black;
+
+}
+
+.book-chapters {
+  border: 2px solid green;
+  margin: 2%;
+}
+
+.book-content {
+  border: 2px solid green;
+  margin: 2%;
+}
