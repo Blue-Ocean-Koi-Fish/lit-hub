@@ -1,86 +1,85 @@
 import React, { useState, useEffect } from 'react';
+import ReactHtmlParser from 'html-react-parser';
 
-function Reader() {
+function Reader({ book }) {
+
+  const bookSchema = {
+    title: [],
+    author: [],
+    chapters: [],
+    text: [],
+  };
+
   const [font, setFont] = useState('font1');
   const [fontSize, setFontSize] = useState(12);
-
-  const handleMinus = (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      setFontSize((s) => s - 1);
-    }
-  };
-  const handlePlus = (e) => {
-    if (e.key === 'Enter' || e.key === ' ') {
-      setFontSize((s) => s + 1);
-    }
-  };
+  const [bookContent, setBookContent] = useState(bookSchema);
 
   useEffect(() => {
-    setFontSize((s) => Number(s));
-  }, [fontSize]);
+    const rawDiv = ReactHtmlParser(book).props.children[1].props.children;
+    const newBook = {
+      title: [],
+      author: [],
+      chapters: [],
+      text: [],
+    };
+
+    rawDiv.forEach((node) => {
+      // First filter carriage returns and breaks,
+      if (node !== '\n' && node.type !== 'hr') {
+        // then the title is the h1 tag,
+        if (node.type === 'h1') {
+          newBook.title.push(node);
+        }
+        // the author is the h2 tag,
+        else if (node.type === 'h2') {
+          newBook.author.push(node);
+        }
+        // the chapters are in the table tag,
+        else if (node.type === 'table') {
+          console.log('table', node);
+          newBook.chapters.push(node);
+        }
+        // and thhe text is split up into divs with the chapter class name.
+        else if (node.props && node.props.className === 'chapter') {
+          newBook.text.push(node);
+        }
+      }
+    });
+
+    setBookContent(newBook);
+    // setFontSize((size) => Number(size)); //?
+  }, [book]);
+
+  const handleMinus = (event) => {
+    setFontSize((size) => size - 4);
+  };
+
+  const handlePlus = (event) => {
+    setFontSize((size) => size + 4);
+  };
 
   return (
-    <div className="book-controls">
-      <div className="meta-data">
-        <p className="section-title">
-          Reading:
-        </p>
-        <p className="author">
-          Author
-        </p>
-        <p className="year">
-          Year
-        </p>
-        <p className="book-title">
-          Book Title
-        </p>
-        <div className="book-cover">
-          Book cover div
+    <section className="e-reader-section">
+      <div className="book-controls">
+        <p>font size and select</p>
+        <select>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+        </select>
+        <button id="font-size-plus" type="button" onClick={handleMinus}>FONT -</button>
+        <button id="font-size-minus" type="button" onClick={handlePlus}>FONT +</button>
+      </div>
+      <div className="frame">
+        <div className="read-body-wrap">
+          <div className="content-wrap">
+            <button id="page-prev-btn" type="button">PREV</button>
+            <div className="content" style={{'fontSize': fontSize + 'px'}}>CONTENT</div>
+            <button id="page-next-btn" type="button">NEXT</button>
+          </div>
         </div>
       </div>
-      <div className="meta-data">
-        <label className="section-title" htmlFor="font-select">
-          Font
-          <select id="font-select" name="font" value={font} onChange={(e) => setFont(e.target.value)}>
-            <option value="font1">
-              Font1
-            </option>
-            <option value="font2">
-              Font2
-            </option>
-            <option value="font3">
-              Font3
-            </option>
-          </select>
-        </label>
-        <label className="section-title" htmlFor="font-size">
-          Font Size
-          <span
-            onClick={() => { setFontSize((s) => s - 1); }}
-            onKeyDown={handleMinus}
-            role="button"
-            tabIndex={0}
-          >
-            -
-          </span>
-          <input
-            type="number"
-            id="font-size"
-            name="font-size"
-            value={fontSize}
-            onChange={(e) => setFontSize(e.target.value)}
-          />
-          <span
-            onClick={() => { setFontSize((s) => s + 1); }}
-            onKeyDown={handlePlus}
-            role="button"
-            tabIndex={0}
-          >
-            +
-          </span>
-        </label>
-      </div>
-    </div>
+    </section>
   );
 }
 

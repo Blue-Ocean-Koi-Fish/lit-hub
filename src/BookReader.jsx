@@ -13,8 +13,6 @@ function BookReader({ book }) {
   const [bookContent, setBookContent] = useState(bookSchema);
 
   useEffect(() => {
-    console.log(bookContent);
-
     // Parse the raw HTML string
     const rawDiv = ReactHtmlParser(book).props.children[1].props.children;
 
@@ -54,8 +52,8 @@ function BookReader({ book }) {
   return (
     <div className="e-reader-section">
       <div>
-        <button className="decrease-font">-</button>
-        <button className="increase-font">+</button>
+        <button type="button" className="decrease-font">-</button>
+        <button type="button" className="increase-font">+</button>
       </div>
       <div className="book-chapters">
         {bookContent.chapters ? bookContent.chapters : null}
