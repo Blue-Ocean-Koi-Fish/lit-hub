@@ -20,7 +20,9 @@ function cancel() {
 //     } else {
 //       console.log('here');
 //       started = true;
-//       started = read(document.getElementById('big'));
+//       for (let i = 0; i < document.getElementById.children.length; i++) {
+//          
+//       }
 //     }
 //   }
 // }, false);
@@ -33,7 +35,7 @@ function read(doc, count) {
       if (count >= doc.children.length - 1) {
         return false;
       }
-      return read(doc, (count + 1));
+      return count + 1;
     };
 }
 
