@@ -4,18 +4,21 @@ body {
 
 .e-reader-div {
   margin: auto;
-  width: 90vw;
+  width: auto;
   display: flex;
   border: 2px solid black;
-
 }
 
 .book-chapters {
   border: 2px solid green;
   margin: 2%;
+  width: 20vw;
 }
 
 .book-content {
   border: 2px solid green;
+  width: 80vw;
+  height: 90vh;
+  overflow: scroll;
   margin: 2%;
 }

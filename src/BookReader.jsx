@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'html-react-parser';
-
 import './bookReader.css';
 
 function BookReader({ book }) {
@@ -16,9 +15,10 @@ function BookReader({ book }) {
   useEffect(() => {
     console.log(bookContent);
 
+    // Parse the raw HTML string
     const rawDiv = ReactHtmlParser(book).props.children[1].props.children;
-    const gutenbergInfo = [];
-    let newBook = {
+
+    const newBook = {
       title: [],
       author: [],
       chapters: [],
@@ -28,21 +28,23 @@ function BookReader({ book }) {
     rawDiv.forEach((node) => {
       // First filter carriage returns and breaks,
       if (node !== '\n' && node.type !== 'hr') {
+        // then the title is the h1 tag,
+        if (node.type === 'h1') {
+          newBook.title.push(node);
+        }
+        // the author is the h2 tag,
+        else if (node.type === 'h2') {
+          newBook.author.push(node);
+        }
         // the chapters are in the table tag,
-        if (node.type === 'table') {
+        else if (node.type === 'table') {
           console.log('table', node);
           newBook.chapters.push(node);
         }
-        // else if (node.type === 'h1') {
-        //   // the title is h1 tag,
-        //   newBook.bookTitle.push(node);
-        // } else if (node.type === 'h2') {
-        //   // the author is the h2 tag,
-        //   newBook.bookAuthor.push(node);
-        // } else if (node.props && node.props.className === 'chapter') {
-        //   // and thhe text is split up into divs with the chapter class name.
-        //   newBook.text.push(node);
-        // }
+        // and thhe text is split up into divs with the chapter class name.
+        else if (node.props && node.props.className === 'chapter') {
+          newBook.text.push(node);
+        }
       }
     });
 

@@ -1,4 +1,4 @@
-const sampleHTML = `
+const sample1 = `
 
 <!DOCTYPE html>
 <html lang="en" xml:lang="en">
@@ -7366,4 +7366,4 @@ PLEASE READ THIS BEFORE YOU DISTRIBUTE OR USE THIS WORK</span>
 
 `;
 
-export default sampleHTML;
+export default sample1;
