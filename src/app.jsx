@@ -3,9 +3,9 @@ import Login from './login';
 import Collection from './collection';
 import SearchResults from './searchResults';
 import Settings from './settings';
-import Reader from './reader';
 import Header from './header';
 import SearchForm from './searchForm';
+import Reader from './reader/reader';
 import sample1 from '../testData/sample-1';
 
 function App() {
