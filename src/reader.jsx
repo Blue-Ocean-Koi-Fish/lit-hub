@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'html-react-parser';
+import './readerTemp.css';
 
 function Reader({ book }) {
-
   const bookSchema = {
     title: [],
     author: [],
@@ -10,9 +10,10 @@ function Reader({ book }) {
     text: [],
   };
 
-  const [font, setFont] = useState('font1');
-  const [fontSize, setFontSize] = useState(12);
+  const [font, setFont] = useState('Times');
+  const [fontSize, setFontSize] = useState(24);
   const [bookContent, setBookContent] = useState(bookSchema);
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
     const rawDiv = ReactHtmlParser(book).props.children[1].props.children;
@@ -50,32 +51,62 @@ function Reader({ book }) {
     // setFontSize((size) => Number(size)); //?
   }, [book]);
 
-  const handleMinus = (event) => {
+  const increaseFont = (event) => {
+    setFontSize((size) => size + 4);
+  };
+
+  const decreaseFont = (event) => {
     setFontSize((size) => size - 4);
   };
 
-  const handlePlus = (event) => {
-    setFontSize((size) => size + 4);
+  const updateFont = (event) => {
+    const value = event.target.value;
+    console.log(value);
+    setFont(value);
+  };
+
+  const pageForward = () => {
+    const contentDiv = document.getElementById('content');
+    contentDiv.scrollTop = page + 250;
+    setPage((page) => page + 250);
+  };
+
+  const pageBackward = () => {
+    const contentDiv = document.getElementById('content');
+    if (contentDiv.scrollTop !== 0) {
+      contentDiv.scrollTop = page - 100;
+    } else if (contentDiv.scrollTop <= 0) {
+      contentDiv.scrollTop = 0;
+    }
+    console.log(contentDiv.scrollTop);
+    setPage((page) => page + 100);
   };
 
   return (
     <section className="e-reader-section">
       <div className="book-controls">
-        <p>font size and select</p>
-        <select>
-          <option>1</option>
-          <option>2</option>
-          <option>3</option>
+        <select onChange={updateFont}>
+          <option value="monospace">Monospace</option>
+          <option value="Arial">Arial</option>
+          <option value="Times">Times New Roman</option>
         </select>
-        <button id="font-size-plus" type="button" onClick={handleMinus}>FONT -</button>
-        <button id="font-size-minus" type="button" onClick={handlePlus}>FONT +</button>
+        <button id="font-size-plus" type="button" onClick={decreaseFont}>FONT -</button>
+        <button id="font-size-minus" type="button" onClick={increaseFont}>FONT +</button>
       </div>
       <div className="frame">
         <div className="read-body-wrap">
           <div className="content-wrap">
-            <button id="page-prev-btn" type="button">PREV</button>
-            <div className="content" style={{'fontSize': fontSize + 'px'}}>CONTENT</div>
-            <button id="page-next-btn" type="button">NEXT</button>
+            <button id="page-prev-btn" type="button" onClick={pageBackward}>PREV</button>
+            <div
+              id="content"
+              style={{
+                fontSize: `${fontSize}px`,
+                fontFamily: `${font}`,
+              }}
+            >
+              {bookContent.text}
+            </div>
+            <button id="page-next-btn" type="button" onClick={pageForward}>NEXT</button>
           </div>
         </div>
       </div>
