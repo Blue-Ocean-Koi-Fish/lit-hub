@@ -2,6 +2,13 @@ body {
   font-family: monospace;
 }
 
+.increase-font,
+.decrease-font {
+  width: 4vw;
+  height: 4vh;
+  font-weight: bold;
+}
+
 .e-reader-div {
   margin: auto;
   width: auto;

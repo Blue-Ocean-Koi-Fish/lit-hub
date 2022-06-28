@@ -52,7 +52,11 @@ function BookReader({ book }) {
   }, [book]);
 
   return (
-    <div className="e-reader-div">
+    <div className="e-reader-section">
+      <div>
+        <button className="decrease-font">-</button>
+        <button className="increase-font">+</button>
+      </div>
       <div className="book-chapters">
         {bookContent.chapters ? bookContent.chapters : null}
       </div>
