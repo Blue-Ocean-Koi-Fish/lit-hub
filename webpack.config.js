@@ -1,4 +1,6 @@
 const path = require('path');
+const WorkboxWebpackPlugin = require('workbox-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
   mode: 'development',
@@ -23,12 +25,14 @@ module.exports = {
       },
     ],
   },
-  devtool: 'eval-cheap-module-source-map',
-  devServer: {
-    static: {
-      directory: path.join(__dirname, 'public'),
-    },
-    compress: true,
-    port: 3000,
-  },
+
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.join(__dirname, 'src', 'index.html'),
+    }),
+    new WorkboxWebpackPlugin.InjectManifest({
+      swSrc: './src/src-sw.js',
+      swDest: 'sw.js',
+    }),
+  ],
 };
