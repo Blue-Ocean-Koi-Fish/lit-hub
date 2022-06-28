@@ -13,7 +13,7 @@ function Reader({ book }) {
   const [font, setFont] = useState('Times');
   const [fontSize, setFontSize] = useState(24);
   const [bookContent, setBookContent] = useState(bookSchema);
-  const [page, setPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
     const rawDiv = ReactHtmlParser(book).props.children[1].props.children;
@@ -38,7 +38,10 @@ function Reader({ book }) {
         // the chapters are in the table tag,
         else if (node.type === 'table') {
           console.log('table', node);
-          newBook.chapters.push(node);
+          node.props.children.props.children.forEach((child) => {
+            newBook.chapters.push(child.props.children.props.children);
+          });
+          console.log(newBook.chapters);
         }
         // and thhe text is split up into divs with the chapter class name.
         else if (node.props && node.props.className === 'chapter') {
@@ -67,20 +70,33 @@ function Reader({ book }) {
 
   const pageForward = () => {
     const contentDiv = document.getElementById('content');
-    contentDiv.scrollTop = page + 250;
-    setPage((page) => page + 250);
+    contentDiv.scrollTop = currentPage + 250;
+    console.log(contentDiv.scrollTop);
+    setCurrentPage((page) => page + 250);
   };
 
   const pageBackward = () => {
     const contentDiv = document.getElementById('content');
     if (contentDiv.scrollTop !== 0) {
-      contentDiv.scrollTop = page - 100;
-    } else if (contentDiv.scrollTop <= 0) {
+      contentDiv.scrollTop = currentPage - 500;
+    }
+    if (contentDiv.scrollTop <= 0) {
       contentDiv.scrollTop = 0;
     }
     console.log(contentDiv.scrollTop);
-    setPage((page) => page + 100);
+    setCurrentPage((page) => page - 500);
   };
+
+  const updateChapter = (event) => {
+    const value = event.target.value;
+    const chapterDiv = document.getElementById(value.slice(1));
+
+    const contentDiv = document.getElementById('content');
+
+    console.log(value.slice(1), chapterDiv.scrollTop, contentDiv.scrollTop);
+    chapterDiv.scrollIntoView();
+    setCurrentPage(contentDiv.scrollTop);
+  }
 
   return (
     <section className="e-reader-section">
@@ -89,6 +105,12 @@ function Reader({ book }) {
           <option value="monospace">Monospace</option>
           <option value="Arial">Arial</option>
           <option value="Times">Times New Roman</option>
+        </select>
+
+        <select onChange={updateChapter}>
+          {bookContent.chapters
+            ? bookContent.chapters.map((chapter, i) => (<option key={i} value={chapter.props.href}>{chapter.props.children}</option>))
+            : null}
         </select>
         <button id="font-size-plus" type="button" onClick={decreaseFont}>FONT -</button>
         <button id="font-size-minus" type="button" onClick={increaseFont}>FONT +</button>
