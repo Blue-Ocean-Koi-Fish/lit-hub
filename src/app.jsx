@@ -6,7 +6,7 @@ import SearchDisplay from "./search/searchdisplay";
 import SearchSection from "./search/searchsection";
 
 // import Collection from "./collection";
-// import Reader from "./reader";
+import Reader from "./reader";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
@@ -32,8 +32,6 @@ function App() {
     loggedIn ? (
       <>
         <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
-
-        <SearchSection />
         {/* <SearchForm
           searchTerms={searchTerms}
           setSearchTerms={setSearchTerms}
@@ -41,8 +39,7 @@ function App() {
         />
         {showSearchResults
           ? <SearchResults searchTerms={searchTerms} setSearchTerms={setSearchTerms} />
-          : <Collection />} */}
-
+          : <Collection />}
         {showSettings ? (
           <Settings
             settings={settings}
@@ -50,7 +47,7 @@ function App() {
             setShowSettings={setShowSettings}
           />
         )
-          : null}
+          : null} */}
         {/* {showReader ? <Reader /> : null} */}
       </>
     ) : (
