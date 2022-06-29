@@ -17,5 +17,7 @@ app.get('/txt', (req, res) => {
     });
 });
 
-console.log(`Listening on ${process.env.PORT}`);
-app.listen(process.env.PORT);
+const PORT = process.env.PORT || 3000;
+
+console.log(`Listening on ${PORT}`);
+app.listen(PORT);

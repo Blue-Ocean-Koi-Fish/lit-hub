@@ -5,7 +5,7 @@ function Login({ setLoggedIn }) {
   const [password, setPassword] = useState('');
 
   return (
-    <>
+    <section className="login-section">
       <div className="hero">
         bubbly-animation
       </div>
@@ -18,7 +18,7 @@ function Login({ setLoggedIn }) {
             Web
           </h3>
           <div className="img" alt="logo">
-            <img src="http://placecorgi.com/260/180" alt="logo" />
+            {/* <img src="http://placecorgi.com/260/180" alt="logo" /> */}
           </div>
         </div>
         <form className="login-form">
@@ -26,7 +26,7 @@ function Login({ setLoggedIn }) {
             Welcome to LitHub! Please Login or Register:
           </h4>
           <div className="input-wrap">
-            <img src="http://placecorgi.com/50/50" alt="username" />
+            {/* <img src="http://placecorgi.com/50/50" alt="username" /> */}
             <input
               id="username"
               type="text"
@@ -36,7 +36,7 @@ function Login({ setLoggedIn }) {
             />
           </div>
           <div className="input-wrap">
-            <img src="http://placecorgi.com/50/50" alt="password" />
+            {/* <img src="http://placecorgi.com/50/50" alt="password" /> */}
             <input
               id="password"
               type="password"
@@ -48,7 +48,7 @@ function Login({ setLoggedIn }) {
           <button type="button" id="login-submit" onClick={() => setLoggedIn(true)}>Log In</button>
         </form>
       </div>
-    </>
+    </section>
   );
 }
 

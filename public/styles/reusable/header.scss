@@ -1,0 +1,305 @@
+// @font-face {
+//   font-family: 'Garet';
+//   src: url('../../assets/fonts/Garet/Garet-Book.otf');
+// }
+
+// @font-face {
+//   font-family: 'Agrandir-Bold';
+//   src: url('../../assets/fonts/Agrandir/Agrandir-TextBold.otf');
+// }
+
+// @font-face {
+//   font-family: 'Agrandir';
+//   src: url('../../assets/fonts/Agrandir/Agrandir-GrandLight.otf');
+// }
+
+$dark: #292929;
+$button: #475B63;
+$light: #F3E8EE;
+$lightGray: #BCBCBC;
+
+// $headerFontSize: 24px;
+
+@mixin style-header($headerFontSize) {
+  #root {
+    .header-static {
+      background-color: $dark;
+      width: 100%;
+    }
+
+    .header-moving {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+      width: 100vw;
+      background-color: $dark;
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: $headerFontSize 15vw $headerFontSize*0.75 5vw;
+      margin-bottom: 3vw;
+
+      .logo {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+        margin-right: $headerFontSize * 3;
+        position: relative;
+        top: $headerFontSize * 0.25;
+        cursor: pointer;
+
+        .title, .capital {
+          font-size: $headerFontSize * 3;
+          color: $light;
+        }
+
+        .title {
+          font-family: 'Agrandir';
+
+          .capital {
+            font-family: 'Agrandir-Bold';
+            color: $light;
+          }
+        }
+
+        .img {
+          background-image: url(../assets/images/logo-book.png);
+          background-repeat: no-repeat;
+          background-size: contain;
+          margin-left: $headerFontSize * 0.5;
+          width: $headerFontSize * 7.5;
+          height: $headerFontSize * 4.5;
+        }
+      }
+
+      .nav {
+        display: flex;
+        flex-wrap: nowrap;
+        flex-shrink: 0;
+        margin-right: 5vw;
+
+        .btn {
+          font-family: 'Garet';
+          font-size: $headerFontSize * 1.15;
+          color: $light;
+          background-color: $button;
+          border: none;
+          outline: none;
+          margin: 0 1.5vw;
+          padding: ($headerFontSize * 0.75) ($headerFontSize * 3);
+          cursor: pointer;
+
+          i {
+            color: $light;
+            font-size: $headerFontSize * 1.15;
+            margin-left: $headerFontSize * 0.5;
+            position: relative;
+            top: $headerFontSize * 0.105;
+          }
+
+          &:hover {
+            background-color: $lightGray;
+            color: $button;
+          }
+        }
+      }
+
+      .btn-settings {
+        &.btn-round {
+          display: none;
+        }
+      }
+      // + div {
+      //   padding-top: $headerFontSize * 8.5;
+      // }
+    }
+    .header-static {
+      height: $headerFontSize * 6.5;
+      margin-bottom: 3vh;
+    }
+  }
+
+  @media (max-width: 1368px) {
+    body {
+      #root {
+        .header-moving {
+          flex-direction: column;
+          .nav {
+            margin-top: $headerFontSize * 1.5;
+          }
+
+          // + div {
+          //   padding-top: $headerFontSize * 12.5;
+          // }
+        }
+        .header-static {
+          height: $headerFontSize * 12.5;
+        }
+      }
+    }
+  }
+}
+
+@include style-header(24px);
+
+@media (min-width: 1921px) {
+  body {
+    @include style-header(30px);
+  }
+}
+
+// Mobile view
+@media (max-width: 900px) {
+  $headerFontSize: 18px;
+  body {
+    #root {
+      .header-moving {
+        padding: 0;
+
+        .logo {
+          margin: 0;
+          .title, .capital {
+            font-size: $headerFontSize * 5;
+          }
+        }
+
+        .nav {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          flex-shrink: 0;
+          align-items: center;
+          justify-content: space-evenly;
+          margin: 0;
+
+          .btn {
+            display: none;
+          }
+        }
+
+        .btn-settings {
+          &.btn-round {
+            display: initial;
+            position: fixed;
+            bottom: $headerFontSize * 2.5;
+            right: $headerFontSize * 2.5;
+            padding: $headerFontSize;
+            background: $button;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+
+            &:hover {
+              background-color: $light;
+              i {
+                color: $button;
+              }
+            }
+
+            i {
+              color: $light;
+              font-size: $headerFontSize * 2.5;
+            }
+          }
+        }
+      }
+
+      .header-static {
+        height: $headerFontSize * 6.5;
+      }
+
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  $headerFontSize: 12px;
+  body {
+    #root {
+      .header-moving {
+
+        .logo {
+          .title, .capital {
+            font-size: $headerFontSize * 5;
+          }
+        }
+
+        .nav {
+          margin: 0;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          flex-shrink: 0;
+          justify-content: space-evenly;
+
+          .btn {
+            font-size: $headerFontSize * 2;
+            margin: $headerFontSize 0;
+          }
+        }
+
+        .btn-settings {
+          &.btn-round {
+            padding: $headerFontSize * 0.75 $headerFontSize;
+            bottom: $headerFontSize * 2;
+            right: $headerFontSize;
+            i{
+              position: relative;
+              top: $headerFontSize * 0.25;
+              font-size: $headerFontSize * 2.5;
+            }
+          }
+        }
+
+      }
+
+      .header-static {
+        height: $headerFontSize * 10.5;
+      }
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  $headerFontSize: 12px;
+  body {
+    #root {
+      .header-moving {
+
+        .logo {
+          margin: 0;
+          .title, .capital {
+            font-size: $headerFontSize * 5;
+          }
+
+          .img {
+            display: none;
+          }
+        }
+
+        .nav {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          flex-shrink: 0;
+          justify-content: space-evenly;
+
+          .btn {
+            font-size: $headerFontSize * 2;
+            margin: 1.5vh 0;
+          }
+        }
+
+        // + div {
+        //   padding-top: $headerFontSize * 25.5;
+        // }
+      }
+
+      .header-static {
+        height: $headerFontSize * 6.5;
+      }
+    }
+  }
+}
