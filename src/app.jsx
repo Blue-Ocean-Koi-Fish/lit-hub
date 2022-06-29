@@ -24,32 +24,30 @@ function App() {
   const [showReader, setShowReader] = useState(false);
 
   return (
-    <div id="root">
-      {loggedIn ? (
-        <>
-          <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
-          <SearchForm
-            searchTerms={searchTerms}
-            setSearchTerms={setSearchTerms}
-            setShowSearchResults={setShowSearchResults}
+    loggedIn ? (
+      <>
+        <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
+        <SearchForm
+          searchTerms={searchTerms}
+          setSearchTerms={setSearchTerms}
+          setShowSearchResults={setShowSearchResults}
+        />
+        {showSearchResults
+          ? <SearchResults searchTerms={searchTerms} setSearchTerms={setSearchTerms} />
+          : <Collection />}
+        {showSettings ? (
+          <Settings
+            settings={settings}
+            setSettings={setSettings}
+            setShowSettings={setShowSettings}
           />
-          {showSearchResults
-            ? <SearchResults searchTerms={searchTerms} setSearchTerms={setSearchTerms} />
-            : <Collection />}
-          {showSettings ? (
-            <Settings
-              settings={settings}
-              setSettings={setSettings}
-              setShowSettings={setShowSettings}
-            />
-          )
-            : null}
-          {showReader ? <Reader /> : null}
-        </>
-      ) : (
-        <Login setLoggedIn={setLoggedIn} />
-      )}
-    </div>
+        )
+          : null}
+        {showReader ? <Reader /> : null}
+      </>
+    ) : (
+      <Login setLoggedIn={setLoggedIn} />
+    )
   );
 }
 
