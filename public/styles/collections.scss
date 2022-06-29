@@ -1,0 +1,378 @@
+// @import './reusable/main.scss';
+// @import './reusable/header.scss';
+
+// @font-face {
+//   font-family: 'Garet';
+//   src: url('../assets/fonts/Garet/Garet-Book.otf');
+// }
+
+// @font-face {
+//   font-family: 'Garet-Bold';
+//   src: url('../assets/fonts/Garet/Garet-Heavy.otf');
+// }
+
+// @font-face {
+//   font-family: 'Agrandir-Bold';
+//   src: url('../assets/fonts/Agrandir/Agrandir-TextBold.otf');
+// }
+
+// @font-face {
+//   font-family: 'Agrandir';
+//   src: url('../assets/fonts/Agrandir/Agrandir-GrandLight.otf');
+// }
+
+$dark: #292929;
+$button: #475B63;
+$light: #F3E8EE;
+$darkGray: #4f4f4f;
+
+// $collectionsFontSize: 24px;
+
+@mixin style-collections($collectionsFontSize) {
+  #root {
+    .collections, .reader-section {
+      display: flex;
+      flex-wrap: nowrap;
+      justify-content: space-between;
+
+      .search-form {
+        position: fixed;
+        max-width: 1080px * 0.33;
+        height: 65vh;
+        margin: $collectionsFontSize $collectionsFontSize * 1.3;
+        padding: $collectionsFontSize $collectionsFontSize * 1.6;
+        background-color: rgba($dark, 0.8);
+
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+
+        label {
+          font-size: $collectionsFontSize * 1.2;
+          color: $light;
+          padding-left: $collectionsFontSize;
+        }
+        input, select {
+          font-size: $collectionsFontSize * 1.2;
+          color: $button;
+          padding: $collectionsFontSize * 0.2 $collectionsFontSize;
+          margin: 0 $collectionsFontSize $collectionsFontSize 0;
+
+          &:focus {
+            outline: $dark 2px solid;
+          }
+        }
+
+        select {
+          max-width: 80%;
+        }
+
+        #search-submit {
+          width: 50%;
+          font-size: $collectionsFontSize * 1.2;
+          padding: $collectionsFontSize * 0.3 0;
+          margin: $collectionsFontSize * 2 0;
+          color: $button;
+          position: relative;
+          right: -50%;
+          outline: none;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $dark;
+            color: $light;
+
+            i {
+              color: $light;
+            }
+          }
+
+          i {
+            transform: scaleX(-1);
+            margin-left:  $collectionsFontSize * 0.25;
+          }
+        }
+      }
+
+      .collection-section-wrap {
+        margin-left:  $collectionsFontSize * 20;
+        width: 70vw;
+        flex-grow: 1;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+
+        .collection-section {
+          width: 100%;
+          display: flex;
+          flex-wrap: nowrap;
+          flex-direction: column;
+
+          .title {
+            align-self: flex-end;
+            width: 45%;
+            font-size: $collectionsFontSize * 1.65;
+            color: white;
+            border-bottom: double 5px $light;
+            padding: $collectionsFontSize * 0.15 $collectionsFontSize * 6;
+            padding-right: 0;
+            margin-left: $collectionsFontSize * 18;
+
+            &::before {
+              content: '';
+              display: inline-block;
+              width: $collectionsFontSize * 0.6;
+              height: $collectionsFontSize * 0.6;
+              position: relative;
+              left: -$collectionsFontSize * (6 + 1);
+              top: $collectionsFontSize * 1.35;
+              border: double 5px $light;
+            }
+          }
+
+          .book-cards-wrap {
+            display: flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            flex-shrink: 0;
+            padding:  $collectionsFontSize * 1.5;
+            padding-left: 0;
+
+            .book-card {
+              width: $collectionsFontSize * 10;
+              height: $collectionsFontSize * 13;
+              margin: 2.5%;
+              background-image: url(../assets/images/book-cover.webp);
+              background-size: cover;
+              background-repeat: repeat-y;
+              box-shadow: 8px 7px 0px 1px #000000b7;
+              cursor: pointer;
+
+              border-radius: 0 0 1vw 1vw;
+
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-end;
+
+              .book-meta {
+                background-color: $darkGray;
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: space-between;
+                padding: $collectionsFontSize * 0.25;
+                border-radius: 0.75vw;
+
+                >* {
+                  // flex-basis: 40%;
+                  font-size: $collectionsFontSize * 0.75;
+                  color: $light;
+                  font-style: italic;
+
+                  &.book-title {
+                    font-style: normal;
+                  }
+
+                  &.book-btn {
+                    color: $dark;
+                    font-style: normal;
+                    margin-top: $collectionsFontSize * 0.25;
+                    width: 100%;
+                    border-radius: 0.55vw;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@include style-collections(24px);
+
+@media (min-width: 1921px) {
+  body {
+    @include style-collections(30px);
+  }
+}
+
+@media (max-width: 1368px) {
+  body {
+    #root {
+      .collections {
+        .collection-section-wrap {
+          .collection-section {
+            .title {
+              font-size: 34px;
+              width: 70%;
+              padding: 5px 24px 5px 24 * 3px;
+              margin-left: 0;
+
+              &::before {
+                visibility: hidden;
+              }
+            }
+
+            .book-cards-wrap {
+              justify-content: center;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 1120px) {
+  body {
+    #root {
+      .collections {
+        .collection-section-wrap {
+          margin-left:  24px * 15;
+          .collection-section {
+            .title {
+              padding-left: 24px;
+              width: 65%;
+              text-align: center;
+            }
+
+            .book-cards-wrap {
+              margin-left: 24px * 8;
+              align-items: center;
+              .book-card {
+                width: 24px * 13;
+                height: 24px * 16;
+                // flex-basis: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (max-height: 1000px) {
+  body {
+    #root {
+      .collections {
+        .search-form {
+          padding: 24px;
+          overflow-y: auto;
+          height: 50vh;
+          border-radius: 0 1vw 1vw 0;
+
+          /* Width */
+          &::-webkit-scrollbar {
+            width: 1.2vw;
+          }
+
+          /* Track */
+          &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 1vw;
+          }
+
+          /* Handle */
+          &::-webkit-scrollbar-thumb {
+            background: $dark;
+            border-radius: 1vw;
+          }
+
+          label {
+            display: none;
+          }
+
+          #search-submit {
+            margin-top: 0;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-height: 1120px) {
+  body {
+    #root {
+      .collections {
+        .search-form {
+          height: 65vh;
+        }
+      }
+    }
+  }
+}
+
+// Mobile view
+@media (max-width: 900px) {
+  body {
+    @include style-collections(26px);
+    #root {
+      .collections {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        flex-shrink: 0;
+
+        .search-form {
+          position: initial;
+          max-width: 100%;
+          width: 100%;
+          margin: 0;
+          padding: 0;
+          padding-top: 50px;
+          border-radius: 0;
+          height: 100%;
+
+          input, select {
+            max-width: 80%;
+            // margin: 0;
+            margin: 2vh 4vw;
+          }
+
+          label {
+            display: initial;
+          }
+
+          #search-submit {
+            align-self: center;
+            justify-self: center;
+            position: initial;
+          }
+        }
+
+        .collection-section-wrap {
+          width: 100%;
+          margin: 0;
+          justify-content: center;
+
+          .collection-section {
+
+            .title {
+              width: 100%;
+              margin: 2.5vh 0 0 0;
+              padding: 0;
+            }
+
+            .book-cards-wrap {
+              width: 100%;
+              margin: 0;
+              padding: 0;
+              justify-content: center;
+              .book-card {
+                // flex-basis: 100%;
+
+              }
+            }
+          }
+        }
+      }
+
+      .header-static {
+        margin: 0;
+      }
+    }
+  }
+}

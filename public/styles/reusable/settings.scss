@@ -1,0 +1,195 @@
+// @import './main.scss';
+// @import './header.scss';
+// @import '../collections.scss';
+
+// @font-face {
+//   font-family: 'Garet';
+//   src: url('../assets/fonts/Garet/Garet-Book.otf');
+// }
+
+// @font-face {
+//   font-family: 'Agrandir-Bold';
+//   src: url('../assets/fonts/Agrandir/Agrandir-TextBold.otf');
+// }
+
+// @font-face {
+//   font-family: 'Agrandir';
+//   src: url('../assets/fonts/Agrandir/Agrandir-GrandLight.otf');
+// }
+
+$dark: #292929;
+$button: #475B63;
+$light: #F3E8EE;
+$darkGray: #575757;
+
+$settingsFontSize: 24px;
+
+#root {
+  .settings-modal-wrap {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1001;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba($dark, 0.7);
+    text-align: left;
+
+    .modal-main {
+      width: 65%;
+      height: 80%;
+      margin: auto;
+      margin-top: 20vh;
+      padding: 2vh 2vw;
+      background-color: $dark;
+      position: relative;
+      overflow: auto;
+
+      /* Width */
+      &::-webkit-scrollbar {
+        width: 1.2vw;
+      }
+
+      /* Track */
+      &::-webkit-scrollbar-track {
+        box-shadow: inset 0 0 5px grey;
+        border-radius: 1vw;
+      }
+
+      /* Handle */
+      &::-webkit-scrollbar-thumb {
+        background: $button;
+        border-radius: 1vw;
+      }
+
+      .section-category-title {
+        color: $light;
+        font-size: $settingsFontSize * 1.25;
+      }
+
+      .section {
+        background-color: $darkGray;
+        margin: 0 2vw;
+        margin-top: 2vh;
+        padding: 2vh 2vw;
+        padding-bottom: 6vh;
+
+        display: flex;
+        flex-wrap: wrap;
+
+        .title {
+          font-size: $settingsFontSize * 1.1;
+          color: $light;
+          flex-basis: 100%;
+        }
+
+        form {
+          label {
+            display: inline-block;
+            margin: 2.5vh 1.5vw 1vh 1.5vw;
+            cursor: pointer;
+
+            font-size: $settingsFontSize * 1.05;
+            color: $light;
+            cursor: pointer;
+
+            input {
+              margin-right: $settingsFontSize * 0.3;
+              font-size: $settingsFontSize * 1.05;
+              color: $light;
+              cursor: pointer;
+
+              width: $settingsFontSize;
+              height: $settingsFontSize;
+              position: relative;
+
+              &.checked::before {
+                content: '';
+                display: inline-block;
+                width: $settingsFontSize * 0.65;
+                height: $settingsFontSize * 0.65;
+                background-color: $dark;
+                border-radius: 50%;
+                position: absolute;
+                top: $settingsFontSize * 0.17;
+                left: $settingsFontSize * 0.15;
+              }
+            }
+          }
+        }
+        // .option-wrap {
+        //   margin: 2vh 3.5vw 1vh 3.5vw;
+        //   cursor: pointer;
+
+        //   >* {
+        //     font-size: $settingsFontSize * 1.05;
+        //     color: $light;
+        //     cursor: pointer;
+        //   }
+
+        //   input {
+        //     width: $settingsFontSize;
+        //     height: $settingsFontSize;
+        //     position: relative;
+
+        //     &.checked::before {
+        //       content: '';
+        //       display: inline-block;
+        //       width: $settingsFontSize * 0.65;
+        //       height: $settingsFontSize * 0.65;
+        //       background-color: $dark;
+        //       border-radius: 50%;
+        //       position: absolute;
+        //       top: $settingsFontSize * 0.17;
+        //       left: $settingsFontSize * 0.15;
+        //     }
+
+        //   }
+        // }
+      }
+
+      #settings-close-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        padding: $settingsFontSize * 0.1 $settingsFontSize * 1.15;
+        font-family: 'Garet';
+        font-size: $settingsFontSize * 1.5;
+        color: $light;
+        background-color: $button;
+        border: 0;
+        outline: 0;
+        cursor: pointer;
+
+        &:hover {
+          background-color: black;
+
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  body {
+    #root {
+      .section-category-title {
+        padding-left: $settingsFontSize * 0.5;
+      }
+
+      .settings-modal-wrap {
+        .modal-main {
+          width: 100%;
+          height: 100%;
+          margin: 0;
+          padding: 0;
+
+          .section {
+            margin: $settingsFontSize 0;
+
+          }
+        }
+      }
+    }
+  }
+}
