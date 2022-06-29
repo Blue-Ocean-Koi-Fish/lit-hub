@@ -24,35 +24,30 @@ function App() {
   const [showReader, setShowReader] = useState(true);
 
   return (
-    <div id="root">
-      {loggedIn ? (
-        <>
-          {/* This button only needs the update id to work */}
-          <button type="button" id="update"> Install App Updates </button>
-           <h1>Where did the fish go</h1>
-          <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
-          <SearchForm
-            searchTerms={searchTerms}
-            setSearchTerms={setSearchTerms}
-            setShowSearchResults={setShowSearchResults}
+    loggedIn ? (
+      <>
+        <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
+        <SearchForm
+          searchTerms={searchTerms}
+          setSearchTerms={setSearchTerms}
+          setShowSearchResults={setShowSearchResults}
+        />
+        {showSearchResults
+          ? <SearchResults searchTerms={searchTerms} setSearchTerms={setSearchTerms} />
+          : <Collection />}
+        {showSettings ? (
+          <Settings
+            settings={settings}
+            setSettings={setSettings}
+            setShowSettings={setShowSettings}
           />
-          {showSearchResults
-            ? <SearchResults searchTerms={searchTerms} setSearchTerms={setSearchTerms} />
-            : <Collection />}
-          {showSettings ? (
-            <Settings
-              settings={settings}
-              setSettings={setSettings}
-              setShowSettings={setShowSettings}
-            />
-          )
-            : null}
-          {<Reader />/* showReader ? <Reader /> : null */}
-        </>
-      ) : (
-        <Login setLoggedIn={setLoggedIn} />
-      )}
-    </div>
+        )
+          : null}
+        {showReader ? <Reader /> : null}
+      </>
+    ) : (
+      <Login setLoggedIn={setLoggedIn} />
+    )
   );
 }
 
