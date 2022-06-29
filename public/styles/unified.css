@@ -417,7 +417,7 @@ body #root .login-section .login-wrap .login-form .input-wrap input {
 body #root .login-section .login-wrap .login-form .input-wrap input:focus {
   outline: #292929 2px solid;
 }
-body #root .login-section .login-wrap .login-form #login {
+body #root .login-section .login-wrap .login-form #login-submit {
   margin-top: 8vh;
   position: relative;
   left: calc(100% - 35vw);
@@ -430,7 +430,7 @@ body #root .login-section .login-wrap .login-form #login {
   width: 30vw;
   cursor: pointer;
 }
-body #root .login-section .login-wrap .login-form #login:hover {
+body #root .login-section .login-wrap .login-form #login-submit:hover {
   background-color: #475B63;
 }
 
@@ -528,7 +528,7 @@ body #root .login-section .login-wrap .login-form #login:hover {
   body #root .login-section .login-wrap .login-form .input-wrap input:focus {
     outline: #292929 2px solid;
   }
-  body #root .login-section .login-wrap .login-form #login {
+  body #root .login-section .login-wrap .login-form #login-submit {
     margin-top: 8vh;
     position: relative;
     left: calc(100% - 35vw);
@@ -541,7 +541,7 @@ body #root .login-section .login-wrap .login-form #login:hover {
     width: 30vw;
     cursor: pointer;
   }
-  body #root .login-section .login-wrap .login-form #login:hover {
+  body #root .login-section .login-wrap .login-form #login-submit:hover {
     background-color: #475B63;
   }
 }
@@ -642,7 +642,7 @@ body #root .login-section .login-wrap .login-form #login:hover {
   body #root .login-section .login-wrap .login-form .input-wrap input:focus {
     outline: #292929 2px solid;
   }
-  body #root .login-section .login-wrap .login-form #login {
+  body #root .login-section .login-wrap .login-form #login-submit {
     margin-top: 8vh;
     position: relative;
     left: calc(100% - 35vw);
@@ -655,7 +655,7 @@ body #root .login-section .login-wrap .login-form #login:hover {
     width: 30vw;
     cursor: pointer;
   }
-  body #root .login-section .login-wrap .login-form #login:hover {
+  body #root .login-section .login-wrap .login-form #login-submit:hover {
     background-color: #475B63;
   }
   body #root {
@@ -687,7 +687,7 @@ body #root .login-section .login-wrap .login-form #login:hover {
   body #root .login-section .login-wrap .login-form .input-wrap input {
     font-size: 18px;
   }
-  body #root .login-section .login-wrap .login-form #login {
+  body #root .login-section .login-wrap .login-form #login-submit {
     font-size: 22px;
     position: initial;
     width: 80%;
