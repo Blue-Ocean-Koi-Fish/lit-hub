@@ -8,7 +8,7 @@ import Header from './header';
 import SearchForm from './searchForm';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [searchTerms, setSearchTerms] = useState({
     'book-name': '',
     author: '',
@@ -21,7 +21,7 @@ function App() {
   });
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [showReader, setShowReader] = useState(false);
+  const [showReader, setShowReader] = useState(true);
 
   return (
     loggedIn ? (
