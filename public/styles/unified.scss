@@ -1,0 +1,25 @@
+@font-face {
+  font-family: 'Garet';
+  src: url('../assets/fonts/Garet/Garet-Book.otf');
+}
+
+@font-face {
+  font-family: 'Garet-Bold';
+  src: url('../assets/fonts/Garet/Garet-Heavy.otf');
+}
+
+@font-face {
+  font-family: 'Agrandir-Bold';
+  src: url('../assets/fonts/Agrandir/Agrandir-TextBold.otf');
+}
+
+@font-face {
+  font-family: 'Agrandir';
+  src: url('../assets/fonts/Agrandir/Agrandir-GrandLight.otf');
+}
+
+@import './reusable/main.scss';
+@import './reusable/header.scss';
+@import './login.scss';
+@import './reusable/settings.scss';
+@import './collections.scss';

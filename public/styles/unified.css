@@ -1,0 +1,1327 @@
+@font-face {
+  font-family: "Garet";
+  src: url("../assets/fonts/Garet/Garet-Book.otf");
+}
+@font-face {
+  font-family: "Garet-Bold";
+  src: url("../assets/fonts/Garet/Garet-Heavy.otf");
+}
+@font-face {
+  font-family: "Agrandir-Bold";
+  src: url("../assets/fonts/Agrandir/Agrandir-TextBold.otf");
+}
+@font-face {
+  font-family: "Agrandir";
+  src: url("../assets/fonts/Agrandir/Agrandir-GrandLight.otf");
+}
+* {
+  font-family: "Garet";
+  color: #292929;
+  font-size: 24px;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+#root {
+  background: linear-gradient(45deg, rgba(71, 91, 99, 0.75) 30%, #292929 100%);
+  background-attachment: fixed;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+}
+
+#root .header-static {
+  background-color: #292929;
+  width: 100%;
+}
+#root .header-moving {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  width: 100vw;
+  background-color: #292929;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 15vw 18px 5vw;
+  margin-bottom: 3vw;
+}
+#root .header-moving .logo {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  margin-right: 72px;
+  position: relative;
+  top: 6px;
+  cursor: pointer;
+}
+#root .header-moving .logo .title, #root .header-moving .logo .capital {
+  font-size: 72px;
+  color: #F3E8EE;
+}
+#root .header-moving .logo .title {
+  font-family: "Agrandir";
+}
+#root .header-moving .logo .title .capital {
+  font-family: "Agrandir-Bold";
+  color: #F3E8EE;
+}
+#root .header-moving .logo .img {
+  background-image: url(../assets/images/logo-book.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  margin-left: 12px;
+  width: 180px;
+  height: 108px;
+}
+#root .header-moving .nav {
+  display: flex;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  margin-right: 5vw;
+}
+#root .header-moving .nav .btn {
+  font-family: "Garet";
+  font-size: 27.6px;
+  color: #F3E8EE;
+  background-color: #475B63;
+  border: none;
+  outline: none;
+  margin: 0 1.5vw;
+  padding: 18px 72px;
+  cursor: pointer;
+}
+#root .header-moving .nav .btn i {
+  color: #F3E8EE;
+  font-size: 27.6px;
+  margin-left: 12px;
+  position: relative;
+  top: 2.52px;
+}
+#root .header-moving .nav .btn:hover {
+  background-color: #BCBCBC;
+  color: #475B63;
+}
+#root .header-moving .btn-settings.btn-round {
+  display: none;
+}
+#root .header-static {
+  height: 156px;
+  margin-bottom: 3vh;
+}
+
+@media (max-width: 1368px) {
+  body #root .header-moving {
+    flex-direction: column;
+  }
+  body #root .header-moving .nav {
+    margin-top: 36px;
+  }
+  body #root .header-static {
+    height: 300px;
+  }
+}
+@media (min-width: 1921px) {
+  body #root .header-static {
+    background-color: #292929;
+    width: 100%;
+  }
+  body #root .header-moving {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100vw;
+    background-color: #292929;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 15vw 22.5px 5vw;
+    margin-bottom: 3vw;
+  }
+  body #root .header-moving .logo {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    margin-right: 90px;
+    position: relative;
+    top: 7.5px;
+    cursor: pointer;
+  }
+  body #root .header-moving .logo .title, body #root .header-moving .logo .capital {
+    font-size: 90px;
+    color: #F3E8EE;
+  }
+  body #root .header-moving .logo .title {
+    font-family: "Agrandir";
+  }
+  body #root .header-moving .logo .title .capital {
+    font-family: "Agrandir-Bold";
+    color: #F3E8EE;
+  }
+  body #root .header-moving .logo .img {
+    background-image: url(../assets/images/logo-book.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    margin-left: 15px;
+    width: 225px;
+    height: 135px;
+  }
+  body #root .header-moving .nav {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    margin-right: 5vw;
+  }
+  body #root .header-moving .nav .btn {
+    font-family: "Garet";
+    font-size: 34.5px;
+    color: #F3E8EE;
+    background-color: #475B63;
+    border: none;
+    outline: none;
+    margin: 0 1.5vw;
+    padding: 22.5px 90px;
+    cursor: pointer;
+  }
+  body #root .header-moving .nav .btn i {
+    color: #F3E8EE;
+    font-size: 34.5px;
+    margin-left: 15px;
+    position: relative;
+    top: 3.15px;
+  }
+  body #root .header-moving .nav .btn:hover {
+    background-color: #BCBCBC;
+    color: #475B63;
+  }
+  body #root .header-moving .btn-settings.btn-round {
+    display: none;
+  }
+  body #root .header-static {
+    height: 195px;
+    margin-bottom: 3vh;
+  }
+}
+@media (min-width: 1921px) and (max-width: 1368px) {
+  body body #root .header-moving {
+    flex-direction: column;
+  }
+  body body #root .header-moving .nav {
+    margin-top: 45px;
+  }
+  body body #root .header-static {
+    height: 375px;
+  }
+}
+@media (max-width: 900px) {
+  body #root .header-moving {
+    padding: 0;
+  }
+  body #root .header-moving .logo {
+    margin: 0;
+  }
+  body #root .header-moving .logo .title, body #root .header-moving .logo .capital {
+    font-size: 90px;
+  }
+  body #root .header-moving .nav {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: space-evenly;
+    margin: 0;
+  }
+  body #root .header-moving .nav .btn {
+    display: none;
+  }
+  body #root .header-moving .btn-settings.btn-round {
+    display: initial;
+    position: fixed;
+    bottom: 45px;
+    right: 45px;
+    padding: 18px;
+    background: #475B63;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  }
+  body #root .header-moving .btn-settings.btn-round:hover {
+    background-color: #F3E8EE;
+  }
+  body #root .header-moving .btn-settings.btn-round:hover i {
+    color: #475B63;
+  }
+  body #root .header-moving .btn-settings.btn-round i {
+    color: #F3E8EE;
+    font-size: 45px;
+  }
+  body #root .header-static {
+    height: 117px;
+  }
+}
+@media (max-width: 550px) {
+  body #root .header-moving .logo .title, body #root .header-moving .logo .capital {
+    font-size: 60px;
+  }
+  body #root .header-moving .nav {
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    justify-content: space-evenly;
+  }
+  body #root .header-moving .nav .btn {
+    font-size: 24px;
+    margin: 12px 0;
+  }
+  body #root .header-moving .btn-settings.btn-round {
+    padding: 9px 12px;
+    bottom: 24px;
+    right: 12px;
+  }
+  body #root .header-moving .btn-settings.btn-round i {
+    position: relative;
+    top: 3px;
+    font-size: 30px;
+  }
+  body #root .header-static {
+    height: 126px;
+  }
+}
+@media (max-width: 450px) {
+  body #root .header-moving .logo {
+    margin: 0;
+  }
+  body #root .header-moving .logo .title, body #root .header-moving .logo .capital {
+    font-size: 60px;
+  }
+  body #root .header-moving .logo .img {
+    display: none;
+  }
+  body #root .header-moving .nav {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    justify-content: space-evenly;
+  }
+  body #root .header-moving .nav .btn {
+    font-size: 24px;
+    margin: 1.5vh 0;
+  }
+  body #root .header-static {
+    height: 78px;
+  }
+}
+body #root .login-section {
+  display: flex;
+}
+body #root .login-section .hero {
+  background-color: #292929;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0.5;
+  border-right: 5px solid black;
+  position: fixed;
+  width: 33vw;
+  height: 100vh;
+}
+body #root .login-section .login-wrap {
+  margin: 3vw;
+  margin-left: 36vw;
+  width: 66vw;
+}
+body #root .login-section .login-wrap .logo-wrap {
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  margin-top: 1.5vh;
+}
+body #root .login-section .login-wrap .logo-wrap .logo-text {
+  display: flex;
+  flex-direction: column;
+}
+body #root .login-section .login-wrap .logo-wrap .logo-text .title, body #root .login-section .login-wrap .logo-wrap .logo-text .capital {
+  font-size: 110.4px;
+  color: #F3E8EE;
+  font-family: "Agrandir";
+}
+body #root .login-section .login-wrap .logo-wrap .logo-text .title {
+  height: 103.2px;
+}
+body #root .login-section .login-wrap .logo-wrap .logo-text .title .capital {
+  font-family: "Agrandir-Bold";
+}
+body #root .login-section .login-wrap .logo-wrap .logo-text .subtitle {
+  font-size: 36px;
+  text-align: right;
+}
+body #root .login-section .login-wrap .logo-wrap .img {
+  flex-shrink: 0;
+  margin-left: 18px;
+  background-image: url(../assets/images/logo-book.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 264px;
+  height: 144px;
+}
+body #root .login-section .login-wrap .login-form {
+  margin-top: 6vh;
+}
+body #root .login-section .login-wrap .login-form .welcome-msg {
+  font-size: 42px;
+  color: #F3E8EE;
+  margin-top: 5vh;
+}
+body #root .login-section .login-wrap .login-form .input-wrap {
+  display: flex;
+  width: 75%;
+  margin: 6.5vh 36px;
+  background-color: #F3E8EE;
+  border: 1px solid #292929;
+}
+body #root .login-section .login-wrap .login-form .input-wrap:nth-child(2) {
+  margin-top: 8vh;
+}
+body #root .login-section .login-wrap .login-form .input-wrap .icon {
+  font-size: 48px;
+  color: #F3E8EE;
+  padding: 24px;
+  margin: 0;
+  background-color: #292929;
+}
+body #root .login-section .login-wrap .login-form .input-wrap .icon:hover {
+  background-color: #475B63;
+}
+body #root .login-section .login-wrap .login-form .input-wrap input {
+  width: 100%;
+  background: none;
+  border: none;
+  font-size: 32.4px;
+  padding: 13.2px 7.2px;
+  padding-right: 30%;
+}
+body #root .login-section .login-wrap .login-form .input-wrap input:focus {
+  outline: #292929 2px solid;
+}
+body #root .login-section .login-wrap .login-form #login-submit {
+  margin-top: 8vh;
+  position: relative;
+  left: calc(100% - 35vw);
+  font-size: 36px;
+  color: #F3E8EE;
+  background-color: #292929;
+  outline: none;
+  border: none;
+  padding: 21.6px 0;
+  width: 30vw;
+  cursor: pointer;
+}
+body #root .login-section .login-wrap .login-form #login-submit:hover {
+  background-color: #475B63;
+}
+
+@media (min-width: 1921px) {
+  body #root .login-section {
+    display: flex;
+  }
+  body #root .login-section .hero {
+    background-color: #292929;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.5;
+    border-right: 5px solid black;
+    position: fixed;
+    width: 33vw;
+    height: 100vh;
+  }
+  body #root .login-section .login-wrap {
+    margin: 3vw;
+    margin-left: 36vw;
+    width: 66vw;
+  }
+  body #root .login-section .login-wrap .logo-wrap {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    margin-top: 1.5vh;
+  }
+  body #root .login-section .login-wrap .logo-wrap .logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+  body #root .login-section .login-wrap .logo-wrap .logo-text .title, body #root .login-section .login-wrap .logo-wrap .logo-text .capital {
+    font-size: 138px;
+    color: #F3E8EE;
+    font-family: "Agrandir";
+  }
+  body #root .login-section .login-wrap .logo-wrap .logo-text .title {
+    height: 129px;
+  }
+  body #root .login-section .login-wrap .logo-wrap .logo-text .title .capital {
+    font-family: "Agrandir-Bold";
+  }
+  body #root .login-section .login-wrap .logo-wrap .logo-text .subtitle {
+    font-size: 45px;
+    text-align: right;
+  }
+  body #root .login-section .login-wrap .logo-wrap .img {
+    flex-shrink: 0;
+    margin-left: 22.5px;
+    background-image: url(../assets/images/logo-book.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 330px;
+    height: 180px;
+  }
+  body #root .login-section .login-wrap .login-form {
+    margin-top: 6vh;
+  }
+  body #root .login-section .login-wrap .login-form .welcome-msg {
+    font-size: 52.5px;
+    color: #F3E8EE;
+    margin-top: 5vh;
+  }
+  body #root .login-section .login-wrap .login-form .input-wrap {
+    display: flex;
+    width: 75%;
+    margin: 6.5vh 45px;
+    background-color: #F3E8EE;
+    border: 1px solid #292929;
+  }
+  body #root .login-section .login-wrap .login-form .input-wrap:nth-child(2) {
+    margin-top: 8vh;
+  }
+  body #root .login-section .login-wrap .login-form .input-wrap .icon {
+    font-size: 60px;
+    color: #F3E8EE;
+    padding: 30px;
+    margin: 0;
+    background-color: #292929;
+  }
+  body #root .login-section .login-wrap .login-form .input-wrap .icon:hover {
+    background-color: #475B63;
+  }
+  body #root .login-section .login-wrap .login-form .input-wrap input {
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 40.5px;
+    padding: 16.5px 9px;
+    padding-right: 30%;
+  }
+  body #root .login-section .login-wrap .login-form .input-wrap input:focus {
+    outline: #292929 2px solid;
+  }
+  body #root .login-section .login-wrap .login-form #login-submit {
+    margin-top: 8vh;
+    position: relative;
+    left: calc(100% - 35vw);
+    font-size: 45px;
+    color: #F3E8EE;
+    background-color: #292929;
+    outline: none;
+    border: none;
+    padding: 27px 0;
+    width: 30vw;
+    cursor: pointer;
+  }
+  body #root .login-section .login-wrap .login-form #login-submit:hover {
+    background-color: #475B63;
+  }
+}
+@media (max-width: 980px) {
+  body {
+    overflow-x: hidden;
+  }
+  body #root .login-section {
+    display: flex;
+  }
+  body #root .login-section .hero {
+    background-color: #292929;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.5;
+    border-right: 5px solid black;
+    position: fixed;
+    width: 33vw;
+    height: 100vh;
+  }
+  body #root .login-section .login-wrap {
+    margin: 3vw;
+    margin-left: 36vw;
+    width: 66vw;
+  }
+  body #root .login-section .login-wrap .logo-wrap {
+    display: flex;
+    align-items: center;
+    flex-wrap: nowrap;
+    flex-shrink: 0;
+    margin-top: 1.5vh;
+  }
+  body #root .login-section .login-wrap .logo-wrap .logo-text {
+    display: flex;
+    flex-direction: column;
+  }
+  body #root .login-section .login-wrap .logo-wrap .logo-text .title, body #root .login-section .login-wrap .logo-wrap .logo-text .capital {
+    font-size: 59.8px;
+    color: #F3E8EE;
+    font-family: "Agrandir";
+  }
+  body #root .login-section .login-wrap .logo-wrap .logo-text .title {
+    height: 55.9px;
+  }
+  body #root .login-section .login-wrap .logo-wrap .logo-text .title .capital {
+    font-family: "Agrandir-Bold";
+  }
+  body #root .login-section .login-wrap .logo-wrap .logo-text .subtitle {
+    font-size: 19.5px;
+    text-align: right;
+  }
+  body #root .login-section .login-wrap .logo-wrap .img {
+    flex-shrink: 0;
+    margin-left: 9.75px;
+    background-image: url(../assets/images/logo-book.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    width: 143px;
+    height: 78px;
+  }
+  body #root .login-section .login-wrap .login-form {
+    margin-top: 6vh;
+  }
+  body #root .login-section .login-wrap .login-form .welcome-msg {
+    font-size: 22.75px;
+    color: #F3E8EE;
+    margin-top: 5vh;
+  }
+  body #root .login-section .login-wrap .login-form .input-wrap {
+    display: flex;
+    width: 75%;
+    margin: 6.5vh 19.5px;
+    background-color: #F3E8EE;
+    border: 1px solid #292929;
+  }
+  body #root .login-section .login-wrap .login-form .input-wrap:nth-child(2) {
+    margin-top: 8vh;
+  }
+  body #root .login-section .login-wrap .login-form .input-wrap .icon {
+    font-size: 26px;
+    color: #F3E8EE;
+    padding: 13px;
+    margin: 0;
+    background-color: #292929;
+  }
+  body #root .login-section .login-wrap .login-form .input-wrap .icon:hover {
+    background-color: #475B63;
+  }
+  body #root .login-section .login-wrap .login-form .input-wrap input {
+    width: 100%;
+    background: none;
+    border: none;
+    font-size: 17.55px;
+    padding: 7.15px 3.9px;
+    padding-right: 30%;
+  }
+  body #root .login-section .login-wrap .login-form .input-wrap input:focus {
+    outline: #292929 2px solid;
+  }
+  body #root .login-section .login-wrap .login-form #login-submit {
+    margin-top: 8vh;
+    position: relative;
+    left: calc(100% - 35vw);
+    font-size: 19.5px;
+    color: #F3E8EE;
+    background-color: #292929;
+    outline: none;
+    border: none;
+    padding: 11.7px 0;
+    width: 30vw;
+    cursor: pointer;
+  }
+  body #root .login-section .login-wrap .login-form #login-submit:hover {
+    background-color: #475B63;
+  }
+  body #root {
+    width: 100vw;
+  }
+  body #root .login-section {
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+  }
+  body #root .login-section .hero {
+    position: initial;
+    width: 100%;
+    height: 15vh;
+  }
+  body #root .login-section .login-wrap {
+    margin: 3vw;
+    width: 100%;
+  }
+  body #root .login-section .login-wrap .logo-wrap {
+    justify-content: center;
+  }
+  body #root .login-section .login-wrap .login-form {
+    text-align: center;
+  }
+  body #root .login-section .login-wrap .login-form .input-wrap {
+    width: 90%;
+  }
+  body #root .login-section .login-wrap .login-form .input-wrap input {
+    font-size: 18px;
+  }
+  body #root .login-section .login-wrap .login-form #login-submit {
+    font-size: 22px;
+    position: initial;
+    width: 80%;
+  }
+}
+#root .settings-modal-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1001;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(41, 41, 41, 0.7);
+  text-align: left;
+}
+#root .settings-modal-wrap .modal-main {
+  width: 65%;
+  height: 80%;
+  margin: auto;
+  margin-top: 20vh;
+  padding: 2vh 2vw;
+  background-color: #292929;
+  position: relative;
+  overflow: auto;
+  /* Width */
+  /* Track */
+  /* Handle */
+}
+#root .settings-modal-wrap .modal-main::-webkit-scrollbar {
+  width: 1.2vw;
+}
+#root .settings-modal-wrap .modal-main::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px grey;
+  border-radius: 1vw;
+}
+#root .settings-modal-wrap .modal-main::-webkit-scrollbar-thumb {
+  background: #475B63;
+  border-radius: 1vw;
+}
+#root .settings-modal-wrap .modal-main .section-category-title {
+  color: #F3E8EE;
+  font-size: 30px;
+}
+#root .settings-modal-wrap .modal-main .section {
+  background-color: #575757;
+  margin: 0 2vw;
+  margin-top: 2vh;
+  padding: 2vh 2vw;
+  padding-bottom: 6vh;
+  display: flex;
+  flex-wrap: wrap;
+}
+#root .settings-modal-wrap .modal-main .section .title {
+  font-size: 26.4px;
+  color: #F3E8EE;
+  flex-basis: 100%;
+}
+#root .settings-modal-wrap .modal-main .section form label {
+  display: inline-block;
+  margin: 2.5vh 1.5vw 1vh 1.5vw;
+  cursor: pointer;
+  font-size: 25.2px;
+  color: #F3E8EE;
+  cursor: pointer;
+}
+#root .settings-modal-wrap .modal-main .section form label input {
+  margin-right: 7.2px;
+  font-size: 25.2px;
+  color: #F3E8EE;
+  cursor: pointer;
+  width: 24px;
+  height: 24px;
+  position: relative;
+}
+#root .settings-modal-wrap .modal-main .section form label input.checked::before {
+  content: "";
+  display: inline-block;
+  width: 15.6px;
+  height: 15.6px;
+  background-color: #292929;
+  border-radius: 50%;
+  position: absolute;
+  top: 4.08px;
+  left: 3.6px;
+}
+#root .settings-modal-wrap .modal-main #settings-close-btn {
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2.4px 27.6px;
+  font-family: "Garet";
+  font-size: 36px;
+  color: #F3E8EE;
+  background-color: #475B63;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+#root .settings-modal-wrap .modal-main #settings-close-btn:hover {
+  background-color: black;
+}
+
+@media (max-width: 900px) {
+  body #root .section-category-title {
+    padding-left: 12px;
+  }
+  body #root .settings-modal-wrap .modal-main {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+  }
+  body #root .settings-modal-wrap .modal-main .section {
+    margin: 24px 0;
+  }
+}
+#root .collections, #root .reader-section {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+#root .collections .search-form, #root .reader-section .search-form {
+  position: fixed;
+  max-width: 356.4px;
+  height: 65vh;
+  margin: 24px 31.2px;
+  padding: 24px 38.4px;
+  background-color: rgba(41, 41, 41, 0.8);
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+}
+#root .collections .search-form label, #root .reader-section .search-form label {
+  font-size: 28.8px;
+  color: #F3E8EE;
+  padding-left: 24px;
+}
+#root .collections .search-form input, #root .collections .search-form select, #root .reader-section .search-form input, #root .reader-section .search-form select {
+  font-size: 28.8px;
+  color: #475B63;
+  padding: 4.8px 24px;
+  margin: 0 24px 24px 0;
+}
+#root .collections .search-form input:focus, #root .collections .search-form select:focus, #root .reader-section .search-form input:focus, #root .reader-section .search-form select:focus {
+  outline: #292929 2px solid;
+}
+#root .collections .search-form select, #root .reader-section .search-form select {
+  max-width: 80%;
+}
+#root .collections .search-form #search-submit, #root .reader-section .search-form #search-submit {
+  width: 50%;
+  font-size: 28.8px;
+  padding: 7.2px 0;
+  margin: 48px 0;
+  color: #475B63;
+  position: relative;
+  right: -50%;
+  outline: none;
+  cursor: pointer;
+}
+#root .collections .search-form #search-submit:hover, #root .reader-section .search-form #search-submit:hover {
+  background-color: #292929;
+  color: #F3E8EE;
+}
+#root .collections .search-form #search-submit:hover i, #root .reader-section .search-form #search-submit:hover i {
+  color: #F3E8EE;
+}
+#root .collections .search-form #search-submit i, #root .reader-section .search-form #search-submit i {
+  transform: scaleX(-1);
+  margin-left: 6px;
+}
+#root .collections .collection-section-wrap, #root .reader-section .collection-section-wrap {
+  margin-left: 480px;
+  width: 70vw;
+  flex-grow: 1;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: flex-end;
+}
+#root .collections .collection-section-wrap .collection-section, #root .reader-section .collection-section-wrap .collection-section {
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-direction: column;
+}
+#root .collections .collection-section-wrap .collection-section .title, #root .reader-section .collection-section-wrap .collection-section .title {
+  align-self: flex-end;
+  width: 45%;
+  font-size: 39.6px;
+  color: white;
+  border-bottom: double 5px #F3E8EE;
+  padding: 3.6px 144px;
+  padding-right: 0;
+  margin-left: 432px;
+}
+#root .collections .collection-section-wrap .collection-section .title::before, #root .reader-section .collection-section-wrap .collection-section .title::before {
+  content: "";
+  display: inline-block;
+  width: 14.4px;
+  height: 14.4px;
+  position: relative;
+  left: -168px;
+  top: 32.4px;
+  border: double 5px #F3E8EE;
+}
+#root .collections .collection-section-wrap .collection-section .book-cards-wrap, #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap {
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  flex-shrink: 0;
+  padding: 36px;
+  padding-left: 0;
+}
+#root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card, #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card {
+  width: 240px;
+  height: 312px;
+  margin: 2.5%;
+  background-image: url(../assets/images/book-cover.webp);
+  background-size: cover;
+  background-repeat: repeat-y;
+  box-shadow: 8px 7px 0px 1px rgba(0, 0, 0, 0.7176470588);
+  cursor: pointer;
+  border-radius: 0 0 1vw 1vw;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+#root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta, #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta {
+  background-color: #4f4f4f;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 6px;
+  border-radius: 0.75vw;
+}
+#root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
+  font-size: 18px;
+  color: #F3E8EE;
+  font-style: italic;
+}
+#root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-title, #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-title {
+  font-style: normal;
+}
+#root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
+  color: #292929;
+  font-style: normal;
+  margin-top: 6px;
+  width: 100%;
+  border-radius: 0.55vw;
+}
+
+@media (min-width: 1921px) {
+  body #root .collections, body #root .reader-section {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  body #root .collections .search-form, body #root .reader-section .search-form {
+    position: fixed;
+    max-width: 356.4px;
+    height: 65vh;
+    margin: 30px 39px;
+    padding: 30px 48px;
+    background-color: rgba(41, 41, 41, 0.8);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  body #root .collections .search-form label, body #root .reader-section .search-form label {
+    font-size: 36px;
+    color: #F3E8EE;
+    padding-left: 30px;
+  }
+  body #root .collections .search-form input, body #root .collections .search-form select, body #root .reader-section .search-form input, body #root .reader-section .search-form select {
+    font-size: 36px;
+    color: #475B63;
+    padding: 6px 30px;
+    margin: 0 30px 30px 0;
+  }
+  body #root .collections .search-form input:focus, body #root .collections .search-form select:focus, body #root .reader-section .search-form input:focus, body #root .reader-section .search-form select:focus {
+    outline: #292929 2px solid;
+  }
+  body #root .collections .search-form select, body #root .reader-section .search-form select {
+    max-width: 80%;
+  }
+  body #root .collections .search-form #search-submit, body #root .reader-section .search-form #search-submit {
+    width: 50%;
+    font-size: 36px;
+    padding: 9px 0;
+    margin: 60px 0;
+    color: #475B63;
+    position: relative;
+    right: -50%;
+    outline: none;
+    cursor: pointer;
+  }
+  body #root .collections .search-form #search-submit:hover, body #root .reader-section .search-form #search-submit:hover {
+    background-color: #292929;
+    color: #F3E8EE;
+  }
+  body #root .collections .search-form #search-submit:hover i, body #root .reader-section .search-form #search-submit:hover i {
+    color: #F3E8EE;
+  }
+  body #root .collections .search-form #search-submit i, body #root .reader-section .search-form #search-submit i {
+    transform: scaleX(-1);
+    margin-left: 7.5px;
+  }
+  body #root .collections .collection-section-wrap, body #root .reader-section .collection-section-wrap {
+    margin-left: 600px;
+    width: 70vw;
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+  }
+  body #root .collections .collection-section-wrap .collection-section, body #root .reader-section .collection-section-wrap .collection-section {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+  body #root .collections .collection-section-wrap .collection-section .title, body #root .reader-section .collection-section-wrap .collection-section .title {
+    align-self: flex-end;
+    width: 45%;
+    font-size: 49.5px;
+    color: white;
+    border-bottom: double 5px #F3E8EE;
+    padding: 4.5px 180px;
+    padding-right: 0;
+    margin-left: 540px;
+  }
+  body #root .collections .collection-section-wrap .collection-section .title::before, body #root .reader-section .collection-section-wrap .collection-section .title::before {
+    content: "";
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    position: relative;
+    left: -210px;
+    top: 40.5px;
+    border: double 5px #F3E8EE;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    padding: 45px;
+    padding-left: 0;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card {
+    width: 300px;
+    height: 390px;
+    margin: 2.5%;
+    background-image: url(../assets/images/book-cover.webp);
+    background-size: cover;
+    background-repeat: repeat-y;
+    box-shadow: 8px 7px 0px 1px rgba(0, 0, 0, 0.7176470588);
+    cursor: pointer;
+    border-radius: 0 0 1vw 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta {
+    background-color: #4f4f4f;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 7.5px;
+    border-radius: 0.75vw;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
+    font-size: 22.5px;
+    color: #F3E8EE;
+    font-style: italic;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-title, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-title {
+    font-style: normal;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
+    color: #292929;
+    font-style: normal;
+    margin-top: 7.5px;
+    width: 100%;
+    border-radius: 0.55vw;
+  }
+}
+@media (max-width: 1368px) {
+  body #root .collections .collection-section-wrap .collection-section .title {
+    font-size: 34px;
+    width: 70%;
+    padding: 5px 24px 5px 72px;
+    margin-left: 0;
+  }
+  body #root .collections .collection-section-wrap .collection-section .title::before {
+    visibility: hidden;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap {
+    justify-content: center;
+  }
+}
+@media (max-width: 1120px) {
+  body #root .collections .collection-section-wrap {
+    margin-left: 360px;
+  }
+  body #root .collections .collection-section-wrap .collection-section .title {
+    padding-left: 24px;
+    width: 65%;
+    text-align: center;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap {
+    margin-left: 192px;
+    align-items: center;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card {
+    width: 312px;
+    height: 384px;
+  }
+}
+@media (max-height: 1000px) {
+  body #root .collections .search-form {
+    padding: 24px;
+    overflow-y: auto;
+    height: 50vh;
+    border-radius: 0 1vw 1vw 0;
+    /* Width */
+    /* Track */
+    /* Handle */
+  }
+  body #root .collections .search-form::-webkit-scrollbar {
+    width: 1.2vw;
+  }
+  body #root .collections .search-form::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey;
+    border-radius: 1vw;
+  }
+  body #root .collections .search-form::-webkit-scrollbar-thumb {
+    background: #292929;
+    border-radius: 1vw;
+  }
+  body #root .collections .search-form label {
+    display: none;
+  }
+  body #root .collections .search-form #search-submit {
+    margin-top: 0;
+  }
+}
+@media (min-height: 1120px) {
+  body #root .collections .search-form {
+    height: 65vh;
+  }
+}
+@media (max-width: 900px) {
+  body #root .collections, body #root .reader-section {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+  body #root .collections .search-form, body #root .reader-section .search-form {
+    position: fixed;
+    max-width: 356.4px;
+    height: 65vh;
+    margin: 26px 33.8px;
+    padding: 26px 41.6px;
+    background-color: rgba(41, 41, 41, 0.8);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+  }
+  body #root .collections .search-form label, body #root .reader-section .search-form label {
+    font-size: 31.2px;
+    color: #F3E8EE;
+    padding-left: 26px;
+  }
+  body #root .collections .search-form input, body #root .collections .search-form select, body #root .reader-section .search-form input, body #root .reader-section .search-form select {
+    font-size: 31.2px;
+    color: #475B63;
+    padding: 5.2px 26px;
+    margin: 0 26px 26px 0;
+  }
+  body #root .collections .search-form input:focus, body #root .collections .search-form select:focus, body #root .reader-section .search-form input:focus, body #root .reader-section .search-form select:focus {
+    outline: #292929 2px solid;
+  }
+  body #root .collections .search-form select, body #root .reader-section .search-form select {
+    max-width: 80%;
+  }
+  body #root .collections .search-form #search-submit, body #root .reader-section .search-form #search-submit {
+    width: 50%;
+    font-size: 31.2px;
+    padding: 7.8px 0;
+    margin: 52px 0;
+    color: #475B63;
+    position: relative;
+    right: -50%;
+    outline: none;
+    cursor: pointer;
+  }
+  body #root .collections .search-form #search-submit:hover, body #root .reader-section .search-form #search-submit:hover {
+    background-color: #292929;
+    color: #F3E8EE;
+  }
+  body #root .collections .search-form #search-submit:hover i, body #root .reader-section .search-form #search-submit:hover i {
+    color: #F3E8EE;
+  }
+  body #root .collections .search-form #search-submit i, body #root .reader-section .search-form #search-submit i {
+    transform: scaleX(-1);
+    margin-left: 6.5px;
+  }
+  body #root .collections .collection-section-wrap, body #root .reader-section .collection-section-wrap {
+    margin-left: 520px;
+    width: 70vw;
+    flex-grow: 1;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+  }
+  body #root .collections .collection-section-wrap .collection-section, body #root .reader-section .collection-section-wrap .collection-section {
+    width: 100%;
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: column;
+  }
+  body #root .collections .collection-section-wrap .collection-section .title, body #root .reader-section .collection-section-wrap .collection-section .title {
+    align-self: flex-end;
+    width: 45%;
+    font-size: 42.9px;
+    color: white;
+    border-bottom: double 5px #F3E8EE;
+    padding: 3.9px 156px;
+    padding-right: 0;
+    margin-left: 468px;
+  }
+  body #root .collections .collection-section-wrap .collection-section .title::before, body #root .reader-section .collection-section-wrap .collection-section .title::before {
+    content: "";
+    display: inline-block;
+    width: 15.6px;
+    height: 15.6px;
+    position: relative;
+    left: -182px;
+    top: 35.1px;
+    border: double 5px #F3E8EE;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap {
+    display: flex;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+    padding: 39px;
+    padding-left: 0;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card {
+    width: 260px;
+    height: 338px;
+    margin: 2.5%;
+    background-image: url(../assets/images/book-cover.webp);
+    background-size: cover;
+    background-repeat: repeat-y;
+    box-shadow: 8px 7px 0px 1px rgba(0, 0, 0, 0.7176470588);
+    cursor: pointer;
+    border-radius: 0 0 1vw 1vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta {
+    background-color: #4f4f4f;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 6.5px;
+    border-radius: 0.75vw;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
+    font-size: 19.5px;
+    color: #F3E8EE;
+    font-style: italic;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-title, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-title {
+    font-style: normal;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
+    color: #292929;
+    font-style: normal;
+    margin-top: 6.5px;
+    width: 100%;
+    border-radius: 0.55vw;
+  }
+  body #root .collections {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    flex-shrink: 0;
+  }
+  body #root .collections .search-form {
+    position: initial;
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    padding-top: 50px;
+    border-radius: 0;
+    height: 100%;
+  }
+  body #root .collections .search-form input, body #root .collections .search-form select {
+    max-width: 80%;
+    margin: 2vh 4vw;
+  }
+  body #root .collections .search-form label {
+    display: initial;
+  }
+  body #root .collections .search-form #search-submit {
+    align-self: center;
+    justify-self: center;
+    position: initial;
+  }
+  body #root .collections .collection-section-wrap {
+    width: 100%;
+    margin: 0;
+    justify-content: center;
+  }
+  body #root .collections .collection-section-wrap .collection-section .title {
+    width: 100%;
+    margin: 2.5vh 0 0 0;
+    padding: 0;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+  }
+  body #root .header-static {
+    margin: 0;
+  }
+}
+
+/*# sourceMappingURL=unified.css.map */

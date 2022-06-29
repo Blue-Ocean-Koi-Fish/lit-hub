@@ -5,28 +5,36 @@ function Login({ setLoggedIn }) {
   const [password, setPassword] = useState('');
 
   return (
-    <>
+    <section className="login-section">
+
       <div className="hero">
         bubbly-animation
       </div>
+
       <div className="login-wrap">
         <div className="logo-wrap">
-          <h1 className="title">
-            LitHub
-          </h1>
-          <h3 className="subtitle">
-            Web
-          </h3>
+          <div className="logo-text">
+            <h1 className="title">
+              <span className="capital">L</span>
+              it
+              <span className="capital">H</span>
+              ub
+            </h1>
+            <h3 className="subtitle">Web</h3>
+          </div>
+
           <div className="img" alt="logo">
-            <img src="http://placecorgi.com/260/180" alt="logo" />
+            {/* <img src="http://placecorgi.com/260/180" alt="logo" /> */}
           </div>
         </div>
+
         <form className="login-form">
           <h4 className="welcome-msg">
             Welcome to LitHub! Please Login or Register:
           </h4>
           <div className="input-wrap">
-            <img src="http://placecorgi.com/50/50" alt="username" />
+            {/* <img src="http://placecorgi.com/50/50" alt="username" /> */}
+            <i className="fa-solid fa-user icon" />
             <input
               id="username"
               type="text"
@@ -36,7 +44,8 @@ function Login({ setLoggedIn }) {
             />
           </div>
           <div className="input-wrap">
-            <img src="http://placecorgi.com/50/50" alt="password" />
+            {/* <img src="http://placecorgi.com/50/50" alt="password" /> */}
+            <i className="fa-solid fa-lock icon" />
             <input
               id="password"
               type="password"
@@ -48,7 +57,7 @@ function Login({ setLoggedIn }) {
           <button type="button" id="login-submit" onClick={() => setLoggedIn(true)}>Log In</button>
         </form>
       </div>
-    </>
+    </section>
   );
 }
 
