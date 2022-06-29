@@ -25,6 +25,7 @@ const SearchBooks = function SearchBooks({ setBookList, setCount }) {
         `http://gutendex.com/books?search=${searchTerm}&topic=${topic}&languages=${language}`
       )
       .then((res) => {
+        console.log(res);
         setBookList(res.data.results);
         setCount(res.data.count);
       })

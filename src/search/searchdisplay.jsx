@@ -15,6 +15,7 @@ const SearchDisplay = function SearchDisplay({ bookList, count }) {
             <img src={book.formats['image/jpeg']} alt="Book Cover" />
             <div>{nameA}</div>
             <div>{book.title}</div>
+            {/* THIS NEEDS TO BE IMPLEMENTED */}
             <button type="button" className="toggle_status_btn" onClick={(e) => { e.preventDefault(); console.log('to be implemented'); }}>Add/Remove</button>
           </div>
         );

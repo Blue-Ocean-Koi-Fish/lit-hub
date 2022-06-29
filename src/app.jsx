@@ -1,59 +1,65 @@
 import React, { useState, useEffect } from 'react';
 import Login from './login';
 import Collection from './collection';
-import SearchResults from './searchResults';
 import Settings from './settings';
 import Header from './header';
-import SearchForm from './searchForm';
+
+
+// import SearchResults from './searchResults';
+// import SearchForm from './searchForm';
+import SearchSection from './search/searchsection';
+
 import Reader from './reader/reader';
 import sample1 from '../testData/sample-1';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
-  const [searchTerms, setSearchTerms] = useState({
-    'book-name': '',
-    author: '',
-    language: '',
-    genre: '',
-  });
+
+  // const [searchTerms, setSearchTerms] = useState({
+  //   'book-name': '',
+  //   author: '',
+  //   language: '',
+  //   genre: '',
+  // });
+
   const [settings, setSettings] = useState({
     language: 'english',
     'color-blindedness': 'none',
   });
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [showReader, setShowReader] = useState(true);
-  // Store the raw HTML string for the current book
-  // then pass to Reader as props.
-  const [currentBook, setCurrentBook] = useState(sample1);
+  const [showReader, setShowReader] = useState(true);  // where does this get called?
+
+  const [currentBook, setCurrentBook] = useState();
 
   return (
-    <div id="root">
-      {loggedIn ? (
-        <>
-          <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
-          <SearchForm
-            searchTerms={searchTerms}
-            setSearchTerms={setSearchTerms}
-            setShowSearchResults={setShowSearchResults}
+    loggedIn ? (
+      <>
+        <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
+
+        <SearchSection />
+        {/* <SearchForm
+          searchTerms={searchTerms}
+          setSearchTerms={setSearchTerms}
+          setShowSearchResults={setShowSearchResults}
+        />
+        {showSearchResults
+          ? <SearchResults searchTerms={searchTerms} setSearchTerms={setSearchTerms} />
+          : <Collection />} */}
+
+        {showSettings ? (
+          <Settings
+            settings={settings}
+            setSettings={setSettings}
+            setShowSettings={setShowSettings}
           />
-          {showSearchResults
-            ? <SearchResults searchTerms={searchTerms} setSearchTerms={setSearchTerms} />
-            : <Collection />}
-          {showSettings ? (
-            <Settings
-              settings={settings}
-              setSettings={setSettings}
-              setShowSettings={setShowSettings}
-            />
-          )
-            : null}
-          {showReader ? <Reader book={currentBook} /> : null}
-        </>
-      ) : (
-        <Login setLoggedIn={setLoggedIn} />
-      )}
-    </div>
+        )
+          : null}
+        {/* {showReader ? <Reader /> : null} */}
+      </>
+    ) : (
+      <Login setLoggedIn={setLoggedIn} />
+    )
   );
 }
 
