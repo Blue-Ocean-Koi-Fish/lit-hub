@@ -1,7 +1,7 @@
 // search by, title, author, topic, license
-import React, { useState } from "react";
-import axios from "axios";
-import langList from "./resources";
+import React, { useState } from 'react';
+import axios from 'axios';
+import langList from './resources';
 
 const SearchBooks = function SearchBooks({
   setBookList,
@@ -9,21 +9,19 @@ const SearchBooks = function SearchBooks({
   setSearchTerms,
   setShowSearchResults,
 }) {
-  const [author, setAuthor] = useState("");
-  const [title, setTitle] = useState("");
-  const [topic, setTopic] = useState("");
-  const [language, setLanguage] = useState("en");
+  const [author, setAuthor] = useState('');
+  const [title, setTitle] = useState('');
+  const [topic, setTopic] = useState('');
+  const [language, setLanguage] = useState('en');
 
   const submitSearch = function submitSearch() {
-    let authorWords = author.split(" ");
-    let titleWords = title.split(" ");
-    let searchTermArr = authorWords.concat(titleWords);
-    let searchTerm = "";
-    for (let i = 0; i < searchTermArr.length; i++) {
-      searchTerm += searchTermArr[i] + "%20";
-    }
+    const authorWords = author.split(' ');
+    const titleWords = title.split(' ');
+    const searchTermArr = authorWords.concat(titleWords);
+    const searchTerm = searchTermArr.join('%20');
+
     console.log(
-      `http://gutendex.com/books?search=${searchTerm}&topic=${topic}&languages=${language}`
+      `http://gutendex.com/books?search=${searchTerm}&topic=${topic}&languages=${language}`,
     );
     axios
       .get(
@@ -31,10 +29,10 @@ const SearchBooks = function SearchBooks({
       )
       .then((res) => {
         setSearchTerms({
-          author: author,
-          title: title,
-          topic: topic,
-          language: language,
+          author,
+          title,
+          topic,
+          language,
         });
         setBookList(res.data.results);
         setCount(res.data.count);
