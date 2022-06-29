@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from "react";
-import Login from "./login";
-import Collection from "./collection";
-import SearchDisplay from "./search/searchdisplay";
+import Login from './login';
 import Settings from "./settings";
-import Reader from "./reader";
 import Header from "./header";
+import SearchDisplay from "./search/searchdisplay";
 import SearchSection from "./search/searchsection";
+
+// import Collection from "./collection";
+// import Reader from "./reader";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
@@ -31,14 +32,17 @@ function App() {
     loggedIn ? (
       <>
         <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
-        <SearchForm
+
+        <SearchSection />
+        {/* <SearchForm
           searchTerms={searchTerms}
           setSearchTerms={setSearchTerms}
           setShowSearchResults={setShowSearchResults}
         />
         {showSearchResults
           ? <SearchResults searchTerms={searchTerms} setSearchTerms={setSearchTerms} />
-          : <Collection />}
+          : <Collection />} */}
+
         {showSettings ? (
           <Settings
             settings={settings}
@@ -47,7 +51,7 @@ function App() {
           />
         )
           : null}
-        {showReader ? <Reader /> : null}
+        {/* {showReader ? <Reader /> : null} */}
       </>
     ) : (
       <Login setLoggedIn={setLoggedIn} />

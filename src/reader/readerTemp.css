@@ -1,0 +1,30 @@
+.e-reader-section {
+  border: 2px solid black;
+  height: 100vh;
+}
+
+.book-controls {
+  border: 2px solid black;
+  height: 10vh;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+.content-wrap {
+  border: 2px solid black;
+  margin: 10px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+
+#content {
+  height: 80vh;
+  width: 30vw;
+  border: 2px solid black;
+  overflow: hidden;
+}
