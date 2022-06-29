@@ -1,156 +1,160 @@
-// @font-face {
-//   font-family: 'Garet';
-//   src: url('../../assets/fonts/Garet/Garet-Book.otf');
-// }
+$ColorBlindModes: ("None", "Protanopia", "Deuteranopia",
+ "Tritanopia", "Achromatopsia", "Protanomaly", "Deuteranomaly",
+  "Tritanomaly", "Achromatomaly");
 
-// @font-face {
-//   font-family: 'Agrandir-Bold';
-//   src: url('../../assets/fonts/Agrandir/Agrandir-TextBold.otf');
-// }
+$ColorBlindDark: ("None": #292929, "Protanopia": #292929, "Deuteranopia": #292929,
+ "Tritanopia": #282929, "Achromatopsia": #292929, "Protanomaly": #292929, "Deuteranomaly": #292929,
+  "Tritanomaly": #292929, "Achromatomaly": #292929);
+$ColorBlindLight: ("None": #F3E8EE, "Protanopia": #EEEEEC, "Deuteranopia": #EEEFEC,
+"Tritanopia": #F2EBEB, "Achromatopsia": #EBEBEB, "Protanomaly": #F0EBED, "Deuteranomaly": #F0EAED,
+ "Tritanomaly": #F2E9EC, "Achromatomaly": #EFEAEC);
+ $ColorBlindButton: ("None": #475B63, "Protanopia": #4F4F61, "Deuteranopia": #4E4D60,
+ "Tritanopia": #485F5F, "Achromatopsia": #555555, "Protanomaly": #4A5462, "Deuteranomaly": #4B5561,
+  "Tritanomaly": #475D61, "Achromatomaly":  #4F585B);
 
-// @font-face {
-//   font-family: 'Agrandir';
-//   src: url('../../assets/fonts/Agrandir/Agrandir-GrandLight.otf');
-// }
-
-$dark: #292929;
-$button: #475B63;
-$light: #F3E8EE;
 $lightGray: #BCBCBC;
 
-// $headerFontSize: 24px;
+@mixin style-header($headerFontSize, $dark, $light, $button) {
+  .header-moving {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    width: 100vw;
+    background-color: $dark;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    padding: $headerFontSize 15vw $headerFontSize*0.75 5vw;
+    margin-bottom: 3vw;
 
-@mixin style-header($headerFontSize) {
-  #root {
-    .header-static {
-      background-color: $dark;
-      width: 100%;
-    }
-
-    .header-moving {
-      position: fixed;
-      top: 0;
-      left: 0;
-      z-index: 1000;
-      width: 100vw;
-      background-color: $dark;
+    .logo {
       display: flex;
       flex-wrap: nowrap;
-      justify-content: space-between;
-      align-items: center;
-      padding: $headerFontSize 15vw $headerFontSize*0.75 5vw;
-      margin-bottom: 3vw;
+      flex-shrink: 0;
+      margin-right: $headerFontSize * 3;
+      position: relative;
+      top: $headerFontSize * 0.25;
+      cursor: pointer;
 
-      .logo {
-        display: flex;
-        flex-wrap: nowrap;
-        flex-shrink: 0;
-        margin-right: $headerFontSize * 3;
-        position: relative;
-        top: $headerFontSize * 0.25;
+      .title, .capital {
+        font-size: $headerFontSize * 3;
+        color: $light;
+      }
+
+      .title {
+        font-family: 'Agrandir';
+
+        .capital {
+          font-family: 'Agrandir-Bold';
+          color: $light;
+        }
+      }
+
+      .img {
+        background-image: url(../assets/images/logo-book.png);
+        background-repeat: no-repeat;
+        background-size: contain;
+        margin-left: $headerFontSize * 0.5;
+        width: $headerFontSize * 7.5;
+        height: $headerFontSize * 4.5;
+      }
+    }
+
+    .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      flex-shrink: 0;
+      margin-right: 5vw;
+
+      .btn {
+        font-family: 'Garet';
+        font-size: $headerFontSize * 1.15;
+        color: $light;
+        background-color: $button;
+        border: none;
+        outline: none;
+        margin: 0 1.5vw;
+        padding: ($headerFontSize * 0.75) ($headerFontSize * 3);
         cursor: pointer;
 
-        .title, .capital {
-          font-size: $headerFontSize * 3;
+        i {
           color: $light;
-        }
-
-        .title {
-          font-family: 'Agrandir';
-
-          .capital {
-            font-family: 'Agrandir-Bold';
-            color: $light;
-          }
-        }
-
-        .img {
-          background-image: url(../assets/images/logo-book.png);
-          background-repeat: no-repeat;
-          background-size: contain;
-          margin-left: $headerFontSize * 0.5;
-          width: $headerFontSize * 7.5;
-          height: $headerFontSize * 4.5;
-        }
-      }
-
-      .nav {
-        display: flex;
-        flex-wrap: nowrap;
-        flex-shrink: 0;
-        margin-right: 5vw;
-
-        .btn {
-          font-family: 'Garet';
           font-size: $headerFontSize * 1.15;
-          color: $light;
-          background-color: $button;
-          border: none;
-          outline: none;
-          margin: 0 1.5vw;
-          padding: ($headerFontSize * 0.75) ($headerFontSize * 3);
-          cursor: pointer;
+          margin-left: $headerFontSize * 0.5;
+          position: relative;
+          top: $headerFontSize * 0.105;
+        }
 
-          i {
-            color: $light;
-            font-size: $headerFontSize * 1.15;
-            margin-left: $headerFontSize * 0.5;
-            position: relative;
-            top: $headerFontSize * 0.105;
-          }
-
-          &:hover {
-            background-color: $lightGray;
-            color: $button;
-          }
+        &:hover {
+          background-color: $lightGray;
+          color: $button;
         }
       }
+    }
 
-      .btn-settings {
-        &.btn-round {
-          display: none;
-        }
+    .btn-settings {
+      &.btn-round {
+        display: none;
       }
-      // + div {
-      //   padding-top: $headerFontSize * 8.5;
-      // }
     }
-    .header-static {
-      height: $headerFontSize * 6.5;
-      margin-bottom: 3vh;
-    }
+    // + div {
+    //   padding-top: $headerFontSize * 8.5;
+    // }
   }
-
-  @media (max-width: 1368px) {
-    body {
-      #root {
-        .header-moving {
-          flex-direction: column;
-          .nav {
-            margin-top: $headerFontSize * 1.5;
-          }
-
-          // + div {
-          //   padding-top: $headerFontSize * 12.5;
-          // }
-        }
-        .header-static {
-          height: $headerFontSize * 12.5;
-        }
-      }
-    }
+  .header-static {
+    background-color: $dark;
+    width: 100%;
+    height: $headerFontSize * 6.5;
+    margin-bottom: 3vh;
   }
 }
 
-@include style-header(24px);
-
-@media (min-width: 1921px) {
-  body {
-    @include style-header(30px);
+// Base color case
+body {
+  #root, .None {
+    @include style-header(24px,#292929, #F3E8EE, #475B63);
+  }
+  @media (min-width: 1921px) {
+    @include style-header(30px, #292929, #F3E8EE, #475B63);
   }
 }
 
+// ColorBlind classes
+// @each $mode in $ColorBlindModes {
+//   body {
+//     #root {
+//       &.#{$mode} {
+//         @include style-header(24px, map-get($ColorBlindDark, $mode), map-get($ColorBlindLight, $mode), map-get($ColorBlindButton, $mode));
+//       }
+//     }
+//     @media (min-width: 1921px) {
+//       @include style-header(30px, map-get($ColorBlindDark, $mode), map-get($ColorBlindLight, $mode), map-get($ColorBlindButton, $mode));
+//     }
+//   }
+// }
+
+
+// -------------------------------------------------------
 // Mobile view
+@media (max-width: 1368px) {
+  $headerFontSize: 24px;
+  body {
+    #root {
+      .header-moving {
+        flex-direction: column;
+        .nav {
+          margin-top: $headerFontSize * 1.5;
+        }
+      }
+      .header-static {
+        height: $headerFontSize * 12.5;
+      }
+    }
+  }
+}
+
 @media (max-width: 900px) {
   $headerFontSize: 18px;
   body {
