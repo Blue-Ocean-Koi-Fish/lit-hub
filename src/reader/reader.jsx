@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'html-react-parser';
 import './readerTemp.css';
+import { Speech, pause, cancel} from './speech';
+
 
 function Reader({ book }) {
   const bookSchema = {
