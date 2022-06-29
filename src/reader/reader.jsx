@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'html-react-parser';
 import './readerTemp.css';
-// import { Speech, pause, cancel} from './speech';
+
 
 function Reader({ book }) {
+  // console.log(book);
   const bookSchema = {
     title: [],
     author: [],
@@ -17,42 +18,32 @@ function Reader({ book }) {
   const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
-    const rawDiv = ReactHtmlParser(book).props.children[1].props.children;
+    // console.log(typeof book);
+    const rawDiv = ReactHtmlParser(book);
+    const rawContent = rawDiv.props.children;
+    // console.log(rawContent);
+
     const newBook = {
       title: [],
       author: [],
       chapters: [],
       text: [],
     };
-
-    rawDiv.forEach((node) => {
+    let testDivs = [];
+    rawContent.forEach((node) => {
+      // console.log(typeof node);
       // First filter carriage returns and breaks,
-      if (node !== '\n' && node.type !== 'hr') {
-        // then the title is the h1 tag,
-        if (node.type === 'h1') {
-          newBook.title.push(node);
-        }
-        // the author is the h2 tag,
-        else if (node.type === 'h2') {
-          newBook.author.push(node);
-        }
-        // the chapters are in the table tag,
-        else if (node.type === 'table') {
-          console.log('table', node);
-          node.props.children.props.children.forEach((child) => {
-            newBook.chapters.push(child.props.children.props.children);
-          });
-          console.log(newBook.chapters);
-        }
-        // and thhe text is split up into divs with the chapter class name.
-        else if (node.props && node.props.className === 'chapter') {
-          newBook.text.push(node);
-        }
+      if (typeof node !== 'string') {
+        console.log(typeof node);
+        testDivs.push(node);
       }
     });
 
-    setBookContent(newBook);
-    // setFontSize((size) => Number(size)); //?
+    console.log(testDivs);
+
+    // setBookContent(newBook);
+    // // setFontSize((size) => Number(size)); //?
+
   }, [book]);
 
   const increaseFont = (event) => {
@@ -97,7 +88,7 @@ function Reader({ book }) {
     console.log(value.slice(1), chapterDiv.scrollTop, contentDiv.scrollTop);
     chapterDiv.scrollIntoView();
     setCurrentPage(contentDiv.scrollTop);
-  }
+  };
 
   return (
     <section className="e-reader-section">

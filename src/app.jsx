@@ -5,8 +5,11 @@ import Header from "./header";
 import SearchDisplay from "./search/searchdisplay";
 import SearchSection from "./search/searchsection";
 
-// import Collection from "./collection";
-import Reader from "./reader";
+import Collection from "./collection";
+import Reader from "./reader/reader";
+
+
+import testBook from '../testData/sample-5';
 
 import '../public/styles/unified.css';
 
@@ -56,6 +59,7 @@ function App() {
           : <Collection />} */}
 
         {/* {showReader ? <Reader /> : null} */}
+        <Reader book={testBook} />
       </>
     ) : (
       <Login setLoggedIn={setLoggedIn} />
