@@ -1,36 +1,33 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import Login from './login';
-import Collection from './collection';
-import Settings from './settings';
-import Header from './header';
+// import Collection from "./collection";
+import Settings from "./settings";
+// import Reader from "./reader";
+import Header from "./header";
 
 
-// import SearchResults from './searchResults';
-// import SearchForm from './searchForm';
-import SearchSection from './search/searchsection';
-
-import Reader from './reader/reader';
-import sample1 from '../testData/sample-1';
+import SearchDisplay from "./search/searchdisplay";
+import SearchSection from "./search/searchsection";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
-
-  // const [searchTerms, setSearchTerms] = useState({
-  //   'book-name': '',
-  //   author: '',
-  //   language: '',
-  //   genre: '',
-  // });
-
+  const [searchTerms, setSearchTerms] = useState({
+    title: "",
+    author: "",
+    language: "",
+    topic: "",
+  });
+  const [userBooks, setUserBooks] = useState([]);
+  const [bookList, setBookList] = useState();
+  const [count, setCount] = useState(0);
   const [settings, setSettings] = useState({
-    language: 'english',
-    'color-blindedness': 'none',
+    language: "english",
+    "color-blindedness": "none",
   });
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [showReader, setShowReader] = useState(true);  // where does this get called?
 
-  const [currentBook, setCurrentBook] = useState();
+  const [showReader, setShowReader] = useState(true);
 
   return (
     loggedIn ? (
