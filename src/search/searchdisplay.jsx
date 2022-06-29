@@ -1,9 +1,17 @@
 import React, { useState, useEffect } from "react";
+import { addBook, getCurrentBook } from '../browser_db/books';
 
-const SearchDisplay = function SearchDisplay({ bookList, count, searchTerms, setSearchTerms, setUserBooks, setCurrentBook }) {
+const SearchDisplay = function SearchDisplay({
+  bookList,
+  count,
+  searchTerms,
+  setSearchTerms,
+  setUserBooks,
+  setCurrentBook,
+}) {
   const handleRemove = (k) => {
     const newSearchTerms = { ...searchTerms };
-    newSearchTerms[k] = '';
+    newSearchTerms[k] = "";
     setSearchTerms(newSearchTerms);
   };
   return (
@@ -11,7 +19,7 @@ const SearchDisplay = function SearchDisplay({ bookList, count, searchTerms, set
       <div className="title">Results: {count}</div>
       <div className="search-term-labels">
         {Object.keys(searchTerms).map((k) =>
-          (searchTerms[k].length ? (
+          searchTerms[k].length ? (
             <span key={k}>
               {k}
               {": "}
@@ -20,7 +28,8 @@ const SearchDisplay = function SearchDisplay({ bookList, count, searchTerms, set
                 Remove
               </button>
             </span>
-          ) : null))}
+          ) : null
+        )}
       </div>
       {bookList.map((book) => {
         let nameA = "Unknown";
@@ -38,7 +47,14 @@ const SearchDisplay = function SearchDisplay({ bookList, count, searchTerms, set
               onClick={(e) => {
                 e.preventDefault();
                 /* setUserBooks(books => [...books, book.id]); */
-                setCurrentBook(book.format['text/html']);
+
+                axios.get("/txt").then(//replace with route
+                  (res) => {
+                    console.log("Here ", res.data);
+                    addBook("book name", res.data);
+                  }
+                  /*  setCurrentBook(book.format['text/html'] */
+                );
               }}
             >
               Read Book

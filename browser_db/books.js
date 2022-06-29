@@ -10,7 +10,7 @@ booksDb.version(1).stores({
 const addBook = (bookName, bookStr) => {
   booksDb.books.add({
     name: bookName,
-    text: bookStr,
+    text: bookStr, //book text
   });
 };
 
