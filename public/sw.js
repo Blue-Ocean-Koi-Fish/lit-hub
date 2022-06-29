@@ -15,18 +15,18 @@
   \***********************/
 /***/ (() => {
 
-eval("/* eslint-disable prefer-arrow-callback */\n\n/* eslint-disable no-underscore-dangle */\n\n/* eslint-disable no-restricted-globals */\n\n/* eslint-disable no-undef */\n\n/* eslint no-use-before-define: 0 */\nimportScripts('https://storage.googleapis.com/workbox-cdn/releases/5.0.0/workbox-sw.js');\n\nif (workbox) {\n  // eslint-disable-next-line prefer-const\n  var offlineCapable = true;\n  console.log('Workbox is loaded');\n  workbox.precaching.precacheAndRoute(offlineCapable ? [{'revision':'9b4aa814ab76f3f1f4d3a9f83e26f5f1','url':'bundle.js'},{'revision':'9bce8577d2287f53aebb4bcc2614c0c1','url':'index.html'}] : []);\n  workbox.routing.registerRoute(/http:\\/\\/gutendex\\.com/, new workbox.strategies.NetworkFirst({\n    cacheName: 'book-titles',\n    plugins: [new workbox.expiration.ExpirationPlugin({\n      maxAgeSeconds: 10 * 60 // 10 minutes\n\n    })]\n  }));\n} else {\n  console.log('Workbox did not load');\n}\n\naddEventListener('message', function (event) {\n  if (event.data && event.data.type === 'SKIP_WAITING') {\n    skipWaiting();\n  }\n});\n\n//# sourceURL=webpack://lit-hub/./src/src-sw.js?");
+eval("/* eslint-disable prefer-arrow-callback */\n\n/* eslint-disable no-underscore-dangle */\n\n/* eslint-disable no-restricted-globals */\n\n/* eslint-disable no-undef */\n\n/* eslint no-use-before-define: 0 */\nimportScripts('https://storage.googleapis.com/workbox-cdn/releases/5.0.0/workbox-sw.js');\n\nif (workbox) {\n  // eslint-disable-next-line prefer-const\n  var offlineCapable = true;\n  console.log('Workbox is loaded');\n  workbox.precaching.precacheAndRoute(offlineCapable ? [{'revision':'62e567fd7a5e5a22f4366b4d7cf376f0','url':'bundle.js'},{'revision':'9bce8577d2287f53aebb4bcc2614c0c1','url':'index.html'}] : []);\n  workbox.routing.registerRoute(/http:\\/\\/gutendex\\.com/, new workbox.strategies.NetworkFirst({\n    cacheName: 'book-titles',\n    plugins: [new workbox.expiration.ExpirationPlugin({\n      maxAgeSeconds: 10 * 60 // 10 minutes\n\n    })]\n  }));\n} else {\n  console.log('Workbox did not load');\n}\n\naddEventListener('message', function (event) {\n  if (event.data && event.data.type === 'SKIP_WAITING') {\n    skipWaiting();\n  }\n});\n\n//# sourceURL=webpack://lit-hub/./src/src-sw.js?");
 
 /***/ })
 
 /******/ 	});
 /************************************************************************/
-/******/ 	
+/******/
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module can't be inlined because the eval devtool is used.
 /******/ 	var __webpack_exports__ = {};
 /******/ 	__webpack_modules__["./src/src-sw.js"]();
-/******/ 	
+/******/
 /******/ })()
 ;
