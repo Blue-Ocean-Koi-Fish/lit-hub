@@ -5,8 +5,10 @@ import Header from "./header";
 import SearchDisplay from "./search/searchdisplay";
 import SearchSection from "./search/searchsection";
 
-// import Collection from "./collection";
+import Collection from "./collection";
 // import Reader from "./reader";
+
+import '../public/styles/unified.css';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
@@ -27,13 +29,23 @@ function App() {
   const [showSettings, setShowSettings] = useState(false);
 
   const [showReader, setShowReader] = useState(true);
-
   return (
     loggedIn ? (
       <>
         <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
 
-        <SearchSection />
+        <section className="collections">
+          <SearchSection />
+          <Collection />
+          {showSettings ? (
+            <Settings
+              settings={settings}
+              setSettings={setSettings}
+              setShowSettings={setShowSettings}
+            />
+          )
+            : null}
+        </section>
         {/* <SearchForm
           searchTerms={searchTerms}
           setSearchTerms={setSearchTerms}
@@ -43,14 +55,6 @@ function App() {
           ? <SearchResults searchTerms={searchTerms} setSearchTerms={setSearchTerms} />
           : <Collection />} */}
 
-        {showSettings ? (
-          <Settings
-            settings={settings}
-            setSettings={setSettings}
-            setShowSettings={setShowSettings}
-          />
-        )
-          : null}
         {/* {showReader ? <Reader /> : null} */}
       </>
     ) : (
