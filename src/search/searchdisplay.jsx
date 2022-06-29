@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 
-const SearchDisplay = function SearchDisplay({ bookList, count, searchTerms, setSearchTerms, setUserBooks }) {
+const SearchDisplay = function SearchDisplay({ bookList, count, searchTerms, setSearchTerms, setUserBooks, setCurrentBook }) {
   const handleRemove = (k) => {
     const newSearchTerms = { ...searchTerms };
     newSearchTerms[k] = '';
@@ -37,10 +37,11 @@ const SearchDisplay = function SearchDisplay({ bookList, count, searchTerms, set
               className="toggle_status_btn"
               onClick={(e) => {
                 e.preventDefault();
-                setUserBooks(books => [...books, book.id]);
+                /* setUserBooks(books => [...books, book.id]); */
+                setCurrentBook(book.format['text/html']);
               }}
             >
-              Add/Remove
+              Read Book
             </button>
           </div>
         );

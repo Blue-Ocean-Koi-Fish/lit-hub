@@ -22,12 +22,9 @@ const SearchBooks = function SearchBooks({
     for (let i = 0; i < searchTermArr.length; i++) {
       searchTerm += searchTermArr[i] + "%20";
     }
-    console.log(
-      `http://gutendex.com/books?search=${searchTerm}&topic=${topic}&languages=${language}`
-    );
     axios
       .get(
-        `http://gutendex.com/books?search=${searchTerm}&topic=${topic}&languages=${language}`,
+        `http://localhost/search=${searchTerm}&topic=${topic}&languages=${language}`,
       )
       .then((res) => {
         setSearchTerms({
