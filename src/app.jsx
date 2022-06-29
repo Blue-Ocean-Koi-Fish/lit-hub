@@ -8,7 +8,7 @@ import Header from "./header";
 import SearchSection from "./search/searchsection";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [searchTerms, setSearchTerms] = useState({
     title: "",
     author: "",
@@ -24,47 +24,34 @@ function App() {
   });
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [showReader, setShowReader] = useState(false);
-  console.log(userBooks);
+
+  const [showReader, setShowReader] = useState(true);
+
   return (
-    <div id="root">
-      {loggedIn ? (
-        <>
-          <Header
+    loggedIn ? (
+      <>
+        <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
+        <SearchForm
+          searchTerms={searchTerms}
+          setSearchTerms={setSearchTerms}
+          setShowSearchResults={setShowSearchResults}
+        />
+        {showSearchResults
+          ? <SearchResults searchTerms={searchTerms} setSearchTerms={setSearchTerms} />
+          : <Collection />}
+        {showSettings ? (
+          <Settings
+            settings={settings}
+            setSettings={setSettings}
             setShowSettings={setShowSettings}
-            setShowSearchResults={setShowSearchResults}
           />
-          <SearchSection
-            setCount={setCount}
-            searchTerms={searchTerms}
-            setSearchTerms={setSearchTerms}
-            setShowSearchResults={setShowSearchResults}
-            setBookList={setBookList}
-          />
-          {showSearchResults ? (
-            <SearchDisplay
-              setUserBooks={setUserBooks}
-              searchTerms={searchTerms}
-              setSearchTerms={setSearchTerms}
-              count={count}
-              bookList={bookList}
-            />
-          ) : (
-            <Collection />
-          )}
-          {showSettings ? (
-            <Settings
-              settings={settings}
-              setSettings={setSettings}
-              setShowSettings={setShowSettings}
-            />
-          ) : null}
-          {showReader ? <Reader /> : null}
-        </>
-      ) : (
-        <Login setLoggedIn={setLoggedIn} />
-      )}
-    </div>
+        )
+          : null}
+        {showReader ? <Reader /> : null}
+      </>
+    ) : (
+      <Login setLoggedIn={setLoggedIn} />
+    )
   );
 }
 
