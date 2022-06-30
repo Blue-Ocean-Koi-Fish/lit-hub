@@ -39,6 +39,69 @@ body {
   min-height: 100vh;
 }
 
+body.None > * {
+  color: #292929;
+}
+body.None #root {
+  background: linear-gradient(45deg, rgba(71, 91, 99, 0.75) 30%, #292929 100%);
+}
+
+body.Protanopia > * {
+  color: #292929;
+}
+body.Protanopia #root {
+  background: linear-gradient(45deg, rgba(79, 79, 97, 0.75) 30%, #292929 100%);
+}
+
+body.Deuteranopia > * {
+  color: #292929;
+}
+body.Deuteranopia #root {
+  background: linear-gradient(45deg, rgba(78, 77, 96, 0.75) 30%, #292929 100%);
+}
+
+body.Tritanopia > * {
+  color: #282929;
+}
+body.Tritanopia #root {
+  background: linear-gradient(45deg, rgba(72, 95, 95, 0.75) 30%, #282929 100%);
+}
+
+body.Achromatopsia > * {
+  color: #292929;
+}
+body.Achromatopsia #root {
+  background: linear-gradient(45deg, rgba(85, 85, 85, 0.75) 30%, #292929 100%);
+}
+
+body.Protanomaly > * {
+  color: #292929;
+}
+body.Protanomaly #root {
+  background: linear-gradient(45deg, rgba(74, 84, 98, 0.75) 30%, #292929 100%);
+}
+
+body.Deuteranomaly > * {
+  color: #292929;
+}
+body.Deuteranomaly #root {
+  background: linear-gradient(45deg, rgba(75, 85, 97, 0.75) 30%, #292929 100%);
+}
+
+body.Tritanomaly > * {
+  color: #292929;
+}
+body.Tritanomaly #root {
+  background: linear-gradient(45deg, rgba(71, 93, 97, 0.75) 30%, #292929 100%);
+}
+
+body.Achromatomaly > * {
+  color: #292929;
+}
+body.Achromatomaly #root {
+  background: linear-gradient(45deg, rgba(79, 88, 91, 0.75) 30%, #292929 100%);
+}
+
 #root .header-static {
   background-color: #292929;
   width: 100%;
@@ -133,11 +196,11 @@ body {
   }
 }
 @media (min-width: 1921px) {
-  body #root .header-static {
+  #root .header-static {
     background-color: #292929;
     width: 100%;
   }
-  body #root .header-moving {
+  #root .header-moving {
     position: fixed;
     top: 0;
     left: 0;
@@ -151,7 +214,7 @@ body {
     padding: 30px 15vw 22.5px 5vw;
     margin-bottom: 3vw;
   }
-  body #root .header-moving .logo {
+  #root .header-moving .logo {
     display: flex;
     flex-wrap: nowrap;
     flex-shrink: 0;
@@ -160,18 +223,18 @@ body {
     top: 7.5px;
     cursor: pointer;
   }
-  body #root .header-moving .logo .title, body #root .header-moving .logo .capital {
+  #root .header-moving .logo .title, #root .header-moving .logo .capital {
     font-size: 90px;
     color: #F3E8EE;
   }
-  body #root .header-moving .logo .title {
+  #root .header-moving .logo .title {
     font-family: "Agrandir";
   }
-  body #root .header-moving .logo .title .capital {
+  #root .header-moving .logo .title .capital {
     font-family: "Agrandir-Bold";
     color: #F3E8EE;
   }
-  body #root .header-moving .logo .img {
+  #root .header-moving .logo .img {
     background-image: url(../assets/images/logo-book.png);
     background-repeat: no-repeat;
     background-size: contain;
@@ -179,13 +242,13 @@ body {
     width: 225px;
     height: 135px;
   }
-  body #root .header-moving .nav {
+  #root .header-moving .nav {
     display: flex;
     flex-wrap: nowrap;
     flex-shrink: 0;
     margin-right: 5vw;
   }
-  body #root .header-moving .nav .btn {
+  #root .header-moving .nav .btn {
     font-family: "Garet";
     font-size: 34.5px;
     color: #F3E8EE;
@@ -196,47 +259,263 @@ body {
     padding: 22.5px 90px;
     cursor: pointer;
   }
-  body #root .header-moving .nav .btn i {
+  #root .header-moving .nav .btn i {
     color: #F3E8EE;
     font-size: 34.5px;
     margin-left: 15px;
     position: relative;
     top: 3.15px;
   }
-  body #root .header-moving .nav .btn:hover {
+  #root .header-moving .nav .btn:hover {
     background-color: #BCBCBC;
     color: #475B63;
   }
-  body #root .header-moving .btn-settings.btn-round {
+  #root .header-moving .btn-settings.btn-round {
     display: none;
   }
-  body #root .header-static {
+  #root .header-static {
     height: 195px;
     margin-bottom: 3vh;
   }
 }
 @media (min-width: 1921px) and (max-width: 1368px) {
-  body body #root .header-moving {
+  body #root .header-moving {
     flex-direction: column;
   }
-  body body #root .header-moving .nav {
+  body #root .header-moving .nav {
     margin-top: 45px;
   }
-  body body #root .header-static {
+  body #root .header-static {
     height: 375px;
   }
 }
+body.None #root .header-static {
+  background-color: #292929;
+}
+body.None #root .header-moving {
+  background-color: #292929;
+}
+body.None #root .header-moving .logo .title, body.None #root .header-moving .logo .capital {
+  color: #F3E8EE;
+}
+body.None #root .header-moving .logo .title .capital {
+  color: #F3E8EE;
+}
+body.None #root .header-moving .nav .btn {
+  color: #F3E8EE;
+  background-color: #475B63;
+}
+body.None #root .header-moving .nav .btn i {
+  color: #F3E8EE;
+}
+body.None #root .header-moving .nav .btn:hover {
+  background-color: #BCBCBC;
+  color: #475B63;
+}
+
+body.Protanopia #root .header-static {
+  background-color: #292929;
+}
+body.Protanopia #root .header-moving {
+  background-color: #292929;
+}
+body.Protanopia #root .header-moving .logo .title, body.Protanopia #root .header-moving .logo .capital {
+  color: #EEEEEC;
+}
+body.Protanopia #root .header-moving .logo .title .capital {
+  color: #EEEEEC;
+}
+body.Protanopia #root .header-moving .nav .btn {
+  color: #EEEEEC;
+  background-color: #4F4F61;
+}
+body.Protanopia #root .header-moving .nav .btn i {
+  color: #EEEEEC;
+}
+body.Protanopia #root .header-moving .nav .btn:hover {
+  background-color: #BCBCBC;
+  color: #4F4F61;
+}
+
+body.Deuteranopia #root .header-static {
+  background-color: #292929;
+}
+body.Deuteranopia #root .header-moving {
+  background-color: #292929;
+}
+body.Deuteranopia #root .header-moving .logo .title, body.Deuteranopia #root .header-moving .logo .capital {
+  color: #EEEFEC;
+}
+body.Deuteranopia #root .header-moving .logo .title .capital {
+  color: #EEEFEC;
+}
+body.Deuteranopia #root .header-moving .nav .btn {
+  color: #EEEFEC;
+  background-color: #4E4D60;
+}
+body.Deuteranopia #root .header-moving .nav .btn i {
+  color: #EEEFEC;
+}
+body.Deuteranopia #root .header-moving .nav .btn:hover {
+  background-color: #BCBCBC;
+  color: #4E4D60;
+}
+
+body.Tritanopia #root .header-static {
+  background-color: #282929;
+}
+body.Tritanopia #root .header-moving {
+  background-color: #282929;
+}
+body.Tritanopia #root .header-moving .logo .title, body.Tritanopia #root .header-moving .logo .capital {
+  color: #F2EBEB;
+}
+body.Tritanopia #root .header-moving .logo .title .capital {
+  color: #F2EBEB;
+}
+body.Tritanopia #root .header-moving .nav .btn {
+  color: #F2EBEB;
+  background-color: #485F5F;
+}
+body.Tritanopia #root .header-moving .nav .btn i {
+  color: #F2EBEB;
+}
+body.Tritanopia #root .header-moving .nav .btn:hover {
+  background-color: #BCBCBC;
+  color: #485F5F;
+}
+
+body.Achromatopsia #root .header-static {
+  background-color: #292929;
+}
+body.Achromatopsia #root .header-moving {
+  background-color: #292929;
+}
+body.Achromatopsia #root .header-moving .logo .title, body.Achromatopsia #root .header-moving .logo .capital {
+  color: #EBEBEB;
+}
+body.Achromatopsia #root .header-moving .logo .title .capital {
+  color: #EBEBEB;
+}
+body.Achromatopsia #root .header-moving .nav .btn {
+  color: #EBEBEB;
+  background-color: #555555;
+}
+body.Achromatopsia #root .header-moving .nav .btn i {
+  color: #EBEBEB;
+}
+body.Achromatopsia #root .header-moving .nav .btn:hover {
+  background-color: #BCBCBC;
+  color: #555555;
+}
+
+body.Protanomaly #root .header-static {
+  background-color: #292929;
+}
+body.Protanomaly #root .header-moving {
+  background-color: #292929;
+}
+body.Protanomaly #root .header-moving .logo .title, body.Protanomaly #root .header-moving .logo .capital {
+  color: #F0EBED;
+}
+body.Protanomaly #root .header-moving .logo .title .capital {
+  color: #F0EBED;
+}
+body.Protanomaly #root .header-moving .nav .btn {
+  color: #F0EBED;
+  background-color: #4A5462;
+}
+body.Protanomaly #root .header-moving .nav .btn i {
+  color: #F0EBED;
+}
+body.Protanomaly #root .header-moving .nav .btn:hover {
+  background-color: #BCBCBC;
+  color: #4A5462;
+}
+
+body.Deuteranomaly #root .header-static {
+  background-color: #292929;
+}
+body.Deuteranomaly #root .header-moving {
+  background-color: #292929;
+}
+body.Deuteranomaly #root .header-moving .logo .title, body.Deuteranomaly #root .header-moving .logo .capital {
+  color: #F0EAED;
+}
+body.Deuteranomaly #root .header-moving .logo .title .capital {
+  color: #F0EAED;
+}
+body.Deuteranomaly #root .header-moving .nav .btn {
+  color: #F0EAED;
+  background-color: #4B5561;
+}
+body.Deuteranomaly #root .header-moving .nav .btn i {
+  color: #F0EAED;
+}
+body.Deuteranomaly #root .header-moving .nav .btn:hover {
+  background-color: #BCBCBC;
+  color: #4B5561;
+}
+
+body.Tritanomaly #root .header-static {
+  background-color: #292929;
+}
+body.Tritanomaly #root .header-moving {
+  background-color: #292929;
+}
+body.Tritanomaly #root .header-moving .logo .title, body.Tritanomaly #root .header-moving .logo .capital {
+  color: #F2E9EC;
+}
+body.Tritanomaly #root .header-moving .logo .title .capital {
+  color: #F2E9EC;
+}
+body.Tritanomaly #root .header-moving .nav .btn {
+  color: #F2E9EC;
+  background-color: #475D61;
+}
+body.Tritanomaly #root .header-moving .nav .btn i {
+  color: #F2E9EC;
+}
+body.Tritanomaly #root .header-moving .nav .btn:hover {
+  background-color: #BCBCBC;
+  color: #475D61;
+}
+
+body.Achromatomaly #root .header-static {
+  background-color: #292929;
+}
+body.Achromatomaly #root .header-moving {
+  background-color: #292929;
+}
+body.Achromatomaly #root .header-moving .logo .title, body.Achromatomaly #root .header-moving .logo .capital {
+  color: #EFEAEC;
+}
+body.Achromatomaly #root .header-moving .logo .title .capital {
+  color: #EFEAEC;
+}
+body.Achromatomaly #root .header-moving .nav .btn {
+  color: #EFEAEC;
+  background-color: #4F585B;
+}
+body.Achromatomaly #root .header-moving .nav .btn i {
+  color: #EFEAEC;
+}
+body.Achromatomaly #root .header-moving .nav .btn:hover {
+  background-color: #BCBCBC;
+  color: #4F585B;
+}
+
 @media (max-width: 900px) {
-  body #root .header-moving {
+  #root .header-moving {
     padding: 0;
   }
-  body #root .header-moving .logo {
+  #root .header-moving .logo {
     margin: 0;
   }
-  body #root .header-moving .logo .title, body #root .header-moving .logo .capital {
+  #root .header-moving .logo .title, #root .header-moving .logo .capital {
     font-size: 90px;
   }
-  body #root .header-moving .nav {
+  #root .header-moving .nav {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -245,10 +524,10 @@ body {
     justify-content: space-evenly;
     margin: 0;
   }
-  body #root .header-moving .nav .btn {
+  #root .header-moving .nav .btn {
     display: none;
   }
-  body #root .header-moving .btn-settings.btn-round {
+  #root .header-moving .btn-settings.btn-round {
     display: initial;
     position: fixed;
     bottom: 45px;
@@ -259,17 +538,17 @@ body {
     border: none;
     cursor: pointer;
   }
-  body #root .header-moving .btn-settings.btn-round:hover {
+  #root .header-moving .btn-settings.btn-round:hover {
     background-color: #F3E8EE;
   }
-  body #root .header-moving .btn-settings.btn-round:hover i {
+  #root .header-moving .btn-settings.btn-round:hover i {
     color: #475B63;
   }
-  body #root .header-moving .btn-settings.btn-round i {
+  #root .header-moving .btn-settings.btn-round i {
     color: #F3E8EE;
     font-size: 45px;
   }
-  body #root .header-static {
+  #root .header-static {
     height: 117px;
   }
 }
@@ -328,6 +607,276 @@ body {
     height: 78px;
   }
 }
+body.None #root .login-section .hero {
+  background-color: #292929;
+}
+body.None #root .login-section .login-wrap .logo-wrap .logo-text .title, body.None #root .login-section .login-wrap .logo-wrap .logo-text .capital {
+  color: #F3E8EE;
+}
+body.None #root .login-section .login-wrap .login-form .welcome-msg {
+  color: #F3E8EE;
+}
+body.None #root .login-section .login-wrap .login-form .input-wrap {
+  background-color: #F3E8EE;
+  border: 1px solid #292929;
+}
+body.None #root .login-section .login-wrap .login-form .input-wrap .icon {
+  color: #F3E8EE;
+}
+body.None #root .login-section .login-wrap .login-form .input-wrap .icon:hover {
+  background-color: #475B63;
+}
+body.None #root .login-section .login-wrap .login-form .input-wrap input:focus {
+  outline: #292929 2px solid;
+}
+body.None #root .login-section .login-wrap .login-form #login-submit {
+  color: #F3E8EE;
+  background-color: #292929;
+}
+body.None #root .login-section .login-wrap .login-form #login-submit:hover {
+  background-color: #475B63;
+}
+
+body.Protanopia #root .login-section .hero {
+  background-color: #292929;
+}
+body.Protanopia #root .login-section .login-wrap .logo-wrap .logo-text .title, body.Protanopia #root .login-section .login-wrap .logo-wrap .logo-text .capital {
+  color: #EEEEEC;
+}
+body.Protanopia #root .login-section .login-wrap .login-form .welcome-msg {
+  color: #EEEEEC;
+}
+body.Protanopia #root .login-section .login-wrap .login-form .input-wrap {
+  background-color: #EEEEEC;
+  border: 1px solid #292929;
+}
+body.Protanopia #root .login-section .login-wrap .login-form .input-wrap .icon {
+  color: #EEEEEC;
+}
+body.Protanopia #root .login-section .login-wrap .login-form .input-wrap .icon:hover {
+  background-color: #4F4F61;
+}
+body.Protanopia #root .login-section .login-wrap .login-form .input-wrap input:focus {
+  outline: #292929 2px solid;
+}
+body.Protanopia #root .login-section .login-wrap .login-form #login-submit {
+  color: #EEEEEC;
+  background-color: #292929;
+}
+body.Protanopia #root .login-section .login-wrap .login-form #login-submit:hover {
+  background-color: #4F4F61;
+}
+
+body.Deuteranopia #root .login-section .hero {
+  background-color: #292929;
+}
+body.Deuteranopia #root .login-section .login-wrap .logo-wrap .logo-text .title, body.Deuteranopia #root .login-section .login-wrap .logo-wrap .logo-text .capital {
+  color: #EEEFEC;
+}
+body.Deuteranopia #root .login-section .login-wrap .login-form .welcome-msg {
+  color: #EEEFEC;
+}
+body.Deuteranopia #root .login-section .login-wrap .login-form .input-wrap {
+  background-color: #EEEFEC;
+  border: 1px solid #292929;
+}
+body.Deuteranopia #root .login-section .login-wrap .login-form .input-wrap .icon {
+  color: #EEEFEC;
+}
+body.Deuteranopia #root .login-section .login-wrap .login-form .input-wrap .icon:hover {
+  background-color: #4E4D60;
+}
+body.Deuteranopia #root .login-section .login-wrap .login-form .input-wrap input:focus {
+  outline: #292929 2px solid;
+}
+body.Deuteranopia #root .login-section .login-wrap .login-form #login-submit {
+  color: #EEEFEC;
+  background-color: #292929;
+}
+body.Deuteranopia #root .login-section .login-wrap .login-form #login-submit:hover {
+  background-color: #4E4D60;
+}
+
+body.Tritanopia #root .login-section .hero {
+  background-color: #282929;
+}
+body.Tritanopia #root .login-section .login-wrap .logo-wrap .logo-text .title, body.Tritanopia #root .login-section .login-wrap .logo-wrap .logo-text .capital {
+  color: #F2EBEB;
+}
+body.Tritanopia #root .login-section .login-wrap .login-form .welcome-msg {
+  color: #F2EBEB;
+}
+body.Tritanopia #root .login-section .login-wrap .login-form .input-wrap {
+  background-color: #F2EBEB;
+  border: 1px solid #282929;
+}
+body.Tritanopia #root .login-section .login-wrap .login-form .input-wrap .icon {
+  color: #F2EBEB;
+}
+body.Tritanopia #root .login-section .login-wrap .login-form .input-wrap .icon:hover {
+  background-color: #485F5F;
+}
+body.Tritanopia #root .login-section .login-wrap .login-form .input-wrap input:focus {
+  outline: #282929 2px solid;
+}
+body.Tritanopia #root .login-section .login-wrap .login-form #login-submit {
+  color: #F2EBEB;
+  background-color: #282929;
+}
+body.Tritanopia #root .login-section .login-wrap .login-form #login-submit:hover {
+  background-color: #485F5F;
+}
+
+body.Achromatopsia #root .login-section .hero {
+  background-color: #292929;
+}
+body.Achromatopsia #root .login-section .login-wrap .logo-wrap .logo-text .title, body.Achromatopsia #root .login-section .login-wrap .logo-wrap .logo-text .capital {
+  color: #EBEBEB;
+}
+body.Achromatopsia #root .login-section .login-wrap .login-form .welcome-msg {
+  color: #EBEBEB;
+}
+body.Achromatopsia #root .login-section .login-wrap .login-form .input-wrap {
+  background-color: #EBEBEB;
+  border: 1px solid #292929;
+}
+body.Achromatopsia #root .login-section .login-wrap .login-form .input-wrap .icon {
+  color: #EBEBEB;
+}
+body.Achromatopsia #root .login-section .login-wrap .login-form .input-wrap .icon:hover {
+  background-color: #555555;
+}
+body.Achromatopsia #root .login-section .login-wrap .login-form .input-wrap input:focus {
+  outline: #292929 2px solid;
+}
+body.Achromatopsia #root .login-section .login-wrap .login-form #login-submit {
+  color: #EBEBEB;
+  background-color: #292929;
+}
+body.Achromatopsia #root .login-section .login-wrap .login-form #login-submit:hover {
+  background-color: #555555;
+}
+
+body.Protanomaly #root .login-section .hero {
+  background-color: #292929;
+}
+body.Protanomaly #root .login-section .login-wrap .logo-wrap .logo-text .title, body.Protanomaly #root .login-section .login-wrap .logo-wrap .logo-text .capital {
+  color: #F0EBED;
+}
+body.Protanomaly #root .login-section .login-wrap .login-form .welcome-msg {
+  color: #F0EBED;
+}
+body.Protanomaly #root .login-section .login-wrap .login-form .input-wrap {
+  background-color: #F0EBED;
+  border: 1px solid #292929;
+}
+body.Protanomaly #root .login-section .login-wrap .login-form .input-wrap .icon {
+  color: #F0EBED;
+}
+body.Protanomaly #root .login-section .login-wrap .login-form .input-wrap .icon:hover {
+  background-color: #4A5462;
+}
+body.Protanomaly #root .login-section .login-wrap .login-form .input-wrap input:focus {
+  outline: #292929 2px solid;
+}
+body.Protanomaly #root .login-section .login-wrap .login-form #login-submit {
+  color: #F0EBED;
+  background-color: #292929;
+}
+body.Protanomaly #root .login-section .login-wrap .login-form #login-submit:hover {
+  background-color: #4A5462;
+}
+
+body.Deuteranomaly #root .login-section .hero {
+  background-color: #292929;
+}
+body.Deuteranomaly #root .login-section .login-wrap .logo-wrap .logo-text .title, body.Deuteranomaly #root .login-section .login-wrap .logo-wrap .logo-text .capital {
+  color: #F0EAED;
+}
+body.Deuteranomaly #root .login-section .login-wrap .login-form .welcome-msg {
+  color: #F0EAED;
+}
+body.Deuteranomaly #root .login-section .login-wrap .login-form .input-wrap {
+  background-color: #F0EAED;
+  border: 1px solid #292929;
+}
+body.Deuteranomaly #root .login-section .login-wrap .login-form .input-wrap .icon {
+  color: #F0EAED;
+}
+body.Deuteranomaly #root .login-section .login-wrap .login-form .input-wrap .icon:hover {
+  background-color: #4B5561;
+}
+body.Deuteranomaly #root .login-section .login-wrap .login-form .input-wrap input:focus {
+  outline: #292929 2px solid;
+}
+body.Deuteranomaly #root .login-section .login-wrap .login-form #login-submit {
+  color: #F0EAED;
+  background-color: #292929;
+}
+body.Deuteranomaly #root .login-section .login-wrap .login-form #login-submit:hover {
+  background-color: #4B5561;
+}
+
+body.Tritanomaly #root .login-section .hero {
+  background-color: #292929;
+}
+body.Tritanomaly #root .login-section .login-wrap .logo-wrap .logo-text .title, body.Tritanomaly #root .login-section .login-wrap .logo-wrap .logo-text .capital {
+  color: #F2E9EC;
+}
+body.Tritanomaly #root .login-section .login-wrap .login-form .welcome-msg {
+  color: #F2E9EC;
+}
+body.Tritanomaly #root .login-section .login-wrap .login-form .input-wrap {
+  background-color: #F2E9EC;
+  border: 1px solid #292929;
+}
+body.Tritanomaly #root .login-section .login-wrap .login-form .input-wrap .icon {
+  color: #F2E9EC;
+}
+body.Tritanomaly #root .login-section .login-wrap .login-form .input-wrap .icon:hover {
+  background-color: #475D61;
+}
+body.Tritanomaly #root .login-section .login-wrap .login-form .input-wrap input:focus {
+  outline: #292929 2px solid;
+}
+body.Tritanomaly #root .login-section .login-wrap .login-form #login-submit {
+  color: #F2E9EC;
+  background-color: #292929;
+}
+body.Tritanomaly #root .login-section .login-wrap .login-form #login-submit:hover {
+  background-color: #475D61;
+}
+
+body.Achromatomaly #root .login-section .hero {
+  background-color: #292929;
+}
+body.Achromatomaly #root .login-section .login-wrap .logo-wrap .logo-text .title, body.Achromatomaly #root .login-section .login-wrap .logo-wrap .logo-text .capital {
+  color: #EFEAEC;
+}
+body.Achromatomaly #root .login-section .login-wrap .login-form .welcome-msg {
+  color: #EFEAEC;
+}
+body.Achromatomaly #root .login-section .login-wrap .login-form .input-wrap {
+  background-color: #EFEAEC;
+  border: 1px solid #292929;
+}
+body.Achromatomaly #root .login-section .login-wrap .login-form .input-wrap .icon {
+  color: #EFEAEC;
+}
+body.Achromatomaly #root .login-section .login-wrap .login-form .input-wrap .icon:hover {
+  background-color: #4F585B;
+}
+body.Achromatomaly #root .login-section .login-wrap .login-form .input-wrap input:focus {
+  outline: #292929 2px solid;
+}
+body.Achromatomaly #root .login-section .login-wrap .login-form #login-submit {
+  color: #EFEAEC;
+  background-color: #292929;
+}
+body.Achromatomaly #root .login-section .login-wrap .login-form #login-submit:hover {
+  background-color: #4F585B;
+}
+
 body #root .login-section {
   display: flex;
 }
@@ -360,7 +909,7 @@ body #root .login-section .login-wrap .logo-wrap .logo-text {
 }
 body #root .login-section .login-wrap .logo-wrap .logo-text .title, body #root .login-section .login-wrap .logo-wrap .logo-text .capital {
   font-size: 110.4px;
-  color: #F3E8EE;
+  color: #EFEAEC;
   font-family: "Agrandir";
 }
 body #root .login-section .login-wrap .logo-wrap .logo-text .title {
@@ -387,14 +936,14 @@ body #root .login-section .login-wrap .login-form {
 }
 body #root .login-section .login-wrap .login-form .welcome-msg {
   font-size: 42px;
-  color: #F3E8EE;
+  color: #EFEAEC;
   margin-top: 5vh;
 }
 body #root .login-section .login-wrap .login-form .input-wrap {
   display: flex;
   width: 75%;
   margin: 6.5vh 36px;
-  background-color: #F3E8EE;
+  background-color: #EFEAEC;
   border: 1px solid #292929;
 }
 body #root .login-section .login-wrap .login-form .input-wrap:nth-child(2) {
@@ -402,13 +951,13 @@ body #root .login-section .login-wrap .login-form .input-wrap:nth-child(2) {
 }
 body #root .login-section .login-wrap .login-form .input-wrap .icon {
   font-size: 48px;
-  color: #F3E8EE;
+  color: #EFEAEC;
   padding: 24px;
   margin: 0;
   background-color: #292929;
 }
 body #root .login-section .login-wrap .login-form .input-wrap .icon:hover {
-  background-color: #475B63;
+  background-color: #4F585B;
 }
 body #root .login-section .login-wrap .login-form .input-wrap input {
   width: 100%;
@@ -426,7 +975,7 @@ body #root .login-section .login-wrap .login-form #login-submit {
   position: relative;
   left: calc(100% - 35vw);
   font-size: 36px;
-  color: #F3E8EE;
+  color: #EFEAEC;
   background-color: #292929;
   outline: none;
   border: none;
@@ -435,7 +984,7 @@ body #root .login-section .login-wrap .login-form #login-submit {
   cursor: pointer;
 }
 body #root .login-section .login-wrap .login-form #login-submit:hover {
-  background-color: #475B63;
+  background-color: #4F585B;
 }
 
 @media (min-width: 1921px) {
@@ -471,7 +1020,7 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
   }
   body #root .login-section .login-wrap .logo-wrap .logo-text .title, body #root .login-section .login-wrap .logo-wrap .logo-text .capital {
     font-size: 138px;
-    color: #F3E8EE;
+    color: #EFEAEC;
     font-family: "Agrandir";
   }
   body #root .login-section .login-wrap .logo-wrap .logo-text .title {
@@ -498,14 +1047,14 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
   }
   body #root .login-section .login-wrap .login-form .welcome-msg {
     font-size: 52.5px;
-    color: #F3E8EE;
+    color: #EFEAEC;
     margin-top: 5vh;
   }
   body #root .login-section .login-wrap .login-form .input-wrap {
     display: flex;
     width: 75%;
     margin: 6.5vh 45px;
-    background-color: #F3E8EE;
+    background-color: #EFEAEC;
     border: 1px solid #292929;
   }
   body #root .login-section .login-wrap .login-form .input-wrap:nth-child(2) {
@@ -513,13 +1062,13 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
   }
   body #root .login-section .login-wrap .login-form .input-wrap .icon {
     font-size: 60px;
-    color: #F3E8EE;
+    color: #EFEAEC;
     padding: 30px;
     margin: 0;
     background-color: #292929;
   }
   body #root .login-section .login-wrap .login-form .input-wrap .icon:hover {
-    background-color: #475B63;
+    background-color: #4F585B;
   }
   body #root .login-section .login-wrap .login-form .input-wrap input {
     width: 100%;
@@ -537,7 +1086,7 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
     position: relative;
     left: calc(100% - 35vw);
     font-size: 45px;
-    color: #F3E8EE;
+    color: #EFEAEC;
     background-color: #292929;
     outline: none;
     border: none;
@@ -546,7 +1095,7 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
     cursor: pointer;
   }
   body #root .login-section .login-wrap .login-form #login-submit:hover {
-    background-color: #475B63;
+    background-color: #4F585B;
   }
 }
 @media (max-width: 980px) {
@@ -585,7 +1134,7 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
   }
   body #root .login-section .login-wrap .logo-wrap .logo-text .title, body #root .login-section .login-wrap .logo-wrap .logo-text .capital {
     font-size: 59.8px;
-    color: #F3E8EE;
+    color: #EFEAEC;
     font-family: "Agrandir";
   }
   body #root .login-section .login-wrap .logo-wrap .logo-text .title {
@@ -612,14 +1161,14 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
   }
   body #root .login-section .login-wrap .login-form .welcome-msg {
     font-size: 22.75px;
-    color: #F3E8EE;
+    color: #EFEAEC;
     margin-top: 5vh;
   }
   body #root .login-section .login-wrap .login-form .input-wrap {
     display: flex;
     width: 75%;
     margin: 6.5vh 19.5px;
-    background-color: #F3E8EE;
+    background-color: #EFEAEC;
     border: 1px solid #292929;
   }
   body #root .login-section .login-wrap .login-form .input-wrap:nth-child(2) {
@@ -627,13 +1176,13 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
   }
   body #root .login-section .login-wrap .login-form .input-wrap .icon {
     font-size: 26px;
-    color: #F3E8EE;
+    color: #EFEAEC;
     padding: 13px;
     margin: 0;
     background-color: #292929;
   }
   body #root .login-section .login-wrap .login-form .input-wrap .icon:hover {
-    background-color: #475B63;
+    background-color: #4F585B;
   }
   body #root .login-section .login-wrap .login-form .input-wrap input {
     width: 100%;
@@ -651,7 +1200,7 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
     position: relative;
     left: calc(100% - 35vw);
     font-size: 19.5px;
-    color: #F3E8EE;
+    color: #EFEAEC;
     background-color: #292929;
     outline: none;
     border: none;
@@ -660,7 +1209,7 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
     cursor: pointer;
   }
   body #root .login-section .login-wrap .login-form #login-submit:hover {
-    background-color: #475B63;
+    background-color: #4F585B;
   }
   body #root {
     width: 100vw;
@@ -808,6 +1357,330 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
     margin: 24px 0;
   }
 }
+body.None #root .settings-modal-wrap {
+  background-color: rgba(41, 41, 41, 0.7);
+}
+body.None #root .settings-modal-wrap .modal-main {
+  background-color: #292929;
+  /* Handle */
+}
+body.None #root .settings-modal-wrap .modal-main::-webkit-scrollbar-thumb {
+  background: #475B63;
+}
+body.None #root .settings-modal-wrap .modal-main .section-category-title {
+  color: #F3E8EE;
+}
+body.None #root .settings-modal-wrap .modal-main .section {
+  background-color: #575757;
+}
+body.None #root .settings-modal-wrap .modal-main .section .title {
+  color: #F3E8EE;
+}
+body.None #root .settings-modal-wrap .modal-main .section form label {
+  color: #F3E8EE;
+}
+body.None #root .settings-modal-wrap .modal-main .section form label input {
+  color: #F3E8EE;
+}
+body.None #root .settings-modal-wrap .modal-main .section form label input.checked::before {
+  background-color: #292929;
+}
+body.None #root .settings-modal-wrap .modal-main #settings-close-btn {
+  color: #F3E8EE;
+  background-color: #475B63;
+}
+body.None #root .settings-modal-wrap .modal-main #settings-close-btn:hover {
+  background-color: black;
+}
+
+body.Protanopia #root .settings-modal-wrap {
+  background-color: rgba(41, 41, 41, 0.7);
+}
+body.Protanopia #root .settings-modal-wrap .modal-main {
+  background-color: #292929;
+  /* Handle */
+}
+body.Protanopia #root .settings-modal-wrap .modal-main::-webkit-scrollbar-thumb {
+  background: #4F4F61;
+}
+body.Protanopia #root .settings-modal-wrap .modal-main .section-category-title {
+  color: #EEEEEC;
+}
+body.Protanopia #root .settings-modal-wrap .modal-main .section {
+  background-color: #575757;
+}
+body.Protanopia #root .settings-modal-wrap .modal-main .section .title {
+  color: #EEEEEC;
+}
+body.Protanopia #root .settings-modal-wrap .modal-main .section form label {
+  color: #EEEEEC;
+}
+body.Protanopia #root .settings-modal-wrap .modal-main .section form label input {
+  color: #EEEEEC;
+}
+body.Protanopia #root .settings-modal-wrap .modal-main .section form label input.checked::before {
+  background-color: #292929;
+}
+body.Protanopia #root .settings-modal-wrap .modal-main #settings-close-btn {
+  color: #EEEEEC;
+  background-color: #4F4F61;
+}
+body.Protanopia #root .settings-modal-wrap .modal-main #settings-close-btn:hover {
+  background-color: black;
+}
+
+body.Deuteranopia #root .settings-modal-wrap {
+  background-color: rgba(41, 41, 41, 0.7);
+}
+body.Deuteranopia #root .settings-modal-wrap .modal-main {
+  background-color: #292929;
+  /* Handle */
+}
+body.Deuteranopia #root .settings-modal-wrap .modal-main::-webkit-scrollbar-thumb {
+  background: #4E4D60;
+}
+body.Deuteranopia #root .settings-modal-wrap .modal-main .section-category-title {
+  color: #EEEFEC;
+}
+body.Deuteranopia #root .settings-modal-wrap .modal-main .section {
+  background-color: #575757;
+}
+body.Deuteranopia #root .settings-modal-wrap .modal-main .section .title {
+  color: #EEEFEC;
+}
+body.Deuteranopia #root .settings-modal-wrap .modal-main .section form label {
+  color: #EEEFEC;
+}
+body.Deuteranopia #root .settings-modal-wrap .modal-main .section form label input {
+  color: #EEEFEC;
+}
+body.Deuteranopia #root .settings-modal-wrap .modal-main .section form label input.checked::before {
+  background-color: #292929;
+}
+body.Deuteranopia #root .settings-modal-wrap .modal-main #settings-close-btn {
+  color: #EEEFEC;
+  background-color: #4E4D60;
+}
+body.Deuteranopia #root .settings-modal-wrap .modal-main #settings-close-btn:hover {
+  background-color: black;
+}
+
+body.Tritanopia #root .settings-modal-wrap {
+  background-color: rgba(40, 41, 41, 0.7);
+}
+body.Tritanopia #root .settings-modal-wrap .modal-main {
+  background-color: #282929;
+  /* Handle */
+}
+body.Tritanopia #root .settings-modal-wrap .modal-main::-webkit-scrollbar-thumb {
+  background: #485F5F;
+}
+body.Tritanopia #root .settings-modal-wrap .modal-main .section-category-title {
+  color: #F2EBEB;
+}
+body.Tritanopia #root .settings-modal-wrap .modal-main .section {
+  background-color: #575757;
+}
+body.Tritanopia #root .settings-modal-wrap .modal-main .section .title {
+  color: #F2EBEB;
+}
+body.Tritanopia #root .settings-modal-wrap .modal-main .section form label {
+  color: #F2EBEB;
+}
+body.Tritanopia #root .settings-modal-wrap .modal-main .section form label input {
+  color: #F2EBEB;
+}
+body.Tritanopia #root .settings-modal-wrap .modal-main .section form label input.checked::before {
+  background-color: #282929;
+}
+body.Tritanopia #root .settings-modal-wrap .modal-main #settings-close-btn {
+  color: #F2EBEB;
+  background-color: #485F5F;
+}
+body.Tritanopia #root .settings-modal-wrap .modal-main #settings-close-btn:hover {
+  background-color: black;
+}
+
+body.Achromatopsia #root .settings-modal-wrap {
+  background-color: rgba(41, 41, 41, 0.7);
+}
+body.Achromatopsia #root .settings-modal-wrap .modal-main {
+  background-color: #292929;
+  /* Handle */
+}
+body.Achromatopsia #root .settings-modal-wrap .modal-main::-webkit-scrollbar-thumb {
+  background: #555555;
+}
+body.Achromatopsia #root .settings-modal-wrap .modal-main .section-category-title {
+  color: #EBEBEB;
+}
+body.Achromatopsia #root .settings-modal-wrap .modal-main .section {
+  background-color: #575757;
+}
+body.Achromatopsia #root .settings-modal-wrap .modal-main .section .title {
+  color: #EBEBEB;
+}
+body.Achromatopsia #root .settings-modal-wrap .modal-main .section form label {
+  color: #EBEBEB;
+}
+body.Achromatopsia #root .settings-modal-wrap .modal-main .section form label input {
+  color: #EBEBEB;
+}
+body.Achromatopsia #root .settings-modal-wrap .modal-main .section form label input.checked::before {
+  background-color: #292929;
+}
+body.Achromatopsia #root .settings-modal-wrap .modal-main #settings-close-btn {
+  color: #EBEBEB;
+  background-color: #555555;
+}
+body.Achromatopsia #root .settings-modal-wrap .modal-main #settings-close-btn:hover {
+  background-color: black;
+}
+
+body.Protanomaly #root .settings-modal-wrap {
+  background-color: rgba(41, 41, 41, 0.7);
+}
+body.Protanomaly #root .settings-modal-wrap .modal-main {
+  background-color: #292929;
+  /* Handle */
+}
+body.Protanomaly #root .settings-modal-wrap .modal-main::-webkit-scrollbar-thumb {
+  background: #4A5462;
+}
+body.Protanomaly #root .settings-modal-wrap .modal-main .section-category-title {
+  color: #F0EBED;
+}
+body.Protanomaly #root .settings-modal-wrap .modal-main .section {
+  background-color: #575757;
+}
+body.Protanomaly #root .settings-modal-wrap .modal-main .section .title {
+  color: #F0EBED;
+}
+body.Protanomaly #root .settings-modal-wrap .modal-main .section form label {
+  color: #F0EBED;
+}
+body.Protanomaly #root .settings-modal-wrap .modal-main .section form label input {
+  color: #F0EBED;
+}
+body.Protanomaly #root .settings-modal-wrap .modal-main .section form label input.checked::before {
+  background-color: #292929;
+}
+body.Protanomaly #root .settings-modal-wrap .modal-main #settings-close-btn {
+  color: #F0EBED;
+  background-color: #4A5462;
+}
+body.Protanomaly #root .settings-modal-wrap .modal-main #settings-close-btn:hover {
+  background-color: black;
+}
+
+body.Deuteranomaly #root .settings-modal-wrap {
+  background-color: rgba(41, 41, 41, 0.7);
+}
+body.Deuteranomaly #root .settings-modal-wrap .modal-main {
+  background-color: #292929;
+  /* Handle */
+}
+body.Deuteranomaly #root .settings-modal-wrap .modal-main::-webkit-scrollbar-thumb {
+  background: #4B5561;
+}
+body.Deuteranomaly #root .settings-modal-wrap .modal-main .section-category-title {
+  color: #F0EAED;
+}
+body.Deuteranomaly #root .settings-modal-wrap .modal-main .section {
+  background-color: #575757;
+}
+body.Deuteranomaly #root .settings-modal-wrap .modal-main .section .title {
+  color: #F0EAED;
+}
+body.Deuteranomaly #root .settings-modal-wrap .modal-main .section form label {
+  color: #F0EAED;
+}
+body.Deuteranomaly #root .settings-modal-wrap .modal-main .section form label input {
+  color: #F0EAED;
+}
+body.Deuteranomaly #root .settings-modal-wrap .modal-main .section form label input.checked::before {
+  background-color: #292929;
+}
+body.Deuteranomaly #root .settings-modal-wrap .modal-main #settings-close-btn {
+  color: #F0EAED;
+  background-color: #4B5561;
+}
+body.Deuteranomaly #root .settings-modal-wrap .modal-main #settings-close-btn:hover {
+  background-color: black;
+}
+
+body.Tritanomaly #root .settings-modal-wrap {
+  background-color: rgba(41, 41, 41, 0.7);
+}
+body.Tritanomaly #root .settings-modal-wrap .modal-main {
+  background-color: #292929;
+  /* Handle */
+}
+body.Tritanomaly #root .settings-modal-wrap .modal-main::-webkit-scrollbar-thumb {
+  background: #475D61;
+}
+body.Tritanomaly #root .settings-modal-wrap .modal-main .section-category-title {
+  color: #F2E9EC;
+}
+body.Tritanomaly #root .settings-modal-wrap .modal-main .section {
+  background-color: #575757;
+}
+body.Tritanomaly #root .settings-modal-wrap .modal-main .section .title {
+  color: #F2E9EC;
+}
+body.Tritanomaly #root .settings-modal-wrap .modal-main .section form label {
+  color: #F2E9EC;
+}
+body.Tritanomaly #root .settings-modal-wrap .modal-main .section form label input {
+  color: #F2E9EC;
+}
+body.Tritanomaly #root .settings-modal-wrap .modal-main .section form label input.checked::before {
+  background-color: #292929;
+}
+body.Tritanomaly #root .settings-modal-wrap .modal-main #settings-close-btn {
+  color: #F2E9EC;
+  background-color: #475D61;
+}
+body.Tritanomaly #root .settings-modal-wrap .modal-main #settings-close-btn:hover {
+  background-color: black;
+}
+
+body.Achromatomaly #root .settings-modal-wrap {
+  background-color: rgba(41, 41, 41, 0.7);
+}
+body.Achromatomaly #root .settings-modal-wrap .modal-main {
+  background-color: #292929;
+  /* Handle */
+}
+body.Achromatomaly #root .settings-modal-wrap .modal-main::-webkit-scrollbar-thumb {
+  background: #4F585B;
+}
+body.Achromatomaly #root .settings-modal-wrap .modal-main .section-category-title {
+  color: #EFEAEC;
+}
+body.Achromatomaly #root .settings-modal-wrap .modal-main .section {
+  background-color: #575757;
+}
+body.Achromatomaly #root .settings-modal-wrap .modal-main .section .title {
+  color: #EFEAEC;
+}
+body.Achromatomaly #root .settings-modal-wrap .modal-main .section form label {
+  color: #EFEAEC;
+}
+body.Achromatomaly #root .settings-modal-wrap .modal-main .section form label input {
+  color: #EFEAEC;
+}
+body.Achromatomaly #root .settings-modal-wrap .modal-main .section form label input.checked::before {
+  background-color: #292929;
+}
+body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn {
+  color: #EFEAEC;
+  background-color: #4F585B;
+}
+body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:hover {
+  background-color: black;
+}
+
 #root .collections, #root .reader-section {
   display: flex;
   flex-wrap: nowrap;
@@ -1101,6 +1974,348 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
     margin-bottom: 5%;
   }
 }
+body.None #root .collections .search-form, body.None #root .reader-section .search-form {
+  background-color: rgba(41, 41, 41, 0.8);
+}
+body.None #root .collections .search-form label, body.None #root .reader-section .search-form label {
+  color: #F3E8EE;
+}
+body.None #root .collections .search-form input, body.None #root .collections .search-form select, body.None #root .reader-section .search-form input, body.None #root .reader-section .search-form select {
+  color: #475B63;
+}
+body.None #root .collections .search-form input:focus, body.None #root .collections .search-form select:focus, body.None #root .reader-section .search-form input:focus, body.None #root .reader-section .search-form select:focus {
+  outline: #292929 2px solid;
+}
+body.None #root .collections .search-form #search-submit, body.None #root .reader-section .search-form #search-submit {
+  color: #475B63;
+}
+body.None #root .collections .search-form #search-submit:hover, body.None #root .reader-section .search-form #search-submit:hover {
+  background-color: #292929;
+  color: #F3E8EE;
+}
+body.None #root .collections .search-form #search-submit:hover i, body.None #root .reader-section .search-form #search-submit:hover i {
+  color: #F3E8EE;
+}
+body.None #root .collections .collection-section-wrap .collection-section .title, body.None #root .reader-section .collection-section-wrap .collection-section .title {
+  color: #F3E8EE;
+}
+body.None #root .collections .collection-section-wrap .collection-section .title::before, body.None #root .reader-section .collection-section-wrap .collection-section .title::before {
+  border: double 5px #F3E8EE;
+}
+body.None #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta, body.None #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta {
+  background-color: #4f4f4f;
+}
+body.None #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body.None #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
+  color: #F3E8EE;
+}
+body.None #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body.None #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
+  color: #292929;
+}
+
+body.Protanopia #root .collections .search-form, body.Protanopia #root .reader-section .search-form {
+  background-color: rgba(41, 41, 41, 0.8);
+}
+body.Protanopia #root .collections .search-form label, body.Protanopia #root .reader-section .search-form label {
+  color: #EEEEEC;
+}
+body.Protanopia #root .collections .search-form input, body.Protanopia #root .collections .search-form select, body.Protanopia #root .reader-section .search-form input, body.Protanopia #root .reader-section .search-form select {
+  color: #4F4F61;
+}
+body.Protanopia #root .collections .search-form input:focus, body.Protanopia #root .collections .search-form select:focus, body.Protanopia #root .reader-section .search-form input:focus, body.Protanopia #root .reader-section .search-form select:focus {
+  outline: #292929 2px solid;
+}
+body.Protanopia #root .collections .search-form #search-submit, body.Protanopia #root .reader-section .search-form #search-submit {
+  color: #4F4F61;
+}
+body.Protanopia #root .collections .search-form #search-submit:hover, body.Protanopia #root .reader-section .search-form #search-submit:hover {
+  background-color: #292929;
+  color: #EEEEEC;
+}
+body.Protanopia #root .collections .search-form #search-submit:hover i, body.Protanopia #root .reader-section .search-form #search-submit:hover i {
+  color: #EEEEEC;
+}
+body.Protanopia #root .collections .collection-section-wrap .collection-section .title, body.Protanopia #root .reader-section .collection-section-wrap .collection-section .title {
+  color: #EEEEEC;
+}
+body.Protanopia #root .collections .collection-section-wrap .collection-section .title::before, body.Protanopia #root .reader-section .collection-section-wrap .collection-section .title::before {
+  border: double 5px #EEEEEC;
+}
+body.Protanopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta, body.Protanopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta {
+  background-color: #4f4f4f;
+}
+body.Protanopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body.Protanopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
+  color: #EEEEEC;
+}
+body.Protanopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body.Protanopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
+  color: #292929;
+}
+
+body.Deuteranopia #root .collections .search-form, body.Deuteranopia #root .reader-section .search-form {
+  background-color: rgba(41, 41, 41, 0.8);
+}
+body.Deuteranopia #root .collections .search-form label, body.Deuteranopia #root .reader-section .search-form label {
+  color: #EEEFEC;
+}
+body.Deuteranopia #root .collections .search-form input, body.Deuteranopia #root .collections .search-form select, body.Deuteranopia #root .reader-section .search-form input, body.Deuteranopia #root .reader-section .search-form select {
+  color: #4E4D60;
+}
+body.Deuteranopia #root .collections .search-form input:focus, body.Deuteranopia #root .collections .search-form select:focus, body.Deuteranopia #root .reader-section .search-form input:focus, body.Deuteranopia #root .reader-section .search-form select:focus {
+  outline: #292929 2px solid;
+}
+body.Deuteranopia #root .collections .search-form #search-submit, body.Deuteranopia #root .reader-section .search-form #search-submit {
+  color: #4E4D60;
+}
+body.Deuteranopia #root .collections .search-form #search-submit:hover, body.Deuteranopia #root .reader-section .search-form #search-submit:hover {
+  background-color: #292929;
+  color: #EEEFEC;
+}
+body.Deuteranopia #root .collections .search-form #search-submit:hover i, body.Deuteranopia #root .reader-section .search-form #search-submit:hover i {
+  color: #EEEFEC;
+}
+body.Deuteranopia #root .collections .collection-section-wrap .collection-section .title, body.Deuteranopia #root .reader-section .collection-section-wrap .collection-section .title {
+  color: #EEEFEC;
+}
+body.Deuteranopia #root .collections .collection-section-wrap .collection-section .title::before, body.Deuteranopia #root .reader-section .collection-section-wrap .collection-section .title::before {
+  border: double 5px #EEEFEC;
+}
+body.Deuteranopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta, body.Deuteranopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta {
+  background-color: #4f4f4f;
+}
+body.Deuteranopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body.Deuteranopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
+  color: #EEEFEC;
+}
+body.Deuteranopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body.Deuteranopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
+  color: #292929;
+}
+
+body.Tritanopia #root .collections .search-form, body.Tritanopia #root .reader-section .search-form {
+  background-color: rgba(40, 41, 41, 0.8);
+}
+body.Tritanopia #root .collections .search-form label, body.Tritanopia #root .reader-section .search-form label {
+  color: #F2EBEB;
+}
+body.Tritanopia #root .collections .search-form input, body.Tritanopia #root .collections .search-form select, body.Tritanopia #root .reader-section .search-form input, body.Tritanopia #root .reader-section .search-form select {
+  color: #485F5F;
+}
+body.Tritanopia #root .collections .search-form input:focus, body.Tritanopia #root .collections .search-form select:focus, body.Tritanopia #root .reader-section .search-form input:focus, body.Tritanopia #root .reader-section .search-form select:focus {
+  outline: #282929 2px solid;
+}
+body.Tritanopia #root .collections .search-form #search-submit, body.Tritanopia #root .reader-section .search-form #search-submit {
+  color: #485F5F;
+}
+body.Tritanopia #root .collections .search-form #search-submit:hover, body.Tritanopia #root .reader-section .search-form #search-submit:hover {
+  background-color: #282929;
+  color: #F2EBEB;
+}
+body.Tritanopia #root .collections .search-form #search-submit:hover i, body.Tritanopia #root .reader-section .search-form #search-submit:hover i {
+  color: #F2EBEB;
+}
+body.Tritanopia #root .collections .collection-section-wrap .collection-section .title, body.Tritanopia #root .reader-section .collection-section-wrap .collection-section .title {
+  color: #F2EBEB;
+}
+body.Tritanopia #root .collections .collection-section-wrap .collection-section .title::before, body.Tritanopia #root .reader-section .collection-section-wrap .collection-section .title::before {
+  border: double 5px #F2EBEB;
+}
+body.Tritanopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta, body.Tritanopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta {
+  background-color: #4f4f4f;
+}
+body.Tritanopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body.Tritanopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
+  color: #F2EBEB;
+}
+body.Tritanopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body.Tritanopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
+  color: #282929;
+}
+
+body.Achromatopsia #root .collections .search-form, body.Achromatopsia #root .reader-section .search-form {
+  background-color: rgba(41, 41, 41, 0.8);
+}
+body.Achromatopsia #root .collections .search-form label, body.Achromatopsia #root .reader-section .search-form label {
+  color: #EBEBEB;
+}
+body.Achromatopsia #root .collections .search-form input, body.Achromatopsia #root .collections .search-form select, body.Achromatopsia #root .reader-section .search-form input, body.Achromatopsia #root .reader-section .search-form select {
+  color: #555555;
+}
+body.Achromatopsia #root .collections .search-form input:focus, body.Achromatopsia #root .collections .search-form select:focus, body.Achromatopsia #root .reader-section .search-form input:focus, body.Achromatopsia #root .reader-section .search-form select:focus {
+  outline: #292929 2px solid;
+}
+body.Achromatopsia #root .collections .search-form #search-submit, body.Achromatopsia #root .reader-section .search-form #search-submit {
+  color: #555555;
+}
+body.Achromatopsia #root .collections .search-form #search-submit:hover, body.Achromatopsia #root .reader-section .search-form #search-submit:hover {
+  background-color: #292929;
+  color: #EBEBEB;
+}
+body.Achromatopsia #root .collections .search-form #search-submit:hover i, body.Achromatopsia #root .reader-section .search-form #search-submit:hover i {
+  color: #EBEBEB;
+}
+body.Achromatopsia #root .collections .collection-section-wrap .collection-section .title, body.Achromatopsia #root .reader-section .collection-section-wrap .collection-section .title {
+  color: #EBEBEB;
+}
+body.Achromatopsia #root .collections .collection-section-wrap .collection-section .title::before, body.Achromatopsia #root .reader-section .collection-section-wrap .collection-section .title::before {
+  border: double 5px #EBEBEB;
+}
+body.Achromatopsia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta, body.Achromatopsia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta {
+  background-color: #4f4f4f;
+}
+body.Achromatopsia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body.Achromatopsia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
+  color: #EBEBEB;
+}
+body.Achromatopsia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body.Achromatopsia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
+  color: #292929;
+}
+
+body.Protanomaly #root .collections .search-form, body.Protanomaly #root .reader-section .search-form {
+  background-color: rgba(41, 41, 41, 0.8);
+}
+body.Protanomaly #root .collections .search-form label, body.Protanomaly #root .reader-section .search-form label {
+  color: #F0EBED;
+}
+body.Protanomaly #root .collections .search-form input, body.Protanomaly #root .collections .search-form select, body.Protanomaly #root .reader-section .search-form input, body.Protanomaly #root .reader-section .search-form select {
+  color: #4A5462;
+}
+body.Protanomaly #root .collections .search-form input:focus, body.Protanomaly #root .collections .search-form select:focus, body.Protanomaly #root .reader-section .search-form input:focus, body.Protanomaly #root .reader-section .search-form select:focus {
+  outline: #292929 2px solid;
+}
+body.Protanomaly #root .collections .search-form #search-submit, body.Protanomaly #root .reader-section .search-form #search-submit {
+  color: #4A5462;
+}
+body.Protanomaly #root .collections .search-form #search-submit:hover, body.Protanomaly #root .reader-section .search-form #search-submit:hover {
+  background-color: #292929;
+  color: #F0EBED;
+}
+body.Protanomaly #root .collections .search-form #search-submit:hover i, body.Protanomaly #root .reader-section .search-form #search-submit:hover i {
+  color: #F0EBED;
+}
+body.Protanomaly #root .collections .collection-section-wrap .collection-section .title, body.Protanomaly #root .reader-section .collection-section-wrap .collection-section .title {
+  color: #F0EBED;
+}
+body.Protanomaly #root .collections .collection-section-wrap .collection-section .title::before, body.Protanomaly #root .reader-section .collection-section-wrap .collection-section .title::before {
+  border: double 5px #F0EBED;
+}
+body.Protanomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta, body.Protanomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta {
+  background-color: #4f4f4f;
+}
+body.Protanomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body.Protanomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
+  color: #F0EBED;
+}
+body.Protanomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body.Protanomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
+  color: #292929;
+}
+
+body.Deuteranomaly #root .collections .search-form, body.Deuteranomaly #root .reader-section .search-form {
+  background-color: rgba(41, 41, 41, 0.8);
+}
+body.Deuteranomaly #root .collections .search-form label, body.Deuteranomaly #root .reader-section .search-form label {
+  color: #F0EAED;
+}
+body.Deuteranomaly #root .collections .search-form input, body.Deuteranomaly #root .collections .search-form select, body.Deuteranomaly #root .reader-section .search-form input, body.Deuteranomaly #root .reader-section .search-form select {
+  color: #4B5561;
+}
+body.Deuteranomaly #root .collections .search-form input:focus, body.Deuteranomaly #root .collections .search-form select:focus, body.Deuteranomaly #root .reader-section .search-form input:focus, body.Deuteranomaly #root .reader-section .search-form select:focus {
+  outline: #292929 2px solid;
+}
+body.Deuteranomaly #root .collections .search-form #search-submit, body.Deuteranomaly #root .reader-section .search-form #search-submit {
+  color: #4B5561;
+}
+body.Deuteranomaly #root .collections .search-form #search-submit:hover, body.Deuteranomaly #root .reader-section .search-form #search-submit:hover {
+  background-color: #292929;
+  color: #F0EAED;
+}
+body.Deuteranomaly #root .collections .search-form #search-submit:hover i, body.Deuteranomaly #root .reader-section .search-form #search-submit:hover i {
+  color: #F0EAED;
+}
+body.Deuteranomaly #root .collections .collection-section-wrap .collection-section .title, body.Deuteranomaly #root .reader-section .collection-section-wrap .collection-section .title {
+  color: #F0EAED;
+}
+body.Deuteranomaly #root .collections .collection-section-wrap .collection-section .title::before, body.Deuteranomaly #root .reader-section .collection-section-wrap .collection-section .title::before {
+  border: double 5px #F0EAED;
+}
+body.Deuteranomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta, body.Deuteranomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta {
+  background-color: #4f4f4f;
+}
+body.Deuteranomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body.Deuteranomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
+  color: #F0EAED;
+}
+body.Deuteranomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body.Deuteranomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
+  color: #292929;
+}
+
+body.Tritanomaly #root .collections .search-form, body.Tritanomaly #root .reader-section .search-form {
+  background-color: rgba(41, 41, 41, 0.8);
+}
+body.Tritanomaly #root .collections .search-form label, body.Tritanomaly #root .reader-section .search-form label {
+  color: #F2E9EC;
+}
+body.Tritanomaly #root .collections .search-form input, body.Tritanomaly #root .collections .search-form select, body.Tritanomaly #root .reader-section .search-form input, body.Tritanomaly #root .reader-section .search-form select {
+  color: #475D61;
+}
+body.Tritanomaly #root .collections .search-form input:focus, body.Tritanomaly #root .collections .search-form select:focus, body.Tritanomaly #root .reader-section .search-form input:focus, body.Tritanomaly #root .reader-section .search-form select:focus {
+  outline: #292929 2px solid;
+}
+body.Tritanomaly #root .collections .search-form #search-submit, body.Tritanomaly #root .reader-section .search-form #search-submit {
+  color: #475D61;
+}
+body.Tritanomaly #root .collections .search-form #search-submit:hover, body.Tritanomaly #root .reader-section .search-form #search-submit:hover {
+  background-color: #292929;
+  color: #F2E9EC;
+}
+body.Tritanomaly #root .collections .search-form #search-submit:hover i, body.Tritanomaly #root .reader-section .search-form #search-submit:hover i {
+  color: #F2E9EC;
+}
+body.Tritanomaly #root .collections .collection-section-wrap .collection-section .title, body.Tritanomaly #root .reader-section .collection-section-wrap .collection-section .title {
+  color: #F2E9EC;
+}
+body.Tritanomaly #root .collections .collection-section-wrap .collection-section .title::before, body.Tritanomaly #root .reader-section .collection-section-wrap .collection-section .title::before {
+  border: double 5px #F2E9EC;
+}
+body.Tritanomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta, body.Tritanomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta {
+  background-color: #4f4f4f;
+}
+body.Tritanomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body.Tritanomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
+  color: #F2E9EC;
+}
+body.Tritanomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body.Tritanomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
+  color: #292929;
+}
+
+body.Achromatomaly #root .collections .search-form, body.Achromatomaly #root .reader-section .search-form {
+  background-color: rgba(41, 41, 41, 0.8);
+}
+body.Achromatomaly #root .collections .search-form label, body.Achromatomaly #root .reader-section .search-form label {
+  color: #EFEAEC;
+}
+body.Achromatomaly #root .collections .search-form input, body.Achromatomaly #root .collections .search-form select, body.Achromatomaly #root .reader-section .search-form input, body.Achromatomaly #root .reader-section .search-form select {
+  color: #4F585B;
+}
+body.Achromatomaly #root .collections .search-form input:focus, body.Achromatomaly #root .collections .search-form select:focus, body.Achromatomaly #root .reader-section .search-form input:focus, body.Achromatomaly #root .reader-section .search-form select:focus {
+  outline: #292929 2px solid;
+}
+body.Achromatomaly #root .collections .search-form #search-submit, body.Achromatomaly #root .reader-section .search-form #search-submit {
+  color: #4F585B;
+}
+body.Achromatomaly #root .collections .search-form #search-submit:hover, body.Achromatomaly #root .reader-section .search-form #search-submit:hover {
+  background-color: #292929;
+  color: #EFEAEC;
+}
+body.Achromatomaly #root .collections .search-form #search-submit:hover i, body.Achromatomaly #root .reader-section .search-form #search-submit:hover i {
+  color: #EFEAEC;
+}
+body.Achromatomaly #root .collections .collection-section-wrap .collection-section .title, body.Achromatomaly #root .reader-section .collection-section-wrap .collection-section .title {
+  color: #EFEAEC;
+}
+body.Achromatomaly #root .collections .collection-section-wrap .collection-section .title::before, body.Achromatomaly #root .reader-section .collection-section-wrap .collection-section .title::before {
+  border: double 5px #EFEAEC;
+}
+body.Achromatomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta, body.Achromatomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta {
+  background-color: #4f4f4f;
+}
+body.Achromatomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body.Achromatomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
+  color: #EFEAEC;
+}
+body.Achromatomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body.Achromatomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
+  color: #292929;
+}
+
 @media (max-width: 1368px) {
   body #root .collections .collection-section-wrap .collection-section .title {
     font-size: 34px;
@@ -1185,12 +2400,12 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
   }
   body #root .collections .search-form label, body #root .reader-section .search-form label {
     font-size: 31.2px;
-    color: #F3E8EE;
+    color: #EFEAEC;
     padding-left: 26px;
   }
   body #root .collections .search-form input, body #root .collections .search-form select, body #root .reader-section .search-form input, body #root .reader-section .search-form select {
     font-size: 31.2px;
-    color: #475B63;
+    color: #4F585B;
     padding: 5.2px 26px;
     margin: 0 26px 26px 0;
   }
@@ -1205,7 +2420,7 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
     font-size: 31.2px;
     padding: 7.8px 0;
     margin: 52px 0;
-    color: #475B63;
+    color: #4F585B;
     position: relative;
     right: -50%;
     outline: none;
@@ -1213,10 +2428,10 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
   }
   body #root .collections .search-form #search-submit:hover, body #root .reader-section .search-form #search-submit:hover {
     background-color: #292929;
-    color: #F3E8EE;
+    color: #EFEAEC;
   }
   body #root .collections .search-form #search-submit:hover i, body #root .reader-section .search-form #search-submit:hover i {
-    color: #F3E8EE;
+    color: #EFEAEC;
   }
   body #root .collections .search-form #search-submit i, body #root .reader-section .search-form #search-submit i {
     transform: scaleX(-1);
@@ -1241,7 +2456,7 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
     width: 45%;
     font-size: 42.9px;
     color: white;
-    border-bottom: double 5px #F3E8EE;
+    border-bottom: double 5px #EFEAEC;
     padding: 3.9px 156px;
     padding-right: 0;
     margin-left: 468px;
@@ -1254,7 +2469,7 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
     position: relative;
     left: -182px;
     top: 35.1px;
-    border: double 5px #F3E8EE;
+    border: double 5px #EFEAEC;
   }
   body #root .collections .collection-section-wrap .collection-section .book-cards-wrap, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap {
     display: flex;
@@ -1288,7 +2503,7 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
   }
   body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
     font-size: 19.5px;
-    color: #F3E8EE;
+    color: #EFEAEC;
     font-style: italic;
   }
   body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-title, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-title {
@@ -1362,11 +2577,6 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
   border-radius: 3vw;
   position: relative;
 }
-#root .e-reader-section::before {
-  content: "";
-  display: inline-block;
-  position: absolute;
-}
 #root .e-reader-section .book-controls {
   display: flex;
   justify-content: flex-end;
@@ -1381,26 +2591,30 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
   border: none;
   padding: 0 15px;
 }
+#root .e-reader-section .book-controls .btn#dark-mode {
+  border-radius: 0.4vw;
+}
 #root .e-reader-section .book-controls .btn i {
-  color: #F3E8EE;
+  color: #EFEAEC;
   font-size: 25px;
 }
 #root .e-reader-section .book-controls .btn:hover {
-  background-color: #F3E8EE;
-  color: #475B63;
+  background-color: #EFEAEC;
+  color: #4F585B;
 }
 #root .e-reader-section .book-controls .btn:hover i {
-  background-color: #F3E8EE;
-  color: #475B63;
+  background-color: #EFEAEC;
+  color: #4F585B;
 }
 #root .e-reader-section .book-controls > * {
   margin-left: 2%;
 }
 #root .e-reader-section .read-body-wrap {
-  background-color: #F3E8EE;
+  background-color: #EFEAEC;
   color: #292929;
 }
 #root .e-reader-section .read-body-wrap .content-wrap {
+  color: inherit;
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
@@ -1426,26 +2640,97 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
   background: linear-gradient(0deg, rgba(41, 41, 41, 0.825) 0%, rgba(1, 0, 0, 0) 100%);
 }
 #root .e-reader-section .read-body-wrap .content-wrap #content {
+  color: inherit;
   height: 70vh;
-  width: 90%;
+  width: 92.5%;
   overflow: hidden;
+  margin-left: 1vw;
+  padding: 0.25vh 0.5vw;
+  cursor: grab;
 }
 #root .e-reader-section .read-body-wrap .content-wrap #content .chapter {
+  color: inherit;
   font-size: inherit;
   font-family: inherit;
 }
 #root .e-reader-section .read-body-wrap .content-wrap #content .chapter > * {
+  color: inherit;
   font-size: inherit;
   font-family: inherit;
+  line-height: 1.5;
+  user-select: none;
 }
 #root .e-reader-section .read-body-wrap .content-wrap #content .chapter > * > * {
+  user-select: none;
+  color: inherit;
   font-size: inherit;
   font-family: inherit;
 }
-#root .e-reader-section .read-body-wrap .content-wrap .nav-btn {
-  margin: auto;
-  height: 25%;
-  font-size: 4vw;
+#root .e-reader-section .read-body-wrap .content-wrap #content .chapter > h2 {
+  font-size: 1.35em;
+  width: 50%;
+  margin: 2.5% auto 1.5% auto;
+  padding-bottom: 0.75%;
+  border-bottom: 0.2em double black;
+  text-align: center;
+}
+#root .e-reader-section .read-body-wrap .content-wrap .page-nav-btns-wrap {
+  margin-right: 1vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+#root .e-reader-section .read-body-wrap .content-wrap .page-nav-btns-wrap .nav-btn {
+  margin: 2vh 0;
+  height: 10%;
+  padding: 0 0.9vw;
+  background-color: #292929;
+}
+#root .e-reader-section .read-body-wrap .content-wrap .page-nav-btns-wrap .nav-btn i {
+  color: #EFEAEC;
+  font-size: 2vw;
+}
+#root .e-reader-section .read-body-wrap.dark-mode-reader {
+  background-color: #292929;
+  color: rgb(198, 198, 198);
+}
+#root .e-reader-section.expanded {
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  height: 94.5vh;
+}
+#root .e-reader-section.expanded .read-body-wrap {
+  height: 100%;
+}
+#root .e-reader-section.expanded .read-body-wrap .content-wrap {
+  height: 100%;
+}
+#root .e-reader-section.expanded .read-body-wrap .content-wrap #content {
+  height: 100%;
+}
+
+@media (max-width: 725px) {
+  #root .e-reader-section .book-controls select {
+    outline-color: #292929;
+    font-size: 16px;
+  }
+  #root .e-reader-section .book-controls .btn {
+    padding: 0 8px;
+  }
+  #root .e-reader-section .book-controls .btn i {
+    font-size: 16px;
+  }
+}
+@media (pointer: coarse) {
+  #root .e-reader-section .read-body-wrap .content-wrap #content {
+    overflow: scroll;
+  }
 }
 
 /*# sourceMappingURL=unified.css.map */

@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 
@@ -5,92 +6,67 @@ import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'html-react-parser';
 
 function Reader({ book }) {
-  // console.log(book);
-
-  const bookSchema = {
-    title: [],
-    author: [],
-    chapters: [],
-    text: [],
-  };
-
   const [font, setFont] = useState('Times');
   const [fontSize, setFontSize] = useState(24);
-  const [bookContent, setBookContent] = useState(bookSchema);
+  const [bookContent, setBookContent] = useState([]);
   const [currentPage, setCurrentPage] = useState(0);
 
-  const getChapter = (node) => {
-    // Check node type.
-    if (Array.isArray(node)) {
-      // Search through node array.
-      for (let i = 0; i < node.length; i += 1) {
-        // Find child anchor
-        const child = node[i].props.children;
-        if (child !== null && child.type === 'a') {
-          return child;
-        }
+  // Need to check each child node for book content.
+  // Ignore things like br tags, carriage returns, tabs, etc.
+  const getContent = (node) => {
+    if (typeof node.props.children !== 'string') {
+      if (node.props.className) {
+        console.log(node.props.className);
       }
-    } else {
-      // Otherwise, node is an object.
-      // Find child anchor.
-      const child = node.props.children;
-      if (child !== null && child.type === 'a') {
-        return child;
+
+      if (Array.isArray(node.props.children)) {
+        // console.log(node.props.children);
+        const nodesFound = [];
+        for (let i = 0; i < node.props.children.length; i += 1) {
+          if (typeof node.props.children[i] !== 'string') {
+            console.log('F', node.props.children[i]);
+            nodesFound.push(node.props.children[i]);
+          }
+        }
+        return nodesFound;
       }
     }
-    return null;
   };
 
+  // Get a new book HTML string and run it through a parser to get it's contents.
+  // NOTE: NOT EVERY BOOK IS FORMATTED THE SAME!!!
   useEffect(() => {
-    if (book) {
+    // If there is a new book,
+    const newBookContent = [];
+
+    if (book.length > 0) {
       const rawDiv = ReactHtmlParser(book);
-      // console.log(rawDiv.props)
+      // Do a first pass to get the body's children.
       let rawContent;
       try {
         rawContent = rawDiv.props.children;
-        console.log(rawContent);
       } catch {
         console.log('parsing error');
       }
-
-      const newBook = {
-        title: [],
-        author: [],
-        chapters: [],
-        text: [],
-      };
-
       rawContent.forEach((node) => {
-        // First filter carriage returns and breaks,
         if (typeof node !== 'string') {
-          // Get all the chapters
-          if (node.type === 'table' && node.props.className !== 'c7') {
-            const tempNode = node.props.children.props.children;
-            console.log(node.props.children.props.children.props.children);
-
-            // tempNode.forEach((chapter) => {
-            //   const chapterNode = getChapter(chapter.props.children);
-            //   if (chapterNode) {
-            //     newBook.chapters.push(chapterNode);
-            //   }
-            // });
-
-          } else if (node.type === 'p' || node.type === 'h1' || node.type === 'h2' || node.type === 'h3') {
-            // check if node is author or title also
+          if (node.type === 'div') {
+            // console.log('DIV: ', node);
+            const newNode = getContent(node);
+            console.log(newNode);
+            newBookContent.push(newNode);
+          } else if (node.type !== 'blockquote' && node.type !== 'hr') {
             // console.log(node);
-            if (node.props.children !== 'Contents') {
-              newBook.text.push(node);
-            }
+            newBookContent.push(node);
           }
-          // else {
-          //   console.log(node.props.className);
-          // }
         }
       });
+      console.log(newBookContent);
+    }
 
-      setBookContent(newBook);
-      setFontSize((size) => Number(size));
-  }
+    // Update states
+    // setFontSize((size) => Number(size));
+    setBookContent(newBookContent);
   }, [book]);
 
   const increaseFont = (event) => {
@@ -103,69 +79,147 @@ function Reader({ book }) {
 
   const updateFont = (event) => {
     const { value } = event.target;
-    console.log(value);
+    // console.log(value);
     setFont(value);
   };
 
   const pageForward = () => {
     const contentDiv = document.getElementById('content');
-    contentDiv.scrollTop = currentPage + 250;
-    console.log(contentDiv.scrollTop);
-    setCurrentPage((page) => page + 250);
+    contentDiv.style.scrollBehavior = 'smooth';
+    contentDiv.scrollTop = currentPage + 500;
+    setCurrentPage((page) => page + 500);
   };
 
   const pageBackward = () => {
     const contentDiv = document.getElementById('content');
+    contentDiv.style.scrollBehavior = 'smooth';
     if (contentDiv.scrollTop !== 0) {
       contentDiv.scrollTop = currentPage - 500;
     }
     if (contentDiv.scrollTop <= 0) {
       contentDiv.scrollTop = 0;
     }
-    console.log(contentDiv.scrollTop);
     setCurrentPage((page) => page - 500);
   };
 
   const updateChapter = (event) => {
-    console.log(event.target.value);
+    /* You can assign 'data-' attribute to each chapter element and read it:
+     Ex: <p data-id='3'></p>, <h3 data-chapter='Section Zero'></h3>
+     -> document.getAttribute('data-chapter'); */
+
     const { value } = event.target;
     const chapterDiv = document.getElementById(value.slice(1));
 
     const contentDiv = document.getElementById('content');
 
-    console.log(value.slice(1), chapterDiv.scrollTop, contentDiv.scrollTop);
+    // console.log(value.slice(1), chapterDiv.scrollTop, contentDiv.scrollTop);
     chapterDiv.scrollIntoView();
     setCurrentPage(contentDiv.scrollTop);
+  };
+
+  // Scrolling behavior of a smartphone
+  let pos = { origin: null, clientOrigin: null };
+
+  const grabMouseMove = (event) => {
+    const contentDiv = document.getElementById('content');
+    const { clientY } = event;
+    const { origin, clientOrigin } = pos;
+
+    const dy = clientY - clientOrigin;
+    contentDiv.scrollTop = origin - dy * 1.75;
+    // console.log(contentDiv.scrollTop);
+    setCurrentPage(origin - dy * 1.75);
+  };
+
+  const grabMouseUp = (event) => {
+    // if (event.target?.classList?.contains('.nav-btn')) {
+    //   return;
+    // }
+    const contentDiv = document.getElementById('content');
+    contentDiv.style.cursor = 'grab';
+    contentDiv.removeEventListener('mousemove', grabMouseMove);
+    contentDiv.removeEventListener('mouseup', grabMouseUp);
+  };
+
+  const grabMouseDown = (event) => {
+    const contentDiv = document.getElementById('content');
+    contentDiv.style.scrollBehavior = 'initial';
+    contentDiv.style.cursor = 'grabbing';
+    // How far the mouse has been moved
+    pos = { origin: contentDiv.scrollTop, clientOrigin: event.clientY };
+    contentDiv.addEventListener('mousemove', grabMouseMove);
+    contentDiv.addEventListener('mouseup', grabMouseUp);
   };
 
   // Expanded view
   const toggleExpandView = (event) => {
     event.preventDefault();
     const eReader = document.querySelector('.e-reader-section');
+    const headers = document.querySelectorAll('.header-moving, .header-static');
+
     if (eReader?.classList?.contains('expanded')) {
       eReader?.classList?.remove('expanded');
-      console.log('here');
+      headers.forEach((header) => {
+        // eslint-disable-next-line no-param-reassign
+        header.style.display = 'flex';
+      });
     } else {
       eReader?.classList?.add('expanded');
+      headers.forEach((header) => {
+        // eslint-disable-next-line no-param-reassign
+        header.style.display = 'none';
+      });
     }
+  };
+
+  // Dark mode -> TODO: Change to relevant state
+  const toggleDarkMode = (event) => {
+    event.preventDefault();
+    if (document.querySelector('.dark-mode-reader') !== null) {
+      document.querySelector('.read-body-wrap')?.classList?.remove('dark-mode-reader');
+    } else {
+      document.querySelector('.read-body-wrap')?.classList?.add('dark-mode-reader');
+    }
+  };
+
+  // Used to assign a unique line to each element in the reader body
+  // for reader's session progress retention
+  let index = -1;
+  const assignLineIndex = (node) => {
+    index += 1;
+    const lastIndex = index;
+    let children = [];
+    if (typeof node !== 'string') {
+      if (Array.isArray(node?.props?.children)) {
+        const lastIndexInner = index;
+        children = node?.props?.children.map((childNode) => (assignLineIndex(childNode)));
+        return React.cloneElement(node, { children, 'data-line': lastIndexInner });
+      }
+      return React.cloneElement(node, { 'data-line': lastIndex });
+    }
+    return node;
   };
 
   return (
     <section className="e-reader-section">
+
       <div className="book-controls">
+        <button id="dark-mode" className="btn" type="button" onClick={toggleDarkMode}>
+          <i className="fa-solid fa-moon" />
+        </button>
         <select onChange={updateFont}>
           {['Baskerville', 'Bookerly', 'Georgia', 'Helvetica', 'Futura', 'Arial', 'Courier', 'Times'].map((fontOption, i) => (
             <option value={fontOption.toLowerCase()} key={i}>{fontOption}</option>))}
         </select>
         <select onChange={updateChapter}>
-          {bookContent.chapters
+          {/* {bookContent.chapters
             ? bookContent.chapters.map((chapter, i) => {
               // console.log(chapter);
               const anchorLink = chapter.props.href;
               const optionContent = chapter.props.children;
               return <option key={i} value={anchorLink}>{optionContent}</option>;
             })
-            : null}
+            : null} */}
         </select>
         <button id="font-size-plus" className="btn" type="button" onClick={decreaseFont}>
           <i className="fa-solid fa-minus" />
@@ -177,9 +231,9 @@ function Reader({ book }) {
           <i className="fa-solid fa-expand" />
         </button>
       </div>
+
       <div className="read-body-wrap">
-        <div className="content-wrap">
-          <button id="page-prev-btn" className="nav-btn" type="button" onClick={pageBackward}>{'<'}</button>
+        <div className="content-wrap" onMouseDown={grabMouseDown}>
           <div
             id="content"
             style={{
@@ -187,9 +241,24 @@ function Reader({ book }) {
               fontFamily: `${font}`,
             }}
           >
-            {bookContent.text}
+            {/* {bookContent.text.map((node) => {
+              const uniqueNode = assignLineIndex(node);
+              return uniqueNode;
+            })} */}
+            {/* {bookContent.map((node) => {
+              const uniqueNode = assignLineIndex(node);
+              return uniqueNode;
+            })} */}
+            {bookContent}
           </div>
-          <button id="page-next-btn" className="nav-btn" type="button" onClick={pageForward}>{'>'}</button>
+          <div className="page-nav-btns-wrap">
+            <button id="page-prev-btn" className="nav-btn" type="button" onClick={pageBackward}>
+              <i className="fa-solid fa-angle-up" />
+            </button>
+            <button id="page-next-btn" className="nav-btn" type="button" onClick={pageForward}>
+              <i className="fa-solid fa-angle-down" />
+            </button>
+          </div>
         </div>
       </div>
     </section>
