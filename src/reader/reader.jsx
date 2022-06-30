@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState, useEffect } from 'react';
@@ -16,7 +17,7 @@ function Reader({ book }) {
   const [font, setFont] = useState('Times');
   const [fontSize, setFontSize] = useState(24);
   const [bookContent, setBookContent] = useState(bookSchema);
-  const [currentPage, setCurrentPage] = useState(0);
+  const [currentPage, setCurrentPage] = useState(3874);
 
   useEffect(() => {
     const rawDiv = ReactHtmlParser(book).props.children[1].props.children;
@@ -38,12 +39,11 @@ function Reader({ book }) {
           newBook.author.push(node);
         } else if (node.type === 'table') {
           // the chapters are in the table tag,
-          console.log('table', node);
-          console.log('here', node);
+          // console.log('table', node);
           // node.props.children.props.children.forEach((child) => {
           //   newBook.chapters.push(child.props.children.props.children);
           // });
-          console.log(newBook.chapters);
+          // console.log(newBook.chapters);
         } else if (node.props && node.props.className === 'chapter') {
           // and thhe text is split up into divs with the chapter class name.
           newBook.text.push(node);
@@ -64,30 +64,34 @@ function Reader({ book }) {
 
   const updateFont = (event) => {
     const { value } = event.target;
-    console.log(value);
+    // console.log(value);
     setFont(value);
   };
 
   const pageForward = () => {
     const contentDiv = document.getElementById('content');
-    contentDiv.scrollTop = currentPage + 250;
-    console.log(contentDiv.scrollTop);
-    setCurrentPage((page) => page + 250);
+    contentDiv.style.scrollBehavior = 'smooth';
+    contentDiv.scrollTop = currentPage + 500;
+    setCurrentPage((page) => page + 500);
   };
 
   const pageBackward = () => {
     const contentDiv = document.getElementById('content');
+    contentDiv.style.scrollBehavior = 'smooth';
     if (contentDiv.scrollTop !== 0) {
       contentDiv.scrollTop = currentPage - 500;
     }
     if (contentDiv.scrollTop <= 0) {
       contentDiv.scrollTop = 0;
     }
-    console.log(contentDiv.scrollTop);
     setCurrentPage((page) => page - 500);
   };
 
   const updateChapter = (event) => {
+    /* You can assign 'data-' attribute to each chapter element and read it:
+     Ex: <p data-id='3'></p>, <h3 data-chapter='Section Zero'></h3>
+     -> document.getAttribute('data-chapter'); */
+
     const { value } = event.target;
     const chapterDiv = document.getElementById(value.slice(1));
 
@@ -98,16 +102,74 @@ function Reader({ book }) {
     setCurrentPage(contentDiv.scrollTop);
   };
 
+  // Scrolling behavior of a smartphone
+  let pos = { origin: null, clientOrigin: null };
+
+  const grabMouseMove = (event) => {
+    const contentDiv = document.getElementById('content');
+    const { clientY } = event;
+    const { origin, clientOrigin } = pos;
+
+    const dy = clientY - clientOrigin;
+    contentDiv.scrollTop = origin - dy * 1.75;
+    console.log(contentDiv.scrollTop);
+    setCurrentPage(origin - dy * 1.75);
+  };
+
+  const grabMouseUp = () => {
+    const contentDiv = document.getElementById('content');
+    contentDiv.style.cursor = 'grab';
+    contentDiv.removeEventListener('mousemove', grabMouseMove);
+    contentDiv.removeEventListener('mouseup', grabMouseUp);
+  };
+
+  const grabMouseDown = (event) => {
+    const contentDiv = document.getElementById('content');
+    contentDiv.style.scrollBehavior = 'initial';
+    contentDiv.style.cursor = 'grabbing';
+    // How far the mouse has been moved
+    pos = { origin: contentDiv.scrollTop, clientOrigin: event.clientY };
+    contentDiv.addEventListener('mousemove', grabMouseMove);
+    contentDiv.addEventListener('mouseup', grabMouseUp);
+  };
+
   // Expanded view
   const toggleExpandView = (event) => {
     event.preventDefault();
     const eReader = document.querySelector('.e-reader-section');
+    const headers = document.querySelectorAll('.header-moving, .header-static');
+
     if (eReader?.classList?.contains('expanded')) {
       eReader?.classList?.remove('expanded');
-      console.log('here');
+      headers.forEach((header) => {
+        // eslint-disable-next-line no-param-reassign
+        header.style.display = 'flex';
+      });
     } else {
       eReader?.classList?.add('expanded');
+      headers.forEach((header) => {
+        // eslint-disable-next-line no-param-reassign
+        header.style.display = 'none';
+      });
     }
+  };
+
+  // Used to assign a unique line to each element in the reader body
+  // for reading session progress retention
+  let index = -1;
+  const assignLineIndex = (node) => {
+    index += 1;
+    const lastIndex = index;
+    let children = [];
+    if (typeof node !== 'string') {
+      if (Array.isArray(node?.props?.children)) {
+        const lastIndexInner = index;
+        children = node?.props?.children.map((childNode) => (assignLineIndex(childNode)));
+        return React.cloneElement(node, { children, 'data-line': lastIndexInner });
+      }
+      return React.cloneElement(node, { 'data-line': lastIndex });
+    }
+    return node;
   };
 
   return (
@@ -135,8 +197,7 @@ function Reader({ book }) {
         </button>
       </div>
       <div className="read-body-wrap">
-        <div className="content-wrap">
-          <button id="page-prev-btn" className="nav-btn" type="button" onClick={pageBackward}>{'<'}</button>
+        <div className="content-wrap" onMouseDown={grabMouseDown}>
           <div
             id="content"
             style={{
@@ -144,9 +205,21 @@ function Reader({ book }) {
               fontFamily: `${font}`,
             }}
           >
-            {bookContent.text}
+            {bookContent.text.map((node) => {
+              // const lineUpdated = React.cloneElement(line, { 'data-row': i, key: i });
+              // console.log(lineUpdated);
+              const uniqueNode = assignLineIndex(node);
+              return uniqueNode;
+            })}
           </div>
-          <button id="page-next-btn" className="nav-btn" type="button" onClick={pageForward}>{'>'}</button>
+          <div className="page-nav-btns-wrap">
+            <button id="page-prev-btn" className="nav-btn" type="button" onClick={pageBackward}>
+              <i className="fa-solid fa-angle-up" />
+            </button>
+            <button id="page-next-btn" className="nav-btn" type="button" onClick={pageForward}>
+              <i className="fa-solid fa-angle-down" />
+            </button>
+          </div>
         </div>
       </div>
     </section>

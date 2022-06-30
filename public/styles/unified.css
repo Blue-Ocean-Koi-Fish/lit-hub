@@ -1427,8 +1427,10 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
 }
 #root .e-reader-section .read-body-wrap .content-wrap #content {
   height: 70vh;
-  width: 90%;
+  width: 92.5%;
   overflow: hidden;
+  margin-left: 1vw;
+  cursor: grab;
 }
 #root .e-reader-section .read-body-wrap .content-wrap #content .chapter {
   font-size: inherit;
@@ -1437,15 +1439,67 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
 #root .e-reader-section .read-body-wrap .content-wrap #content .chapter > * {
   font-size: inherit;
   font-family: inherit;
+  line-height: 1.5;
+  user-select: none;
 }
 #root .e-reader-section .read-body-wrap .content-wrap #content .chapter > * > * {
+  user-select: none;
   font-size: inherit;
   font-family: inherit;
 }
-#root .e-reader-section .read-body-wrap .content-wrap .nav-btn {
-  margin: auto;
-  height: 25%;
-  font-size: 4vw;
+#root .e-reader-section .read-body-wrap .content-wrap .page-nav-btns-wrap {
+  margin-right: 1vw;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-items: center;
+}
+#root .e-reader-section .read-body-wrap .content-wrap .page-nav-btns-wrap .nav-btn {
+  margin: 2vh 0;
+  height: 10%;
+  padding: 0 0.9vw;
+  background-color: #292929;
+}
+#root .e-reader-section .read-body-wrap .content-wrap .page-nav-btns-wrap .nav-btn i {
+  color: #F3E8EE;
+  font-size: 2vw;
+}
+#root .e-reader-section.expanded {
+  margin: 0;
+  padding: 0;
+  box-shadow: none;
+  border: none;
+  border-radius: 0;
+  width: 100%;
+  height: 99vh;
+}
+#root .e-reader-section.expanded .read-body-wrap {
+  height: 100%;
+}
+#root .e-reader-section.expanded .read-body-wrap .content-wrap {
+  height: 100%;
+}
+#root .e-reader-section.expanded .read-body-wrap .content-wrap #content {
+  height: 100%;
+}
+
+@media (max-width: 725px) {
+  #root .e-reader-section .book-controls select {
+    outline-color: #292929;
+    font-size: 16px;
+  }
+  #root .e-reader-section .book-controls .btn {
+    padding: 0 8px;
+  }
+  #root .e-reader-section .book-controls .btn i {
+    font-size: 16px;
+  }
+}
+@media (pointer: coarse) {
+  #root .e-reader-section .read-body-wrap .content-wrap #content {
+    overflow: scroll;
+  }
 }
 
 /*# sourceMappingURL=unified.css.map */

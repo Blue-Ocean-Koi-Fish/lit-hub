@@ -7,7 +7,7 @@ import SearchSection from './search/searchsection';
 import { getCurrentBook } from '../browser_db/books';
 
 import Collection from './collection';
-// import Reader from "./reader";
+import Reader from "./reader/reader";
 
 import '../public/styles/unified.css';
 import testBook from '../testData/sample-6';
@@ -44,7 +44,7 @@ function App() {
       <>
         <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
 
-        <section className="collections">
+        {/* <section className="collections">
           <SearchSection
             setCount={setCount}
             searchTerms={searchTerms}
@@ -71,9 +71,10 @@ function App() {
             bookList={bookList}
             showBook={showBook}
           />
-        ) : null}
+        ) : null} */}
 
         {/* {showReader ? <Reader book={currentBook} /> : null} */}
+        {<Reader book={testBook} /> || null}
       </>
     ) : (
       <Login setLoggedIn={setLoggedIn} />

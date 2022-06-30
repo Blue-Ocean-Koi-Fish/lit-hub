@@ -20,7 +20,7 @@ function Header({ setShowSettings, setShowSearchResults }) {
         </nav>
 
         {/* Mobile view settings button */}
-        <button className="btn-settings btn-round" type="button" onClick={() => setShowSettings((s) => !s)}>
+        <button className="btn-settings btn-settings-mobile btn-round" type="button" onClick={() => setShowSettings((s) => !s)}>
           <i className="fa-solid fa-gear icon" />
         </button>
       </header>
