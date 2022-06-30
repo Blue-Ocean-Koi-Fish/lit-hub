@@ -51,7 +51,7 @@ function App() {
             setShowSearchResults={setShowSearchResults}
             setBookList={setBookList}
           />
-          <Collection />
+          <Collection currentBook={currentBook} />
           {showSettings ? (
             <Settings
               settings={settings}

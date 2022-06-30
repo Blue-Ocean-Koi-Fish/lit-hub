@@ -24,6 +24,17 @@ const getCurrentBook = async (bookId) => {
   return book[0];
 };
 
-// remove book
+const getAllBooks = async () => {
+  const collection = await booksDb.books.toArray();
+  return collection;
+};
 
-module.exports = { addBook, getCurrentBook };
+// remove book
+const removeBook = (bookId) => {
+  console.log('IS IT HERE');
+  booksDb.books.delete(bookId);
+};
+
+module.exports = {
+  addBook, getCurrentBook, removeBook, getAllBooks,
+};

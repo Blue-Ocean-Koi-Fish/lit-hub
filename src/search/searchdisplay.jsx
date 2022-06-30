@@ -45,6 +45,10 @@ const SearchDisplay = function SearchDisplay({
               className="toggle_status_btn"
               onClick={(e) => {
                 e.preventDefault();
+                // axios.get(`/txt?url=${book.formats['text/html']}`)
+                //   .then((res) => (
+                //     addBook(book.title, res.data, book, book.id)
+                //   ))
                 axios.get(`/txt?url=${book.formats['text/html']}`)
                   .then((res) => (
                     addBook(book.title, res.data, book, book.id)
