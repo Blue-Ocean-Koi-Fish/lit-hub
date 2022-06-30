@@ -34,21 +34,21 @@ function App() {
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showReader, setShowReader] = useState(true);
+  const [currentBook, setCurrentBook] = useState('');
+  const [username, setUsername] = useState('');
 
   useEffect(() => {
     if (document.cookie) {
-      axios.post('http://localhost:8080/verifyToken', { token: document.cookie })
+      axios.post('/verifyToken', { token: document.cookie })
         .then((res) => {
-          console.log(res);
           setLoggedIn(true);
+          setUsername(res.data);
         })
         .catch((err) => {
           console.log(err);
         });
     }
   }, []);
-  const [currentBook, setCurrentBook] = useState('');
-  const [username, setUsername] = useState('');
 
   const showBook = (bookId) => {
     getCurrentBook(bookId)
