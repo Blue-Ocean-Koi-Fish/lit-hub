@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
-const axios = require('axios');
+function Login({ setLoggedIn, username, setUsername }) {
 
-function Login({ setLoggedIn }) {
-  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
   const loginUser = () => {
