@@ -88,9 +88,9 @@ app.get('/collection/:username', (req, res) => {
 
 app.post('/frontEndLogin', (req, res) => {
   const { username, password } = req.body;
-  axios.post(`${backendURL}/userLogin`, { username, password })
-    .then(() => {
-      res.sendStatus(201);
+  axios.post(`${backendURL}/loginUser`, { username, password })
+    .then((response) => {
+      res.status(201).json(response.data);
     })
     .catch((err) => {
       console.log(err);
@@ -100,21 +100,20 @@ app.post('/frontEndLogin', (req, res) => {
 
 app.post('/frontEndRegister', (req, res) => {
   const { username, password } = req.body;
-  axios.post(`${backendURL}/newUser`, { username, password })
+  axios.post(`${backendURL}/registerUser`, { username, password })
     .then(() => {
       res.sendStatus(201);
     })
     .catch((err) => {
-      console.log(err);
       res.sendStatus(500);
     });
 });
 
 app.post('/verifyToken', (req, res) => {
-  const token = req.body.token.slice(5, req.body.token.length);
-  axios.post(`${backendURL}/verifyToken`, { token })
-    .then((response) => {
-      //console.log(response.data);
+  axios.post(`${backendURL}/verifyToken`, {
+    headers: req.headers,
+  })
+    .then(() => {
       res.sendStatus(200);
     })
     .catch((err) => {
