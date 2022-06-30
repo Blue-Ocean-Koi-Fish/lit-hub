@@ -3,7 +3,7 @@ import axios from 'axios';
 import { addBook } from '../../browser_db/books';
 
 const SearchDisplay = function SearchDisplay({
-  bookList, count, searchTerms, setSearchTerms, setUserBooks, showBook,
+  bookList, count, searchTerms, setSearchTerms, setUserBooks, showBook, username,
 }) {
   const handleRemove = (k) => {
     const newSearchTerms = { ...searchTerms };
@@ -45,14 +45,19 @@ const SearchDisplay = function SearchDisplay({
               className="toggle_status_btn"
               onClick={(e) => {
                 e.preventDefault();
-                axios.get(`/txt?url=${book.formats['text/html']}`)
-                  .then((res) => (
-                    addBook(book.title, res.data, book, book.id)
-                  ))
-                  .then(() => {
-                    showBook(book.id);
-                  });
-                setUserBooks((books) => [...books, book.id]);
+                axios.post('/addToCollection', {
+                  username,
+                  bookId: book.id,
+                }).then(() => (
+                  axios.get(`/txt?url=${book.formats['text/html']}`)
+                    .then((res) => (
+                      addBook(book.title, res.data, book, book.id)
+                    ))
+                    .then(() => {
+                      showBook(book.id);
+                      setUserBooks((books) => [...books, book.id]);
+                    })
+                ));
               }}
             >
               Add/Remove

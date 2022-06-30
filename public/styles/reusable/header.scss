@@ -109,9 +109,6 @@ $lightGray: #BCBCBC;
           display: none;
         }
       }
-      // + div {
-      //   padding-top: $headerFontSize * 8.5;
-      // }
     }
     .header-static {
       height: $headerFontSize * 6.5;
@@ -119,7 +116,7 @@ $lightGray: #BCBCBC;
     }
   }
 
-  @media (max-width: 1368px) {
+  @media (max-width: 1368px) and (min-height:1100px) {
     body {
       #root {
         .header-moving {
@@ -127,13 +124,58 @@ $lightGray: #BCBCBC;
           .nav {
             margin-top: $headerFontSize * 1.5;
           }
-
-          // + div {
-          //   padding-top: $headerFontSize * 12.5;
-          // }
         }
         .header-static {
-          height: $headerFontSize * 12.5;
+          height: $headerFontSize * 7.5;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1368px) and (max-height:1099px) {
+    body {
+      #root {
+        .header-moving {
+          padding: 0 15vw 0 5vw;
+          height: $headerFontSize * 7.5;
+          flex-direction: row;
+          justify-content: center;
+          .nav {
+            margin-top: $headerFontSize * 1.5;
+
+            .btn {
+              display: none;
+            }
+          }
+
+          .btn-settings {
+            &.btn-round {
+              display: initial;
+              position: fixed;
+              bottom: $headerFontSize * 2.5;
+              right: $headerFontSize * 2.5;
+              padding: $headerFontSize * 0.55;
+              background: $button;
+              border-radius: 50%;
+              border: none;
+              cursor: pointer;
+
+              &:hover {
+                background-color: $light;
+                i {
+                  color: $button;
+                }
+              }
+
+              i {
+                color: $light;
+                font-size: $headerFontSize * 1.5;
+              }
+            }
+          }
+        }
+        .header-static {
+          height: $headerFontSize * 7.5;
         }
       }
     }
@@ -186,6 +228,18 @@ $lightGray: #BCBCBC;
               &:hover {
                 background-color: $lightGray;
                 color: $button;
+              }
+            }
+          }
+
+          .btn-settings {
+            &.btn-round {
+              background: $button;
+              &:hover {
+                background-color: $light;
+                i {
+                  color: $button;
+                }
               }
             }
           }

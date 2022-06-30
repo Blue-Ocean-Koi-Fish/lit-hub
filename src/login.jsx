@@ -1,11 +1,32 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
+import axios from 'axios';
 
-function Login({ setLoggedIn }) {
-  const [username, setUsername] = useState('');
+function Login({ setLoggedIn, username, setUsername }) {
+
   const [password, setPassword] = useState('');
 
-  const { t, i18n } = useTranslation();
+  const { t } = useTranslation();
+  const loginUser = () => {
+    axios.post('http://localhost:8080/loginUser', { username, password })
+      .then((res) => {
+        document.cookie = `s_id=${res.data.token}`;
+        setLoggedIn(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const registerUser = () => {
+    axios.post('http://localhost:8080/registerUser', { username, password })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <section className="login-section">
@@ -57,7 +78,10 @@ function Login({ setLoggedIn }) {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="button" id="login-submit" onClick={() => setLoggedIn(true)}>{t('login.login')}</button>
+          <div className="authentication-btns">
+            <button type="button" id="login-submit" onClick={() => loginUser()}>{t('login.login')}</button>
+            <button type="button" id="register-submit" onClick={() => registerUser()}>{t('login.register')}</button>
+          </div>
         </form>
       </div>
     </section>

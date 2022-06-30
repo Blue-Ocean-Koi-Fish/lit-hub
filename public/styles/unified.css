@@ -184,7 +184,7 @@ body.Achromatomaly #root {
   margin-bottom: 3vh;
 }
 
-@media (max-width: 1368px) {
+@media (max-width: 1368px) and (min-height: 1100px) {
   body #root .header-moving {
     flex-direction: column;
   }
@@ -192,7 +192,45 @@ body.Achromatomaly #root {
     margin-top: 36px;
   }
   body #root .header-static {
-    height: 300px;
+    height: 180px;
+  }
+}
+@media (max-width: 1368px) and (max-height: 1099px) {
+  body #root .header-moving {
+    padding: 0 15vw 0 5vw;
+    height: 180px;
+    flex-direction: row;
+    justify-content: center;
+  }
+  body #root .header-moving .nav {
+    margin-top: 36px;
+  }
+  body #root .header-moving .nav .btn {
+    display: none;
+  }
+  body #root .header-moving .btn-settings.btn-round {
+    display: initial;
+    position: fixed;
+    bottom: 60px;
+    right: 60px;
+    padding: 13.2px;
+    background: #475B63;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  }
+  body #root .header-moving .btn-settings.btn-round:hover {
+    background-color: #F3E8EE;
+  }
+  body #root .header-moving .btn-settings.btn-round:hover i {
+    color: #475B63;
+  }
+  body #root .header-moving .btn-settings.btn-round i {
+    color: #F3E8EE;
+    font-size: 36px;
+  }
+  body #root .header-static {
+    height: 180px;
   }
 }
 @media (min-width: 1921px) {
@@ -278,7 +316,7 @@ body.Achromatomaly #root {
     margin-bottom: 3vh;
   }
 }
-@media (min-width: 1921px) and (max-width: 1368px) {
+@media (min-width: 1921px) and (max-width: 1368px) and (min-height: 1100px) {
   body #root .header-moving {
     flex-direction: column;
   }
@@ -286,7 +324,45 @@ body.Achromatomaly #root {
     margin-top: 45px;
   }
   body #root .header-static {
-    height: 375px;
+    height: 225px;
+  }
+}
+@media (min-width: 1921px) and (max-width: 1368px) and (max-height: 1099px) {
+  body #root .header-moving {
+    padding: 0 15vw 0 5vw;
+    height: 225px;
+    flex-direction: row;
+    justify-content: center;
+  }
+  body #root .header-moving .nav {
+    margin-top: 45px;
+  }
+  body #root .header-moving .nav .btn {
+    display: none;
+  }
+  body #root .header-moving .btn-settings.btn-round {
+    display: initial;
+    position: fixed;
+    bottom: 75px;
+    right: 75px;
+    padding: 16.5px;
+    background: #475B63;
+    border-radius: 50%;
+    border: none;
+    cursor: pointer;
+  }
+  body #root .header-moving .btn-settings.btn-round:hover {
+    background-color: #F3E8EE;
+  }
+  body #root .header-moving .btn-settings.btn-round:hover i {
+    color: #475B63;
+  }
+  body #root .header-moving .btn-settings.btn-round i {
+    color: #F3E8EE;
+    font-size: 45px;
+  }
+  body #root .header-static {
+    height: 225px;
   }
 }
 body.None #root .header-static {
@@ -310,6 +386,15 @@ body.None #root .header-moving .nav .btn i {
 }
 body.None #root .header-moving .nav .btn:hover {
   background-color: #BCBCBC;
+  color: #475B63;
+}
+body.None #root .header-moving .btn-settings.btn-round {
+  background: #475B63;
+}
+body.None #root .header-moving .btn-settings.btn-round:hover {
+  background-color: #F3E8EE;
+}
+body.None #root .header-moving .btn-settings.btn-round:hover i {
   color: #475B63;
 }
 
@@ -336,6 +421,15 @@ body.Protanopia #root .header-moving .nav .btn:hover {
   background-color: #BCBCBC;
   color: #4F4F61;
 }
+body.Protanopia #root .header-moving .btn-settings.btn-round {
+  background: #4F4F61;
+}
+body.Protanopia #root .header-moving .btn-settings.btn-round:hover {
+  background-color: #EEEEEC;
+}
+body.Protanopia #root .header-moving .btn-settings.btn-round:hover i {
+  color: #4F4F61;
+}
 
 body.Deuteranopia #root .header-static {
   background-color: #292929;
@@ -358,6 +452,15 @@ body.Deuteranopia #root .header-moving .nav .btn i {
 }
 body.Deuteranopia #root .header-moving .nav .btn:hover {
   background-color: #BCBCBC;
+  color: #4E4D60;
+}
+body.Deuteranopia #root .header-moving .btn-settings.btn-round {
+  background: #4E4D60;
+}
+body.Deuteranopia #root .header-moving .btn-settings.btn-round:hover {
+  background-color: #EEEFEC;
+}
+body.Deuteranopia #root .header-moving .btn-settings.btn-round:hover i {
   color: #4E4D60;
 }
 
@@ -384,6 +487,15 @@ body.Tritanopia #root .header-moving .nav .btn:hover {
   background-color: #BCBCBC;
   color: #485F5F;
 }
+body.Tritanopia #root .header-moving .btn-settings.btn-round {
+  background: #485F5F;
+}
+body.Tritanopia #root .header-moving .btn-settings.btn-round:hover {
+  background-color: #F2EBEB;
+}
+body.Tritanopia #root .header-moving .btn-settings.btn-round:hover i {
+  color: #485F5F;
+}
 
 body.Achromatopsia #root .header-static {
   background-color: #292929;
@@ -406,6 +518,15 @@ body.Achromatopsia #root .header-moving .nav .btn i {
 }
 body.Achromatopsia #root .header-moving .nav .btn:hover {
   background-color: #BCBCBC;
+  color: #555555;
+}
+body.Achromatopsia #root .header-moving .btn-settings.btn-round {
+  background: #555555;
+}
+body.Achromatopsia #root .header-moving .btn-settings.btn-round:hover {
+  background-color: #EBEBEB;
+}
+body.Achromatopsia #root .header-moving .btn-settings.btn-round:hover i {
   color: #555555;
 }
 
@@ -432,6 +553,15 @@ body.Protanomaly #root .header-moving .nav .btn:hover {
   background-color: #BCBCBC;
   color: #4A5462;
 }
+body.Protanomaly #root .header-moving .btn-settings.btn-round {
+  background: #4A5462;
+}
+body.Protanomaly #root .header-moving .btn-settings.btn-round:hover {
+  background-color: #F0EBED;
+}
+body.Protanomaly #root .header-moving .btn-settings.btn-round:hover i {
+  color: #4A5462;
+}
 
 body.Deuteranomaly #root .header-static {
   background-color: #292929;
@@ -454,6 +584,15 @@ body.Deuteranomaly #root .header-moving .nav .btn i {
 }
 body.Deuteranomaly #root .header-moving .nav .btn:hover {
   background-color: #BCBCBC;
+  color: #4B5561;
+}
+body.Deuteranomaly #root .header-moving .btn-settings.btn-round {
+  background: #4B5561;
+}
+body.Deuteranomaly #root .header-moving .btn-settings.btn-round:hover {
+  background-color: #F0EAED;
+}
+body.Deuteranomaly #root .header-moving .btn-settings.btn-round:hover i {
   color: #4B5561;
 }
 
@@ -480,6 +619,15 @@ body.Tritanomaly #root .header-moving .nav .btn:hover {
   background-color: #BCBCBC;
   color: #475D61;
 }
+body.Tritanomaly #root .header-moving .btn-settings.btn-round {
+  background: #475D61;
+}
+body.Tritanomaly #root .header-moving .btn-settings.btn-round:hover {
+  background-color: #F2E9EC;
+}
+body.Tritanomaly #root .header-moving .btn-settings.btn-round:hover i {
+  color: #475D61;
+}
 
 body.Achromatomaly #root .header-static {
   background-color: #292929;
@@ -502,6 +650,15 @@ body.Achromatomaly #root .header-moving .nav .btn i {
 }
 body.Achromatomaly #root .header-moving .nav .btn:hover {
   background-color: #BCBCBC;
+  color: #4F585B;
+}
+body.Achromatomaly #root .header-moving .btn-settings.btn-round {
+  background: #4F585B;
+}
+body.Achromatomaly #root .header-moving .btn-settings.btn-round:hover {
+  background-color: #EFEAEC;
+}
+body.Achromatomaly #root .header-moving .btn-settings.btn-round:hover i {
   color: #4F585B;
 }
 
@@ -629,11 +786,11 @@ body.None #root .login-section .login-wrap .login-form .input-wrap .icon:hover {
 body.None #root .login-section .login-wrap .login-form .input-wrap input:focus {
   outline: #292929 2px solid;
 }
-body.None #root .login-section .login-wrap .login-form #login-submit {
+body.None #root .login-section .login-wrap .login-form .authentication-btns #login-submit {
   color: #F3E8EE;
   background-color: #292929;
 }
-body.None #root .login-section .login-wrap .login-form #login-submit:hover {
+body.None #root .login-section .login-wrap .login-form .authentication-btns #login-submit:hover {
   background-color: #475B63;
 }
 
@@ -659,11 +816,11 @@ body.Protanopia #root .login-section .login-wrap .login-form .input-wrap .icon:h
 body.Protanopia #root .login-section .login-wrap .login-form .input-wrap input:focus {
   outline: #292929 2px solid;
 }
-body.Protanopia #root .login-section .login-wrap .login-form #login-submit {
+body.Protanopia #root .login-section .login-wrap .login-form .authentication-btns #login-submit {
   color: #EEEEEC;
   background-color: #292929;
 }
-body.Protanopia #root .login-section .login-wrap .login-form #login-submit:hover {
+body.Protanopia #root .login-section .login-wrap .login-form .authentication-btns #login-submit:hover {
   background-color: #4F4F61;
 }
 
@@ -689,11 +846,11 @@ body.Deuteranopia #root .login-section .login-wrap .login-form .input-wrap .icon
 body.Deuteranopia #root .login-section .login-wrap .login-form .input-wrap input:focus {
   outline: #292929 2px solid;
 }
-body.Deuteranopia #root .login-section .login-wrap .login-form #login-submit {
+body.Deuteranopia #root .login-section .login-wrap .login-form .authentication-btns #login-submit {
   color: #EEEFEC;
   background-color: #292929;
 }
-body.Deuteranopia #root .login-section .login-wrap .login-form #login-submit:hover {
+body.Deuteranopia #root .login-section .login-wrap .login-form .authentication-btns #login-submit:hover {
   background-color: #4E4D60;
 }
 
@@ -719,11 +876,11 @@ body.Tritanopia #root .login-section .login-wrap .login-form .input-wrap .icon:h
 body.Tritanopia #root .login-section .login-wrap .login-form .input-wrap input:focus {
   outline: #282929 2px solid;
 }
-body.Tritanopia #root .login-section .login-wrap .login-form #login-submit {
+body.Tritanopia #root .login-section .login-wrap .login-form .authentication-btns #login-submit {
   color: #F2EBEB;
   background-color: #282929;
 }
-body.Tritanopia #root .login-section .login-wrap .login-form #login-submit:hover {
+body.Tritanopia #root .login-section .login-wrap .login-form .authentication-btns #login-submit:hover {
   background-color: #485F5F;
 }
 
@@ -749,11 +906,11 @@ body.Achromatopsia #root .login-section .login-wrap .login-form .input-wrap .ico
 body.Achromatopsia #root .login-section .login-wrap .login-form .input-wrap input:focus {
   outline: #292929 2px solid;
 }
-body.Achromatopsia #root .login-section .login-wrap .login-form #login-submit {
+body.Achromatopsia #root .login-section .login-wrap .login-form .authentication-btns #login-submit {
   color: #EBEBEB;
   background-color: #292929;
 }
-body.Achromatopsia #root .login-section .login-wrap .login-form #login-submit:hover {
+body.Achromatopsia #root .login-section .login-wrap .login-form .authentication-btns #login-submit:hover {
   background-color: #555555;
 }
 
@@ -779,11 +936,11 @@ body.Protanomaly #root .login-section .login-wrap .login-form .input-wrap .icon:
 body.Protanomaly #root .login-section .login-wrap .login-form .input-wrap input:focus {
   outline: #292929 2px solid;
 }
-body.Protanomaly #root .login-section .login-wrap .login-form #login-submit {
+body.Protanomaly #root .login-section .login-wrap .login-form .authentication-btns #login-submit {
   color: #F0EBED;
   background-color: #292929;
 }
-body.Protanomaly #root .login-section .login-wrap .login-form #login-submit:hover {
+body.Protanomaly #root .login-section .login-wrap .login-form .authentication-btns #login-submit:hover {
   background-color: #4A5462;
 }
 
@@ -809,11 +966,11 @@ body.Deuteranomaly #root .login-section .login-wrap .login-form .input-wrap .ico
 body.Deuteranomaly #root .login-section .login-wrap .login-form .input-wrap input:focus {
   outline: #292929 2px solid;
 }
-body.Deuteranomaly #root .login-section .login-wrap .login-form #login-submit {
+body.Deuteranomaly #root .login-section .login-wrap .login-form .authentication-btns #login-submit {
   color: #F0EAED;
   background-color: #292929;
 }
-body.Deuteranomaly #root .login-section .login-wrap .login-form #login-submit:hover {
+body.Deuteranomaly #root .login-section .login-wrap .login-form .authentication-btns #login-submit:hover {
   background-color: #4B5561;
 }
 
@@ -839,11 +996,11 @@ body.Tritanomaly #root .login-section .login-wrap .login-form .input-wrap .icon:
 body.Tritanomaly #root .login-section .login-wrap .login-form .input-wrap input:focus {
   outline: #292929 2px solid;
 }
-body.Tritanomaly #root .login-section .login-wrap .login-form #login-submit {
+body.Tritanomaly #root .login-section .login-wrap .login-form .authentication-btns #login-submit {
   color: #F2E9EC;
   background-color: #292929;
 }
-body.Tritanomaly #root .login-section .login-wrap .login-form #login-submit:hover {
+body.Tritanomaly #root .login-section .login-wrap .login-form .authentication-btns #login-submit:hover {
   background-color: #475D61;
 }
 
@@ -869,11 +1026,11 @@ body.Achromatomaly #root .login-section .login-wrap .login-form .input-wrap .ico
 body.Achromatomaly #root .login-section .login-wrap .login-form .input-wrap input:focus {
   outline: #292929 2px solid;
 }
-body.Achromatomaly #root .login-section .login-wrap .login-form #login-submit {
+body.Achromatomaly #root .login-section .login-wrap .login-form .authentication-btns #login-submit {
   color: #EFEAEC;
   background-color: #292929;
 }
-body.Achromatomaly #root .login-section .login-wrap .login-form #login-submit:hover {
+body.Achromatomaly #root .login-section .login-wrap .login-form .authentication-btns #login-submit:hover {
   background-color: #4F585B;
 }
 
@@ -970,10 +1127,16 @@ body #root .login-section .login-wrap .login-form .input-wrap input {
 body #root .login-section .login-wrap .login-form .input-wrap input:focus {
   outline: #292929 2px solid;
 }
-body #root .login-section .login-wrap .login-form #login-submit {
+body #root .login-section .login-wrap .login-form .authentication-btns {
   margin-top: 8vh;
-  position: relative;
-  left: calc(100% - 35vw);
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  justify-content: space-around;
+}
+body #root .login-section .login-wrap .login-form .authentication-btns #login-submit, body #root .login-section .login-wrap .login-form .authentication-btns #register-submit {
+  flex-wrap: wrap;
+  flex-basis: 40%;
   font-size: 36px;
   color: #EFEAEC;
   background-color: #292929;
@@ -983,7 +1146,7 @@ body #root .login-section .login-wrap .login-form #login-submit {
   width: 30vw;
   cursor: pointer;
 }
-body #root .login-section .login-wrap .login-form #login-submit:hover {
+body #root .login-section .login-wrap .login-form .authentication-btns #login-submit:hover, body #root .login-section .login-wrap .login-form .authentication-btns #register-submit:hover {
   background-color: #4F585B;
 }
 
@@ -1081,10 +1244,16 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
   body #root .login-section .login-wrap .login-form .input-wrap input:focus {
     outline: #292929 2px solid;
   }
-  body #root .login-section .login-wrap .login-form #login-submit {
+  body #root .login-section .login-wrap .login-form .authentication-btns {
     margin-top: 8vh;
-    position: relative;
-    left: calc(100% - 35vw);
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    justify-content: space-around;
+  }
+  body #root .login-section .login-wrap .login-form .authentication-btns #login-submit, body #root .login-section .login-wrap .login-form .authentication-btns #register-submit {
+    flex-wrap: wrap;
+    flex-basis: 40%;
     font-size: 45px;
     color: #EFEAEC;
     background-color: #292929;
@@ -1094,7 +1263,7 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
     width: 30vw;
     cursor: pointer;
   }
-  body #root .login-section .login-wrap .login-form #login-submit:hover {
+  body #root .login-section .login-wrap .login-form .authentication-btns #login-submit:hover, body #root .login-section .login-wrap .login-form .authentication-btns #register-submit:hover {
     background-color: #4F585B;
   }
 }
@@ -1195,10 +1364,16 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
   body #root .login-section .login-wrap .login-form .input-wrap input:focus {
     outline: #292929 2px solid;
   }
-  body #root .login-section .login-wrap .login-form #login-submit {
+  body #root .login-section .login-wrap .login-form .authentication-btns {
     margin-top: 8vh;
-    position: relative;
-    left: calc(100% - 35vw);
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    justify-content: space-around;
+  }
+  body #root .login-section .login-wrap .login-form .authentication-btns #login-submit, body #root .login-section .login-wrap .login-form .authentication-btns #register-submit {
+    flex-wrap: wrap;
+    flex-basis: 40%;
     font-size: 19.5px;
     color: #EFEAEC;
     background-color: #292929;
@@ -1208,7 +1383,7 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
     width: 30vw;
     cursor: pointer;
   }
-  body #root .login-section .login-wrap .login-form #login-submit:hover {
+  body #root .login-section .login-wrap .login-form .authentication-btns #login-submit:hover, body #root .login-section .login-wrap .login-form .authentication-btns #register-submit:hover {
     background-color: #4F585B;
   }
   body #root {
@@ -1240,7 +1415,7 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
   body #root .login-section .login-wrap .login-form .input-wrap input {
     font-size: 18px;
   }
-  body #root .login-section .login-wrap .login-form #login-submit {
+  body #root .login-section .login-wrap .login-form .authentication-btns #login-submit {
     font-size: 22px;
     position: initial;
     width: 80%;
@@ -1340,6 +1515,23 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
   cursor: pointer;
 }
 #root .settings-modal-wrap .modal-main #settings-close-btn:hover {
+  background-color: black;
+}
+#root .settings-modal-wrap .modal-main .logout-btn-wrap {
+  text-align: center;
+}
+#root .settings-modal-wrap .modal-main .logout-btn-wrap .logout-btn {
+  min-width: 45%;
+  margin: 2.5vh auto 5.5vh auto;
+  font-family: "Garet";
+  font-size: 30px;
+  padding: 2.4px 27.6px;
+  border: none;
+  color: #F3E8EE;
+  background-color: #475B63;
+  cursor: pointer;
+}
+#root .settings-modal-wrap .modal-main .logout-btn-wrap .logout-btn:hover {
   background-color: black;
 }
 

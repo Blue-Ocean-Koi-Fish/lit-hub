@@ -3,8 +3,11 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 // Translator
 import i18n from './i18n';
+import Logout from './logout';
 
-function Settings({ settings, setSettings, setShowSettings }) {
+function Settings({
+  settings, setSettings, setShowSettings, setLoggedIn,
+}) {
   const { t } = useTranslation();
 
   const handleLanguage = (e) => {
@@ -64,7 +67,7 @@ function Settings({ settings, setSettings, setShowSettings }) {
           </h4>
           <form name="language">
             {fillSection(
-              ['English', 'Русский', 'Ukrainian', 'Chinese', 'Japanese'],
+              ['English', 'Русский', 'Українська', 'Chinese', 'Japanese'],
               'language',
               handleLanguage,
             )}
@@ -83,6 +86,8 @@ function Settings({ settings, setSettings, setShowSettings }) {
             )}
           </form>
         </section>
+        <Logout setLoggedIn={setLoggedIn} />
+
         <button type="button" id="settings-close-btn" onClick={() => { setShowSettings(false); }}>X</button>
       </div>
     </div>
