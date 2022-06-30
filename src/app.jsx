@@ -4,6 +4,7 @@ import Settings from './settings';
 import Header from './header';
 import SearchDisplay from './search/searchdisplay';
 import SearchSection from './search/searchsection';
+import Logout from './logout';
 
 const axios = require('axios');
 
@@ -48,7 +49,7 @@ function App() {
     loggedIn ? (
       <>
         <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
-
+        <Logout setLoggedIn={setLoggedIn} />
         <section className="collections">
           <SearchSection />
           <Collection />
