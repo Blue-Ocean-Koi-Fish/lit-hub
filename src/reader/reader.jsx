@@ -1,9 +1,12 @@
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/control-has-associated-label */
+
 import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'html-react-parser';
 
 function Reader({ book }) {
+  // console.log(book);
+
   const bookSchema = {
     title: [],
     author: [],
@@ -35,41 +38,59 @@ function Reader({ book }) {
         return child;
       }
     }
+    return null;
   };
 
   useEffect(() => {
-    const rawDiv = ReactHtmlParser(book);
-    const rawContent = rawDiv.props.children;
-
-    const newBook = {
-      title: [],
-      author: [],
-      chapters: [],
-      text: [],
-    };
-
-    rawContent.forEach((node) => {
-      // First filter carriage returns and breaks,
-      if (typeof node !== 'string') {
-        // Get all the chapters
-        if (node.type === 'table' && node.props.className !== 'c7') {
-          const tempNode = node.props.children.props.children;
-          tempNode.forEach((chapter) => {
-            const chapterNode = getChapter(chapter.props.children);
-            if (chapterNode) {
-              newBook.chapters.push(chapterNode);
-            }
-          });
-        } else if (node.type === 'p' || node.type === 'h1' || node.type === 'h2' || node.type === 'h3') {
-          // check if node is author or title also
-          if (node.props.children !== 'Contents') {
-            newBook.text.push(node);
-          }
-        }
+    if (book) {
+      const rawDiv = ReactHtmlParser(book);
+      // console.log(rawDiv.props)
+      let rawContent;
+      try {
+        rawContent = rawDiv.props.children;
+        console.log(rawContent);
+      } catch {
+        console.log('parsing error');
       }
-    });
-    setBookContent(newBook);
-    setFontSize((size) => Number(size));
+
+      const newBook = {
+        title: [],
+        author: [],
+        chapters: [],
+        text: [],
+      };
+
+      rawContent.forEach((node) => {
+        // First filter carriage returns and breaks,
+        if (typeof node !== 'string') {
+          // Get all the chapters
+          if (node.type === 'table' && node.props.className !== 'c7') {
+            const tempNode = node.props.children.props.children;
+            console.log(node.props.children.props.children.props.children);
+
+            // tempNode.forEach((chapter) => {
+            //   const chapterNode = getChapter(chapter.props.children);
+            //   if (chapterNode) {
+            //     newBook.chapters.push(chapterNode);
+            //   }
+            // });
+
+          } else if (node.type === 'p' || node.type === 'h1' || node.type === 'h2' || node.type === 'h3') {
+            // check if node is author or title also
+            // console.log(node);
+            if (node.props.children !== 'Contents') {
+              newBook.text.push(node);
+            }
+          }
+          // else {
+          //   console.log(node.props.className);
+          // }
+        }
+      });
+
+      setBookContent(newBook);
+      setFontSize((size) => Number(size));
+  }
   }, [book]);
 
   const increaseFont = (event) => {
@@ -136,21 +157,16 @@ function Reader({ book }) {
           {['Baskerville', 'Bookerly', 'Georgia', 'Helvetica', 'Futura', 'Arial', 'Courier', 'Times'].map((fontOption, i) => (
             <option value={fontOption.toLowerCase()} key={i}>{fontOption}</option>))}
         </select>
-<<<<<<< HEAD
         <select onChange={updateChapter}>
-=======
-        {/* <button className="expand"></button> */}
-        {/* <select onChange={updateChapter}>
->>>>>>> 190851687dc551eff741b86e8bf5da265bb37c7d
           {bookContent.chapters
             ? bookContent.chapters.map((chapter, i) => {
-              console.log(chapter);
+              // console.log(chapter);
               const anchorLink = chapter.props.href;
               const optionContent = chapter.props.children;
               return <option key={i} value={anchorLink}>{optionContent}</option>;
             })
             : null}
-        </select> */}
+        </select>
         <button id="font-size-plus" className="btn" type="button" onClick={decreaseFont}>
           <i className="fa-solid fa-minus" />
         </button>

@@ -15,7 +15,6 @@ function Collection() {
     window.location.reload();
   };
 
-  console.log(collection);
   return (
     // Book Collection Cards
     <div className="collection-section-wrap">

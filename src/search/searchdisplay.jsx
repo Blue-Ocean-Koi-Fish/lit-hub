@@ -2,6 +2,8 @@ import React from 'react';
 import axios from 'axios';
 import { addBook } from '../../browser_db/books';
 
+const serverURL = 'http://127.0.0.1:8081';
+
 const SearchDisplay = function SearchDisplay({
   bookList, count, searchTerms, setSearchTerms, setUserBooks, showBook,
 }) {
@@ -45,7 +47,7 @@ const SearchDisplay = function SearchDisplay({
               className="toggle_status_btn"
               onClick={(e) => {
                 e.preventDefault();
-                axios.get(`/txt?url=${book.formats['text/html']}`)
+                axios.get(`${serverURL}/txt?url=${book.formats['text/html']}`)
                   .then((res) => (
                     addBook(book.title, res.data, book, book.id)
                   ))

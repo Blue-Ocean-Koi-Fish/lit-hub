@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Login from './login';
 import Settings from './settings';
 import Header from './header';
@@ -8,10 +8,10 @@ import { getCurrentBook } from '../browser_db/books';
 
 import Collection from './collection';
 import Reader from './reader/reader';
-import testBook from '../testData/sample-2';
-
 import '../public/styles/unified.css';
-import testBook from '../testData/sample-6';
+
+import axios from 'axios';
+import testBook from '../testData/sample-5';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
@@ -39,6 +39,16 @@ function App() {
         setCurrentBook(res);
       });
   };
+
+  // Simulates fetching of a real book
+  useEffect(() => {
+    axios.get('http://127.0.0.1:8081/txt?url=https://www.gutenberg.org/ebooks/1592.html.images')
+      .then((res) => {
+        console.log('got', res.data);
+      })
+      .catch((error) => (console.log(error)));
+    setCurrentBook(testBook);
+  }, []);
 
   return (
     loggedIn ? (
@@ -74,8 +84,10 @@ function App() {
           />
         ) : null}
 
+        {/* Uncomment for production */}
         {/* {showReader ? <Reader book={currentBook} /> : null} */}
-        <Reader book={testBook}/>
+        {/* Show when in development */}
+        {/* <Reader book={currentBook} /> */}
       </>
     ) : (
       <Login setLoggedIn={setLoggedIn} />
