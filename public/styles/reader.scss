@@ -178,6 +178,17 @@
       &.dark-mode-reader {
         background-color: $dark;
         color: rgb(198, 198, 198);
+
+        .content-wrap {
+          .page-nav-btns-wrap {
+            .nav-btn {
+              background-color: rgb(226, 226, 226);
+              i {
+                color: rgb(28, 28, 28);
+              }
+            }
+          }
+        }
       }
     }
   }

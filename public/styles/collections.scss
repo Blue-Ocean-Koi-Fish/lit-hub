@@ -146,30 +146,88 @@ $darkGray: #4f4f4f;
               justify-content: flex-end;
 
               .book-meta {
-                background-color: $darkGray;
+                height: 35%;
+
+                background-color: rgba($darkGray, 0.8);
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between;
-                padding: $collectionsFontSize * 0.25;
-                border-radius: 0.75vw;
+                padding: $collectionsFontSize * 0.25 0;
+                border-radius: 0 0 0.75vw 0.75vw;
+                position: relative;
 
-                >* {
-                  // flex-basis: 40%;
+                .meta-text-wrap {
+                  padding: 0 $collectionsFontSize * 0.25;
+                  width: 100%;
+                  height: 78%;
+                  // margin-bottom: $collectionsFontSize;
+                  overflow-y: scroll;
+                  /* Width */
+                  &::-webkit-scrollbar {
+                    width: 1vw;
+                    height: 90%;
+                  }
+
+                  /* Track */
+                  &::-webkit-scrollbar-track {
+                    box-shadow: inset 0 0 5px grey;
+                    border-radius: 0.2vw 0.2vw 0 0;
+                  }
+
+                  /* Handle */
+                  &::-webkit-scrollbar-thumb {
+                    background: $dark;
+                    border-radius: 0.2vw 0.2vw 0 0;
+                  }
+
+
+                  >* {
+                    font-size: $collectionsFontSize * 0.75;
+                    color: $light;
+                    font-style: italic;
+
+                    &.book-title {
+                      font-style: normal;
+                    }
+                  }
+                }
+
+                .book-btn {
+                  width: 100%;
+                  height: 26%;
                   font-size: $collectionsFontSize * 0.75;
+                  margin-top: 1%;
+                  background-color: $button;
                   color: $light;
-                  font-style: italic;
+                  font-style: normal;
+                  border: none;
+                  border-radius: 0 0 0.55vw 0.55vw;
+                  z-index: 1000;
 
-                  &.book-title {
-                    font-style: normal;
+                  &:hover {
+                    background-color: $dark;
+                    color: $light;
                   }
+                }
+              }
 
-                  &.book-btn {
-                    color: $dark;
-                    font-style: normal;
-                    margin-top: $collectionsFontSize * 0.25;
-                    width: 100%;
-                    border-radius: 0.55vw;
-                  }
+              position: relative;
+              &:hover {
+                &:before {
+                  font-family: "Font Awesome 5 Free";
+                  font-weight: 900;
+                  text-align: center;
+                  line-height: 5;
+                  content: '\f518';
+                  font-size: $collectionsFontSize * 2;
+                  color: $light;
+                  background: rgba(0, 0, 0, 0.524);
+                  display: inline-block;
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 0 0 0.55vw 0.55vw;
+                  position: absolute;
+
                 }
               }
             }
@@ -271,9 +329,15 @@ $darkGray: #4f4f4f;
                     background-color: $darkGray;
                     >* {
                       color: $light;
+                    }
 
-                      &.book-btn {
-                        color: $dark;
+                    .book-btn {
+                      background-color: $button;
+                      color: $light;
+
+                      &:hover {
+                        background-color: $dark;
+                        color: $light;
                       }
                     }
                   }

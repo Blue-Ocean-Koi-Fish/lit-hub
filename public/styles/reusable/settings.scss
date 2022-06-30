@@ -158,8 +158,26 @@ $settingsFontSize: 24px;
 
         &:hover {
           background-color: black;
-
         }
+      }
+      .logout-btn-wrap {
+        text-align: center;
+
+        .logout-btn {
+          min-width: 45%;
+          margin: 2.5vh auto  5.5vh auto;
+          font-family: 'Garet';
+          font-size: $settingsFontSize * 1.25;
+          padding: $settingsFontSize * 0.1 $settingsFontSize * 1.15;
+          border: none;
+          color: $light;
+          background-color: $button;
+          cursor: pointer;
+
+          &:hover {
+            background-color: black;
+          }
+       }
       }
     }
   }

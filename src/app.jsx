@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import axios from 'axios';
 import Login from './login';
 import Settings from './settings';
@@ -7,12 +7,17 @@ import SearchDisplay from './search/searchdisplay';
 import SearchSection from './search/searchsection';
 import { getCurrentBook } from '../browser_db/books';
 import Collection from './collection';
+import Reader from './reader/reader';
+
 import '../public/styles/unified.css';
 import Logout from './logout';
 // import Reader from "./reader";
 
+// Translator
+import './i18n';
+
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [searchTerms, setSearchTerms] = useState({
     title: '',
     author: '',
@@ -54,9 +59,8 @@ function App() {
 
   return (
     loggedIn ? (
-      <>
+      <Suspense fallback="loading">
         <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
-        <Logout setLoggedIn={setLoggedIn} />
         <section className="collections">
           <SearchSection
             setShowSearchResults={setShowSearchResults}
@@ -65,35 +69,40 @@ function App() {
             setCount={setCount}
             setBookList={setBookList}
           />
-          <Collection
-            currentBook={currentBook}
-          />
+          {showSearchResults ? (
+            <SearchDisplay
+              setUserBooks={setUserBooks}
+              searchTerms={searchTerms}
+              setSearchTerms={setSearchTerms}
+              count={count}
+              bookList={bookList}
+              showBook={showBook}
+              username={username}
+            />
+          ) : (
+            <Collection
+              currentBook={currentBook}
+            />
+          )}
+
           {showSettings ? (
             <Settings
               settings={settings}
               setSettings={setSettings}
               setShowSettings={setShowSettings}
+              setLoggedIn={setLoggedIn}
             />
           )
             : null}
         </section>
-        {showSearchResults ? (
-          <SearchDisplay
-            setUserBooks={setUserBooks}
-            searchTerms={searchTerms}
-            setSearchTerms={setSearchTerms}
-            count={count}
-            bookList={bookList}
-            showBook={showBook}
-            username={username}
-          />
-        ) : null}
 
         {/* {showReader ? <Reader book={currentBook} /> : null} */}
-        {/*  {<Reader book={testBook} /> || null} */}
-      </>
+        {/* {<Reader book={testBook} /> || null} */}
+      </Suspense>
     ) : (
-      <Login setLoggedIn={setLoggedIn} username={username} setUsername={setUsername} />
+      <Suspense fallback="loading">
+        <Login setLoggedIn={setLoggedIn} username={username} setUsername={setUsername} />
+      </Suspense>
     )
   );
 }
