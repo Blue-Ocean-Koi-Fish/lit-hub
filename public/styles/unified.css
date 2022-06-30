@@ -1992,11 +1992,12 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  padding: 6px;
+  padding: 6px 0;
   border-radius: 0 0 0.75vw 0.75vw;
   position: relative;
 }
 #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .meta-text-wrap, #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .meta-text-wrap {
+  padding: 0 6px;
   width: 100%;
   height: 78%;
   overflow-y: scroll;
@@ -2025,13 +2026,20 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
   font-style: normal;
 }
 #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn, #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn {
+  width: 100%;
   height: 26%;
   font-size: 18px;
   margin-top: 1%;
-  color: #292929;
+  background-color: #475B63;
+  color: #F3E8EE;
   font-style: normal;
-  width: 100%;
+  border: none;
   border-radius: 0 0 0.55vw 0.55vw;
+  z-index: 1000;
+}
+#root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover, #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover {
+  background-color: #292929;
+  color: #F3E8EE;
 }
 #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card:hover:before, #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card:hover:before {
   font-family: "Font Awesome 5 Free";
@@ -2168,11 +2176,12 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 7.5px;
+    padding: 7.5px 0;
     border-radius: 0 0 0.75vw 0.75vw;
     position: relative;
   }
   body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .meta-text-wrap, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .meta-text-wrap {
+    padding: 0 7.5px;
     width: 100%;
     height: 78%;
     overflow-y: scroll;
@@ -2201,13 +2210,20 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
     font-style: normal;
   }
   body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn {
+    width: 100%;
     height: 26%;
     font-size: 22.5px;
     margin-top: 1%;
-    color: #292929;
+    background-color: #475B63;
+    color: #F3E8EE;
     font-style: normal;
-    width: 100%;
+    border: none;
     border-radius: 0 0 0.55vw 0.55vw;
+    z-index: 1000;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover {
+    background-color: #292929;
+    color: #F3E8EE;
   }
   body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card:hover:before, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card:hover:before {
     font-family: "Font Awesome 5 Free";
@@ -2281,8 +2297,13 @@ body.None #root .collections .collection-section-wrap .collection-section .book-
 body.None #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body.None #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
   color: #F3E8EE;
 }
-body.None #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body.None #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
-  color: #292929;
+body.None #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn, body.None #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn {
+  background-color: #475B63;
+  color: #F3E8EE;
+}
+body.None #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover, body.None #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover {
+  background-color: #292929;
+  color: #F3E8EE;
 }
 
 body.Protanopia #root .collections .search-form, body.Protanopia #root .reader-section .search-form {
@@ -2319,8 +2340,13 @@ body.Protanopia #root .collections .collection-section-wrap .collection-section 
 body.Protanopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body.Protanopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
   color: #EEEEEC;
 }
-body.Protanopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body.Protanopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
-  color: #292929;
+body.Protanopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn, body.Protanopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn {
+  background-color: #4F4F61;
+  color: #EEEEEC;
+}
+body.Protanopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover, body.Protanopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover {
+  background-color: #292929;
+  color: #EEEEEC;
 }
 
 body.Deuteranopia #root .collections .search-form, body.Deuteranopia #root .reader-section .search-form {
@@ -2357,8 +2383,13 @@ body.Deuteranopia #root .collections .collection-section-wrap .collection-sectio
 body.Deuteranopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body.Deuteranopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
   color: #EEEFEC;
 }
-body.Deuteranopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body.Deuteranopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
-  color: #292929;
+body.Deuteranopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn, body.Deuteranopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn {
+  background-color: #4E4D60;
+  color: #EEEFEC;
+}
+body.Deuteranopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover, body.Deuteranopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover {
+  background-color: #292929;
+  color: #EEEFEC;
 }
 
 body.Tritanopia #root .collections .search-form, body.Tritanopia #root .reader-section .search-form {
@@ -2395,8 +2426,13 @@ body.Tritanopia #root .collections .collection-section-wrap .collection-section 
 body.Tritanopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body.Tritanopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
   color: #F2EBEB;
 }
-body.Tritanopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body.Tritanopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
-  color: #282929;
+body.Tritanopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn, body.Tritanopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn {
+  background-color: #485F5F;
+  color: #F2EBEB;
+}
+body.Tritanopia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover, body.Tritanopia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover {
+  background-color: #282929;
+  color: #F2EBEB;
 }
 
 body.Achromatopsia #root .collections .search-form, body.Achromatopsia #root .reader-section .search-form {
@@ -2433,8 +2469,13 @@ body.Achromatopsia #root .collections .collection-section-wrap .collection-secti
 body.Achromatopsia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body.Achromatopsia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
   color: #EBEBEB;
 }
-body.Achromatopsia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body.Achromatopsia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
-  color: #292929;
+body.Achromatopsia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn, body.Achromatopsia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn {
+  background-color: #555555;
+  color: #EBEBEB;
+}
+body.Achromatopsia #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover, body.Achromatopsia #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover {
+  background-color: #292929;
+  color: #EBEBEB;
 }
 
 body.Protanomaly #root .collections .search-form, body.Protanomaly #root .reader-section .search-form {
@@ -2471,8 +2512,13 @@ body.Protanomaly #root .collections .collection-section-wrap .collection-section
 body.Protanomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body.Protanomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
   color: #F0EBED;
 }
-body.Protanomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body.Protanomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
-  color: #292929;
+body.Protanomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn, body.Protanomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn {
+  background-color: #4A5462;
+  color: #F0EBED;
+}
+body.Protanomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover, body.Protanomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover {
+  background-color: #292929;
+  color: #F0EBED;
 }
 
 body.Deuteranomaly #root .collections .search-form, body.Deuteranomaly #root .reader-section .search-form {
@@ -2509,8 +2555,13 @@ body.Deuteranomaly #root .collections .collection-section-wrap .collection-secti
 body.Deuteranomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body.Deuteranomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
   color: #F0EAED;
 }
-body.Deuteranomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body.Deuteranomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
-  color: #292929;
+body.Deuteranomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn, body.Deuteranomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn {
+  background-color: #4B5561;
+  color: #F0EAED;
+}
+body.Deuteranomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover, body.Deuteranomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover {
+  background-color: #292929;
+  color: #F0EAED;
 }
 
 body.Tritanomaly #root .collections .search-form, body.Tritanomaly #root .reader-section .search-form {
@@ -2547,8 +2598,13 @@ body.Tritanomaly #root .collections .collection-section-wrap .collection-section
 body.Tritanomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body.Tritanomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
   color: #F2E9EC;
 }
-body.Tritanomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body.Tritanomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
-  color: #292929;
+body.Tritanomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn, body.Tritanomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn {
+  background-color: #475D61;
+  color: #F2E9EC;
+}
+body.Tritanomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover, body.Tritanomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover {
+  background-color: #292929;
+  color: #F2E9EC;
 }
 
 body.Achromatomaly #root .collections .search-form, body.Achromatomaly #root .reader-section .search-form {
@@ -2585,8 +2641,13 @@ body.Achromatomaly #root .collections .collection-section-wrap .collection-secti
 body.Achromatomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *, body.Achromatomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > * {
   color: #EFEAEC;
 }
-body.Achromatomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn, body.Achromatomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta > *.book-btn {
-  color: #292929;
+body.Achromatomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn, body.Achromatomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn {
+  background-color: #4F585B;
+  color: #EFEAEC;
+}
+body.Achromatomaly #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover, body.Achromatomaly #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover {
+  background-color: #292929;
+  color: #EFEAEC;
 }
 
 @media (max-width: 1368px) {
@@ -2773,11 +2834,12 @@ body.Achromatomaly #root .collections .collection-section-wrap .collection-secti
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 6.5px;
+    padding: 6.5px 0;
     border-radius: 0 0 0.75vw 0.75vw;
     position: relative;
   }
   body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .meta-text-wrap, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .meta-text-wrap {
+    padding: 0 6.5px;
     width: 100%;
     height: 78%;
     overflow-y: scroll;
@@ -2806,13 +2868,20 @@ body.Achromatomaly #root .collections .collection-section-wrap .collection-secti
     font-style: normal;
   }
   body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn {
+    width: 100%;
     height: 26%;
     font-size: 19.5px;
     margin-top: 1%;
-    color: #292929;
+    background-color: #4F585B;
+    color: #EFEAEC;
     font-style: normal;
-    width: 100%;
+    border: none;
     border-radius: 0 0 0.55vw 0.55vw;
+    z-index: 1000;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover {
+    background-color: #292929;
+    color: #EFEAEC;
   }
   body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card:hover:before, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card:hover:before {
     font-family: "Font Awesome 5 Free";
