@@ -48,7 +48,8 @@ const startText = () => {
 };
 
 document.addEventListener('keypress', (event) => {
-  if (event.code === 'Space') {
+  console.log(event.keyCode, event.ctrlKey);
+  if (event.keyCode === 20 && event.ctrlKey) {
     event.preventDefault();
     // eslint-disable-next-line no-use-before-define
     startText();
