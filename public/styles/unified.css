@@ -22,6 +22,10 @@
   padding: 0;
 }
 
+button {
+  cursor: pointer;
+}
+
 body {
   background-size: cover;
   background-attachment: fixed;
@@ -35,7 +39,11 @@ body {
   min-height: 100vh;
 }
 
-body #root .header-moving, body .None .header-moving {
+#root .header-static {
+  background-color: #292929;
+  width: 100%;
+}
+#root .header-moving {
   position: fixed;
   top: 0;
   left: 0;
@@ -49,7 +57,7 @@ body #root .header-moving, body .None .header-moving {
   padding: 24px 15vw 18px 5vw;
   margin-bottom: 3vw;
 }
-body #root .header-moving .logo, body .None .header-moving .logo {
+#root .header-moving .logo {
   display: flex;
   flex-wrap: nowrap;
   flex-shrink: 0;
@@ -58,18 +66,18 @@ body #root .header-moving .logo, body .None .header-moving .logo {
   top: 6px;
   cursor: pointer;
 }
-body #root .header-moving .logo .title, body #root .header-moving .logo .capital, body .None .header-moving .logo .title, body .None .header-moving .logo .capital {
+#root .header-moving .logo .title, #root .header-moving .logo .capital {
   font-size: 72px;
   color: #F3E8EE;
 }
-body #root .header-moving .logo .title, body .None .header-moving .logo .title {
+#root .header-moving .logo .title {
   font-family: "Agrandir";
 }
-body #root .header-moving .logo .title .capital, body .None .header-moving .logo .title .capital {
+#root .header-moving .logo .title .capital {
   font-family: "Agrandir-Bold";
   color: #F3E8EE;
 }
-body #root .header-moving .logo .img, body .None .header-moving .logo .img {
+#root .header-moving .logo .img {
   background-image: url(../assets/images/logo-book.png);
   background-repeat: no-repeat;
   background-size: contain;
@@ -77,13 +85,13 @@ body #root .header-moving .logo .img, body .None .header-moving .logo .img {
   width: 180px;
   height: 108px;
 }
-body #root .header-moving .nav, body .None .header-moving .nav {
+#root .header-moving .nav {
   display: flex;
   flex-wrap: nowrap;
   flex-shrink: 0;
   margin-right: 5vw;
 }
-body #root .header-moving .nav .btn, body .None .header-moving .nav .btn {
+#root .header-moving .nav .btn {
   font-family: "Garet";
   font-size: 27.6px;
   color: #F3E8EE;
@@ -94,28 +102,42 @@ body #root .header-moving .nav .btn, body .None .header-moving .nav .btn {
   padding: 18px 72px;
   cursor: pointer;
 }
-body #root .header-moving .nav .btn i, body .None .header-moving .nav .btn i {
+#root .header-moving .nav .btn i {
   color: #F3E8EE;
   font-size: 27.6px;
   margin-left: 12px;
   position: relative;
   top: 2.52px;
 }
-body #root .header-moving .nav .btn:hover, body .None .header-moving .nav .btn:hover {
+#root .header-moving .nav .btn:hover {
   background-color: #BCBCBC;
   color: #475B63;
 }
-body #root .header-moving .btn-settings.btn-round, body .None .header-moving .btn-settings.btn-round {
+#root .header-moving .btn-settings.btn-round {
   display: none;
 }
-body #root .header-static, body .None .header-static {
-  background-color: #292929;
-  width: 100%;
+#root .header-static {
   height: 156px;
   margin-bottom: 3vh;
 }
+
+@media (max-width: 1368px) {
+  body #root .header-moving {
+    flex-direction: column;
+  }
+  body #root .header-moving .nav {
+    margin-top: 36px;
+  }
+  body #root .header-static {
+    height: 300px;
+  }
+}
 @media (min-width: 1921px) {
-  body .header-moving {
+  body #root .header-static {
+    background-color: #292929;
+    width: 100%;
+  }
+  body #root .header-moving {
     position: fixed;
     top: 0;
     left: 0;
@@ -129,7 +151,7 @@ body #root .header-static, body .None .header-static {
     padding: 30px 15vw 22.5px 5vw;
     margin-bottom: 3vw;
   }
-  body .header-moving .logo {
+  body #root .header-moving .logo {
     display: flex;
     flex-wrap: nowrap;
     flex-shrink: 0;
@@ -138,18 +160,18 @@ body #root .header-static, body .None .header-static {
     top: 7.5px;
     cursor: pointer;
   }
-  body .header-moving .logo .title, body .header-moving .logo .capital {
+  body #root .header-moving .logo .title, body #root .header-moving .logo .capital {
     font-size: 90px;
     color: #F3E8EE;
   }
-  body .header-moving .logo .title {
+  body #root .header-moving .logo .title {
     font-family: "Agrandir";
   }
-  body .header-moving .logo .title .capital {
+  body #root .header-moving .logo .title .capital {
     font-family: "Agrandir-Bold";
     color: #F3E8EE;
   }
-  body .header-moving .logo .img {
+  body #root .header-moving .logo .img {
     background-image: url(../assets/images/logo-book.png);
     background-repeat: no-repeat;
     background-size: contain;
@@ -157,13 +179,13 @@ body #root .header-static, body .None .header-static {
     width: 225px;
     height: 135px;
   }
-  body .header-moving .nav {
+  body #root .header-moving .nav {
     display: flex;
     flex-wrap: nowrap;
     flex-shrink: 0;
     margin-right: 5vw;
   }
-  body .header-moving .nav .btn {
+  body #root .header-moving .nav .btn {
     font-family: "Garet";
     font-size: 34.5px;
     color: #F3E8EE;
@@ -174,37 +196,34 @@ body #root .header-static, body .None .header-static {
     padding: 22.5px 90px;
     cursor: pointer;
   }
-  body .header-moving .nav .btn i {
+  body #root .header-moving .nav .btn i {
     color: #F3E8EE;
     font-size: 34.5px;
     margin-left: 15px;
     position: relative;
     top: 3.15px;
   }
-  body .header-moving .nav .btn:hover {
+  body #root .header-moving .nav .btn:hover {
     background-color: #BCBCBC;
     color: #475B63;
   }
-  body .header-moving .btn-settings.btn-round {
+  body #root .header-moving .btn-settings.btn-round {
     display: none;
   }
-  body .header-static {
-    background-color: #292929;
-    width: 100%;
+  body #root .header-static {
     height: 195px;
     margin-bottom: 3vh;
   }
 }
-
-@media (max-width: 1368px) {
-  body #root .header-moving {
+@media (min-width: 1921px) and (max-width: 1368px) {
+  body body #root .header-moving {
     flex-direction: column;
   }
-  body #root .header-moving .nav {
-    margin-top: 36px;
+  body body #root .header-moving .nav {
+    margin-top: 45px;
   }
-  body #root .header-static {
-    height: 300px;
+  body body #root .header-static {
+    height: 375px;
   }
 }
 @media (max-width: 900px) {
@@ -1329,6 +1348,104 @@ body #root .login-section .login-wrap .login-form #login-submit:hover {
   body #root .header-static {
     margin: 0;
   }
+}
+#root .e-reader-section {
+  width: 80%;
+  height: 95%;
+  margin: auto;
+  margin-top: 3vh;
+  padding: 5% 2.5% 5% 2.5%;
+  background-color: rgb(24, 24, 24);
+  background: linear-gradient(to bottom, #4c4c4c 0%, #595959 12%, #666666 25%, #474747 39%, #2c2c2c 50%, #000000 51%, #111111 60%, #2b2b2b 76%, #1c1c1c 91%, #131313 100%);
+  box-shadow: 10px 10px 10px 10px black;
+  border: 0.075vw solid rgba(0, 0, 0, 0.653);
+  border-radius: 3vw;
+  position: relative;
+}
+#root .e-reader-section::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+}
+#root .e-reader-section .book-controls {
+  display: flex;
+  justify-content: flex-end;
+  background-color: black;
+  padding: 1vh 1vw;
+}
+#root .e-reader-section .book-controls select {
+  outline-color: #292929;
+}
+#root .e-reader-section .book-controls .btn {
+  background-color: #292929;
+  border: none;
+  padding: 0 15px;
+}
+#root .e-reader-section .book-controls .btn i {
+  color: #F3E8EE;
+  font-size: 25px;
+}
+#root .e-reader-section .book-controls .btn:hover {
+  background-color: #F3E8EE;
+  color: #475B63;
+}
+#root .e-reader-section .book-controls .btn:hover i {
+  background-color: #F3E8EE;
+  color: #475B63;
+}
+#root .e-reader-section .book-controls > * {
+  margin-left: 2%;
+}
+#root .e-reader-section .read-body-wrap {
+  background-color: #F3E8EE;
+  color: #292929;
+}
+#root .e-reader-section .read-body-wrap .content-wrap {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  position: relative;
+}
+#root .e-reader-section .read-body-wrap .content-wrap::before {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  width: 100%;
+  height: 7.5%;
+  background: rgb(1, 0, 0);
+  background: linear-gradient(0deg, rgba(1, 0, 0, 0) 0%, rgba(41, 41, 41, 0.825) 100%);
+}
+#root .e-reader-section .read-body-wrap .content-wrap::after {
+  content: "";
+  display: inline-block;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 7.5%;
+  background: rgb(1, 0, 0);
+  background: linear-gradient(0deg, rgba(41, 41, 41, 0.825) 0%, rgba(1, 0, 0, 0) 100%);
+}
+#root .e-reader-section .read-body-wrap .content-wrap #content {
+  height: 70vh;
+  width: 90%;
+  overflow: hidden;
+}
+#root .e-reader-section .read-body-wrap .content-wrap #content .chapter {
+  font-size: inherit;
+  font-family: inherit;
+}
+#root .e-reader-section .read-body-wrap .content-wrap #content .chapter > * {
+  font-size: inherit;
+  font-family: inherit;
+}
+#root .e-reader-section .read-body-wrap .content-wrap #content .chapter > * > * {
+  font-size: inherit;
+  font-family: inherit;
+}
+#root .e-reader-section .read-body-wrap .content-wrap .nav-btn {
+  margin: auto;
+  height: 25%;
+  font-size: 4vw;
 }
 
 /*# sourceMappingURL=unified.css.map */
