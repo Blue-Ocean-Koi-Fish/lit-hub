@@ -5,11 +5,9 @@ import Header from './header';
 import SearchDisplay from './search/searchdisplay';
 import SearchSection from './search/searchsection';
 import { getCurrentBook } from '../browser_db/books';
-
 import Collection from './collection';
-// import Reader from "./reader";
-
 import '../public/styles/unified.css';
+// import Reader from "./reader";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
@@ -33,7 +31,6 @@ function App() {
   const showBook = (bookId) => {
     getCurrentBook(bookId)
       .then((res) => {
-        console.log('IS THIS RES From APP ', res);
         setCurrentBook(res);
       });
   };
