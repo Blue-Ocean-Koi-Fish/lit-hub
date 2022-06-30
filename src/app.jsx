@@ -13,7 +13,7 @@ import '../public/styles/unified.css';
 // import testBook from '../testData/sample-6';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [searchTerms, setSearchTerms] = useState({
     title: '',
     author: '',
@@ -30,6 +30,7 @@ function App() {
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [currentBook, setCurrentBook] = useState('');
+  const [username, setUsername] = useState('');
 
   const showBook = (bookId) => {
     getCurrentBook(bookId)
@@ -70,13 +71,14 @@ function App() {
             count={count}
             bookList={bookList}
             showBook={showBook}
+            username={username}
           />
         ) : null}
 
         {/* {showReader ? <Reader book={currentBook} /> : null} */}
       </>
     ) : (
-      <Login setLoggedIn={setLoggedIn} />
+      <Login setLoggedIn={setLoggedIn} username={username} setUsername={setUsername} />
     )
   );
 }

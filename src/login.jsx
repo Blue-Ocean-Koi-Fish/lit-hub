@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 
-function Login({ setLoggedIn }) {
-  const [username, setUsername] = useState('');
+function Login({ setLoggedIn, username, setUsername }) {
   const [password, setPassword] = useState('');
 
   return (

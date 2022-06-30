@@ -9,10 +9,10 @@ const backendURL = 'http://localhost:8080';
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json());
 
-// this is just for texting the browserdb
 app.get('/txt', (req, res) => {
-  console.log(req.query.url);
-  axios.get(`${req.query.url}`)
+  axios.get(`${backendURL}/txt`, {
+    params: req.query,
+  })
     .then((data) => {
       res.status(200).send(data.data);
     });
@@ -21,6 +21,61 @@ app.get('/txt', (req, res) => {
 app.get('/search', (req, res) => {
   axios.get(`${backendURL}/search`, {
     params: req.query,
+  })
+    .then((data) => {
+      res.status(200).send(data.data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+app.post('/addToCollection', (req, res) => {
+  axios.post(`${backendURL}/addToCollection`, req.body, {
+    headers: req.headers,
+  })
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+app.put('/updateCollection', (req, res) => {
+  console.log('headers', req.headers);
+  console.log('body', req.body);
+  res.end();
+  // axios.put(`${backendURL}/updateCollection`, req.body, {
+  //   headers: req.headers,
+  // })
+  //   .then(() => {
+  //     res.sendStatus(201);
+  //   })
+  //   .catch((err) => {
+  //     console.log(err);
+  //     res.sendStatus(500);
+  //   });
+});
+
+app.delete('/removeFromCollection', (req, res) => {
+  axios.delete(`${backendURL}/removeFromCollection`, {
+    headers: req.headers,
+  })
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+app.get('/collection/:username', (req, res) => {
+  axios.get(`${backendURL}/collection/:username`, {
+    headers: req.headers,
   })
     .then((data) => {
       res.status(200).send(data.data);
