@@ -24,8 +24,13 @@ const getCurrentBook = async (bookId) => {
   return book[0];
 };
 
-const getAllBooks = async () => {
-  const collection = await booksDb.books.toArray();
+// const getAllBooks = async () => {
+//   const collection = await booksDb.books.toArray();
+//   return collection;
+// };
+
+const getAllBooks = () => {
+  const collection = booksDb.books.toArray();
   return collection;
 };
 

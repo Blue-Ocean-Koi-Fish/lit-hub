@@ -1,25 +1,22 @@
-// $ColorBlindModes: ("None", "Protanopia", "Deuteranopia",
-//  "Tritanopia", "Achromatopsia", "Protanomaly", "Deuteranomaly",
-//   "Tritanomaly", "Achromatomaly");
+$ColorBlindModes: ("None", "Protanopia", "Deuteranopia",
+ "Tritanopia", "Achromatopsia", "Protanomaly", "Deuteranomaly",
+  "Tritanomaly", "Achromatomaly");
 
-// $ColorBlindDark: ("None": #292929, "Protanopia": #292929, "Deuteranopia": #292929,
-//  "Tritanopia": #282929, "Achromatopsia": #292929, "Protanomaly": #292929, "Deuteranomaly": #292929,
-//   "Tritanomaly": #292929, "Achromatomaly": #292929);
-// $ColorBlindLight: ("None": #F3E8EE, "Protanopia": #EEEEEC, "Deuteranopia": #EEEFEC,
-// "Tritanopia": #F2EBEB, "Achromatopsia": #EBEBEB, "Protanomaly": #F0EBED, "Deuteranomaly": #F0EAED,
-//  "Tritanomaly": #F2E9EC, "Achromatomaly": #EFEAEC);
-//  $ColorBlindButton: ("None": #475B63, "Protanopia": #4F4F61, "Deuteranopia": #4E4D60,
-//  "Tritanopia": #485F5F, "Achromatopsia": #555555, "Protanomaly": #4A5462, "Deuteranomaly": #4B5561,
-//   "Tritanomaly": #475D61, "Achromatomaly":  #4F585B);
-
-// $lightGray: #BCBCBC;
+$ColorBlindDark: ("None": #292929, "Protanopia": #292929, "Deuteranopia": #292929,
+ "Tritanopia": #282929, "Achromatopsia": #292929, "Protanomaly": #292929, "Deuteranomaly": #292929,
+  "Tritanomaly": #292929, "Achromatomaly": #292929);
+$ColorBlindLight: ("None": #F3E8EE, "Protanopia": #EEEEEC, "Deuteranopia": #EEEFEC,
+"Tritanopia": #F2EBEB, "Achromatopsia": #EBEBEB, "Protanomaly": #F0EBED, "Deuteranomaly": #F0EAED,
+ "Tritanomaly": #F2E9EC, "Achromatomaly": #EFEAEC);
+ $ColorBlindButton: ("None": #475B63, "Protanopia": #4F4F61, "Deuteranopia": #4E4D60,
+ "Tritanopia": #485F5F, "Achromatopsia": #555555, "Protanomaly": #4A5462, "Deuteranomaly": #4B5561,
+  "Tritanomaly": #475D61, "Achromatomaly":  #4F585B);
 
 $dark: #292929;
 $button: #475B63;
 $light: #F3E8EE;
 $lightGray: #BCBCBC;
 
-// $headerFontSize: 24px;
 
 @mixin style-header($headerFontSize) {
   #root {
@@ -143,75 +140,121 @@ $lightGray: #BCBCBC;
   }
 }
 
+// Implementation
 @include style-header(24px);
 
 @media (min-width: 1921px) {
+  @include style-header(30px);
+}
+
+@each $mode in $ColorBlindModes {
   body {
-    @include style-header(30px);
+    &.#{$mode} {
+      $dark: map-get($ColorBlindDark, $mode);
+      $button: map-get($ColorBlindButton, $mode);
+      $light: map-get($ColorBlindLight, $mode);
+
+      #root {
+        .header-static {
+          background-color: $dark;
+        }
+
+        .header-moving {
+          background-color: $dark;
+
+          .logo {
+            .title, .capital {
+              color: $light;
+            }
+
+            .title {
+              .capital {
+                color: $light;
+              }
+            }
+          }
+
+          .nav {
+            .btn {
+              color: $light;
+              background-color: $button;
+
+              i {
+                color: $light;
+              }
+
+              &:hover {
+                background-color: $lightGray;
+                color: $button;
+              }
+            }
+          }
+
+        }
+      }
+    }
   }
 }
 
 // Mobile view
 @media (max-width: 900px) {
   $headerFontSize: 18px;
-  body {
-    #root {
-      .header-moving {
-        padding: 0;
+  #root {
+    .header-moving {
+      padding: 0;
 
-        .logo {
-          margin: 0;
-          .title, .capital {
-            font-size: $headerFontSize * 5;
-          }
+      .logo {
+        margin: 0;
+        .title, .capital {
+          font-size: $headerFontSize * 5;
         }
+      }
 
-        .nav {
-          display: flex;
-          flex-direction: column;
-          flex-wrap: wrap;
-          flex-shrink: 0;
-          align-items: center;
-          justify-content: space-evenly;
-          margin: 0;
+      .nav {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        flex-shrink: 0;
+        align-items: center;
+        justify-content: space-evenly;
+        margin: 0;
 
-          .btn {
-            display: none;
-          }
+        .btn {
+          display: none;
         }
+      }
 
-        .btn-settings {
-          &.btn-round {
-            display: initial;
-            position: fixed;
-            bottom: $headerFontSize * 2.5;
-            right: $headerFontSize * 2.5;
-            padding: $headerFontSize;
-            background: $button;
-            border-radius: 50%;
-            border: none;
-            cursor: pointer;
+      .btn-settings {
+        &.btn-round {
+          display: initial;
+          position: fixed;
+          bottom: $headerFontSize * 2.5;
+          right: $headerFontSize * 2.5;
+          padding: $headerFontSize;
+          background: $button;
+          border-radius: 50%;
+          border: none;
+          cursor: pointer;
 
-            &:hover {
-              background-color: $light;
-              i {
-                color: $button;
-              }
-            }
-
+          &:hover {
+            background-color: $light;
             i {
-              color: $light;
-              font-size: $headerFontSize * 2.5;
+              color: $button;
             }
+          }
+
+          i {
+            color: $light;
+            font-size: $headerFontSize * 2.5;
           }
         }
       }
-
-      .header-static {
-        height: $headerFontSize * 6.5;
-      }
-
     }
+
+    .header-static {
+      height: $headerFontSize * 6.5;
+    }
+
   }
 }
 

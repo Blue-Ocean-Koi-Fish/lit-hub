@@ -1,7 +1,30 @@
 import React, { useState } from 'react';
+import axios from 'axios';
 
 function Login({ setLoggedIn, username, setUsername }) {
+
   const [password, setPassword] = useState('');
+
+  const loginUser = () => {
+    axios.post('http://localhost:8080/loginUser', { username, password })
+      .then((res) => {
+        document.cookie = `s_id=${res.data.token}`;
+        setLoggedIn(true);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const registerUser = () => {
+    axios.post('http://localhost:8080/registerUser', { username, password })
+      .then((res) => {
+        console.log(res);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <section className="login-section">
@@ -53,7 +76,8 @@ function Login({ setLoggedIn, username, setUsername }) {
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="button" id="login-submit" onClick={() => setLoggedIn(true)}>Log In</button>
+          <button type="button" id="login-submit" onClick={() => loginUser()}>Log In</button>
+          <button type="button" id="login-submit" onClick={() => registerUser()}>Register</button>
         </form>
       </div>
     </section>
