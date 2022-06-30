@@ -36,6 +36,7 @@ const SearchBooks = function SearchBooks({
         },
       })
       .then((res) => {
+        console.log(res);
         setSearchTerms({
           author,
           title,

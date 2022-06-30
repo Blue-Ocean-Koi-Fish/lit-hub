@@ -41,7 +41,7 @@ function App() {
           console.log(err);
         });
     }
-  });
+  }, []);
   const [currentBook, setCurrentBook] = useState('');
   const [username, setUsername] = useState('');
 
@@ -58,8 +58,16 @@ function App() {
         <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
         <Logout setLoggedIn={setLoggedIn} />
         <section className="collections">
-          <SearchSection />
-          <Collection />
+          <SearchSection
+            setShowSearchResults={setShowSearchResults}
+            setSearchTerms={setSearchTerms}
+            searchTerms={searchTerms}
+            setCount={setCount}
+            setBookList={setBookList}
+          />
+          <Collection
+            currentBook={currentBook}
+          />
           {showSettings ? (
             <Settings
               settings={settings}
