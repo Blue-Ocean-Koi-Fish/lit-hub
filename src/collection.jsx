@@ -15,7 +15,7 @@ function Collection({ currentBook }) {
 
   const removeCurrentBook = (bookId) => {
     removeBook(bookId);
-    window.location.reload();
+    // window.location.reload();
   };
 
   return (
