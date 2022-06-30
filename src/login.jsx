@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 function Login({ setLoggedIn, username, setUsername }) {
-
   const [password, setPassword] = useState('');
 
   const loginUser = () => {
-    axios.post('http://localhost:8080/loginUser', { username, password })
+    axios.post('/frontEndLogin', { username, password })
       .then((res) => {
         document.cookie = `s_id=${res.data.token}`;
         setLoggedIn(true);
@@ -17,9 +16,9 @@ function Login({ setLoggedIn, username, setUsername }) {
   };
 
   const registerUser = () => {
-    axios.post('http://localhost:8080/registerUser', { username, password })
-      .then((res) => {
-        console.log(res);
+    axios.post('/frontEndRegister', { username, password })
+      .then(() => {
+        console.log('User registered successfully!');
       })
       .catch((err) => {
         console.log(err);

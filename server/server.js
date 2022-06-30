@@ -86,6 +86,42 @@ app.get('/collection/:username', (req, res) => {
     });
 });
 
+app.post('/frontEndLogin', (req, res) => {
+  const { username, password } = req.body;
+  axios.post(`${backendURL}/loginUser`, { username, password })
+    .then((response) => {
+      res.status(201).json(response.data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+app.post('/frontEndRegister', (req, res) => {
+  const { username, password } = req.body;
+  axios.post(`${backendURL}/registerUser`, { username, password })
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      res.sendStatus(500);
+    });
+});
+
+app.post('/verifyToken', (req, res) => {
+  axios.post(`${backendURL}/verifyToken`, {
+    headers: req.headers,
+  })
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
 const PORT = process.env.PORT || 3000;
 
 console.log(`Listening on ${PORT}`);

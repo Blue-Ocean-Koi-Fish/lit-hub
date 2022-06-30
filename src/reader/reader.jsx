@@ -1,9 +1,11 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable react/no-array-index-key */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 
 import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'html-react-parser';
+import { startText } from './speech';
 
 function Reader({ book }) {
   const [font, setFont] = useState('Times');
@@ -207,6 +209,7 @@ function Reader({ book }) {
         <button id="dark-mode" className="btn" type="button" onClick={toggleDarkMode}>
           <i className="fa-solid fa-moon" />
         </button>
+        <button type="button" onClick={startText} id="tts">Start Reading</button>
         <select onChange={updateFont}>
           {['Baskerville', 'Bookerly', 'Georgia', 'Helvetica', 'Futura', 'Arial', 'Courier', 'Times'].map((fontOption, i) => (
             <option value={fontOption.toLowerCase()} key={i}>{fontOption}</option>))}
