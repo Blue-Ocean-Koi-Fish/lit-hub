@@ -17,7 +17,7 @@ function Reader({ book }) {
   const [font, setFont] = useState('Times');
   const [fontSize, setFontSize] = useState(24);
   const [bookContent, setBookContent] = useState(bookSchema);
-  const [currentPage, setCurrentPage] = useState(3874);
+  const [currentPage, setCurrentPage] = useState(0);
 
   useEffect(() => {
     const rawDiv = ReactHtmlParser(book).props.children[1].props.children;
@@ -116,7 +116,10 @@ function Reader({ book }) {
     setCurrentPage(origin - dy * 1.75);
   };
 
-  const grabMouseUp = () => {
+  const grabMouseUp = (event) => {
+    // if (event.target?.classList?.contains('.nav-btn')) {
+    //   return;
+    // }
     const contentDiv = document.getElementById('content');
     contentDiv.style.cursor = 'grab';
     contentDiv.removeEventListener('mousemove', grabMouseMove);
@@ -154,8 +157,18 @@ function Reader({ book }) {
     }
   };
 
+  // Dark mode -> TODO: Change to relevant state
+  const toggleDarkMode = (event) => {
+    event.preventDefault();
+    if (document.querySelector('.dark-mode-reader') !== null) {
+      document.querySelector('.read-body-wrap')?.classList?.remove('dark-mode-reader');
+    } else {
+      document.querySelector('.read-body-wrap')?.classList?.add('dark-mode-reader');
+    }
+  };
+
   // Used to assign a unique line to each element in the reader body
-  // for reading session progress retention
+  // for reader's session progress retention
   let index = -1;
   const assignLineIndex = (node) => {
     index += 1;
@@ -174,7 +187,11 @@ function Reader({ book }) {
 
   return (
     <section className="e-reader-section">
+
       <div className="book-controls">
+        <button id="dark-mode" className="btn" type="button" onClick={toggleDarkMode}>
+          <i className="fa-solid fa-moon" />
+        </button>
         <select onChange={updateFont}>
           {['Baskerville', 'Bookerly', 'Georgia', 'Helvetica', 'Futura', 'Arial', 'Courier', 'Times'].map((fontOption, i) => (
             <option value={fontOption.toLowerCase()} key={i}>{fontOption}</option>))}
@@ -196,6 +213,7 @@ function Reader({ book }) {
           <i className="fa-solid fa-expand" />
         </button>
       </div>
+
       <div className="read-body-wrap">
         <div className="content-wrap" onMouseDown={grabMouseDown}>
           <div
@@ -206,8 +224,6 @@ function Reader({ book }) {
             }}
           >
             {bookContent.text.map((node) => {
-              // const lineUpdated = React.cloneElement(line, { 'data-row': i, key: i });
-              // console.log(lineUpdated);
               const uniqueNode = assignLineIndex(node);
               return uniqueNode;
             })}

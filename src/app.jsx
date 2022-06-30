@@ -44,7 +44,7 @@ function App() {
       <>
         <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
 
-        <section className="collections">
+        {/* <section className="collections">
           <SearchSection
             setCount={setCount}
             searchTerms={searchTerms}
@@ -71,10 +71,10 @@ function App() {
             bookList={bookList}
             showBook={showBook}
           />
-        ) : null}
+        ) : null} */}
 
         {/* {showReader ? <Reader book={currentBook} /> : null} */}
-        {/* {<Reader book={testBook} /> || null} */}
+        {<Reader book={testBook} /> || null}
       </>
     ) : (
       <Login setLoggedIn={setLoggedIn} />
