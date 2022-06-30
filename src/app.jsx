@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Login from './login';
 import Settings from './settings';
 import Header from './header';
@@ -7,10 +8,11 @@ import SearchSection from './search/searchsection';
 import { getCurrentBook } from '../browser_db/books';
 import Collection from './collection';
 import '../public/styles/unified.css';
+import Logout from './logout';
 // import Reader from "./reader";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [searchTerms, setSearchTerms] = useState({
     title: '',
     author: '',
@@ -26,7 +28,22 @@ function App() {
   });
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [showReader, setShowReader] = useState(true);
+
+  useEffect(() => {
+    if (document.cookie) {
+      axios.post('http://localhost:8080/verifyToken', { token: document.cookie })
+        .then((res) => {
+          console.log(res);
+          setLoggedIn(true);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
+  });
   const [currentBook, setCurrentBook] = useState('');
+  const [username, setUsername] = useState('');
 
   const showBook = (bookId) => {
     getCurrentBook(bookId)
@@ -39,16 +56,10 @@ function App() {
     loggedIn ? (
       <>
         <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
-
+        <Logout setLoggedIn={setLoggedIn} />
         <section className="collections">
-          <SearchSection
-            setCount={setCount}
-            searchTerms={searchTerms}
-            setSearchTerms={setSearchTerms}
-            setShowSearchResults={setShowSearchResults}
-            setBookList={setBookList}
-          />
-          <Collection currentBook={currentBook} />
+          <SearchSection />
+          <Collection />
           {showSettings ? (
             <Settings
               settings={settings}
@@ -66,13 +77,15 @@ function App() {
             count={count}
             bookList={bookList}
             showBook={showBook}
+            username={username}
           />
         ) : null}
 
         {/* {showReader ? <Reader book={currentBook} /> : null} */}
+        {/*  {<Reader book={testBook} /> || null} */}
       </>
     ) : (
-      <Login setLoggedIn={setLoggedIn} />
+      <Login setLoggedIn={setLoggedIn} username={username} setUsername={setUsername} />
     )
   );
 }

@@ -34,7 +34,6 @@ const getAllBooks = () => {
 
 // remove book
 const removeBook = (bookId) => {
-  console.log('IS IT HERE');
   booksDb.books.delete(bookId);
 };
 

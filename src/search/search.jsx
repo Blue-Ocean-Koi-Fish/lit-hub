@@ -15,18 +15,26 @@ const SearchBooks = function SearchBooks({
   const [language, setLanguage] = useState('en');
 
   const submitSearch = function submitSearch() {
-    const authorWords = author.split(' ');
-    const titleWords = title.split(' ');
-    const searchTermArr = authorWords.concat(titleWords);
-    const searchTerm = searchTermArr.join('%20');
+    let searchTerm = '';
+    if (author.length && title.length) {
+      const authorWords = author.split(' ');
+      const titleWords = title.split(' ');
+      const searchTermArr = authorWords.concat(titleWords);
+      searchTerm = searchTermArr.join('%20');
+    } else if (author.length) {
+      searchTerm = author.replaceAll(' ', '%20');
+    } else {
+      searchTerm = title.replaceAll(' ', '%20');
+    }
 
-    console.log(
-      `http://gutendex.com/books?search=${searchTerm}&topic=${topic}&languages=${language}`,
-    );
     axios
-      .get(
-        `http://gutendex.com/books?search=${searchTerm}&topic=${topic}&languages=${language}`,
-      )
+      .get('/search', {
+        params: {
+          search: searchTerm,
+          topic,
+          language,
+        },
+      })
       .then((res) => {
         setSearchTerms({
           author,
@@ -46,7 +54,9 @@ const SearchBooks = function SearchBooks({
       className="search-form"
       onSubmit={(event) => {
         event.preventDefault();
-        submitSearch();
+        if ([author, title, topic].some((a) => a.length)) {
+          submitSearch();
+        }
       }}
     >
       <label>Author</label>
