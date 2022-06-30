@@ -4,7 +4,7 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const backendURL = 'http://localhost:8080';
+const backendURL = 'http://107.20.126.146:8080';
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json());
@@ -79,6 +79,43 @@ app.get('/collection/:username', (req, res) => {
   })
     .then((data) => {
       res.status(200).send(data.data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+app.post('/frontEndLogin', (req, res) => {
+  const { username, password } = req.body;
+  axios.post(`${backendURL}/userLogin`, { username, password })
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+app.post('/frontEndRegister', (req, res) => {
+  const { username, password } = req.body;
+  axios.post(`${backendURL}/newUser`, { username, password })
+    .then(() => {
+      res.sendStatus(201);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+app.post('/verifyToken', (req, res) => {
+  const token = req.body.token.slice(5, req.body.token.length);
+  axios.post(`${backendURL}/verifyToken`, { token })
+    .then((response) => {
+      //console.log(response.data);
+      res.sendStatus(200);
     })
     .catch((err) => {
       console.log(err);
