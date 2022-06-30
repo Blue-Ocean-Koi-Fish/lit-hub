@@ -14,7 +14,12 @@ function Settings({ settings, setSettings, setShowSettings }) {
   const handleColorBlindedness = (e) => {
     const newSettings = { ...settings };
     newSettings['color-blindedness'] = e.target.value;
+    const body = document.querySelector('body');
+    const mode = e.target.value.substring(0, 1).toUpperCase()
+     + e.target.value.substring(1, e.target.value.length);
 
+    body.removeAttribute('class');
+    document.querySelector('body').classList.add(mode);
     // document.querySelector('input.checked')?.classList?.remove('checked');
     // e.target.classList.add('checked');
 
@@ -28,7 +33,7 @@ function Settings({ settings, setSettings, setShowSettings }) {
         <label htmlFor={optionLower} key={i}>
           <input
             type="radio"
-            name="optionuage"
+            name={optionLower}
             id={optionLower}
             value={optionLower}
             onChange={handler}
@@ -65,7 +70,7 @@ function Settings({ settings, setSettings, setShowSettings }) {
           <form name="color-blindedness">
             {fillSection(
               ['None', 'Protanopia', 'Deuteranopia', 'Tritanopia', 'Achromatopsia', 'Protanomaly', 'Deuteranomaly', 'Tritanomaly', 'Achromatomaly'],
-              'color-blindness',
+              'color-blindedness',
               handleColorBlindedness,
             )}
           </form>
