@@ -47,13 +47,14 @@ const startText = () => {
   }
 };
 
-// document.addEventListener('keypress', (event) => {
-//   if (event.code === 'Space') {
-//     event.preventDefault();
-//     // eslint-disable-next-line no-use-before-define
-//     startText();
-//   }
-// }, false);
+document.addEventListener('keypress', (event) => {
+  console.log(event.keyCode, event.ctrlKey);
+  if (event.keyCode === 20 && event.ctrlKey) {
+    event.preventDefault();
+    // eslint-disable-next-line no-use-before-define
+    startText();
+  }
+}, false);
 
 // use this function to set up pauseing on spacebar press.
 // let started = false;
