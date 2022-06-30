@@ -11,6 +11,7 @@ import Reader from './reader/reader';
 import testBook from '../testData/sample-2';
 
 import '../public/styles/unified.css';
+import testBook from '../testData/sample-6';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
@@ -52,7 +53,7 @@ function App() {
             setShowSearchResults={setShowSearchResults}
             setBookList={setBookList}
           />
-          <Collection />
+          <Collection currentBook={currentBook} />
           {showSettings ? (
             <Settings
               settings={settings}

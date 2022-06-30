@@ -4,4 +4,8 @@
 .env
 .DS_Store
 /testData
+<<<<<<< HEAD
 /src/wireframes
+=======
+/public/sw.js
+>>>>>>> 190851687dc551eff741b86e8bf5da265bb37c7d

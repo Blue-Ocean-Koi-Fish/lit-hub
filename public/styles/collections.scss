@@ -194,6 +194,36 @@ $darkGray: #4f4f4f;
 @media (min-width: 1921px) {
   body {
     @include style-collections(30px);
+    #root {
+      .collections, .reader-section {
+        form.search-form {
+          height: 100%;
+          margin-bottom: 5%;
+          overflow-y: auto;
+
+          /* Width */
+          &::-webkit-scrollbar {
+            width: 1.2vw;
+          }
+
+          /* Track */
+          &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 0;
+          }
+
+          /* Handle */
+          &::-webkit-scrollbar-thumb {
+            background: $dark;
+            border-radius: 0;
+          }
+
+          #search-submit {
+            margin-bottom: 5%;
+          }
+        }
+      }
+    }
   }
 }
 
