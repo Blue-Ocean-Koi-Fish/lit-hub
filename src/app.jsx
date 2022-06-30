@@ -35,16 +35,15 @@ function App() {
   useEffect(() => {
     if (document.cookie) {
       axios.post('/verifyToken', { token: document.cookie })
-        .then(() => {
-          //console.log(res);
+        .then((res) => {
           setLoggedIn(true);
-          setUsername('');
+          setUsername(res.data);
         })
         .catch((err) => {
           console.log(err);
         });
     }
-  });
+  }, []);
 
   const showBook = (bookId) => {
     getCurrentBook(bookId)
