@@ -7,6 +7,7 @@ import LanguageDetector from 'i18next-browser-languagedetector';
 import * as translationEn from '../public/locales/en/translation.json';
 import * as translationRu from '../public/locales/ru/translation.json';
 import * as translationUk from '../public/locales/uk/translation.json';
+import * as translationZh from '../public/locales/zh/translation.json';
 
 i18n
   .use(Backend)
@@ -22,6 +23,7 @@ i18n
       english: { translation: translationEn },
       русский: { translation: translationRu },
       українська: { translation: translationUk },
+      中国人: { translation: translationZh },
     },
     fallbackLng: 'english',
 

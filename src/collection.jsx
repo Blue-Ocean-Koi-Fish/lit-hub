@@ -29,8 +29,11 @@ function Collection({ currentBook }) {
           {collection.map((book) => (
             <div className="book-card" style={{ backgroundImage: `url(${book.meta.formats['image/jpeg']})` }}>
               <div className="book-meta">
-                <p>{book.meta.authors[0].name}</p>
-                <p className="book-title">{book.name.slice(0, 25) + '...'}</p>
+                <div className="meta-text-wrap">
+                  <p>{book.meta.authors[0].name}</p>
+                  <p className="book-title">{book.name.slice(0, 25) + '...'}</p>
+                </div>
+
                 <button className="book-btn book-btn-add" type="button" onClick={() => { removeCurrentBook(book.id); }}>
                   {t('collections.cards.remove')}
                   {' '}

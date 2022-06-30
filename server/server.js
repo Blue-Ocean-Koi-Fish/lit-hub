@@ -4,7 +4,7 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const backendURL = 'http://localhost:8080';
+const backendURL = 'http://107.20.126.146:8080';
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json());

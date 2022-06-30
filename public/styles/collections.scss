@@ -146,30 +146,79 @@ $darkGray: #4f4f4f;
               justify-content: flex-end;
 
               .book-meta {
-                background-color: $darkGray;
+                height: 35%;
+
+                background-color: rgba($darkGray, 0.8);
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between;
                 padding: $collectionsFontSize * 0.25;
-                border-radius: 0.75vw;
+                border-radius: 0 0 0.75vw 0.75vw;
+                position: relative;
 
-                >* {
-                  // flex-basis: 40%;
+                .meta-text-wrap {
+                  width: 100%;
+                  height: 78%;
+                  // margin-bottom: $collectionsFontSize;
+                  overflow-y: scroll;
+                  /* Width */
+                  &::-webkit-scrollbar {
+                    width: 1vw;
+                    height: 90%;
+                  }
+
+                  /* Track */
+                  &::-webkit-scrollbar-track {
+                    box-shadow: inset 0 0 5px grey;
+                    border-radius: 0.2vw 0.2vw 0 0;
+                  }
+
+                  /* Handle */
+                  &::-webkit-scrollbar-thumb {
+                    background: $dark;
+                    border-radius: 0.2vw 0.2vw 0 0;
+                  }
+
+
+                  >* {
+                    font-size: $collectionsFontSize * 0.75;
+                    color: $light;
+                    font-style: italic;
+
+                    &.book-title {
+                      font-style: normal;
+                    }
+                  }
+                }
+
+                .book-btn {
+                  height: 26%;
                   font-size: $collectionsFontSize * 0.75;
+                  margin-top: 1%;
+                  color: $dark;
+                  font-style: normal;
+                  width: 100%;
+                  border-radius: 0 0 0.55vw 0.55vw;
+                }
+              }
+
+              position: relative;
+              &:hover {
+                &:before {
+                  font-family: "Font Awesome 5 Free";
+                  font-weight: 900;
+                  text-align: center;
+                  line-height: 5;
+                  content: '\f518';
+                  font-size: $collectionsFontSize * 2;
                   color: $light;
-                  font-style: italic;
+                  background: rgba(0, 0, 0, 0.524);
+                  display: inline-block;
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 0 0 0.55vw 0.55vw;
+                  position: absolute;
 
-                  &.book-title {
-                    font-style: normal;
-                  }
-
-                  &.book-btn {
-                    color: $dark;
-                    font-style: normal;
-                    margin-top: $collectionsFontSize * 0.25;
-                    width: 100%;
-                    border-radius: 0.55vw;
-                  }
                 }
               }
             }

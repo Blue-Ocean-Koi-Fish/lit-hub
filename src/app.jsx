@@ -69,9 +69,22 @@ function App() {
             setCount={setCount}
             setBookList={setBookList}
           />
-          <Collection
-            currentBook={currentBook}
-          />
+          {showSearchResults ? (
+            <SearchDisplay
+              setUserBooks={setUserBooks}
+              searchTerms={searchTerms}
+              setSearchTerms={setSearchTerms}
+              count={count}
+              bookList={bookList}
+              showBook={showBook}
+              username={username}
+            />
+          ) : (
+            <Collection
+              currentBook={currentBook}
+            />
+          )}
+
           {showSettings ? (
             <Settings
               settings={settings}
@@ -82,17 +95,6 @@ function App() {
           )
             : null}
         </section>
-        {showSearchResults ? (
-          <SearchDisplay
-            setUserBooks={setUserBooks}
-            searchTerms={searchTerms}
-            setSearchTerms={setSearchTerms}
-            count={count}
-            bookList={bookList}
-            showBook={showBook}
-            username={username}
-          />
-        ) : null}
 
         {/* {showReader ? <Reader book={currentBook} /> : null} */}
         {/* {<Reader book={testBook} /> || null} */}

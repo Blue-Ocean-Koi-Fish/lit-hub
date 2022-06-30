@@ -1,47 +1,43 @@
 {
   "header": {
-    "collection": "Collection",
-    "settings": "Settings",
+    "collection": "系列",
+    "settings": "设置",
     "subtitle": "Web"
   },
-
   "login": {
-    "welcome": "Welcome to LitHub! Please Login or Register:",
-    "username": "Username",
-    "password": "Password",
-    "login": "Login",
-    "logout": "Logout",
-    "register": "Register"
+    "welcome": "欢迎来到 LitHub! 请登录或注册:",
+    "username": "用户名",
+    "password": "密码",
+    "login": "登录",
+    "logout": "登出",
+    "register": "注册"
   },
-
   "search": {
-    "author": "Author",
-    "title": "Title",
-    "topic": "Topic",
-    "language": "Language",
-    "langDefault": "- Lang -",
-    "search": "Search"
+    "author": "作者",
+    "title": "标题",
+    "topic": "主题",
+    "language": "语言",
+    "langDefault": "默认语言",
+    "search": "搜索"
   },
-
   "collections": {
-    "main": "Your Collection",
-    "search": "Restults",
+    "main": "我的收藏",
+    "search": "结果",
     "cards": {
-      "add": "Add",
-      "remove": "Remove"
+      "add": "添加",
+      "remove": "删除"
     }
   },
-
   "settings": {
-    "accessibility": "Accessibility",
-    "language": "Language",
-    "colorblindness": "Colorblindness",
+    "accessibility": "无障碍性",
+    "language": "语言",
+    "colorblindness": "色盲",
     "coloblindnessModes": {
-      "None": "None", "Protanopia": "Protanopia",
-       "Deuteranopia": "Deuteranopia", "Tritanopia": "Tritanopia",
-        "Achromatopsia": "Achromatopsia", "Protanomaly": "Protanomaly",
-         "Deuteranomaly": "Deuteranomaly", "Tritanomaly": "Tritanomaly",
-          "Achromatomaly": "Achromatomaly"
+      "None": "无", "Protanopia": "红色盲",
+       "Deuteranopia": "绿色盲", "Tritanopia": "蓝色盲",
+        "Achromatopsia": "全色盲", "Protanomaly": "红色弱",
+         "Deuteranomaly": "绿色弱", "Tritanomaly": "蓝色弱",
+          "Achromatomaly": "全色弱"
       }
   }
 }

@@ -67,7 +67,7 @@ function Settings({
           </h4>
           <form name="language">
             {fillSection(
-              ['English', 'Русский', 'Українська', 'Chinese', 'Japanese'],
+              ['English', 'Русский', 'Українська', '中国人', 'Japanese (Not implemented)'],
               'language',
               handleLanguage,
             )}
