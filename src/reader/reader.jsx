@@ -1,3 +1,5 @@
+/* eslint-disable react/no-array-index-key */
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'html-react-parser';
 import './readerTemp.css';
@@ -37,9 +39,10 @@ function Reader({ book }) {
         } else if (node.type === 'table') {
           // the chapters are in the table tag,
           console.log('table', node);
-          node.props.children.props.children.forEach((child) => {
-            newBook.chapters.push(child.props.children.props.children);
-          });
+          console.log('here', node);
+          // node.props.children.props.children.forEach((child) => {
+          //   newBook.chapters.push(child.props.children.props.children);
+          // });
           console.log(newBook.chapters);
         } else if (node.props && node.props.className === 'chapter') {
           // and thhe text is split up into divs with the chapter class name.
@@ -47,7 +50,6 @@ function Reader({ book }) {
         }
       }
     });
-
     setBookContent(newBook);
     // setFontSize((size) => Number(size)); //?
   }, [book]);
@@ -96,39 +98,55 @@ function Reader({ book }) {
     setCurrentPage(contentDiv.scrollTop);
   };
 
+  // Expanded view
+  const toggleExpandView = (event) => {
+    event.preventDefault();
+    const eReader = document.querySelector('.e-reader-section');
+    if (eReader?.classList?.contains('expanded')) {
+      eReader?.classList?.remove('expanded');
+      console.log('here');
+    } else {
+      eReader?.classList?.add('expanded');
+    }
+  };
+
   return (
     <section className="e-reader-section">
       <div className="book-controls">
         <select onChange={updateFont}>
-          <option value="monospace">Monospace</option>
-          <option value="Arial">Arial</option>
-          <option value="Times">Times New Roman</option>
+          {['Baskerville', 'Bookerly', 'Georgia', 'Helvetica', 'Futura', 'Arial', 'Courier', 'Times'].map((fontOption, i) => (
+            <option value={fontOption.toLowerCase()} key={i}>{fontOption}</option>))}
         </select>
-
-        <select onChange={updateChapter}>
+        {/* <button className="expand"></button> */}
+        {/* <select onChange={updateChapter}>
           {bookContent.chapters
             ? bookContent.chapters.map((chapter, i) => (
               <option key={i} value={chapter.props.href}>{chapter.props.children}</option>))
             : null}
-        </select>
-        <button id="font-size-plus" type="button" onClick={decreaseFont}>FONT -</button>
-        <button id="font-size-minus" type="button" onClick={increaseFont}>FONT +</button>
+        </select> */}
+        <button id="font-size-plus" className="btn" type="button" onClick={decreaseFont}>
+          <i className="fa-solid fa-minus" />
+        </button>
+        <button id="font-size-minus" className="btn" type="button" onClick={increaseFont}>
+          <i className="fa-solid fa-plus" />
+        </button>
+        <button className="btn" id="expand-view" type="button" onClick={toggleExpandView}>
+          <i className="fa-solid fa-expand" />
+        </button>
       </div>
-      <div className="frame">
-        <div className="read-body-wrap">
-          <div className="content-wrap">
-            <button id="page-prev-btn" type="button" onClick={pageBackward}>PREV</button>
-            <div
-              id="content"
-              style={{
-                fontSize: `${fontSize}px`,
-                fontFamily: `${font}`,
-              }}
-            >
-              {bookContent.text}
-            </div>
-            <button id="page-next-btn" type="button" onClick={pageForward}>NEXT</button>
+      <div className="read-body-wrap">
+        <div className="content-wrap">
+          <button id="page-prev-btn" className="nav-btn" type="button" onClick={pageBackward}>{'<'}</button>
+          <div
+            id="content"
+            style={{
+              fontSize: `${fontSize}px`,
+              fontFamily: `${font}`,
+            }}
+          >
+            {bookContent.text}
           </div>
+          <button id="page-next-btn" className="nav-btn" type="button" onClick={pageForward}>{'>'}</button>
         </div>
       </div>
     </section>

@@ -1,4 +1,4 @@
-.e-reader-section {
+/* .e-reader-section {
   border: 2px solid black;
   height: 100vh;
 }
@@ -20,11 +20,11 @@
   flex-direction: row;
   align-items: center;
   justify-content: center;
-}
+} */
 
-#content {
+/* #content {
   height: 80vh;
   width: 30vw;
   border: 2px solid black;
   overflow: hidden;
-}
+} */
