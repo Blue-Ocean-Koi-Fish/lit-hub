@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import SearchBooks from "./search.jsx";
+import React from 'react';
+import SearchBooks from './search';
 
 const SearchSection = function SearchSection({
   setShowSearchResults,

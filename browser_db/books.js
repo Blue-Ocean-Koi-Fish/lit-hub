@@ -4,23 +4,37 @@ const { Dexie } = require('dexie');
 // Creates a new indexedDb database
 const booksDb = new Dexie('booksDatabase');
 booksDb.version(1).stores({
-  books: '++id, name, text',
+  books: '++id, name, text, meta, book_id',
 });
 
-const addBook = (bookName, bookStr) => {
+const addBook = (bookName, bookStr, metaObj, bookId) => {
+  console.log(metaObj);
   booksDb.books.add({
     name: bookName,
     text: bookStr,
+    meta: metaObj,
+    book_id: bookId,
   });
 };
 
-const getCurrentBook = async (bookName) => {
-  const book = await booksDb.books.where("name") // THIS REQUIRES DOUBLE QUOTES
-    .equalsIgnoreCase(bookName)
+const getCurrentBook = async (bookId) => {
+  const book = await booksDb.books.where("book_id") // THIS REQUIRES DOUBLE QUOTES
+    .equals(bookId)
     .toArray(); // you have to use toArray or find another dexie method do not leave it off
   return book[0];
 };
 
-// remove book
+const getAllBooks = async () => {
+  const collection = await booksDb.books.toArray();
+  return collection;
+};
 
-module.exports = { addBook, getCurrentBook };
+// remove book
+const removeBook = (bookId) => {
+  console.log('IS IT HERE');
+  booksDb.books.delete(bookId);
+};
+
+module.exports = {
+  addBook, getCurrentBook, removeBook, getAllBooks,
+};

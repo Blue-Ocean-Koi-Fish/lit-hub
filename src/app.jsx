@@ -1,12 +1,13 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from 'react';
 import Login from './login';
-import Settings from "./settings";
-import Header from "./header";
-import SearchDisplay from "./search/searchdisplay";
-import SearchSection from "./search/searchsection";
+import Settings from './settings';
+import Header from './header';
+import SearchDisplay from './search/searchdisplay';
+import SearchSection from './search/searchsection';
+import { getCurrentBook } from '../browser_db/books';
 
-import Collection from "./collection";
-import Reader from "./reader/reader";
+import Collection from './collection';
+// import Reader from "./reader";
 
 import '../public/styles/unified.css';
 import testBook from '../testData/sample-6';
@@ -14,30 +15,44 @@ import testBook from '../testData/sample-6';
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
   const [searchTerms, setSearchTerms] = useState({
-    title: "",
-    author: "",
-    language: "",
-    topic: "",
+    title: '',
+    author: '',
+    language: '',
+    topic: '',
   });
   const [userBooks, setUserBooks] = useState([]);
   const [bookList, setBookList] = useState();
   const [count, setCount] = useState(0);
   const [settings, setSettings] = useState({
-    language: "english",
-    "color-blindedness": "none",
+    language: 'english',
+    'color-blindedness': 'none',
   });
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
+  const [currentBook, setCurrentBook] = useState('');
 
-  const [showReader, setShowReader] = useState(true);
+  const showBook = (bookId) => {
+    getCurrentBook(bookId)
+      .then((res) => {
+        console.log('IS THIS RES From APP ', res);
+        setCurrentBook(res);
+      });
+  };
+
   return (
     loggedIn ? (
       <>
         <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
 
-        {/* <section className="collections">
-          <SearchSection />
-          <Collection />
+        <section className="collections">
+          <SearchSection
+            setCount={setCount}
+            searchTerms={searchTerms}
+            setSearchTerms={setSearchTerms}
+            setShowSearchResults={setShowSearchResults}
+            setBookList={setBookList}
+          />
+          <Collection currentBook={currentBook} />
           {showSettings ? (
             <Settings
               settings={settings}
@@ -46,17 +61,19 @@ function App() {
             />
           )
             : null}
-        </section> */}
-        {/* <SearchForm
-          searchTerms={searchTerms}
-          setSearchTerms={setSearchTerms}
-          setShowSearchResults={setShowSearchResults}
-        />
-        {showSearchResults
-          ? <SearchResults searchTerms={searchTerms} setSearchTerms={setSearchTerms} />
-          : <Collection />} */}
+        </section>
+        {showSearchResults ? (
+          <SearchDisplay
+            setUserBooks={setUserBooks}
+            searchTerms={searchTerms}
+            setSearchTerms={setSearchTerms}
+            count={count}
+            bookList={bookList}
+            showBook={showBook}
+          />
+        ) : null}
 
-        {showReader ? <Reader book={testBook} /> : null}
+        {/* {showReader ? <Reader book={currentBook} /> : null} */}
       </>
     ) : (
       <Login setLoggedIn={setLoggedIn} />
