@@ -2696,6 +2696,12 @@ body.Achromatomaly #root .collections .collection-section-wrap .collection-secti
   background-color: #292929;
   color: rgb(198, 198, 198);
 }
+#root .e-reader-section .read-body-wrap.dark-mode-reader .content-wrap .page-nav-btns-wrap .nav-btn {
+  background-color: rgb(226, 226, 226);
+}
+#root .e-reader-section .read-body-wrap.dark-mode-reader .content-wrap .page-nav-btns-wrap .nav-btn i {
+  color: rgb(28, 28, 28);
+}
 #root .e-reader-section.expanded {
   margin: 0;
   padding: 0;
