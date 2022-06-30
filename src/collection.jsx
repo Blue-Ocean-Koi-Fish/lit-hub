@@ -3,7 +3,10 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getAllBooks, removeBook } from '../browser_db/books';
 
-function Collection({ currentBook, setCollection, collection }) {
+function Collection({ currentBook }) {
+  const { t } = useTranslation();
+  const [collection, setCollection] = useState([]);
+
   useEffect(() => {
     getAllBooks().then((res) => {
       setCollection(res);

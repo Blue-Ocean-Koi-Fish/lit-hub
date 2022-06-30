@@ -6,14 +6,8 @@ import Header from './header';
 import SearchDisplay from './search/searchdisplay';
 import SearchSection from './search/searchsection';
 import { getCurrentBook } from '../browser_db/books';
-<<<<<<< HEAD
 import { getAllBooks } from '../browser_db/books';
 import Popular from './popular';
-=======
-import Collection from './collection';
-import Reader from './reader/reader';
-
->>>>>>> main
 import '../public/styles/unified.css';
 import Logout from './logout';
 import Collection from './collection';
@@ -40,8 +34,10 @@ function App() {
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showReader, setShowReader] = useState(true);
-  const [collection, setCollection] = useState([]);
+
   const [collectionLength, setCollectionLength] = useState(0);
+  const [currentBook, setCurrentBook] = useState([]);
+  const [username, setUsername] = useState([]);
 
   getAllBooks()
     .then((res) => {
@@ -83,13 +79,9 @@ function App() {
             setCount={setCount}
             setBookList={setBookList}
           />
-<<<<<<< HEAD
-          <Switch
+                 <Switch
             currentBook={currentBook}
-            setCollection={setCollection}
-            collection={collection}
           />
-=======
           {showSearchResults ? (
             <SearchDisplay
               setUserBooks={setUserBooks}
@@ -101,12 +93,15 @@ function App() {
               username={username}
             />
           ) : (
-            <Collection
+            /*   <Collection
               currentBook={currentBook}
-            />
+            /> */
+   /*          <Switch
+              currentBook={currentBook}
+            /> */
+
           )}
 
->>>>>>> main
           {showSettings ? (
             <Settings
               settings={settings}
