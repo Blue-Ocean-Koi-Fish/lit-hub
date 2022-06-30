@@ -2,9 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import { getAllBooks, removeBook } from '../browser_db/books';
 
-function Collection({ currentBook }) {
-  const [collection, setCollection] = useState([]);
-
+function Collection({ currentBook, setCollection, collection }) {
   useEffect(() => {
     getAllBooks().then((res) => {
       setCollection(res);

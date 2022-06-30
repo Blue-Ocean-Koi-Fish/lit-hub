@@ -6,13 +6,15 @@ import Header from './header';
 import SearchDisplay from './search/searchdisplay';
 import SearchSection from './search/searchsection';
 import { getCurrentBook } from '../browser_db/books';
-import Collection from './collection';
+import { getAllBooks } from '../browser_db/books';
+import Popular from './popular';
 import '../public/styles/unified.css';
 import Logout from './logout';
+import Collection from './collection';
 // import Reader from "./reader";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(false);
+  const [loggedIn, setLoggedIn] = useState(true);
   const [searchTerms, setSearchTerms] = useState({
     title: '',
     author: '',
@@ -29,6 +31,16 @@ function App() {
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showReader, setShowReader] = useState(true);
+  const [collection, setCollection] = useState([]);
+  const [collectionLength, setCollectionLength] = useState(0);
+
+  getAllBooks()
+    .then((res) => {
+      setCollectionLength(res.length);
+    });
+  // document.cookie.s_id === 'guest';
+
+  const Switch = collectionLength !== 0 ? Collection : Popular;
 
   useEffect(() => {
     if (document.cookie) {
@@ -65,8 +77,10 @@ function App() {
             setCount={setCount}
             setBookList={setBookList}
           />
-          <Collection
+          <Switch
             currentBook={currentBook}
+            setCollection={setCollection}
+            collection={collection}
           />
           {showSettings ? (
             <Settings
