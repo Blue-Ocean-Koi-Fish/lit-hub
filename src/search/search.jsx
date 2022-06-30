@@ -1,6 +1,7 @@
 // search by, title, author, topic, license
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import langList from './resources';
 
 const SearchBooks = function SearchBooks({
@@ -9,6 +10,8 @@ const SearchBooks = function SearchBooks({
   setSearchTerms,
   setShowSearchResults,
 }) {
+  const { t } = useTranslation();
+
   const [author, setAuthor] = useState('');
   const [title, setTitle] = useState('');
   const [topic, setTopic] = useState('');
@@ -49,49 +52,57 @@ const SearchBooks = function SearchBooks({
         submitSearch();
       }}
     >
-      <label>Author</label>
+      <label>{t('search.author')}</label>
       <input
         id="author"
         type="text"
+        placeholder={t('search.author')}
         onChange={(e) => {
           e.preventDefault();
           setAuthor(e.target.value);
         }}
       />
-      <label>Title</label>
+      <label>{t('search.title')}</label>
       <input
         id="title"
         type="text"
+        placeholder={t('search.title')}
         onChange={(e) => {
           e.preventDefault();
           setTitle(e.target.value);
         }}
       />
-      <label>Topic</label>
+      <label>{t('search.topic')}</label>
       <input
         id="topic"
         type="text"
+        placeholder={t('search.topic')}
         onChange={(e) => {
           e.preventDefault();
           setTopic(e.target.value);
         }}
       />
-      <label>Select Language</label>
+      <label>{t('search.language')}</label>
       <select
         name="Language"
         id="language"
+        default={t('search.langDefault')}
         onChange={(e) => {
           e.preventDefault();
           setLanguage(e.target.value);
         }}
       >
+        <option>{t('search.langDefault')}</option>
         {langList.map((val) => (
           <option key={val.name} value={val.code}>
             {val.name}
           </option>
         ))}
       </select>
-      <input type="submit" value="Search" id="search-submit" />
+      <button type="submit" id="search-submit">
+        {t('search.search')}
+        <i className="fa-solid fa-magnifying-glass" />
+      </button>
     </form>
   );
 };

@@ -1,7 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { getAllBooks, removeBook } from '../browser_db/books';
 
 function Collection() {
+  const { t, i18n } = useTranslation();
+
   const [collection, setCollection] = useState([]);
 
   useEffect(() => {
@@ -21,7 +24,7 @@ function Collection() {
     <div className="collection-section-wrap">
       <section className="collection-section">
         <h4 className="title">
-          Your Collection
+          {t('collections.main')}
         </h4>
         <div className="book-cards-wrap">
           {collection.map((book) => (

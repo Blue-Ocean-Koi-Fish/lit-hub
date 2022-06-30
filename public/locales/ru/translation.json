@@ -1,0 +1,42 @@
+{
+  "header": {
+    "collection": "Мои Книги",
+    "settings": "Настройки",
+    "subtitle": "Веб"
+  },
+
+  "login": {
+    "welcome": "Добро Пожаловать! Введите пользовательские данные:",
+    "username": "Пользователь",
+    "password": "Пароль",
+    "login": "Войти",
+    "register": "Зарегистрироваться"
+  },
+
+  "search": {
+    "author": "Автор",
+    "title": "Название",
+    "topic": "Жанр",
+    "language": "Язык",
+    "langDefault": "- Язык -",
+    "search": "Искать"
+  },
+
+  "collections": {
+    "main": "Ваша Коллекция",
+    "search": "Результаты"
+  },
+
+  "settings": {
+    "accessibility": "Специальные Возможности",
+    "language": "Язык",
+    "colorblindness": "Дальтонизм",
+    "coloblindnessModes": {
+    "None": "Отсутствует", "Protanopia": "Протанопия",
+     "Deuteranopia": "Дейтеранопия", "Tritanopia": "Тританопия",
+      "Achromatopsia": "Ахроматопсия", "Protanomaly": "Протаномалия",
+       "Deuteranomaly": "Дейтераномалия", "Tritanomaly": "Тританомалия",
+        "Achromatomaly": "Ахроматомия"
+    }
+  }
+}

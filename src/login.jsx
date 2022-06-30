@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
 function Login({ setLoggedIn }) {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const { t, i18n } = useTranslation();
 
   return (
     <section className="login-section">
@@ -20,7 +23,7 @@ function Login({ setLoggedIn }) {
               <span className="capital">H</span>
               ub
             </h1>
-            <h3 className="subtitle">Web</h3>
+            <h3 className="subtitle">{t('header.subtitle')}</h3>
           </div>
 
           <div className="img" alt="logo">
@@ -30,7 +33,7 @@ function Login({ setLoggedIn }) {
 
         <form className="login-form">
           <h4 className="welcome-msg">
-            Welcome to LitHub! Please Login or Register:
+            {t('login.welcome')}
           </h4>
           <div className="input-wrap">
             {/* <img src="http://placecorgi.com/50/50" alt="username" /> */}
@@ -38,7 +41,7 @@ function Login({ setLoggedIn }) {
             <input
               id="username"
               type="text"
-              placeholder="Username"
+              placeholder={t('login.username')}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -49,12 +52,12 @@ function Login({ setLoggedIn }) {
             <input
               id="password"
               type="password"
-              placeholder="Password"
+              placeholder={t('login.password')}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="button" id="login-submit" onClick={() => setLoggedIn(true)}>Log In</button>
+          <button type="button" id="login-submit" onClick={() => setLoggedIn(true)}>{t('login.login')}</button>
         </form>
       </div>
     </section>

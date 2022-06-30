@@ -1,10 +1,16 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
+import { useTranslation } from 'react-i18next';
+// Translator
+import i18n from './i18n';
 
 function Settings({ settings, setSettings, setShowSettings }) {
+  const { t } = useTranslation();
+
   const handleLanguage = (e) => {
     const newSettings = { ...settings };
     newSettings.language = e.target.value;
+    i18n.changeLanguage(newSettings.language);
 
     // document.querySelector('input.checked')?.classList?.remove('checked');
     // e.target.classList.add('checked');
@@ -39,7 +45,7 @@ function Settings({ settings, setSettings, setShowSettings }) {
             onChange={handler}
             checked={settings[setting] === optionLower}
           />
-          {option}
+          {setting !== 'color-blindedness' ? option : t(`settings.coloblindnessModes.${option}`)}
         </label>
       );
     })
@@ -49,16 +55,16 @@ function Settings({ settings, setSettings, setShowSettings }) {
     <div className="settings-modal-wrap">
       <div className="modal-main">
         <h4 className="section-category-title">
-          Acessibility
+          {t('settings.accessibility')}
         </h4>
         {/* Language */}
         <section className="section">
           <h4 className="title">
-            Language
+            {t('settings.language')}
           </h4>
           <form name="language">
             {fillSection(
-              ['English', 'Russian', 'Ukrainian', 'Chinese', 'Japanese'],
+              ['English', 'Русский', 'Ukrainian', 'Chinese', 'Japanese'],
               'language',
               handleLanguage,
             )}
@@ -66,7 +72,9 @@ function Settings({ settings, setSettings, setShowSettings }) {
         </section>
         {/* Color blindness */}
         <section className="section">
-          <h4 className="title">Color-blindedness</h4>
+          <h4 className="title">
+            {t('settings.colorblindness')}
+          </h4>
           <form name="color-blindedness">
             {fillSection(
               ['None', 'Protanopia', 'Deuteranopia', 'Tritanopia', 'Achromatopsia', 'Protanomaly', 'Deuteranomaly', 'Tritanomaly', 'Achromatomaly'],

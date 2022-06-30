@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, Suspense } from 'react';
 import Login from './login';
 import Settings from './settings';
 import Header from './header';
@@ -7,13 +7,16 @@ import SearchSection from './search/searchsection';
 import { getCurrentBook } from '../browser_db/books';
 
 import Collection from './collection';
-import Reader from "./reader/reader";
+import Reader from './reader/reader';
 
 import '../public/styles/unified.css';
 import testBook from '../testData/sample-6';
 
+// Translator
+import './i18n';
+
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [searchTerms, setSearchTerms] = useState({
     title: '',
     author: '',
@@ -41,10 +44,10 @@ function App() {
 
   return (
     loggedIn ? (
-      <>
+      <Suspense fallback="loading">
         <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
 
-        {/* <section className="collections">
+        <section className="collections">
           <SearchSection
             setCount={setCount}
             searchTerms={searchTerms}
@@ -71,13 +74,15 @@ function App() {
             bookList={bookList}
             showBook={showBook}
           />
-        ) : null} */}
+        ) : null}
 
         {/* {showReader ? <Reader book={currentBook} /> : null} */}
-        {<Reader book={testBook} /> || null}
-      </>
+        {/* {<Reader book={testBook} /> || null} */}
+      </Suspense>
     ) : (
-      <Login setLoggedIn={setLoggedIn} />
+      <Suspense fallback="loading">
+        <Login setLoggedIn={setLoggedIn} />
+      </Suspense>
     )
   );
 }
