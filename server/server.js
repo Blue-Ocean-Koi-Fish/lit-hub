@@ -10,8 +10,8 @@ app.use(express.json());
 
 // this is just for texting the browserdb
 app.get('/txt', (req, res) => {
-  console.log(req.url);
-  axios.get(`http://localhost:8081${req.url}`)
+  console.log(req.query.url);
+  axios.get(`${req.query.url}`)
     .then((data) => {
       res.status(200).send(data.data);
     });
