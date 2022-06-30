@@ -1,10 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'html-react-parser';
-import './readerTemp.css';
-
 
 function Reader({ book }) {
-  // console.log(book);
   const bookSchema = {
     title: [],
     author: [],
@@ -17,11 +14,30 @@ function Reader({ book }) {
   const [bookContent, setBookContent] = useState(bookSchema);
   const [currentPage, setCurrentPage] = useState(0);
 
+  const getChapter = (node) => {
+    // Check node type.
+    if (Array.isArray(node)) {
+      // Search through node array.
+      for (let i = 0; i < node.length; i += 1) {
+        // Find child anchor
+        const child = node[i].props.children;
+        if (child !== null && child.type === 'a') {
+          return child;
+        }
+      }
+    } else {
+      // Otherwise, node is an object.
+      // Find child anchor.
+      const child = node.props.children;
+      if (child !== null && child.type === 'a') {
+        return child;
+      }
+    }
+  };
+
   useEffect(() => {
-    // console.log(typeof book);
     const rawDiv = ReactHtmlParser(book);
     const rawContent = rawDiv.props.children;
-    // console.log(rawContent);
 
     const newBook = {
       title: [],
@@ -29,21 +45,30 @@ function Reader({ book }) {
       chapters: [],
       text: [],
     };
-    let testDivs = [];
+
     rawContent.forEach((node) => {
-      // console.log(typeof node);
       // First filter carriage returns and breaks,
       if (typeof node !== 'string') {
-        console.log(typeof node);
-        testDivs.push(node);
+        // Get all the chapters
+        if (node.type === 'table' && node.props.className !== 'c7') {
+          const tempNode = node.props.children.props.children;
+          tempNode.forEach((chapter) => {
+            const chapterNode = getChapter(chapter.props.children);
+            if (chapterNode) {
+              newBook.chapters.push(chapterNode);
+            }
+          });
+        } else if (node.type === 'p' || node.type === 'h1' || node.type === 'h2' || node.type === 'h3') {
+          // check if node is author or title also
+          if (node.props.children !== 'Contents') {
+            newBook.text.push(node);
+          }
+        }
       }
     });
 
-    console.log(testDivs);
-
-    // setBookContent(newBook);
-    // // setFontSize((size) => Number(size)); //?
-
+    setBookContent(newBook);
+    setFontSize((size) => Number(size));
   }, [book]);
 
   const increaseFont = (event) => {
@@ -55,7 +80,7 @@ function Reader({ book }) {
   };
 
   const updateFont = (event) => {
-    const value = event.target.value;
+    const { value } = event.target;
     console.log(value);
     setFont(value);
   };
@@ -80,7 +105,8 @@ function Reader({ book }) {
   };
 
   const updateChapter = (event) => {
-    const value = event.target.value;
+    console.log(event.target.value);
+    const { value } = event.target;
     const chapterDiv = document.getElementById(value.slice(1));
 
     const contentDiv = document.getElementById('content');
@@ -98,10 +124,14 @@ function Reader({ book }) {
           <option value="Arial">Arial</option>
           <option value="Times">Times New Roman</option>
         </select>
-
         <select onChange={updateChapter}>
           {bookContent.chapters
-            ? bookContent.chapters.map((chapter, i) => (<option key={i} value={chapter.props.href}>{chapter.props.children}</option>))
+            ? bookContent.chapters.map((chapter, i) => {
+              console.log(chapter);
+              const anchorLink = chapter.props.href;
+              const optionContent = chapter.props.children;
+              return <option key={i} value={anchorLink}>{optionContent}</option>;
+            })
             : null}
         </select>
         <button id="font-size-plus" type="button" onClick={decreaseFont}>FONT -</button>
