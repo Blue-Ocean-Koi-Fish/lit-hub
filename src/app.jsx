@@ -12,7 +12,7 @@ import Logout from './logout';
 import Reader from "./reader/reader";
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [searchTerms, setSearchTerms] = useState({
     title: '',
     author: '',
@@ -28,7 +28,7 @@ function App() {
   });
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [showReader, setShowReader] = useState(true);
+  const [showReader, setShowReader] = useState(false);
 
   useEffect(() => {
     if (document.cookie) {
@@ -92,9 +92,9 @@ function App() {
         ) : null}
 
         {/* Uncomment for production */}
-        {/* {showReader ? <Reader book={currentBook} /> : null} */}
+        {showReader ? <Reader book={currentBook} /> : null}
         {/* Show when in development */}
-        <Reader book={currentBook} />
+        {/* <Reader book={currentBook} /> */}
       </>
     ) : (
       <Login setLoggedIn={setLoggedIn} username={username} setUsername={setUsername} />
