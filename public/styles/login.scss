@@ -1,19 +1,16 @@
-// @import './reusable/main.css';
+$ColorBlindModes: ("None", "Protanopia", "Deuteranopia",
+ "Tritanopia", "Achromatopsia", "Protanomaly", "Deuteranomaly",
+  "Tritanomaly", "Achromatomaly");
 
-// @font-face {
-//   font-family: 'Garet';
-//   src: url('../assets/fonts/Garet/Garet-Book.otf');
-// }
-
-// @font-face {
-//   font-family: 'Agrandir-Bold';
-//   src: url('../assets/fonts/Agrandir/Agrandir-TextBold.otf');
-// }
-
-// @font-face {
-//   font-family: 'Agrandir';
-//   src: url('../assets/fonts/Agrandir/Agrandir-GrandLight.otf');
-// }
+$ColorBlindDark: ("None": #292929, "Protanopia": #292929, "Deuteranopia": #292929,
+ "Tritanopia": #282929, "Achromatopsia": #292929, "Protanomaly": #292929, "Deuteranomaly": #292929,
+  "Tritanomaly": #292929, "Achromatomaly": #292929);
+$ColorBlindLight: ("None": #F3E8EE, "Protanopia": #EEEEEC, "Deuteranopia": #EEEFEC,
+"Tritanopia": #F2EBEB, "Achromatopsia": #EBEBEB, "Protanomaly": #F0EBED, "Deuteranomaly": #F0EAED,
+ "Tritanomaly": #F2E9EC, "Achromatomaly": #EFEAEC);
+ $ColorBlindButton: ("None": #475B63, "Protanopia": #4F4F61, "Deuteranopia": #4E4D60,
+ "Tritanopia": #485F5F, "Achromatopsia": #555555, "Protanomaly": #4A5462, "Deuteranomaly": #4B5561,
+  "Tritanomaly": #475D61, "Achromatomaly":  #4F585B);
 
 $dark: #292929;
 $button: #475B63;
@@ -146,6 +143,71 @@ $light: #F3E8EE;
 
             &:hover {
               background-color: $button;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@each $mode in $ColorBlindModes {
+  $dark: map-get($ColorBlindDark, $mode);
+  $button: map-get($ColorBlindButton, $mode);
+  $light: map-get($ColorBlindLight, $mode);
+
+  body {
+    &.#{$mode} {
+      #root {
+        .login-section {
+          // Hero
+          .hero {
+            background-color: $dark;
+          }
+          .login-wrap {
+            // Logo
+            .logo-wrap {
+
+              .logo-text {
+                .title, .capital {
+                  color: $light;
+                }
+              }
+            }
+
+            // Login form
+            .login-form {
+              .welcome-msg {
+                color: $light;
+              }
+
+              .input-wrap {
+                background-color: $light;
+                border: 1px solid $dark;
+
+                .icon {
+                  color: $light;
+
+                  &:hover {
+                    background-color: $button;
+                  }
+
+                }
+                input {
+                  &:focus {
+                    outline: $dark 2px solid;
+                  }
+                }
+              }
+
+              #login-submit {
+                color: $light;
+                background-color: $dark;
+
+                &:hover {
+                  background-color: $button;
+                }
+              }
             }
           }
         }
