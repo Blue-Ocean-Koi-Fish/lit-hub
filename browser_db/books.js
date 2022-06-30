@@ -1,5 +1,8 @@
+/* eslint-disable import/prefer-default-export */
+/* eslint-disable no-unused-vars */
+/* eslint-disable import/no-import-module-exports */
 /* eslint-disable quotes */
-const { Dexie } = require('dexie');
+import Dexie from "dexie";
 
 // Creates a new indexedDb database
 const booksDb = new Dexie('booksDatabase');
@@ -24,11 +27,6 @@ const getCurrentBook = async (bookId) => {
   return book[0];
 };
 
-// const getAllBooks = async () => {
-//   const collection = await booksDb.books.toArray();
-//   return collection;
-// };
-
 const getAllBooks = () => {
   const collection = booksDb.books.toArray();
   return collection;
@@ -36,10 +34,9 @@ const getAllBooks = () => {
 
 // remove book
 const removeBook = (bookId) => {
-  console.log('IS IT HERE');
   booksDb.books.delete(bookId);
 };
 
-module.exports = {
-  addBook, getCurrentBook, removeBook, getAllBooks,
+export {
+  addBook, getCurrentBook, removeBook, getAllBooks, booksDb,
 };

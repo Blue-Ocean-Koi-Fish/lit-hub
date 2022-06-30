@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import Login from './login';
 import Settings from './settings';
 import Header from './header';
 import SearchDisplay from './search/searchdisplay';
 import SearchSection from './search/searchsection';
-import Logout from './logout';
-
-const axios = require('axios');
-
+import { getCurrentBook } from '../browser_db/books';
 import Collection from './collection';
-// import Reader from "./reader";
-
 import '../public/styles/unified.css';
-// import testBook from '../testData/sample-6';
+import Logout from './logout';
+// import Reader from "./reader";
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -51,7 +48,6 @@ function App() {
   const showBook = (bookId) => {
     getCurrentBook(bookId)
       .then((res) => {
-        console.log('IS THIS RES From APP ', res);
         setCurrentBook(res);
       });
   };
@@ -83,10 +79,10 @@ function App() {
             showBook={showBook}
             username={username}
           />
-        ) : null} */}
+        ) : null}
 
         {/* {showReader ? <Reader book={currentBook} /> : null} */}
-        {<Reader book={testBook} /> || null}
+        {/*  {<Reader book={testBook} /> || null} */}
       </>
     ) : (
       <Login setLoggedIn={setLoggedIn} username={username} setUsername={setUsername} />
