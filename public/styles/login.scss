@@ -128,21 +128,30 @@ $light: #F3E8EE;
             }
           }
 
-          #login-submit {
+          .authentication-btns {
             margin-top: 8vh;
-            position: relative;
-            left: calc(100% - 35vw);
-            font-size: 1.5 * $loginFontSize;
-            color: $light;
-            background-color: $dark;
-            outline: none;
-            border: none;
-            padding: (0.9 * $loginFontSize) 0;
-            width: 30vw;
-            cursor: pointer;
+            display: flex;
+            flex-wrap: wrap;
+            flex-grow: 1;
+            justify-content: space-around;
 
-            &:hover {
-              background-color: $button;
+            #login-submit, #register-submit {
+              flex-wrap: wrap;
+              flex-basis: 40%;
+              // position: relative;
+              // left: calc(100% - 35vw);
+              font-size: 1.5 * $loginFontSize;
+              color: $light;
+              background-color: $dark;
+              outline: none;
+              border: none;
+              padding: (0.9 * $loginFontSize) 0;
+              width: 30vw;
+              cursor: pointer;
+
+              &:hover {
+                background-color: $button;
+              }
             }
           }
         }
@@ -200,14 +209,17 @@ $light: #F3E8EE;
                 }
               }
 
-              #login-submit {
-                color: $light;
-                background-color: $dark;
+              .authentication-btns {
+                #login-submit {
+                  color: $light;
+                  background-color: $dark;
 
-                &:hover {
-                  background-color: $button;
+                  &:hover {
+                    background-color: $button;
+                  }
                 }
               }
+
             }
           }
         }
@@ -265,12 +277,14 @@ body {
               //   width: 85%;
               // }
             }
-
-            #login-submit {
-              font-size: 22px;
-              position: initial;
-              width: 80%;
+            .authentication-btns {
+              #login-submit {
+                font-size: 22px;
+                position: initial;
+                width: 80%;
+              }
             }
+
           }
         }
       }

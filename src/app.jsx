@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Suspense } from 'react';
 import axios from 'axios';
 import Login from './login';
 import Settings from './settings';
@@ -6,12 +6,21 @@ import Header from './header';
 import SearchDisplay from './search/searchdisplay';
 import SearchSection from './search/searchsection';
 import { getCurrentBook } from '../browser_db/books';
+<<<<<<< HEAD
 import { getAllBooks } from '../browser_db/books';
 import Popular from './popular';
+=======
+import Collection from './collection';
+import Reader from './reader/reader';
+
+>>>>>>> main
 import '../public/styles/unified.css';
 import Logout from './logout';
 import Collection from './collection';
 // import Reader from "./reader";
+
+// Translator
+import './i18n';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);
@@ -44,18 +53,16 @@ function App() {
 
   useEffect(() => {
     if (document.cookie) {
-      axios.post('http://localhost:8080/verifyToken', { token: document.cookie })
+      axios.post('/verifyToken', { token: document.cookie })
         .then((res) => {
-          console.log(res);
           setLoggedIn(true);
+          setUsername(res.data);
         })
         .catch((err) => {
           console.log(err);
         });
     }
   }, []);
-  const [currentBook, setCurrentBook] = useState('');
-  const [username, setUsername] = useState('');
 
   const showBook = (bookId) => {
     getCurrentBook(bookId)
@@ -66,9 +73,8 @@ function App() {
 
   return (
     loggedIn ? (
-      <>
+      <Suspense fallback="loading">
         <Header setShowSettings={setShowSettings} setShowSearchResults={setShowSearchResults} />
-        <Logout setLoggedIn={setLoggedIn} />
         <section className="collections">
           <SearchSection
             setShowSearchResults={setShowSearchResults}
@@ -77,37 +83,48 @@ function App() {
             setCount={setCount}
             setBookList={setBookList}
           />
+<<<<<<< HEAD
           <Switch
             currentBook={currentBook}
             setCollection={setCollection}
             collection={collection}
           />
+=======
+          {showSearchResults ? (
+            <SearchDisplay
+              setUserBooks={setUserBooks}
+              searchTerms={searchTerms}
+              setSearchTerms={setSearchTerms}
+              count={count}
+              bookList={bookList}
+              showBook={showBook}
+              username={username}
+            />
+          ) : (
+            <Collection
+              currentBook={currentBook}
+            />
+          )}
+
+>>>>>>> main
           {showSettings ? (
             <Settings
               settings={settings}
               setSettings={setSettings}
               setShowSettings={setShowSettings}
+              setLoggedIn={setLoggedIn}
             />
           )
             : null}
         </section>
-        {showSearchResults ? (
-          <SearchDisplay
-            setUserBooks={setUserBooks}
-            searchTerms={searchTerms}
-            setSearchTerms={setSearchTerms}
-            count={count}
-            bookList={bookList}
-            showBook={showBook}
-            username={username}
-          />
-        ) : null}
 
         {/* {showReader ? <Reader book={currentBook} /> : null} */}
-        {/*  {<Reader book={testBook} /> || null} */}
-      </>
+        {/* {<Reader book={testBook} /> || null} */}
+      </Suspense>
     ) : (
-      <Login setLoggedIn={setLoggedIn} username={username} setUsername={setUsername} />
+      <Suspense fallback="loading">
+        <Login setLoggedIn={setLoggedIn} username={username} setUsername={setUsername} />
+      </Suspense>
     )
   );
 }

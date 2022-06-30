@@ -21,6 +21,16 @@ function Reader({ book }) {
   const [bookContent, setBookContent] = useState(bookSchema);
   const [currentPage, setCurrentPage] = useState(0);
 
+  // Component Did Mount
+  useEffect(() => {
+    // const contentDiv = document.getElementById('content');
+    // const linePosition = document.querySelector(`[data-line="207"]`);
+    // console.log(linePosition);
+    // console.log(document.querySelector('#content'));
+    // contentDiv.scrollTop = 7000;
+    // setCurrentPage(7000);
+  }, []);
+
   useEffect(() => {
     const rawDiv = ReactHtmlParser(book).props.children[1].props.children;
     const newBook = {
@@ -129,6 +139,9 @@ function Reader({ book }) {
   };
 
   const grabMouseDown = (event) => {
+    if (event.target?.classList?.contains('nav-btn')) {
+      return;
+    }
     const contentDiv = document.getElementById('content');
     contentDiv.style.scrollBehavior = 'initial';
     contentDiv.style.cursor = 'grabbing';
