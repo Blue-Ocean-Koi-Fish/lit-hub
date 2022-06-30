@@ -3,13 +3,29 @@ import axios from 'axios';
 import { addBook } from '../../browser_db/books';
 
 const SearchDisplay = function SearchDisplay({
-  bookList, count, searchTerms, setSearchTerms, setUserBooks, showBook, username,
+  bookList, count, searchTerms, setCount, setSearchTerms, setUserBooks, showBook, username, setBookList
 }) {
+
+  
+
   const handleRemove = (k) => {
     const newSearchTerms = { ...searchTerms };
     newSearchTerms[k] = '';
     setSearchTerms(newSearchTerms);
+    axios
+      .get('http://107.20.126.146:8080/search', {
+        params: searchTerms,
+      })
+      .then((res) => {
+        setBookList(res.data.results);
+        setCount(res.data.count);
+        setShowSearchResults(true);
+      })
+      .catch((err) => console.log(err));
+
   };
+  
+
 
   return (
     <div>

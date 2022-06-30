@@ -79,6 +79,8 @@ function App() {
         </section>
         {showSearchResults ? (
           <SearchDisplay
+          setCount={setCount}
+          setBookList={setBookList}
             setUserBooks={setUserBooks}
             searchTerms={searchTerms}
             setSearchTerms={setSearchTerms}
