@@ -10,7 +10,7 @@ import Collection from './collection';
 // import Reader from "./reader";
 
 import '../public/styles/unified.css';
-import testBook from '../testData/sample-6';
+// import testBook from '../testData/sample-6';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(true);

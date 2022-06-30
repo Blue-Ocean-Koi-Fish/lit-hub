@@ -4,6 +4,7 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
+const backendURL = 'http://localhost:8080';
 
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json());
@@ -14,6 +15,19 @@ app.get('/txt', (req, res) => {
   axios.get(`${req.query.url}`)
     .then((data) => {
       res.status(200).send(data.data);
+    });
+});
+
+app.get('/search', (req, res) => {
+  axios.get(`${backendURL}/search`, {
+    params: req.query,
+  })
+    .then((data) => {
+      res.status(200).send(data.data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
     });
 });
 
