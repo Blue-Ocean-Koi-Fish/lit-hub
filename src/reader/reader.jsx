@@ -6,6 +6,14 @@ import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'html-react-parser';
 import { cancel, startText } from './speech';
 
+const pressT = (e) => {
+  if (e.key === 't') {
+    e.preventDefault();
+    // eslint-disable-next-line no-use-before-define
+    startText();
+  }
+};
+
 function Reader({ book }) {
   const [font, setFont] = useState('Times');
   const [fontSize, setFontSize] = useState(24);
@@ -93,14 +101,7 @@ function Reader({ book }) {
     // setFontSize((size) => Number(size));
     setBookContent(newBookContent);
 
-    document.addEventListener('keypress', (event) => {
-      // console.log(event.keyCode, event.ctrlKey);
-      if (event.keyCode === 20) {
-        event.preventDefault();
-        // eslint-disable-next-line no-use-before-define
-        startText();
-      }
-    }, false);
+    document.addEventListener('keypress', pressT, false);
   }, [book]);
 
   const increaseFont = (event) => {
@@ -139,7 +140,7 @@ function Reader({ book }) {
   // << Not In Use >>
   const updateChapter = (event) => {
     /* You can assign 'data-' attribute to each chapter element and read it:
-     Ex: <p data-id='3'></p>, <h3 data-chapter='Section Zero'></h3>
+      Ex: <p data-id='3'></p>, <h3 data-chapter='Section Zero'></h3>
      -> document.getAttribute('data-chapter'); */
 
     const { value } = event.target;
@@ -244,6 +245,7 @@ function Reader({ book }) {
 
     const eReaderModal = document.querySelector('.e-reader-section-wrap');
     eReaderModal.style.display = 'none';
+    document.removeEventListener('keypress', pressT, false);
     cancel();
     // eReaderModal.remove();
   };
