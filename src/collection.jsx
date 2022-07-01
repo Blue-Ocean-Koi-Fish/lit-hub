@@ -10,7 +10,9 @@ function Collection({ currentBook, collection, setCollection, showBook }) {
     getAllBooks().then((res) => {
       setCollection(res);
     });
-  }, [currentBook, collection]);
+  }, []);
+  // Adding these to useEffect was causing collection to re-render non-stop
+  // currentBook, collection
 
   const removeCurrentBook = (bookId) => {
     removeBook(bookId).then(() => {
@@ -28,10 +30,13 @@ function Collection({ currentBook, collection, setCollection, showBook }) {
     return null;
   };
 
+  // Make sure to only allow click events for cards,
+  // or anything with a data-book-id attribute.
   const handleClick = (event) => {
     event.preventDefault();
-    console.log(event.target);
-    showBook(event.target.getAttribute('data-book-id'));
+    if (event.target.getAttribute('data-book-id')) {
+      showBook(event.target.getAttribute('data-book-id'));
+    }
   }
 
   return (
@@ -49,7 +54,6 @@ function Collection({ currentBook, collection, setCollection, showBook }) {
                   <p>{book.meta.authors[0].name}</p>
                   <p className="book-title">{book.name.slice(0, 25) + '...'}</p>
                 </div>
-
                 <button className="book-btn book-btn-add" type="button" onClick={() => { removeCurrentBook(book.id); }}>
                   {t('collections.cards.remove')}
                   {' '}

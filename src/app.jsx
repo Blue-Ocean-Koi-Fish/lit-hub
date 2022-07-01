@@ -65,10 +65,12 @@ function App() {
     // bookId = ;
     getCurrentBook(Number(bookId))
       .then((res) => {
-        console.log('FROM DB', res);
-        setCurrentBook(res.text);
-        // setShowReader(true);
-      });
+        console.log('FROM DB', res[0]);
+
+        setCurrentBook(res[0].text);
+        setShowReader(true);
+      })
+      .catch((error) => (console.log(error)));
   };
 
   useEffect(() => {
@@ -137,10 +139,9 @@ function App() {
           )
             : null}
         </section>
-        {/* {showReader ? <Reader book={currentBook} /> : null} */}
+        {showReader ? <Reader book={currentBook} /> : null}
         {/* {currentBook ? <Reader book={currentBook} /> : null} */}
-        <Reader book={currentBook} />
-
+        {/* <Reader book={currentBook} /> */}
       </Suspense>
     ) : (
       <Suspense fallback="loading">
