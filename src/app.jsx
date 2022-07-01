@@ -52,15 +52,19 @@ function App() {
 
   useEffect(() => {
     if (document.cookie) {
-      axios.post('/verifyToken', { token: document.cookie })
-        .then((res) => {
-          setLoggedIn(true);
-          setUsername(res.data.username);
-          setSettings(res.data.settings);
-        })
-        .catch((err) => {
-          console.log(err);
-        });
+      if (navigator.onLine) {
+        axios.post('/verifyToken', { token: document.cookie })
+          .then((res) => {
+            setLoggedIn(true);
+            setUsername(res.data.username);
+            setSettings(res.data.settings);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      } else {
+        setLoggedIn(true);
+      }
     }
   }, []);
 
@@ -76,7 +80,7 @@ function App() {
   };
 
   useEffect(() => {
-    if (loggedIn) {
+    if (loggedIn && navigator.onLine) {
       axios.get(`/collection/${username}`)
         .then((res) => {
           const mongoBooks = res.data;
@@ -103,11 +107,37 @@ function App() {
               setCollectionLength(mongoBooks.length);
             });
         });
+    } else if (loggedIn) {
+      getAllBooks()
+        .then((data) => {
+          setCollectionLength(data.length);
+        });
+    } else {
+      setSearchTerms({
+        title: '',
+        author: '',
+        language: '',
+        topic: '',
+      });
+      setSettings({
+        language: 'English',
+        'color-blindedness': 'none',
+        font: 'Times',
+        fontSize: '24',
+      });
+      setShowSearchResults(false);
+      setShowSettings(false);
+      setShowReader(false);
+      // setBookList(null);
+      // setCount(0);
+      // setCollectionLength(0);
+      // setCurrentBook([]);
+      // setUsername('');
+      // setCollection([]);
     }
   }, [loggedIn]);
 
   useEffect(() => {
-    console.log(settings);
     const body = document.querySelector('body');
     const mode = settings['color-blindedness'].substring(0, 1).toUpperCase()
       + settings['color-blindedness'].substring(1, settings['color-blindedness'].length);
@@ -144,6 +174,7 @@ function App() {
               showBook={showBook}
               collection={collection}
               setCollection={setCollection}
+              username={username}
             />
           ) : <Popular popularBooks={popularBooks} />)}
 

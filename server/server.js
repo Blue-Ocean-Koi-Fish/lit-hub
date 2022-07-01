@@ -69,7 +69,7 @@ app.put('/updateCollection', (req, res) => {
 
 app.delete('/removeFromCollection', (req, res) => {
   axios.delete(`${backendURL}/removeFromCollection`, {
-    headers: req.headers,
+    headers: req.headers, data: req.body,
   })
     .then(() => {
       res.sendStatus(200);

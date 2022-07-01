@@ -51,11 +51,13 @@ $light: #F3E8EE;
           .logo-text {
             display: flex;
             flex-direction: column;
+            display: none;
 
             .title, .capital {
               font-size: 4.6 * $loginFontSize;
               color: $light;
               font-family: 'Agrandir';
+              display: none;
             }
 
             .title {
@@ -74,11 +76,11 @@ $light: #F3E8EE;
           .img {
             flex-shrink: 0;
             margin-left: 0.75 * $loginFontSize;
-            background-image: url(../assets/images/logo-book.png);
+            background-image: url(../assets/images/logo.png);
             background-size: contain;
             background-repeat: no-repeat;
-            width: 11 * $loginFontSize;
-            height: 6 * $loginFontSize;
+            width: 27 * $loginFontSize;
+            height: 9 * $loginFontSize;
           }
         }
 

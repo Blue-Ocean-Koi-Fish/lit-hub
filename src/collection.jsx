@@ -1,10 +1,11 @@
 /* eslint-disable prefer-template */
 import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
+import axios from 'axios';
 import { getAllBooks, removeBook } from '../browser_db/books';
 
 function Collection({
-  currentBook, collection, setCollection, showBook,
+  currentBook, collection, setCollection, showBook, username,
 }) {
   const { t } = useTranslation();
 
@@ -16,12 +17,18 @@ function Collection({
   // Adding these to useEffect was causing collection to re-render non-stop
   // currentBook, collection
 
-  const removeCurrentBook = (bookId) => {
-    removeBook(bookId).then(() => {
-      getAllBooks().then((res) => {
-        setCollection(res);
+  const removeCurrentBook = (book) => {
+    axios.delete('/removeFromCollection', {
+      data: {
+        username, bookId: book.meta.id,
+      },
+    })
+      .then(() => (removeBook(book.id)))
+      .then(() => {
+        getAllBooks().then((res) => {
+          setCollection(res);
+        });
       });
-    });
   };
 
   const getHQ = (book) => {
@@ -57,7 +64,7 @@ function Collection({
                   <p>{book.meta.authors[0].name}</p>
                   <p className="book-title">{book.name.slice(0, 25) + '...'}</p>
                 </div>
-                <button className="book-btn book-btn-add" type="button" onClick={() => { removeCurrentBook(book.id); }}>
+                <button className="book-btn book-btn-add" type="button" onClick={() => { removeCurrentBook(book); }}>
                   {t('collections.cards.remove')}
                   {' '}
                   -
