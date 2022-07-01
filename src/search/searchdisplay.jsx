@@ -1,11 +1,14 @@
 import React from 'react';
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import { addBook } from '../../browser_db/books';
 
 const SearchDisplay = function SearchDisplay({
   bookList, count, searchTerms, setCount, setSearchTerms,
   showBook, username, setBookList,
 }) {
+  const { t } = useTranslation();
+
   const getHQ = (book) => {
     if (book.formats['image/jpeg']) {
       const url = `url(${book.formats['image/jpeg'].replace('small', 'medium')})`;
@@ -34,7 +37,7 @@ const SearchDisplay = function SearchDisplay({
     <div className="collection-section-wrap">
       <section className="collection-section">
         <h4 className="title">
-          Results:
+          {`${t('collections.popular')}:`}
           {count}
         </h4>
         {/* Search labels, secondary feature */}

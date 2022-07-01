@@ -14,7 +14,7 @@ import Reader from './reader/reader';
 
 import '../public/styles/unified.css';
 // Translator
-import './i18n';
+import i18n from './i18n';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
