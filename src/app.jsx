@@ -8,11 +8,11 @@ import SearchSection from './search/searchsection';
 import { getCurrentBook } from '../browser_db/books';
 import { getAllBooks } from '../browser_db/books';
 import Popular from './popular';
-import '../public/styles/unified.css';
 import Logout from './logout';
 import Collection from './collection';
-// import Reader from "./reader";
+import Reader from './reader/reader';
 
+import '../public/styles/unified.css';
 // Translator
 import './i18n';
 
@@ -35,7 +35,7 @@ function App() {
   });
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [showReader, setShowReader] = useState(true);
+  const [showReader, setShowReader] = useState(false);
 
   const [collectionLength, setCollectionLength] = useState(0);
   const [currentBook, setCurrentBook] = useState([]);
@@ -63,9 +63,12 @@ function App() {
   }, []);
 
   const showBook = (bookId) => {
+    console.log('getting book', bookId);
     getCurrentBook(bookId)
       .then((res) => {
+        console.log(res);
         setCurrentBook(res);
+        setShowReader(true);
       });
   };
 
@@ -103,6 +106,7 @@ function App() {
           ) : (
             <Switch
               currentBook={currentBook}
+              showBook={showBook}
             />
           )}
 
@@ -130,7 +134,7 @@ function App() {
         />
       ) : null} */}
 
-        {/* {showReader ? <Reader book={currentBook} /> : null} */}
+        {showReader ? <Reader book={currentBook} /> : null}
         {/* {<Reader book={testBook} /> || null} */}
       </Suspense>
     ) : (

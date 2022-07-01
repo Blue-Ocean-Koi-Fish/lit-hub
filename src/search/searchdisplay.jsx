@@ -13,22 +13,22 @@ const SearchDisplay = function SearchDisplay({
     }
     return null;
   };
-
-  const handleRemove = (k) => {
-    const newSearchTerms = { ...searchTerms };
-    newSearchTerms[k] = '';
-    setSearchTerms(newSearchTerms);
-    axios
-      .get('/search', {
-        params: searchTerms,
-      })
-      .then((res) => {
-        setBookList(res.data.results);
-        setCount(res.data.count);
-        setShowSearchResults(true);
-      })
-      .catch((err) => console.log(err));
-  };
+  // showBook
+  // const handleRemove = (k) => {
+  //   const newSearchTerms = { ...searchTerms };
+  //   newSearchTerms[k] = '';
+  //   setSearchTerms(newSearchTerms);
+  //   axios
+  //     .get('/search', {
+  //       params: searchTerms,
+  //     })
+  //     .then((res) => {
+  //       setBookList(res.data.results);
+  //       setCount(res.data.count);
+  //       setShowSearchResults(true);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   return (
     <div className="collection-section-wrap">
@@ -78,7 +78,8 @@ const SearchDisplay = function SearchDisplay({
                             addBook(book.title, res.data, book, book.id)
                           ))
                           .then(() => {
-                            showBook(book.id);
+                            console.log('SHOWING: ', book.id);
+                            // showBook(book.id);
                             setUserBooks((books) => [...books, book.id]);
                           })
                       ));

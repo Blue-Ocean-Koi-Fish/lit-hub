@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getAllBooks, removeBook } from '../browser_db/books';
 
-function Collection({ currentBook }) {
+function Collection({ currentBook, showBook }) {
   const { t } = useTranslation();
   const [collection, setCollection] = useState([]);
 
@@ -29,6 +29,12 @@ function Collection({ currentBook }) {
     return null;
   };
 
+  const handleClick = (event) => {
+    event.preventDefault();
+    console.log(event.target);
+    showBook(event.target.getAttribute('data-book-id'));
+  }
+
   return (
     // Book Collection Cards
     <div className="collection-section-wrap">
@@ -36,9 +42,9 @@ function Collection({ currentBook }) {
         <h4 className="title">
           {t('collections.main')}
         </h4>
-        <div className="book-cards-wrap">
+        <div className="book-cards-wrap" onClick={handleClick}>
           {collection.map((book) => (
-            <div className="book-card" style={getHQ(book)}>
+            <div className="book-card" style={getHQ(book)} data-book-id={book.book_id}>
               <div className="book-meta">
                 <div className="meta-text-wrap">
                   <p>{book.meta.authors[0].name}</p>

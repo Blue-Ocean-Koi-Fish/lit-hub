@@ -15,7 +15,8 @@ app.get('/txt', (req, res) => {
   })
     .then((data) => {
       res.status(200).send(data.data);
-    }).catch((err) => { console.error(err); });
+    })
+    .catch((err) => { console.error(err); });
 });
 
 app.get('/search', (req, res) => {
