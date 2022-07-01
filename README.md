@@ -34,7 +34,7 @@
   </a>
 
   <p align="center">
-    A hub literary works
+    A hub for literature
     <br />
     <a href="https://github.com/Blue-Ocean-Koi-Fish/lit-hub"><strong>Explore the docs »</strong></a>
     <br />
@@ -95,6 +95,10 @@ A highly accessable website that serves books from the gutendex api that can be 
 * [axios](https://axios-http.com/docs/intro)
 * [sass](https://sass-lang.com/)
 * [mongoDB](https://www.mongodb.com/)
+* [workbox](https://www.workbox.com/)
+* [bcrypt](https://bcrypt.online/)
+* [jwt](https://jwt.io/)
+* [gutendex](https://gutendex.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -106,29 +110,49 @@ A highly accessable website that serves books from the gutendex api that can be 
 This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
+Lit-Hub is a Progressive Web App
+
+A note on service workers: Lit-Hub will allow users to view their book collection and read books while they are offline. For future devs, updates to your code base will not automatically show when there is a normal refresh on the app. Explore the service worker section in the Application module on Chrome devtools to find settings to navigate this behavior.
+
 ### Prerequisites
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+This app is simple and designed to run on almost any system or browser without any prerequisites. (unless you are on IE)
 
 ### Installation
 
-1. Get a free API Key at [https://example.com](https://example.com)
-2. Clone the repo
+1. Fork this Repo as well as the database.
+2. Clone the Repo.
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/Blue-Ocean-Koi-Fish/lit-hub
    ```
-3. Install NPM packages
+3. Dont forget the database.
    ```sh
-   npm install
+   git clone https://github.com/Blue-Ocean-Koi-Fish/lit-hub-db
    ```
-4. Enter your API in `config.js`
+4. run npm install on both repos.
+
+5. Run the command npm touch `.env` in the lit-hub repo.
    ```js
-   const API_KEY = 'ENTER YOUR API';
+   PORT='Fill me in!'
+   BACKEND_URL='Fill me in!'
    ```
+5. Run the same coommand on the database repo
+   ```js
+   PORT='Fill me in!'
+   JWT_SECRET='Fill me in!'
+   mongoURL='Fill me in!'
+   mongoUser='Fill me in!'
+   mongoPass='Fill me in!'
+   ```
+6. In the server repo run the commands:
+    npm run start
+    npm run build
+
+7. In the database repo run the commands:
+    npm run start
+
+8. open your localhost to the port chosen in step 5.
+
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -137,9 +161,9 @@ This is an example of how to list things you need to use the software and how to
 <!-- USAGE EXAMPLES -->
 ## Usage
 
-Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
+Search for books on the Gutendex, save the books locally, read books while online or offline.
 
-_For more examples, please refer to the [Documentation](https://example.com)_
+_For more examples, please refer to the [Documentation](https://gutendex.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -148,9 +172,9 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ ] Feature 1
-- [ ] Feature 2
-- [ ] Feature 3
+- [ allow for guests to access the website but not use certain features ] Feature 1
+- [ make the collection accessible from the populer page] Feature 2
+- [ tts in multipule languages ] Feature 3
     - [ ] Nested Feature
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
@@ -200,9 +224,14 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments
 
-* []()
-* []()
-* []()
+* Justin Kirk [@intern-jck](https://github.com/intern-jck)
+* Wei-Teck Lee [@arkteck](https://github.com/arkteck)
+* Levi Walker [@lwcaveman](https://github.com/lwcaveman)
+* Cam Estep [@Thunderpig851](https://github.com/Thunderpig851)
+* Davyd Zakorchennyi [@Diza41a](https://github.com/Diza41a)
+* Jake Reid [@jake-h-reid](https://www.linkedin.com/in/jake-h-reid/)
+* Hakeem Abdulmalik [@HakeemDAbdulmalik](https://github.com/HakeemDAbdulmalik)
+* Cory Nickerson [@cory314](github.com/cory314)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
