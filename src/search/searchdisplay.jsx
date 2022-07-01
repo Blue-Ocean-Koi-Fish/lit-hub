@@ -3,13 +3,11 @@ import axios from 'axios';
 import { addBook } from '../../browser_db/books';
 
 const SearchDisplay = function SearchDisplay({
-  bookList, count, searchTerms, setCount, setSearchTerms, setUserBooks, showBook, username, setBookList
+  bookList, count, searchTerms, setCount, setSearchTerms, setUserBooks,
+  showBook, username, setBookList,
 }) {
-  
-
   const getHQ = (book) => {
     if (book.formats['image/jpeg']) {
-      console.log(book.formats['image/jpeg']);
       const url = `url(${book.formats['image/jpeg'].replace('small', 'medium')})`;
       return { backgroundImage: url };
     }
@@ -30,9 +28,8 @@ const SearchDisplay = function SearchDisplay({
         setShowSearchResults(true);
       })
       .catch((err) => console.log(err));
-
   };
-  
+
   return (
     <div className="collection-section-wrap">
       <section className="collection-section">
@@ -72,7 +69,6 @@ const SearchDisplay = function SearchDisplay({
                     className="toggle_status_btn book-btn book-btn-add"
                     onClick={(e) => {
                       e.preventDefault();
-                      console.log(username);
                       axios.post('/addToCollection', {
                         username,
                         bookId: book.id,
