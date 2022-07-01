@@ -7,12 +7,21 @@ const SearchDisplay = function SearchDisplay({
 }) {
   
 
+  const getHQ = (book) => {
+    if (book.formats['image/jpeg']) {
+      console.log(book.formats['image/jpeg']);
+      const url = `url(${book.formats['image/jpeg'].replace('small', 'medium')})`;
+      return { backgroundImage: url };
+    }
+    return null;
+  };
+
   const handleRemove = (k) => {
     const newSearchTerms = { ...searchTerms };
     newSearchTerms[k] = '';
     setSearchTerms(newSearchTerms);
     axios
-      .get('http://107.20.126.146:8080/search', {
+      .get('/search', {
         params: searchTerms,
       })
       .then((res) => {
@@ -52,7 +61,7 @@ const SearchDisplay = function SearchDisplay({
               nameA = book.authors[0].name;
             }
             return (
-              <div key={book.id} className="book-card" style={{ backgroundImage: `url(${book.formats['image/jpeg']})` }}>
+              <div key={book.id} className="book-card" style={getHQ(book)}>
                 <div className="book-meta">
                   <div className="meta-text-wrap">
                     <p>{nameA}</p>

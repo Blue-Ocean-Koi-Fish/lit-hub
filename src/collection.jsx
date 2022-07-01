@@ -21,6 +21,15 @@ function Collection({ currentBook }) {
     });
   };
 
+  const getHQ = (book) => {
+    if (book.meta.formats['image/jpeg']) {
+      console.log(book.meta.formats['image/jpeg']);
+      const url = `url(${book.meta.formats['image/jpeg'].replace('small', 'medium')})`;
+      return { backgroundImage: url };
+    }
+    return null;
+  };
+
   return (
     // Book Collection Cards
     <div className="collection-section-wrap">
@@ -30,7 +39,7 @@ function Collection({ currentBook }) {
         </h4>
         <div className="book-cards-wrap">
           {collection.map((book) => (
-            <div className="book-card" style={{ backgroundImage: `url(${book.meta.formats['image/jpeg']})` }}>
+            <div className="book-card" style={getHQ(book)}>
               <div className="book-meta">
                 <div className="meta-text-wrap">
                   <p>{book.meta.authors[0].name}</p>
