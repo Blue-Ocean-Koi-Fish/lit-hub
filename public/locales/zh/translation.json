@@ -5,7 +5,7 @@
     "subtitle": "Web"
   },
   "login": {
-    "welcome": "欢迎来到 LitHub! 请登录或注册:",
+    "welcome": "欢迎来到 Lit-Hub! 请登录或注册:",
     "username": "用户名",
     "password": "密码",
     "login": "登录",

@@ -6,7 +6,7 @@
   },
 
   "login": {
-    "welcome": "Welcome to LitHub! Please Login or Register:",
+    "welcome": "Welcome to Lit-Hub! Please Login or Register:",
     "username": "Username",
     "password": "Password",
     "login": "Login",
