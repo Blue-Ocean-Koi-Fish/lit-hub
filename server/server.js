@@ -10,7 +10,6 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json());
 
 app.get('/txt', (req, res) => {
-  console.log(`${backendURL}/txt`);
   axios.get(`${backendURL}/txt`, {
     params: req.query,
   })
@@ -33,7 +32,6 @@ app.get('/search', (req, res) => {
 });
 
 app.get('/popular', (req, res) => {
-  console.log('Getting here', req.url);
   axios.get(`${backendURL}/popular`)
     .then((data) => {
       res.status(200).send(data.data);
@@ -83,7 +81,7 @@ app.delete('/removeFromCollection', (req, res) => {
 });
 
 app.get('/collection/:username', (req, res) => {
-  axios.get(`${backendURL}/collection/:username`, {
+  axios.get(`${backendURL}/collection/${req.params.username}`, {
     headers: req.headers,
   })
     .then((data) => {
@@ -132,7 +130,6 @@ app.post('/verifyToken', (req, res) => {
 });
 
 app.put('/frontEndLogout', (req, res) => {
-  console.log(req.body);
   axios.put(`${backendURL}/logoutUser`, req.body, {
     headers: req.headers,
   })

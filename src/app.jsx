@@ -69,6 +69,15 @@ function App() {
       });
   };
 
+  useEffect(() => {
+    if (loggedIn) {
+      axios.get(`/collection/${username}`)
+        .then((res) => {
+          // console.log(res.data);
+        });
+    }
+  }, [loggedIn]);
+
   return (
     loggedIn ? (
       <Suspense fallback="loading">

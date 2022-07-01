@@ -23,7 +23,6 @@ function Collection({ currentBook }) {
 
   const getHQ = (book) => {
     if (book.meta.formats['image/jpeg']) {
-      console.log(book.meta.formats['image/jpeg']);
       const url = `url(${book.meta.formats['image/jpeg'].replace('small', 'medium')})`;
       return { backgroundImage: url };
     }
