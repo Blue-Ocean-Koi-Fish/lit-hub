@@ -86,7 +86,10 @@ function Settings({
             )}
           </form>
         </section>
-        <Logout setLoggedIn={setLoggedIn} />
+        <Logout
+          setLoggedIn={setLoggedIn}
+          settings={settings}
+        />
 
         <button type="button" id="settings-close-btn" onClick={() => { setShowSettings(false); }}>X</button>
       </div>

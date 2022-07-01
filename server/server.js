@@ -131,6 +131,20 @@ app.post('/verifyToken', (req, res) => {
     });
 });
 
+app.put('/frontEndLogout', (req, res) => {
+  console.log(req.body);
+  axios.put(`${backendURL}/logoutUser`, req.body, {
+    headers: req.headers,
+  })
+    .then((data) => {
+      res.status(200).send(data.data);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
 const PORT = process.env.PORT || 3000;
 
 console.log(`Listening on ${PORT}`);
