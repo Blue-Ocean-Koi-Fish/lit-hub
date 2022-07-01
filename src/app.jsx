@@ -150,6 +150,7 @@ function App() {
               showBook={showBook}
               collection={collection}
               setCollection={setCollection}
+              username={username}
             />
           ) : <Popular popularBooks={popularBooks} />)}
 
