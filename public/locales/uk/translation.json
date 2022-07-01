@@ -1,0 +1,47 @@
+{
+  "header": {
+    "collection": "Мої книги",
+    "settings": "Налаштування",
+    "subtitle": "Веб"
+  },
+
+  "login": {
+    "welcome": "Ласкаво просимо до LitHub! Введіть дані користувача:",
+    "username": "Користувач",
+    "password": "Пароль",
+    "login": "Вхід",
+    "logout": "Вихід",
+    "register": "Регістрація"
+  },
+
+  "search": {
+    "author": "Автор",
+    "title": "Назва",
+    "topic": "Жанр",
+    "language": "Мова",
+    "langDefault": "- Мова -",
+    "search": "Пошук"
+  },
+
+  "collections": {
+    "main": "Ваша Колекція",
+    "search": "Результати",
+    "cards": {
+      "add": "Додати",
+      "remove": "Вилучити"
+    }
+  },
+
+  "settings": {
+    "accessibility": "Особливі Можливості",
+    "language": "Мова",
+    "colorblindness": "Дальтонізм",
+    "coloblindnessModes": {
+    "None": "Відсутнє", "Protanopia": "Протанопія",
+     "Deuteranopia": "Дейтеранопія", "Tritanopia": "Тританопія",
+      "Achromatopsia": "Ахроматопсія", "Protanomaly": "Протаномалія",
+       "Deuteranomaly": "Дейтераномалія", "Tritanomaly": "Тританомалія",
+        "Achromatomaly": "Ахроматомія"
+    }
+  }
+}

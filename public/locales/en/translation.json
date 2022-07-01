@@ -1,0 +1,47 @@
+{
+  "header": {
+    "collection": "Collection",
+    "settings": "Settings",
+    "subtitle": "Web"
+  },
+
+  "login": {
+    "welcome": "Welcome to LitHub! Please Login or Register:",
+    "username": "Username",
+    "password": "Password",
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register"
+  },
+
+  "search": {
+    "author": "Author",
+    "title": "Title",
+    "topic": "Topic",
+    "language": "Language",
+    "langDefault": "- Lang -",
+    "search": "Search"
+  },
+
+  "collections": {
+    "main": "Your Collection",
+    "search": "Restults",
+    "cards": {
+      "add": "Add",
+      "remove": "Remove"
+    }
+  },
+
+  "settings": {
+    "accessibility": "Accessibility",
+    "language": "Language",
+    "colorblindness": "Colorblindness",
+    "coloblindnessModes": {
+      "None": "None", "Protanopia": "Protanopia",
+       "Deuteranopia": "Deuteranopia", "Tritanopia": "Tritanopia",
+        "Achromatopsia": "Achromatopsia", "Protanomaly": "Protanomaly",
+         "Deuteranomaly": "Deuteranomaly", "Tritanomaly": "Tritanomaly",
+          "Achromatomaly": "Achromatomaly"
+      }
+  }
+}
