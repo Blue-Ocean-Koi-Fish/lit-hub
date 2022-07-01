@@ -47,13 +47,16 @@ $settingsFontSize: 24px;
 
       /* Track */
       &::-webkit-scrollbar-track {
-        box-shadow: inset 0 0 5px grey;
+        // box-shadow: inset 0 0 5px grey;
+        background: rgba(rgb(37, 37, 37), 0.5);;
         border-radius: 1vw;
       }
 
       /* Handle */
       &::-webkit-scrollbar-thumb {
-        background: $button;
+        // background: $button;
+        background: rgba($dark, 0.5);
+        box-shadow: inset 0 0 5px grey;
         border-radius: 1vw;
       }
 
@@ -165,13 +168,17 @@ $settingsFontSize: 24px;
 
         .logout-btn {
           min-width: 45%;
-          margin: 2.5vh auto  5.5vh auto;
+          margin: 5.5vh auto  3.5vh auto;
           font-family: 'Garet';
-          font-size: $settingsFontSize * 1.25;
+          font-size: $settingsFontSize * 1.15;
           padding: $settingsFontSize * 0.1 $settingsFontSize * 1.15;
-          border: none;
           color: $light;
-          background-color: $button;
+          // border: none;
+          // background-color: $button;
+          box-shadow: 0vw 0vh 0.6vw 0.4vw #000000b7;
+          background-color: rgba($button, 0.5);
+          border: 0.175vw $dark outset;
+          border-radius: 0.3vw;
           cursor: pointer;
 
           &:hover {

@@ -36,21 +36,24 @@ $lightGray: #BCBCBC;
       flex-wrap: nowrap;
       justify-content: space-between;
       align-items: center;
-      padding: $headerFontSize 15vw $headerFontSize*0.75 5vw;
+      // padding: $headerFontSize 15vw $headerFontSize*0.75 5vw;
+      padding: $headerFontSize 0 $headerFontSize*0.75 0;
       margin-bottom: 3vw;
 
       .logo {
         display: flex;
         flex-wrap: nowrap;
         flex-shrink: 0;
-        margin-right: $headerFontSize * 3;
+        margin-left: $headerFontSize * 3;
         position: relative;
-        top: $headerFontSize * 0.25;
+        // top: $headerFontSize * 0.25;
         cursor: pointer;
 
         .title, .capital {
           font-size: $headerFontSize * 3;
           color: $light;
+
+          display: none;
         }
 
         .title {
@@ -63,12 +66,19 @@ $lightGray: #BCBCBC;
         }
 
         .img {
-          background-image: url(../assets/images/logo-book.png);
+          // background-image: url(../assets/images/logo-book.png);
+          // background-repeat: no-repeat;
+          // background-size: contain;
+          // margin-left: $headerFontSize * 0.5;
+          // width: $headerFontSize * 7.5;
+          // height: $headerFontSize * 4.5;
+
+          background-image: url('../assets/images/logo.png');
           background-repeat: no-repeat;
           background-size: contain;
-          margin-left: $headerFontSize * 0.5;
-          width: $headerFontSize * 7.5;
-          height: $headerFontSize * 4.5;
+          // margin-left: $headerFontSize * 3;
+          width: $headerFontSize * 15.5;
+          height: $headerFontSize * 5.5;
         }
       }
 
@@ -77,16 +87,21 @@ $lightGray: #BCBCBC;
         flex-wrap: nowrap;
         flex-shrink: 0;
         margin-right: 5vw;
+        position: relative;
+        top: $headerFontSize * 0.25;
 
         .btn {
           font-family: 'Garet';
-          font-size: $headerFontSize * 1.15;
+          font-size: $headerFontSize * 0.95;
           color: $light;
-          background-color: $button;
-          border: none;
+          box-shadow: 0vw 0vh 0.6vw 0.4vw #000000b7;
+          background-color: rgba($button, 0.5);
+          border: 0.2vw $dark outset;
+          border-radius: 0.5vw;
           outline: none;
           margin: 0 1.5vw;
           padding: ($headerFontSize * 0.75) ($headerFontSize * 3);
+          // padding: ($headerFontSize * 0.6) ($headerFontSize * 2);
           cursor: pointer;
 
           i {
@@ -102,6 +117,31 @@ $lightGray: #BCBCBC;
             color: $button;
           }
         }
+
+        // .btn {
+        //   font-family: 'Garet';
+        //   font-size: $headerFontSize * 1.15;
+        //   color: $light;
+        //   background-color: $button;
+        //   border: none;
+        //   outline: none;
+        //   margin: 0 1.5vw;
+        //   padding: ($headerFontSize * 0.75) ($headerFontSize * 3);
+        //   cursor: pointer;
+
+        //   i {
+        //     color: $light;
+        //     font-size: $headerFontSize * 1.15;
+        //     margin-left: $headerFontSize * 0.5;
+        //     position: relative;
+        //     top: $headerFontSize * 0.105;
+        //   }
+
+        //   &:hover {
+        //     background-color: $lightGray;
+        //     color: $button;
+        //   }
+        // }
       }
 
       .btn-settings {
@@ -136,7 +176,8 @@ $lightGray: #BCBCBC;
     body {
       #root {
         .header-moving {
-          padding: 0 15vw 0 5vw;
+          padding: 0;
+          // padding: 0 15vw 0 5vw;
           height: $headerFontSize * 7.5;
           flex-direction: row;
           justify-content: center;
@@ -146,6 +187,11 @@ $lightGray: #BCBCBC;
             .btn {
               display: none;
             }
+
+            .logo {
+              position: relative;
+              left: -2vw;
+            }
           }
 
           .btn-settings {
@@ -154,8 +200,11 @@ $lightGray: #BCBCBC;
               position: fixed;
               bottom: $headerFontSize * 2.5;
               right: $headerFontSize * 2.5;
-              padding: $headerFontSize * 0.55;
-              background: $button;
+              padding: $headerFontSize * 0.55 $headerFontSize * 0.625;
+              // background: $button;
+              box-shadow: 0vw 0vh 0.6vw 0.4vw #000000b7;
+              background-color: rgba($button, 0.5);
+              border: 0.2vw $dark outset;
               border-radius: 50%;
               border: none;
               cursor: pointer;
@@ -170,6 +219,8 @@ $lightGray: #BCBCBC;
               i {
                 color: $light;
                 font-size: $headerFontSize * 1.5;
+                position: relative;
+                top: $headerFontSize * 0.1;
               }
             }
           }
@@ -284,8 +335,11 @@ $lightGray: #BCBCBC;
           position: fixed;
           bottom: $headerFontSize * 2.5;
           right: $headerFontSize * 2.5;
-          padding: $headerFontSize;
-          background: $button;
+          padding: $headerFontSize * 0.55 $headerFontSize * 0.625;
+          // background: $button;
+          box-shadow: 0vw 0vh 0.6vw 0.4vw #000000b7;
+          background-color: rgba($button, 0.5);
+          border: 0.2vw $dark outset;
           border-radius: 50%;
           border: none;
           cursor: pointer;
@@ -340,13 +394,13 @@ $lightGray: #BCBCBC;
 
         .btn-settings {
           &.btn-round {
-            padding: $headerFontSize * 0.75 $headerFontSize;
+            padding: $headerFontSize * 1.5 * 0.55 $headerFontSize * 1.5 * 0.625;
             bottom: $headerFontSize * 2;
             right: $headerFontSize;
             i{
               position: relative;
               top: $headerFontSize * 0.25;
-              font-size: $headerFontSize * 2.5;
+              font-size: $headerFontSize * 3.5;
             }
           }
         }
