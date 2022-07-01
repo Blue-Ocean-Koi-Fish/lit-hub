@@ -90,8 +90,7 @@ function Reader({ book }) {
 
     document.addEventListener('keypress', (event) => {
       // console.log(event.keyCode, event.ctrlKey);
-      console.log(event.keyCode, event.ctrlKey);
-      if (event.keyCode === 20 && event.ctrlKey) {
+      if (event.keyCode === 20) {
         event.preventDefault();
         // eslint-disable-next-line no-use-before-define
         startText();
@@ -274,7 +273,7 @@ function Reader({ book }) {
             }}
           >
             {bookContent.map((node) => {
-              console.log('render')
+              console.log('render');
               const uniqueNode = assignLineIndex(node);
               return uniqueNode;
             })}
