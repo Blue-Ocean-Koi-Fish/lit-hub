@@ -105,6 +105,7 @@ function App() {
   }, [loggedIn]);
 
   useEffect(() => {
+    console.log(settings);
     const body = document.querySelector('body');
     const mode = settings['color-blindedness'].substring(0, 1).toUpperCase()
       + settings['color-blindedness'].substring(1, settings['color-blindedness'].length);
