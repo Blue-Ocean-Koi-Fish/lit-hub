@@ -1088,11 +1088,13 @@ body #root .login-section .login-wrap .logo-wrap {
 body #root .login-section .login-wrap .logo-wrap .logo-text {
   display: flex;
   flex-direction: column;
+  display: none;
 }
 body #root .login-section .login-wrap .logo-wrap .logo-text .title, body #root .login-section .login-wrap .logo-wrap .logo-text .capital {
   font-size: 110.4px;
   color: #EFEAEC;
   font-family: "Agrandir";
+  display: none;
 }
 body #root .login-section .login-wrap .logo-wrap .logo-text .title {
   height: 103.2px;
@@ -1107,11 +1109,11 @@ body #root .login-section .login-wrap .logo-wrap .logo-text .subtitle {
 body #root .login-section .login-wrap .logo-wrap .img {
   flex-shrink: 0;
   margin-left: 18px;
-  background-image: url(../assets/images/logo-book.png);
+  background-image: url(../assets/images/logo.png);
   background-size: contain;
   background-repeat: no-repeat;
-  width: 264px;
-  height: 144px;
+  width: 648px;
+  height: 216px;
 }
 body #root .login-section .login-wrap .login-form {
   margin-top: 6vh;
@@ -1205,11 +1207,13 @@ body #root .login-section .login-wrap .login-form .authentication-btns #login-su
   body #root .login-section .login-wrap .logo-wrap .logo-text {
     display: flex;
     flex-direction: column;
+    display: none;
   }
   body #root .login-section .login-wrap .logo-wrap .logo-text .title, body #root .login-section .login-wrap .logo-wrap .logo-text .capital {
     font-size: 138px;
     color: #EFEAEC;
     font-family: "Agrandir";
+    display: none;
   }
   body #root .login-section .login-wrap .logo-wrap .logo-text .title {
     height: 129px;
@@ -1224,11 +1228,11 @@ body #root .login-section .login-wrap .login-form .authentication-btns #login-su
   body #root .login-section .login-wrap .logo-wrap .img {
     flex-shrink: 0;
     margin-left: 22.5px;
-    background-image: url(../assets/images/logo-book.png);
+    background-image: url(../assets/images/logo.png);
     background-size: contain;
     background-repeat: no-repeat;
-    width: 330px;
-    height: 180px;
+    width: 810px;
+    height: 270px;
   }
   body #root .login-section .login-wrap .login-form {
     margin-top: 6vh;
@@ -1325,11 +1329,13 @@ body #root .login-section .login-wrap .login-form .authentication-btns #login-su
   body #root .login-section .login-wrap .logo-wrap .logo-text {
     display: flex;
     flex-direction: column;
+    display: none;
   }
   body #root .login-section .login-wrap .logo-wrap .logo-text .title, body #root .login-section .login-wrap .logo-wrap .logo-text .capital {
     font-size: 59.8px;
     color: #EFEAEC;
     font-family: "Agrandir";
+    display: none;
   }
   body #root .login-section .login-wrap .logo-wrap .logo-text .title {
     height: 55.9px;
@@ -1344,11 +1350,11 @@ body #root .login-section .login-wrap .login-form .authentication-btns #login-su
   body #root .login-section .login-wrap .logo-wrap .img {
     flex-shrink: 0;
     margin-left: 9.75px;
-    background-image: url(../assets/images/logo-book.png);
+    background-image: url(../assets/images/logo.png);
     background-size: contain;
     background-repeat: no-repeat;
-    width: 143px;
-    height: 78px;
+    width: 351px;
+    height: 117px;
   }
   body #root .login-section .login-wrap .login-form {
     margin-top: 6vh;
@@ -2115,8 +2121,7 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
   left: 0;
   right: 0;
   border: 0.25vw solid white;
-  border-top: rgb(50, 50, 50) 0.35vw solid;
-  /* Blue */
+  border-top: rgb(50, 50, 50) 0.35vw solid; /* Blue */
   border-radius: 50%;
   width: 10vw;
   height: 10vw;
@@ -2347,8 +2352,7 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
     left: 0;
     right: 0;
     border: 0.25vw solid white;
-    border-top: rgb(50, 50, 50) 0.35vw solid;
-    /* Blue */
+    border-top: rgb(50, 50, 50) 0.35vw solid; /* Blue */
     border-radius: 50%;
     width: 10vw;
     height: 10vw;
@@ -3053,8 +3057,7 @@ body.Achromatomaly #root .collections .collection-section-wrap .collection-secti
     left: 0;
     right: 0;
     border: 0.25vw solid white;
-    border-top: rgb(50, 50, 50) 0.35vw solid;
-    /* Blue */
+    border-top: rgb(50, 50, 50) 0.35vw solid; /* Blue */
     border-radius: 50%;
     width: 10vw;
     height: 10vw;
