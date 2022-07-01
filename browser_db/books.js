@@ -37,6 +37,10 @@ const removeBook = (bookId) => {
   booksDb.books.delete(bookId);
 };
 
+const clearTable = () => (
+  booksDb.books.clear()
+);
+
 export {
-  addBook, getCurrentBook, removeBook, getAllBooks, booksDb,
+  addBook, getCurrentBook, removeBook, getAllBooks, booksDb, clearTable,
 };

@@ -3,7 +3,7 @@ import axios from 'axios';
 import { addBook } from '../../browser_db/books';
 
 const SearchDisplay = function SearchDisplay({
-  bookList, count, searchTerms, setCount, setSearchTerms, setUserBooks,
+  bookList, count, searchTerms, setCount, setSearchTerms,
   showBook, username, setBookList,
 }) {
   const getHQ = (book) => {
@@ -72,6 +72,7 @@ const SearchDisplay = function SearchDisplay({
                       axios.post('/addToCollection', {
                         username,
                         bookId: book.id,
+                        meta: book,
                       }).then(() => (
                         axios.get(`/txt?url=${book.formats['text/html']}`)
                           .then((res) => (
