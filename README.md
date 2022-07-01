@@ -129,7 +129,7 @@ This app is simple and designed to run on almost any system or browser without a
    ```sh
    git clone https://github.com/Blue-Ocean-Koi-Fish/lit-hub-db
    ```
-4. run npm install on both repos.
+4. Run npm install on both repos.
 
 5. Run the command npm touch `.env` in the lit-hub repo.
    ```js
@@ -151,7 +151,7 @@ This app is simple and designed to run on almost any system or browser without a
 7. In the database repo run the commands:
     npm run start
 
-8. open your localhost to the port chosen in step 5.
+8. Open your localhost to the port chosen in step 5.
 
 
 <p align="right">(<a href="#top">back to top</a>)</p>
