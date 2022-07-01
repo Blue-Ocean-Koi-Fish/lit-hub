@@ -5,7 +5,6 @@ const path = require('path');
 
 const app = express();
 const backendURL = process.env.BACKEND_URL;
-console.log(backendURL);
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json());
 
@@ -134,8 +133,21 @@ app.put('/frontEndLogout', (req, res) => {
   axios.put(`${backendURL}/logoutUser`, req.body, {
     headers: req.headers,
   })
-    .then((data) => {
-      res.status(200).send(data.data);
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
+});
+
+app.put('/updateSettings', (req, res) => {
+  axios.put(`${backendURL}/updateSettings`, req.body, {
+    headers: req.headers,
+  })
+    .then(() => {
+      res.sendStatus(200);
     })
     .catch((err) => {
       console.log(err);

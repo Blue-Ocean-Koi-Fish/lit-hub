@@ -1,6 +1,6 @@
 {
   "header": {
-    "collection": "Мої книги",
+    "collection": "Мої Книги",
     "settings": "Налаштування",
     "subtitle": "Веб"
   },
@@ -25,6 +25,7 @@
 
   "collections": {
     "main": "Ваша Колекція",
+    "popular": "Популярні Книги",
     "search": "Результати",
     "cards": {
       "add": "Додати",

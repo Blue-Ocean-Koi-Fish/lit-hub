@@ -161,7 +161,7 @@ $darkGray: #4f4f4f;
                   width: 100%;
                   height: 78%;
                   // margin-bottom: $collectionsFontSize;
-                  overflow-y: scroll;
+                  overflow-y: auto;
                   /* Width */
                   &::-webkit-scrollbar {
                     width: 1vw;
@@ -202,7 +202,7 @@ $darkGray: #4f4f4f;
                   font-style: normal;
                   border: none;
                   border-radius: 0 0 0.55vw 0.55vw;
-                  z-index: 1000;
+                  z-index: 1;
 
                   &:hover {
                     background-color: $dark;
@@ -227,9 +227,62 @@ $darkGray: #4f4f4f;
                   height: 100%;
                   border-radius: 0 0 0.55vw 0.55vw;
                   position: absolute;
-
                 }
               }
+
+              &.added {
+                &::before {
+                // f00c
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                text-align: center;
+                line-height: 5;
+                content: '\f00c';
+                font-size: $collectionsFontSize * 2;
+                color: $light;
+                background: rgba(32, 125, 44, 0.681);
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+                border-radius: 0 0 0.55vw 0.55vw;
+                position: absolute;
+                }
+
+                .book-meta  {
+                  .book-btn {
+                    background-color: $darkGray;
+                    color: gray;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        visibility: visible;
+        &.loading {
+          visibility: hidden;
+          position: relative;
+
+          &::before{
+            visibility: visible;
+            content: '';
+            position: absolute;
+            top: 15vh;
+            left: 0;
+            right: 0;
+
+            border: 0.25vw solid white;
+            border-top: rgb(50, 50, 50) 0.35vw solid; /* Blue */
+            border-radius: 50%;
+            width: 10vw;
+            height: 10vw;
+            margin: auto;
+            animation: spin 1s linear infinite;
+
+            @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
             }
           }
         }

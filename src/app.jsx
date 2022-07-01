@@ -10,11 +10,11 @@ import { getCurrentBook, getAllBooks, clearTable, addBook } from '../browser_db/
 import Popular from './popular';
 import Logout from './logout';
 import Collection from './collection';
+import './i18n';
 import Reader from './reader/reader';
 
 import '../public/styles/unified.css';
 // Translator
-import './i18n';
 
 function App() {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -40,6 +40,7 @@ function App() {
   const [currentBook, setCurrentBook] = useState([]);
   const [username, setUsername] = useState([]);
   const [collection, setCollection] = useState([]);
+  const [popularBooks, setPopularBooks] = useState([]);
 
   // getAllBooks()
   //   .then((res) => {
@@ -52,7 +53,8 @@ function App() {
       axios.post('/verifyToken', { token: document.cookie })
         .then((res) => {
           setLoggedIn(true);
-          setUsername(res.data);
+          setUsername(res.data.username);
+          setSettings(res.data.settings);
         })
         .catch((err) => {
           console.log(err);
@@ -76,19 +78,24 @@ function App() {
       axios.get(`/collection/${username}`)
         .then((res) => {
           const mongoBooks = res.data;
-          console.log(mongoBooks);
           clearTable()
             .then(() => {
-              const promiseArray = [];
-              mongoBooks.forEach((book) => {
-                promiseArray.push(
-                  axios.get(`/txt?url=${book.meta.formats['text/html']}`)
-                    .then((res2) => (
-                      addBook(book.meta.title, res2.data, book.meta, book.meta.id)
-                    )),
-                );
-              });
-              return Promise.all(promiseArray);
+              if (mongoBooks.length) {
+                const promiseArray = [];
+                mongoBooks.forEach((book) => {
+                  promiseArray.push(
+                    axios.get(`/txt?url=${book.meta.formats['text/html']}`)
+                      .then((res2) => (
+                        addBook(book.meta.title, res2.data, book.meta, book.meta.id)
+                      )),
+                  );
+                });
+                return Promise.all(promiseArray);
+              }
+              return axios.get('/popular')
+                .then((data) => {
+                  setPopularBooks(data.data.results);
+                });
             })
             .then(() => {
               setCollectionLength(mongoBooks.length);
@@ -96,6 +103,16 @@ function App() {
         });
     }
   }, [loggedIn]);
+
+  useEffect(() => {
+    const body = document.querySelector('body');
+    const mode = settings['color-blindedness'].substring(0, 1).toUpperCase()
+      + settings['color-blindedness'].substring(1, settings['color-blindedness'].length);
+
+    body.removeAttribute('class');
+    document.querySelector('body').classList.add(mode);
+    i18n.changeLanguage(settings.language);
+  }, [settings]);
 
   return (
     loggedIn ? (
@@ -125,7 +142,7 @@ function App() {
               collection={collection}
               setCollection={setCollection}
             />
-          ) : <Popular />)}
+          ) : <Popular popularBooks={popularBooks} />)}
 
           {showSettings ? (
             <Settings
@@ -133,6 +150,7 @@ function App() {
               setSettings={setSettings}
               setShowSettings={setShowSettings}
               setLoggedIn={setLoggedIn}
+              username={username}
             />
           )
             : null}
