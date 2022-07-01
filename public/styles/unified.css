@@ -1936,6 +1936,7 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
   display: flex;
   flex-wrap: nowrap;
   justify-content: flex-end;
+  visibility: visible;
 }
 #root .collections .collection-section-wrap .collection-section, #root .reader-section .collection-section-wrap .collection-section {
   width: 100%;
@@ -2035,7 +2036,7 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
   font-style: normal;
   border: none;
   border-radius: 0 0 0.55vw 0.55vw;
-  z-index: 1000;
+  z-index: 1;
 }
 #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover, #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover {
   background-color: #292929;
@@ -2055,6 +2056,35 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
   height: 100%;
   border-radius: 0 0 0.55vw 0.55vw;
   position: absolute;
+}
+#root .collections .collection-section-wrap.loading, #root .reader-section .collection-section-wrap.loading {
+  visibility: hidden;
+  position: relative;
+}
+#root .collections .collection-section-wrap.loading::before, #root .reader-section .collection-section-wrap.loading::before {
+  visibility: visible;
+  content: "";
+  position: absolute;
+  top: 15vh;
+  left: 0;
+  right: 0;
+  border: 0.075vw solid white;
+  border-top: rgb(50, 50, 50) 0.3vw solid;
+  /* Blue */
+  box-shadow: 0 0 0.8vw 0.3vw rgba(0, 0, 0, 0.799), inset 0 0 0 0.125vw #475B63;
+  border-radius: 50%;
+  width: 10vw;
+  height: 10vw;
+  margin: auto;
+  animation: spin 1s linear infinite;
+}
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 @media (min-width: 1921px) {
@@ -2120,6 +2150,7 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
     display: flex;
     flex-wrap: nowrap;
     justify-content: flex-end;
+    visibility: visible;
   }
   body #root .collections .collection-section-wrap .collection-section, body #root .reader-section .collection-section-wrap .collection-section {
     width: 100%;
@@ -2219,7 +2250,7 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
     font-style: normal;
     border: none;
     border-radius: 0 0 0.55vw 0.55vw;
-    z-index: 1000;
+    z-index: 1;
   }
   body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover {
     background-color: #292929;
@@ -2239,6 +2270,35 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
     height: 100%;
     border-radius: 0 0 0.55vw 0.55vw;
     position: absolute;
+  }
+  body #root .collections .collection-section-wrap.loading, body #root .reader-section .collection-section-wrap.loading {
+    visibility: hidden;
+    position: relative;
+  }
+  body #root .collections .collection-section-wrap.loading::before, body #root .reader-section .collection-section-wrap.loading::before {
+    visibility: visible;
+    content: "";
+    position: absolute;
+    top: 15vh;
+    left: 0;
+    right: 0;
+    border: 0.075vw solid white;
+    border-top: rgb(50, 50, 50) 0.3vw solid;
+    /* Blue */
+    box-shadow: 0 0 0.8vw 0.3vw rgba(0, 0, 0, 0.799), inset 0 0 0 0.125vw #475B63;
+    border-radius: 50%;
+    width: 10vw;
+    height: 10vw;
+    margin: auto;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
   body #root .collections form.search-form, body #root .reader-section form.search-form {
     height: 100%;
@@ -2778,6 +2838,7 @@ body.Achromatomaly #root .collections .collection-section-wrap .collection-secti
     display: flex;
     flex-wrap: nowrap;
     justify-content: flex-end;
+    visibility: visible;
   }
   body #root .collections .collection-section-wrap .collection-section, body #root .reader-section .collection-section-wrap .collection-section {
     width: 100%;
@@ -2877,7 +2938,7 @@ body.Achromatomaly #root .collections .collection-section-wrap .collection-secti
     font-style: normal;
     border: none;
     border-radius: 0 0 0.55vw 0.55vw;
-    z-index: 1000;
+    z-index: 1;
   }
   body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card .book-meta .book-btn:hover {
     background-color: #292929;
@@ -2897,6 +2958,35 @@ body.Achromatomaly #root .collections .collection-section-wrap .collection-secti
     height: 100%;
     border-radius: 0 0 0.55vw 0.55vw;
     position: absolute;
+  }
+  body #root .collections .collection-section-wrap.loading, body #root .reader-section .collection-section-wrap.loading {
+    visibility: hidden;
+    position: relative;
+  }
+  body #root .collections .collection-section-wrap.loading::before, body #root .reader-section .collection-section-wrap.loading::before {
+    visibility: visible;
+    content: "";
+    position: absolute;
+    top: 15vh;
+    left: 0;
+    right: 0;
+    border: 0.075vw solid white;
+    border-top: rgb(50, 50, 50) 0.3vw solid;
+    /* Blue */
+    box-shadow: 0 0 0.8vw 0.3vw rgba(0, 0, 0, 0.799), inset 0 0 0 0.125vw #4F585B;
+    border-radius: 50%;
+    width: 10vw;
+    height: 10vw;
+    margin: auto;
+    animation: spin 1s linear infinite;
+  }
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
   body #root .collections {
     display: flex;
