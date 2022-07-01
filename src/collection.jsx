@@ -37,7 +37,7 @@ function Collection({ currentBook, collection, setCollection }) {
         </h4>
         <div className="book-cards-wrap">
           {collection.map((book) => (
-            <div className="book-card" style={getHQ(book)}>
+            <div className="book-card" style={getHQ(book)} key={book.meta.id}>
               <div className="book-meta">
                 <div className="meta-text-wrap">
                   <p>{book.meta.authors[0].name}</p>

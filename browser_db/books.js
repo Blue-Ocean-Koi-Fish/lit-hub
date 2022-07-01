@@ -11,7 +11,6 @@ booksDb.version(1).stores({
 });
 
 const addBook = (bookName, bookStr, metaObj, bookId) => {
-  console.log(metaObj);
   booksDb.books.add({
     name: bookName,
     text: bookStr,

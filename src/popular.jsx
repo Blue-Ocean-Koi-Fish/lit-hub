@@ -2,15 +2,14 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 
-function Popular() {
-  const [popularBooks, setPopularBooks] = useState([]);
-
-  useEffect(() => {
-    axios.get('/popular')
-      .then((data) => {
-        setPopularBooks(data.data.results);
-      });
-  }, []);
+function Popular({ popularBooks }) {
+  const getHQ = (book) => {
+    if (book.formats['image/jpeg']) {
+      const url = `url(${book.formats['image/jpeg'].replace('small', 'medium')})`;
+      return { backgroundImage: url };
+    }
+    return null;
+  };
 
   // console.log('Popular Books: ', popularBooks);
   return (
@@ -22,7 +21,7 @@ function Popular() {
         </h4>
         <div className="book-cards-wrap">
           {popularBooks.map((book) => (
-            <div className="book-card" style={{ backgroundImage: `url(${book.formats['image/jpeg']})` }}>
+            <div className="book-card" style={getHQ(book)}>
               <div className="book-meta">
                 <p>{book.authors[0].name}</p>
                 <p className="book-title">{book.title}</p>

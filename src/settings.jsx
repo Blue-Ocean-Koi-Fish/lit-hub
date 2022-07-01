@@ -1,19 +1,19 @@
 /* eslint-disable react/no-array-index-key */
 import React from 'react';
+import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 // Translator
 import i18n from './i18n';
 import Logout from './logout';
 
 function Settings({
-  settings, setSettings, setShowSettings, setLoggedIn,
+  settings, setSettings, setShowSettings, setLoggedIn, username,
 }) {
   const { t } = useTranslation();
 
   const handleLanguage = (e) => {
     const newSettings = { ...settings };
     newSettings.language = e.target.value;
-    i18n.changeLanguage(newSettings.language);
 
     // document.querySelector('input.checked')?.classList?.remove('checked');
     // e.target.classList.add('checked');
@@ -23,12 +23,6 @@ function Settings({
   const handleColorBlindedness = (e) => {
     const newSettings = { ...settings };
     newSettings['color-blindedness'] = e.target.value;
-    const body = document.querySelector('body');
-    const mode = e.target.value.substring(0, 1).toUpperCase()
-     + e.target.value.substring(1, e.target.value.length);
-
-    body.removeAttribute('class');
-    document.querySelector('body').classList.add(mode);
     // document.querySelector('input.checked')?.classList?.remove('checked');
     // e.target.classList.add('checked');
 
@@ -54,6 +48,14 @@ function Settings({
     })
   );
 
+  const handleClose = () => {
+    setShowSettings(false);
+    axios.put('/updateSettings', { username, settings })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
   return (
     <div className="settings-modal-wrap">
       <div className="modal-main">
@@ -67,7 +69,7 @@ function Settings({
           </h4>
           <form name="language">
             {fillSection(
-              ['English', 'Русский', 'Українська', '中国人', 'Japanese (Not implemented)'],
+              ['English', 'Русский', 'Українська', '中文', 'Japanese (Not implemented)'],
               'language',
               handleLanguage,
             )}
@@ -91,7 +93,7 @@ function Settings({
           settings={settings}
         />
 
-        <button type="button" id="settings-close-btn" onClick={() => { setShowSettings(false); }}>X</button>
+        <button type="button" id="settings-close-btn" onClick={handleClose}>X</button>
       </div>
     </div>
   );

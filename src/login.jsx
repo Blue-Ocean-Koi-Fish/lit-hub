@@ -12,18 +12,16 @@ function Login({
 
   const { t } = useTranslation();
   const loginUser = () => {
-
     axios.post('/frontEndLogin', { username, password })
       .then((res) => {
         document.cookie = `s_id=${res.data.token}`;
-        setLoggedIn(true);
-
         setSettings({
           language: res.data.settings.language,
           'color-blindness': res.data.settings['color-blindedness'],
           font: res.data.settings.font,
           fontSize: res.data.settings.fontSize,
         });
+        setLoggedIn(true);
       })
       .catch((err) => {
         console.log(err);
@@ -31,7 +29,6 @@ function Login({
   };
 
   const registerUser = () => {
-
     axios.post('/frontEndRegister', { username, password })
       .then(() => {
         alert('Registration Successful, please login normally.');
