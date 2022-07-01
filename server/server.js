@@ -5,7 +5,6 @@ const path = require('path');
 
 const app = express();
 const backendURL = process.env.BACKEND_URL;
-console.log(backendURL);
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json());
 

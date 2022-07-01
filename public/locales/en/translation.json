@@ -24,7 +24,8 @@
   },
 
   "collections": {
-    "main": "Your Collection",
+    "main": "My Collection",
+    "popular": "Popular Books",
     "search": "Restults",
     "cards": {
       "add": "Add",

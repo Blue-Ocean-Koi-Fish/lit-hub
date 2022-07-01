@@ -22,6 +22,7 @@
   },
   "collections": {
     "main": "我的收藏",
+    "popular": "流行书籍",
     "search": "结果",
     "cards": {
       "add": "添加",
