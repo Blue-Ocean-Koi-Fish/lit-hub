@@ -22,17 +22,18 @@ function Reader({ book }) {
   //   // setCurrentPage(7000);
   // }, []);
 
+  // Need to sort through each node to get the book's content.
   const getContent = (node) => {
     if (typeof node.props.children !== 'string') {
-      if (node.props.className) {
-        console.log(node.props.className);
-      }
+      // if (node.props.className) {
+      //   console.log(node.props.className);
+      // }
       if (Array.isArray(node.props.children)) {
         // console.log(node.props.children);
         const nodesFound = [];
         for (let i = 0; i < node.props.children.length; i += 1) {
           if (typeof node.props.children[i] !== 'string') {
-            console.log('F', node.props.children[i]);
+            // console.log('F', node.props.children[i]);
             nodesFound.push(node.props.children[i]);
           }
         }
@@ -44,11 +45,11 @@ function Reader({ book }) {
   // // Get a new book HTML string and run it through a parser to get it's contents.
   // // NOTE: NOT EVERY BOOK IS FORMATTED THE SAME!!!
   useEffect(() => {
-    // If there is a new book,
-    // console.log('UE NEW BOOK', book);
+    // When there is a new book to display,
+    // save it's contents.
     const newBookContent = [];
-
     if (book.length > 0) {
+      // First get the raw string.
       const rawDiv = ReactHtmlParser(book);
       // Do a first pass to get the body's children.
       let rawContent;
@@ -57,23 +58,33 @@ function Reader({ book }) {
       } catch {
         console.log('parsing error');
       }
-
+      // Then search through the content to find the book content.
       rawContent.forEach((node) => {
+        // Ignore carriage returns, tabs, etc.
         if (typeof node !== 'string') {
+          // Some elements are packed inside divs.
           if (node.type === 'div') {
+            // Need to extract them from the divs.
             const newNode = getContent(node);
+            // console.log('NODE', newNode)
             if (newNode) {
-              newBookContent.push(newNode);
+              for (let i = 0; i < newNode.length; i += 1) {
+                newBookContent.push(newNode[i]);
+              }
             }
           } else if (node.type !== 'blockquote' && node.type !== 'hr') {
+            // Otherwise we can just add the node to our array.
             newBookContent.push(node);
           }
         }
       });
-      console.log(newBookContent);
+      // Show off what ya got.
+      // console.log(newBookContent);
+      console.log('NEW BOOK');
     }
 
     // Update states
+    // Maybe needed, not sure.
     // setFontSize((size) => Number(size));
     setBookContent(newBookContent);
   }, [book]);
@@ -111,6 +122,7 @@ function Reader({ book }) {
     setCurrentPage((page) => page - 500);
   };
 
+  // << Not In Use >>
   const updateChapter = (event) => {
     /* You can assign 'data-' attribute to each chapter element and read it:
      Ex: <p data-id='3'></p>, <h3 data-chapter='Section Zero'></h3>
@@ -121,7 +133,7 @@ function Reader({ book }) {
 
     const contentDiv = document.getElementById('content');
 
-    console.log(value.slice(1), chapterDiv.scrollTop, contentDiv.scrollTop);
+    // console.log(value.slice(1), chapterDiv.scrollTop, contentDiv.scrollTop);
     chapterDiv.scrollIntoView();
     setCurrentPage(contentDiv.scrollTop);
   };
@@ -136,7 +148,7 @@ function Reader({ book }) {
 
     const dy = clientY - clientOrigin;
     contentDiv.scrollTop = origin - dy * 1.75;
-    console.log(contentDiv.scrollTop);
+    // console.log(contentDiv.scrollTop);
     setCurrentPage(origin - dy * 1.75);
   };
 
@@ -251,11 +263,12 @@ function Reader({ book }) {
               fontFamily: `${font}`,
             }}
           >
-            {/* {bookContent.map((node) => {
+            {bookContent.map((node) => {
+              console.log('render')
               const uniqueNode = assignLineIndex(node);
               return uniqueNode;
-            })} */}
-            {bookContent}
+            })}
+            {/* {bookContent} */}
           </div>
           <div className="page-nav-btns-wrap">
             <button id="page-prev-btn" className="nav-btn" type="button" onClick={pageBackward}>

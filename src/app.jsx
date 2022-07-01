@@ -60,13 +60,11 @@ function App() {
     }
   }, []);
 
+  // Get the book from indexDB and update currentBook state.
+  // Then render the reader.
   const showBook = (bookId) => {
-    // console.log('getting book', typeof bookId);
-    // bookId = ;
     getCurrentBook(Number(bookId))
       .then((res) => {
-        console.log('FROM DB', res[0]);
-
         setCurrentBook(res[0].text);
         setShowReader(true);
       })
