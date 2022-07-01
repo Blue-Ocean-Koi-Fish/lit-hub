@@ -172,10 +172,9 @@ _For more examples, please refer to the [Documentation](https://gutendex.com/)
 <!-- ROADMAP -->
 ## Roadmap
 
-- [ allow for guests to access the website but not use certain features ] Feature 1
-- [ make the collection accessible from the populer page] Feature 2
-- [ tts in multipule languages ] Feature 3
-    - [ ] Nested Feature
+- [ ] allow for guests to access the website but not use certain features 
+- [ ] make the collection accessible from the populer page
+- [ ] tts in multipule languages 
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 
