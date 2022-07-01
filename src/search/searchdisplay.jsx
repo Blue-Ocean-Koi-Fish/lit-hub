@@ -11,6 +11,15 @@ const SearchDisplay = function SearchDisplay({
   //   setSearchTerms(newSearchTerms);
   // };
 
+  const getHQ = (book) => {
+    if (book.formats['image/jpeg']) {
+      console.log(book.formats['image/jpeg']);
+      const url = `url(${book.formats['image/jpeg'].replace('small', 'medium')})`;
+      return { backgroundImage: url };
+    }
+    return null;
+  };
+
   return (
     <div className="collection-section-wrap">
       <section className="collection-section">
@@ -39,7 +48,7 @@ const SearchDisplay = function SearchDisplay({
               nameA = book.authors[0].name;
             }
             return (
-              <div key={book.id} className="book-card" style={{ backgroundImage: `url(${book.formats['image/jpeg']})` }}>
+              <div key={book.id} className="book-card" style={getHQ(book)}>
                 <div className="book-meta">
                   <div className="meta-text-wrap">
                     <p>{nameA}</p>
