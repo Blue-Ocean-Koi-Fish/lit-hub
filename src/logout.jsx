@@ -20,7 +20,7 @@ function Logout({ setLoggedIn, settings }) {
 
   return (
     <div className="logout-btn-wrap">
-      <button type="button" className="logout-btn" onClick={() => logUserOut()} className="logout-btn">{t('login.logout')}</button>
+      <button type="button" className="logout-btn" onClick={() => logUserOut()}>{t('login.logout')}</button>
     </div>
   );
 }

@@ -3,17 +3,16 @@ import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react';
 
-function Popular() {
-  const { t } = useTranslation();
-  const [popularBooks, setPopularBooks] = useState([]);
+function Popular({ popularBooks }) {
 
-  useEffect(() => {
-    axios.get('/popular')
-      .then((data) => {
-        console.log(data.data.results);
-        setPopularBooks(data.data.results);
-      });
-  }, []);
+  const getHQ = (book) => {
+    if (book.formats['image/jpeg']) {
+      const url = `url(${book.formats['image/jpeg'].replace('small', 'medium')})`;
+      return { backgroundImage: url };
+    }
+    return null;
+  };
+  const { t } = useTranslation();
 
   // console.log('Popular Books: ', popularBooks);
   return (
@@ -26,7 +25,7 @@ function Popular() {
         <div className="book-cards-wrap">
           {/* If book in collection, add 'added' class */}
           {popularBooks.map((book) => (
-            <div className="book-card" data-id={book.id} style={{ backgroundImage: `url(${book.formats['image/jpeg']})` }}>
+            <div className="book-card" data-id={book.id} style={getHQ(book)}>
               <div className="book-meta">
                 <div className="meta-text-wrap">
                   <p>{book.authors[0].name}</p>

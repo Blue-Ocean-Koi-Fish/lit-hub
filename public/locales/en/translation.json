@@ -11,7 +11,8 @@
     "password": "Password",
     "login": "Login",
     "logout": "Logout",
-    "register": "Register"
+    "register": "Register",
+    "guest": "Guest"
   },
 
   "search": {
@@ -26,7 +27,7 @@
   "collections": {
     "main": "My Collection",
     "popular": "Popular Books",
-    "search": "Restults",
+    "search": "Results",
     "cards": {
       "add": "Add",
       "remove": "Remove"

@@ -50,7 +50,8 @@ function Collection({
         </h4>
         <div className="book-cards-wrap" onClick={handleClick}>
           {collection.map((book) => (
-            <div className="book-card" style={getHQ(book)} data-book-id={book.book_id}>
+            <div className="book-card" style={getHQ(book)} key={book.meta.id} data-book-id={book.book_id}>
+
               <div className="book-meta">
                 <div className="meta-text-wrap">
                   <p>{book.meta.authors[0].name}</p>
