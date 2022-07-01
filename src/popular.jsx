@@ -2,8 +2,9 @@
 import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react';
+import { addBook } from '../browser_db/books';
 
-function Popular({ popularBooks }) {
+function Popular({ popularBooks, username }) {
   const getHQ = (book) => {
     if (book.formats['image/jpeg']) {
       const url = `url(${book.formats['image/jpeg'].replace('small', 'medium')})`;
@@ -30,7 +31,23 @@ function Popular({ popularBooks }) {
                   <p>{book.authors[0].name}</p>
                   <p className="book-title">{book.title}</p>
                 </div>
-                <button data-id={book.id} className="book-btn book-btn-add" type="button" onClick={() => { /*removeCurrentBook(book.id);*/ }}>
+                <button data-id={book.id} className="book-btn book-btn-add" type="button" onClick={(e) => {
+                  e.preventDefault();
+                  axios.post('/addToCollection', {
+                    username,
+                    bookId: book.id,
+                    meta: book,
+                  }).then(() => (
+                    axios.get(`/txt?url=${book.formats['text/html']}`)
+                      .then((res) => (
+                        addBook(book.title, res.data, book, book.id)
+                      ))
+                      // .then(() => {
+                      //   // showBook(book.id);
+                      //   // setUserBooks((books) => [...books, book.id]);
+                      // })
+                  ));
+                }}>
                   {`${t('collections.cards.add')}/${t('collections.cards.remove')}`}
                 </button>
               </div>
