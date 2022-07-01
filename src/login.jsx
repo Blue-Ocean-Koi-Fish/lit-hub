@@ -32,7 +32,7 @@ function Login({
   const registerUser = () => {
     axios.post('/frontEndRegister', { username, password })
       .then(() => {
-        console.log('User registered successfully!');
+        alert('Registration Successful, please login normally.');
       })
       .catch((err) => {
         console.log(err);
