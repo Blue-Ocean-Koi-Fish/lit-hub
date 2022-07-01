@@ -3,13 +3,9 @@ import axios from 'axios';
 import { addBook } from '../../browser_db/books';
 
 const SearchDisplay = function SearchDisplay({
-  bookList, count, searchTerms, setSearchTerms, setUserBooks, showBook, username,
+  bookList, count, searchTerms, setCount, setSearchTerms, setUserBooks, showBook, username, setBookList
 }) {
-  // const handleRemove = (k) => {
-  //   const newSearchTerms = { ...searchTerms };
-  //   newSearchTerms[k] = '';
-  //   setSearchTerms(newSearchTerms);
-  // };
+  
 
   const getHQ = (book) => {
     if (book.formats['image/jpeg']) {
@@ -20,6 +16,23 @@ const SearchDisplay = function SearchDisplay({
     return null;
   };
 
+  const handleRemove = (k) => {
+    const newSearchTerms = { ...searchTerms };
+    newSearchTerms[k] = '';
+    setSearchTerms(newSearchTerms);
+    axios
+      .get('/search', {
+        params: searchTerms,
+      })
+      .then((res) => {
+        setBookList(res.data.results);
+        setCount(res.data.count);
+        setShowSearchResults(true);
+      })
+      .catch((err) => console.log(err));
+
+  };
+  
   return (
     <div className="collection-section-wrap">
       <section className="collection-section">
@@ -59,6 +72,7 @@ const SearchDisplay = function SearchDisplay({
                     className="toggle_status_btn book-btn book-btn-add"
                     onClick={(e) => {
                       e.preventDefault();
+                      console.log(username);
                       axios.post('/addToCollection', {
                         username,
                         bookId: book.id,

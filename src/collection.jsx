@@ -11,11 +11,14 @@ function Collection({ currentBook }) {
     getAllBooks().then((res) => {
       setCollection(res);
     });
-  }, [currentBook]);
+  }, [currentBook, collection]);
 
   const removeCurrentBook = (bookId) => {
-    removeBook(bookId);
-    // window.location.reload();
+    removeBook(bookId).then(() => {
+      getAllBooks().then((res) => {
+        setCollection(res);
+      });
+    });
   };
 
   const getHQ = (book) => {
