@@ -80,7 +80,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
+[![Product Name Screen Shot][product-screenshot]](https://lit-hub.herokuapp.com/)
 
 A highly accessable website that serves books from the gutendex api that can be read and stored through the app, even when offline.
 
