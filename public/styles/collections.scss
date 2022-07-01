@@ -1,32 +1,23 @@
-// @import './reusable/main.scss';
-// @import './reusable/header.scss';
+$ColorBlindModes: ("None", "Protanopia", "Deuteranopia",
+ "Tritanopia", "Achromatopsia", "Protanomaly", "Deuteranomaly",
+  "Tritanomaly", "Achromatomaly");
 
-// @font-face {
-//   font-family: 'Garet';
-//   src: url('../assets/fonts/Garet/Garet-Book.otf');
-// }
+$ColorBlindDark: ("None": #292929, "Protanopia": #292929, "Deuteranopia": #292929,
+ "Tritanopia": #282929, "Achromatopsia": #292929, "Protanomaly": #292929, "Deuteranomaly": #292929,
+  "Tritanomaly": #292929, "Achromatomaly": #292929);
+$ColorBlindLight: ("None": #F3E8EE, "Protanopia": #EEEEEC, "Deuteranopia": #EEEFEC,
+"Tritanopia": #F2EBEB, "Achromatopsia": #EBEBEB, "Protanomaly": #F0EBED, "Deuteranomaly": #F0EAED,
+ "Tritanomaly": #F2E9EC, "Achromatomaly": #EFEAEC);
+ $ColorBlindButton: ("None": #475B63, "Protanopia": #4F4F61, "Deuteranopia": #4E4D60,
+ "Tritanopia": #485F5F, "Achromatopsia": #555555, "Protanomaly": #4A5462, "Deuteranomaly": #4B5561,
+  "Tritanomaly": #475D61, "Achromatomaly":  #4F585B);
 
-// @font-face {
-//   font-family: 'Garet-Bold';
-//   src: url('../assets/fonts/Garet/Garet-Heavy.otf');
-// }
-
-// @font-face {
-//   font-family: 'Agrandir-Bold';
-//   src: url('../assets/fonts/Agrandir/Agrandir-TextBold.otf');
-// }
-
-// @font-face {
-//   font-family: 'Agrandir';
-//   src: url('../assets/fonts/Agrandir/Agrandir-GrandLight.otf');
-// }
 
 $dark: #292929;
 $button: #475B63;
 $light: #F3E8EE;
 $darkGray: #4f4f4f;
 
-// $collectionsFontSize: 24px;
 
 @mixin style-collections($collectionsFontSize) {
   #root {
@@ -155,30 +146,88 @@ $darkGray: #4f4f4f;
               justify-content: flex-end;
 
               .book-meta {
-                background-color: $darkGray;
+                height: 35%;
+
+                background-color: rgba($darkGray, 0.8);
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: space-between;
-                padding: $collectionsFontSize * 0.25;
-                border-radius: 0.75vw;
+                padding: $collectionsFontSize * 0.25 0;
+                border-radius: 0 0 0.75vw 0.75vw;
+                position: relative;
 
-                >* {
-                  // flex-basis: 40%;
+                .meta-text-wrap {
+                  padding: 0 $collectionsFontSize * 0.25;
+                  width: 100%;
+                  height: 78%;
+                  // margin-bottom: $collectionsFontSize;
+                  overflow-y: scroll;
+                  /* Width */
+                  &::-webkit-scrollbar {
+                    width: 1vw;
+                    height: 90%;
+                  }
+
+                  /* Track */
+                  &::-webkit-scrollbar-track {
+                    box-shadow: inset 0 0 5px grey;
+                    border-radius: 0.2vw 0.2vw 0 0;
+                  }
+
+                  /* Handle */
+                  &::-webkit-scrollbar-thumb {
+                    background: $dark;
+                    border-radius: 0.2vw 0.2vw 0 0;
+                  }
+
+
+                  >* {
+                    font-size: $collectionsFontSize * 0.75;
+                    color: $light;
+                    font-style: italic;
+
+                    &.book-title {
+                      font-style: normal;
+                    }
+                  }
+                }
+
+                .book-btn {
+                  width: 100%;
+                  height: 26%;
                   font-size: $collectionsFontSize * 0.75;
+                  margin-top: 1%;
+                  background-color: $button;
                   color: $light;
-                  font-style: italic;
+                  font-style: normal;
+                  border: none;
+                  border-radius: 0 0 0.55vw 0.55vw;
+                  z-index: 1000;
 
-                  &.book-title {
-                    font-style: normal;
+                  &:hover {
+                    background-color: $dark;
+                    color: $light;
                   }
+                }
+              }
 
-                  &.book-btn {
-                    color: $dark;
-                    font-style: normal;
-                    margin-top: $collectionsFontSize * 0.25;
-                    width: 100%;
-                    border-radius: 0.55vw;
-                  }
+              position: relative;
+              &:hover {
+                &:before {
+                  font-family: "Font Awesome 5 Free";
+                  font-weight: 900;
+                  text-align: center;
+                  line-height: 5;
+                  content: '\f518';
+                  font-size: $collectionsFontSize * 2;
+                  color: $light;
+                  background: rgba(0, 0, 0, 0.524);
+                  display: inline-block;
+                  width: 100%;
+                  height: 100%;
+                  border-radius: 0 0 0.55vw 0.55vw;
+                  position: absolute;
+
                 }
               }
             }
@@ -194,8 +243,114 @@ $darkGray: #4f4f4f;
 @media (min-width: 1921px) {
   body {
     @include style-collections(30px);
+    #root {
+      .collections, .reader-section {
+        form.search-form {
+          height: 100%;
+          margin-bottom: 5%;
+          overflow-y: auto;
+
+          /* Width */
+          &::-webkit-scrollbar {
+            width: 1.2vw;
+          }
+
+          /* Track */
+          &::-webkit-scrollbar-track {
+            box-shadow: inset 0 0 5px grey;
+            border-radius: 0;
+          }
+
+          /* Handle */
+          &::-webkit-scrollbar-thumb {
+            background: $dark;
+            border-radius: 0;
+          }
+
+          #search-submit {
+            margin-bottom: 5%;
+          }
+        }
+      }
+    }
   }
 }
+
+@each $mode in $ColorBlindModes {
+  $dark: map-get($ColorBlindDark, $mode);
+  $button: map-get($ColorBlindButton, $mode);
+  $light: map-get($ColorBlindLight, $mode);
+  $lightGray: #BCBCBC;
+
+  body {
+    &.#{$mode} {
+      #root {
+        .collections, .reader-section {
+          .search-form {
+            background-color: rgba($dark, 0.8);
+            label {
+              color: $light;
+            }
+            input, select {
+              color: $button;
+              &:focus {
+                outline: $dark 2px solid;
+              }
+            }
+
+            #search-submit {
+              color: $button;
+
+              &:hover {
+                background-color: $dark;
+                color: $light;
+
+                i {
+                  color: $light;
+                }
+              }
+            }
+          }
+
+          .collection-section-wrap {
+            .collection-section {
+              .title {
+                color: $light;
+
+                &::before {
+                  border: double 5px $light;
+                }
+              }
+
+              .book-cards-wrap {
+                .book-card {
+
+                  .book-meta {
+                    background-color: $darkGray;
+                    >* {
+                      color: $light;
+                    }
+
+                    .book-btn {
+                      background-color: $button;
+                      color: $light;
+
+                      &:hover {
+                        background-color: $dark;
+                        color: $light;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 
 @media (max-width: 1368px) {
   body {

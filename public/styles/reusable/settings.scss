@@ -1,21 +1,16 @@
-// @import './main.scss';
-// @import './header.scss';
-// @import '../collections.scss';
+$ColorBlindModes: ("None", "Protanopia", "Deuteranopia",
+ "Tritanopia", "Achromatopsia", "Protanomaly", "Deuteranomaly",
+  "Tritanomaly", "Achromatomaly");
 
-// @font-face {
-//   font-family: 'Garet';
-//   src: url('../assets/fonts/Garet/Garet-Book.otf');
-// }
-
-// @font-face {
-//   font-family: 'Agrandir-Bold';
-//   src: url('../assets/fonts/Agrandir/Agrandir-TextBold.otf');
-// }
-
-// @font-face {
-//   font-family: 'Agrandir';
-//   src: url('../assets/fonts/Agrandir/Agrandir-GrandLight.otf');
-// }
+$ColorBlindDark: ("None": #292929, "Protanopia": #292929, "Deuteranopia": #292929,
+ "Tritanopia": #282929, "Achromatopsia": #292929, "Protanomaly": #292929, "Deuteranomaly": #292929,
+  "Tritanomaly": #292929, "Achromatomaly": #292929);
+$ColorBlindLight: ("None": #F3E8EE, "Protanopia": #EEEEEC, "Deuteranopia": #EEEFEC,
+"Tritanopia": #F2EBEB, "Achromatopsia": #EBEBEB, "Protanomaly": #F0EBED, "Deuteranomaly": #F0EAED,
+ "Tritanomaly": #F2E9EC, "Achromatomaly": #EFEAEC);
+ $ColorBlindButton: ("None": #475B63, "Protanopia": #4F4F61, "Deuteranopia": #4E4D60,
+ "Tritanopia": #485F5F, "Achromatopsia": #555555, "Protanomaly": #4A5462, "Deuteranomaly": #4B5561,
+  "Tritanomaly": #475D61, "Achromatomaly":  #4F585B);
 
 $dark: #292929;
 $button: #475B63;
@@ -163,8 +158,26 @@ $settingsFontSize: 24px;
 
         &:hover {
           background-color: black;
-
         }
+      }
+      .logout-btn-wrap {
+        text-align: center;
+
+        .logout-btn {
+          min-width: 45%;
+          margin: 2.5vh auto  5.5vh auto;
+          font-family: 'Garet';
+          font-size: $settingsFontSize * 1.25;
+          padding: $settingsFontSize * 0.1 $settingsFontSize * 1.15;
+          border: none;
+          color: $light;
+          background-color: $button;
+          cursor: pointer;
+
+          &:hover {
+            background-color: black;
+          }
+       }
       }
     }
   }
@@ -187,6 +200,66 @@ $settingsFontSize: 24px;
           .section {
             margin: $settingsFontSize 0;
 
+          }
+        }
+      }
+    }
+  }
+}
+
+@each $mode in $ColorBlindModes {
+  $dark: map-get($ColorBlindDark, $mode);
+  $button: map-get($ColorBlindButton, $mode);
+  $light: map-get($ColorBlindLight, $mode);
+  $lightGray: #BCBCBC;
+
+  body {
+    &.#{$mode} {
+      #root {
+        .settings-modal-wrap {
+          background-color: rgba($dark, 0.7);
+
+          .modal-main {
+            background-color: $dark;
+
+            /* Handle */
+            &::-webkit-scrollbar-thumb {
+              background: $button;
+            }
+
+            .section-category-title {
+              color: $light;
+            }
+
+            .section {
+              background-color: $darkGray;
+
+              .title {
+                color: $light;
+              }
+
+              form {
+                label {
+                  color: $light;
+
+                  input {
+                    color: $light;
+                    &.checked::before {
+                      background-color: $dark;
+                    }
+                  }
+                }
+              }
+            }
+
+            #settings-close-btn {
+              color: $light;
+              background-color: $button;
+
+              &:hover {
+                background-color: black;
+              }
+            }
           }
         }
       }

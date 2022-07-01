@@ -1,12 +1,17 @@
-// @font-face {
-//   font-family: 'Garet';
-//   src: url('../../assets/fonts/Garet/Garet-Book.ttf');
-// }
+$ColorBlindModes: ("None", "Protanopia", "Deuteranopia",
+ "Tritanopia", "Achromatopsia", "Protanomaly", "Deuteranomaly",
+  "Tritanomaly", "Achromatomaly");
 
-// @font-face {
-//   font-family: 'Agrandir';
-//   src: url('../../assets/fonts/Agrandir/Agrandir-WideLight.otf');
-// }
+$ColorBlindDark: ("None": #292929, "Protanopia": #292929, "Deuteranopia": #292929,
+ "Tritanopia": #282929, "Achromatopsia": #292929, "Protanomaly": #292929, "Deuteranomaly": #292929,
+  "Tritanomaly": #292929, "Achromatomaly": #292929);
+$ColorBlindLight: ("None": #F3E8EE, "Protanopia": #EEEEEC, "Deuteranopia": #EEEFEC,
+"Tritanopia": #F2EBEB, "Achromatopsia": #EBEBEB, "Protanomaly": #F0EBED, "Deuteranomaly": #F0EAED,
+ "Tritanomaly": #F2E9EC, "Achromatomaly": #EFEAEC);
+ $ColorBlindButton: ("None": #475B63, "Protanopia": #4F4F61, "Deuteranopia": #4E4D60,
+ "Tritanopia": #485F5F, "Achromatopsia": #555555, "Protanomaly": #4A5462, "Deuteranomaly": #4B5561,
+  "Tritanomaly": #475D61, "Achromatomaly":  #4F585B);
+
 
 $dark: #292929;
 $button: #475B63;
@@ -21,34 +26,15 @@ $lightGray: #BCBCBC;
   padding: 0;
 }
 
+button {
+  cursor: pointer;
+}
+
 body {
-  // background-image: url(../../assets/images/gray\ vector.jpeg);
-  // background-image: url(../../assets/images/bubbles.jpeg);
-  // background-image: url(../../assets/images/Wallpaper-2560-x-1440-033.jpeg);
+  background-image: url(../assets/images/gray\ vector.jpeg);
   background-size: cover;
   background-attachment: fixed;
 }
-
-// #root {
-//   // background: linear-gradient(-45deg, #ee7652b6, #e73c7ea5, #23a5d5ab, #23d5ab);
-//   // background: linear-gradient(-45deg, rgba($button, 0.75), rgba($dark, 0.75), rgba($button, 0.75), rgba($button, 0.75));
-//   background-size: 400% 400%;
-//   background-attachment: fixed;
-//   animation: gradient 15s ease infinite;
-// }
-
-// @keyframes gradient {
-//     0% {
-//         background-position: 0% 50%;
-//     }
-//     50% {
-//         background-position: 100% 50%;
-//     }
-//     100% {
-//         background-position: 0% 50%;
-//     }
-// }
-
 
 #root {
   background: linear-gradient(45deg, rgba($button, 0.75) 30%,  rgba($dark, 1) 100%);
@@ -57,4 +43,23 @@ body {
   width: 100%;
   height: 100%;
   min-height: 100vh;
+}
+
+@each $mode in $ColorBlindModes {
+  $dark: map-get($ColorBlindDark, $mode);
+  $button: map-get($ColorBlindButton, $mode);
+  $light: map-get($ColorBlindLight, $mode);
+  $lightGray: #BCBCBC;
+
+  body {
+    &.#{$mode} {
+      >* {
+        color: $dark;
+      }
+
+      #root {
+        background: linear-gradient(45deg, rgba($button, 0.75) 30%,  rgba($dark, 1) 100%);
+      }
+    }
+  }
 }

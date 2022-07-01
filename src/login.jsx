@@ -1,8 +1,45 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
+import axios from 'axios';
 
-function Login({ setLoggedIn }) {
-  const [username, setUsername] = useState('');
+function Login({
+  setLoggedIn,
+  username,
+  setUsername,
+  setSettings,
+}) {
   const [password, setPassword] = useState('');
+
+  const { t } = useTranslation();
+  const loginUser = () => {
+
+    axios.post('/frontEndLogin', { username, password })
+      .then((res) => {
+        document.cookie = `s_id=${res.data.token}`;
+        setLoggedIn(true);
+
+        setSettings({
+          language: res.data.settings.language,
+          'color-blindness': res.data.settings['color-blindedness'],
+          font: res.data.settings.font,
+          fontSize: res.data.settings.fontSize,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const registerUser = () => {
+
+    axios.post('/frontEndRegister', { username, password })
+      .then(() => {
+        alert('Registration Successful, please login normally.');
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
   return (
     <section className="login-section">
@@ -20,7 +57,7 @@ function Login({ setLoggedIn }) {
               <span className="capital">H</span>
               ub
             </h1>
-            <h3 className="subtitle">Web</h3>
+            <h3 className="subtitle">{t('header.subtitle')}</h3>
           </div>
 
           <div className="img" alt="logo">
@@ -30,7 +67,7 @@ function Login({ setLoggedIn }) {
 
         <form className="login-form">
           <h4 className="welcome-msg">
-            Welcome to LitHub! Please Login or Register:
+            {t('login.welcome')}
           </h4>
           <div className="input-wrap">
             {/* <img src="http://placecorgi.com/50/50" alt="username" /> */}
@@ -38,7 +75,7 @@ function Login({ setLoggedIn }) {
             <input
               id="username"
               type="text"
-              placeholder="Username"
+              placeholder={t('login.username')}
               value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
@@ -49,12 +86,15 @@ function Login({ setLoggedIn }) {
             <input
               id="password"
               type="password"
-              placeholder="Password"
+              placeholder={t('login.password')}
               value={password}
               onChange={(e) => setPassword(e.target.value)}
             />
           </div>
-          <button type="button" id="login-submit" onClick={() => setLoggedIn(true)}>Log In</button>
+          <div className="authentication-btns">
+            <button type="button" id="login-submit" onClick={() => loginUser()}>{t('login.login')}</button>
+            <button type="button" id="register-submit" onClick={() => registerUser()}>{t('login.register')}</button>
+          </div>
         </form>
       </div>
     </section>

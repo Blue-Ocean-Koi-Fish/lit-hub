@@ -1,7 +1,10 @@
 // search by, title, author, topic, license
-import React, { useState } from "react";
-import axios from "axios";
-import langList from "./resources";
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useTranslation } from 'react-i18next';
+import langList from './resources';
+
+
 
 const SearchBooks = function SearchBooks({
   setBookList,
@@ -9,32 +12,40 @@ const SearchBooks = function SearchBooks({
   setSearchTerms,
   setShowSearchResults,
 }) {
-  const [author, setAuthor] = useState("");
-  const [title, setTitle] = useState("");
-  const [topic, setTopic] = useState("");
-  const [language, setLanguage] = useState("en");
+  const { t } = useTranslation();
+
+  const [author, setAuthor] = useState('');
+  const [title, setTitle] = useState('');
+  const [topic, setTopic] = useState('');
+  const [language, setLanguage] = useState('en');
 
   const submitSearch = function submitSearch() {
-    let authorWords = author.split(" ");
-    let titleWords = title.split(" ");
-    let searchTermArr = authorWords.concat(titleWords);
-    let searchTerm = "";
-    for (let i = 0; i < searchTermArr.length; i++) {
-      searchTerm += searchTermArr[i] + "%20";
+    let searchTerm = '';
+    if (author.length && title.length) {
+      const authorWords = author.split(' ');
+      const titleWords = title.split(' ');
+      const searchTermArr = authorWords.concat(titleWords);
+      searchTerm = searchTermArr.join('%20');
+    } else if (author.length) {
+      searchTerm = author.replaceAll(' ', '%20');
+    } else {
+      searchTerm = title.replaceAll(' ', '%20');
     }
-    console.log(
-      `http://gutendex.com/books?search=${searchTerm}&topic=${topic}&languages=${language}`
-    );
+
     axios
-      .get(
-        `http://gutendex.com/books?search=${searchTerm}&topic=${topic}&languages=${language}`,
-      )
+      .get('http://107.20.126.146:8080/search', {
+        params: {
+          search: searchTerm,
+          topic,
+          language,
+        },
+      })
       .then((res) => {
         setSearchTerms({
-          author: author,
-          title: title,
-          topic: topic,
-          language: language,
+          author,
+          title,
+          topic,
+          language,
         });
         setBookList(res.data.results);
         setCount(res.data.count);
@@ -48,52 +59,62 @@ const SearchBooks = function SearchBooks({
       className="search-form"
       onSubmit={(event) => {
         event.preventDefault();
-        submitSearch();
+        if ([author, title, topic].some((a) => a.length)) {
+          submitSearch();
+        }
       }}
     >
-      <label>Author</label>
+      <label>{t('search.author')}</label>
       <input
         id="author"
         type="text"
+        placeholder={t('search.author')}
         onChange={(e) => {
           e.preventDefault();
           setAuthor(e.target.value);
         }}
       />
-      <label>Title</label>
+      <label>{t('search.title')}</label>
       <input
         id="title"
         type="text"
+        placeholder={t('search.title')}
         onChange={(e) => {
           e.preventDefault();
           setTitle(e.target.value);
         }}
       />
-      <label>Topic</label>
+      <label>{t('search.topic')}</label>
       <input
         id="topic"
         type="text"
+        placeholder={t('search.topic')}
         onChange={(e) => {
           e.preventDefault();
           setTopic(e.target.value);
         }}
       />
-      <label>Select Language</label>
+      <label>{t('search.language')}</label>
       <select
         name="Language"
         id="language"
+        default={t('search.langDefault')}
         onChange={(e) => {
           e.preventDefault();
           setLanguage(e.target.value);
         }}
       >
+        <option>{t('search.langDefault')}</option>
         {langList.map((val) => (
           <option key={val.name} value={val.code}>
             {val.name}
           </option>
         ))}
       </select>
-      <input type="submit" value="Search" id="search-submit" />
+      <button type="submit" id="search-submit">
+        {t('search.search')}
+        <i className="fa-solid fa-magnifying-glass" />
+      </button>
     </form>
   );
 };
