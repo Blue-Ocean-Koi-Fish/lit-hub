@@ -7,6 +7,7 @@ function Login({ setLoggedIn, username, setUsername }) {
 
   const { t } = useTranslation();
   const loginUser = () => {
+
     axios.post('/frontEndLogin', { username, password })
       .then((res) => {
         document.cookie = `s_id=${res.data.token}`;
@@ -18,6 +19,7 @@ function Login({ setLoggedIn, username, setUsername }) {
   };
 
   const registerUser = () => {
+
     axios.post('/frontEndRegister', { username, password })
       .then(() => {
         console.log('User registered successfully!');

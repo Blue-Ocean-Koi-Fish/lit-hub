@@ -105,6 +105,19 @@ function App() {
           )
             : null}
         </section>
+          {showSearchResults ? (
+          <SearchDisplay
+          setCount={setCount}
+          setBookList={setBookList}
+            setUserBooks={setUserBooks}
+            searchTerms={searchTerms}
+            setSearchTerms={setSearchTerms}
+            count={count}
+            bookList={bookList}
+            showBook={showBook}
+            username={username}
+          />
+        ) : null}
 
         {/* {showReader ? <Reader book={currentBook} /> : null} */}
         {/* {<Reader book={testBook} /> || null} */}
