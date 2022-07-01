@@ -110,6 +110,28 @@ function App() {
         .then((data) => {
           setCollectionLength(data.length);
         });
+    } else {
+      setSearchTerms({
+        title: '',
+        author: '',
+        language: '',
+        topic: '',
+      });
+      setSettings({
+        language: 'English',
+        'color-blindedness': 'none',
+        font: 'Times',
+        fontSize: '24',
+      });
+      setShowSearchResults(false);
+      setShowSettings(false);
+      setShowReader(false);
+      // setBookList(null);
+      // setCount(0);
+      // setCollectionLength(0);
+      // setCurrentBook([]);
+      // setUsername('');
+      // setCollection([]);
     }
   }, [loggedIn]);
 
