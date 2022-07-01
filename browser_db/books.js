@@ -10,21 +10,34 @@ booksDb.version(1).stores({
   books: '++id, name, text, meta, book_id',
 });
 
+// Use add as a promise
 const addBook = (bookName, bookStr, metaObj, bookId) => {
   booksDb.books.add({
     name: bookName,
     text: bookStr,
     meta: metaObj,
     book_id: bookId,
-  });
+  })
+    // .then(() => (console.log('book added')))
+    .catch((error) => (console.log('INDEXDB', error)));
 };
+// you have to use toArray or find another dexie method do not leave it off
+// const getCurrentBook = async (bookId) => {
+//   console.log('INDEX DB', bookId);
+//   const book = await booksDb.books.where("book_id") // THIS REQUIRES DOUBLE QUOTES
+//     .equals(bookId)
+//     .toArray();
+//   console.log(book);
+//   return book[0];
+// };
 
-const getCurrentBook = async (bookId) => {
-  const book = await booksDb.books.where("book_id") // THIS REQUIRES DOUBLE QUOTES
+// you have to use toArray or find another dexie method do not leave it off
+// Return booksDb.books.where as a promise
+const getCurrentBook = (bookId) => (
+  booksDb.books.where("book_id") // THIS REQUIRES DOUBLE QUOTES
     .equals(bookId)
-    .toArray(); // you have to use toArray or find another dexie method do not leave it off
-  return book[0];
-};
+    .toArray()
+);
 
 const getAllBooks = () => {
   const collection = booksDb.books.toArray();

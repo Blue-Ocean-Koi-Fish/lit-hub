@@ -4,8 +4,6 @@ import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import langList from './resources';
 
-
-
 const SearchBooks = function SearchBooks({
   setBookList,
   setCount,
@@ -32,6 +30,9 @@ const SearchBooks = function SearchBooks({
       searchTerm = title.replaceAll(' ', '%20');
     }
 
+    const collectionSection = document.querySelector('.collection-section-wrap');
+    collectionSection?.classList?.add('loading');
+
     axios
       .get('/search', {
         params: {
@@ -51,7 +52,10 @@ const SearchBooks = function SearchBooks({
         setCount(res.data.count);
         setShowSearchResults(true);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      })
+      .finally(() => collectionSection.classList.remove('loading'));
   };
 
   return (

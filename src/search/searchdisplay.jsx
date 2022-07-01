@@ -13,22 +13,22 @@ const SearchDisplay = function SearchDisplay({
     }
     return null;
   };
-
-  const handleRemove = (k) => {
-    const newSearchTerms = { ...searchTerms };
-    newSearchTerms[k] = '';
-    setSearchTerms(newSearchTerms);
-    axios
-      .get('/search', {
-        params: searchTerms,
-      })
-      .then((res) => {
-        setBookList(res.data.results);
-        setCount(res.data.count);
-        setShowSearchResults(true);
-      })
-      .catch((err) => console.log(err));
-  };
+  // showBook
+  // const handleRemove = (k) => {
+  //   const newSearchTerms = { ...searchTerms };
+  //   newSearchTerms[k] = '';
+  //   setSearchTerms(newSearchTerms);
+  //   axios
+  //     .get('/search', {
+  //       params: searchTerms,
+  //     })
+  //     .then((res) => {
+  //       setBookList(res.data.results);
+  //       setCount(res.data.count);
+  //       setShowSearchResults(true);
+  //     })
+  //     .catch((err) => console.log(err));
+  // };
 
   return (
     <div className="collection-section-wrap">
@@ -58,13 +58,14 @@ const SearchDisplay = function SearchDisplay({
               nameA = book.authors[0].name;
             }
             return (
-              <div key={book.id} className="book-card" style={getHQ(book)}>
+              <div key={book.id} data-id={book.id} className="book-card" style={getHQ(book)}>
                 <div className="book-meta">
                   <div className="meta-text-wrap">
                     <p>{nameA}</p>
                     <p className="book-title">{book.title}</p>
                   </div>
                   <button
+                    data-id={book.id}
                     type="button"
                     className="toggle_status_btn book-btn book-btn-add"
                     onClick={(e) => {
@@ -78,10 +79,10 @@ const SearchDisplay = function SearchDisplay({
                           .then((res) => (
                             addBook(book.title, res.data, book, book.id)
                           ))
-                          .then(() => {
-                            showBook(book.id);
-                            setUserBooks((books) => [...books, book.id]);
-                          })
+                          // .then(() => {
+                          //   // showBook(book.id);
+                          //   // setUserBooks((books) => [...books, book.id]);
+                          // })
                       ));
                     }}
                   >

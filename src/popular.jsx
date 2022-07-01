@@ -1,8 +1,10 @@
 /* eslint-disable prefer-template */
 import axios from 'axios';
+import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react';
 
 function Popular({ popularBooks }) {
+
   const getHQ = (book) => {
     if (book.formats['image/jpeg']) {
       const url = `url(${book.formats['image/jpeg'].replace('small', 'medium')})`;
@@ -10,6 +12,7 @@ function Popular({ popularBooks }) {
     }
     return null;
   };
+  const { t } = useTranslation();
 
   // console.log('Popular Books: ', popularBooks);
   return (
@@ -17,15 +20,20 @@ function Popular({ popularBooks }) {
     <div className="collection-section-wrap">
       <section className="collection-section">
         <h4 className="title">
-          Popular Books
+          {t('collections.popular')}
         </h4>
         <div className="book-cards-wrap">
+          {/* If book in collection, add 'added' class */}
           {popularBooks.map((book) => (
-            <div className="book-card" style={getHQ(book)}>
+            <div className="book-card" data-id={book.id} style={getHQ(book)}>
               <div className="book-meta">
-                <p>{book.authors[0].name}</p>
-                <p className="book-title">{book.title}</p>
-               {/*  <button className="book-btn book-btn-add" type="button" onClick={() => { removeCurrentBook(book.id); }}>Remove +</button> */}
+                <div className="meta-text-wrap">
+                  <p>{book.authors[0].name}</p>
+                  <p className="book-title">{book.title}</p>
+                </div>
+                <button data-id={book.id} className="book-btn book-btn-add" type="button" onClick={() => { /*removeCurrentBook(book.id);*/ }}>
+                  {`${t('collections.cards.add')}/${t('collections.cards.remove')}`}
+                </button>
               </div>
             </div>
           ))}

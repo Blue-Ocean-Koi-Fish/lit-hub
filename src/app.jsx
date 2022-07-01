@@ -8,12 +8,12 @@ import SearchDisplay from './search/searchdisplay';
 import SearchSection from './search/searchsection';
 import { getCurrentBook, getAllBooks, clearTable, addBook } from '../browser_db/books';
 import Popular from './popular';
-import '../public/styles/unified.css';
 import Logout from './logout';
 import Collection from './collection';
-import i18n from './i18n';
-// import Reader from "./reader";
+import './i18n';
+import Reader from './reader/reader';
 
+import '../public/styles/unified.css';
 // Translator
 
 function App() {
@@ -34,7 +34,7 @@ function App() {
   });
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
-  const [showReader, setShowReader] = useState(true);
+  const [showReader, setShowReader] = useState(false);
 
   const [collectionLength, setCollectionLength] = useState(0);
   const [currentBook, setCurrentBook] = useState([]);
@@ -62,11 +62,15 @@ function App() {
     }
   }, []);
 
+  // Get the book from indexDB and update currentBook state.
+  // Then render the reader.
   const showBook = (bookId) => {
-    getCurrentBook(bookId)
+    getCurrentBook(Number(bookId))
       .then((res) => {
-        setCurrentBook(res);
-      });
+        setCurrentBook(res[0].text);
+        setShowReader(true);
+      })
+      .catch((error) => (console.log(error)));
   };
 
   useEffect(() => {
@@ -134,6 +138,7 @@ function App() {
           ) : (collectionLength ? (
             <Collection
               currentBook={currentBook}
+              showBook={showBook}
               collection={collection}
               setCollection={setCollection}
             />
@@ -150,8 +155,9 @@ function App() {
           )
             : null}
         </section>
-        {/* {showReader ? <Reader book={currentBook} /> : null} */}
-        {/* {<Reader book={testBook} /> || null} */}
+        {showReader ? <Reader book={currentBook} /> : null}
+        {/* {currentBook ? <Reader book={currentBook} /> : null} */}
+        {/* <Reader book={currentBook} /> */}
       </Suspense>
     ) : (
       <Suspense fallback="loading">
