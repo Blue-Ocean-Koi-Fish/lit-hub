@@ -30,45 +30,32 @@ $lightGray: #BCBCBC;
       top: 0;
       left: 0;
       z-index: 1000;
-      width: 100vw;
+      width: 100%;
       background-color: $dark;
+      background: linear-gradient(to top, rgba(22,22,22,0.75) 0%,rgba(53,53,53,0.75) 44%,rgba(140,140,140,0.75) 100%);
       display: flex;
       flex-wrap: nowrap;
-      justify-content: space-between;
+      justify-content: space-evenly;
       align-items: center;
-      padding: $headerFontSize 15vw $headerFontSize*0.75 5vw;
+      padding: $headerFontSize * 0.75 0;
       margin-bottom: 3vw;
 
       .logo {
         display: flex;
         flex-wrap: nowrap;
         flex-shrink: 0;
-        margin-right: $headerFontSize * 3;
-        position: relative;
-        top: $headerFontSize * 0.25;
         cursor: pointer;
 
         .title, .capital {
-          font-size: $headerFontSize * 3;
-          color: $light;
-        }
-
-        .title {
-          font-family: 'Agrandir';
-
-          .capital {
-            font-family: 'Agrandir-Bold';
-            color: $light;
-          }
+          display: none;
         }
 
         .img {
-          background-image: url(../assets/images/logo-book.png);
+          background-image: url('../assets/images/logo.png');
           background-repeat: no-repeat;
           background-size: contain;
-          margin-left: $headerFontSize * 0.5;
-          width: $headerFontSize * 7.5;
-          height: $headerFontSize * 4.5;
+          width: $headerFontSize * 15.5;
+          height: $headerFontSize * 5.5;
         }
       }
 
@@ -76,17 +63,21 @@ $lightGray: #BCBCBC;
         display: flex;
         flex-wrap: nowrap;
         flex-shrink: 0;
-        margin-right: 5vw;
+        // margin-right: 8vw;
+        position: relative;
+        top: $headerFontSize * 0.25;
 
         .btn {
           font-family: 'Garet';
-          font-size: $headerFontSize * 1.15;
+          font-size: $headerFontSize * 1;
           color: $light;
-          background-color: $button;
-          border: none;
+          box-shadow: 0vw 0vh 0.6vw 0.4vw #000000b7;
+          background-color: rgba($button, 0.5);
+          border: 0.2vw $dark outset;
+          border-radius: 0.5vw;
           outline: none;
           margin: 0 1.5vw;
-          padding: ($headerFontSize * 0.75) ($headerFontSize * 3);
+          padding: ($headerFontSize * 0.6) ($headerFontSize * 2);
           cursor: pointer;
 
           i {

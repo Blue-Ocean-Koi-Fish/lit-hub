@@ -104,7 +104,7 @@ body.Achromatomaly #root {
 }
 
 #root .header-static {
-  background-color: #292929;
+  background-color: transparent;
   width: 100%;
 }
 #root .header-moving {
@@ -236,7 +236,7 @@ body.Achromatomaly #root {
 }
 @media (min-width: 1921px) {
   #root .header-static {
-    background-color: #292929;
+    background-color: transparent;
     width: 100%;
   }
   #root .header-moving {
@@ -367,7 +367,7 @@ body.Achromatomaly #root {
   }
 }
 body.None #root .header-static {
-  background-color: #292929;
+  background-color: transparent;
 }
 body.None #root .header-moving {
   background-color: #292929;
@@ -400,7 +400,7 @@ body.None #root .header-moving .btn-settings.btn-round:hover i {
 }
 
 body.Protanopia #root .header-static {
-  background-color: #292929;
+  background-color: transparent;
 }
 body.Protanopia #root .header-moving {
   background-color: #292929;
@@ -433,7 +433,7 @@ body.Protanopia #root .header-moving .btn-settings.btn-round:hover i {
 }
 
 body.Deuteranopia #root .header-static {
-  background-color: #292929;
+  background-color: transparent;
 }
 body.Deuteranopia #root .header-moving {
   background-color: #292929;
@@ -466,7 +466,7 @@ body.Deuteranopia #root .header-moving .btn-settings.btn-round:hover i {
 }
 
 body.Tritanopia #root .header-static {
-  background-color: #282929;
+  background-color: transparent;
 }
 body.Tritanopia #root .header-moving {
   background-color: #282929;
@@ -499,7 +499,7 @@ body.Tritanopia #root .header-moving .btn-settings.btn-round:hover i {
 }
 
 body.Achromatopsia #root .header-static {
-  background-color: #292929;
+  background-color: transparent;
 }
 body.Achromatopsia #root .header-moving {
   background-color: #292929;
@@ -532,7 +532,7 @@ body.Achromatopsia #root .header-moving .btn-settings.btn-round:hover i {
 }
 
 body.Protanomaly #root .header-static {
-  background-color: #292929;
+  background-color: transparent;
 }
 body.Protanomaly #root .header-moving {
   background-color: #292929;
@@ -565,7 +565,7 @@ body.Protanomaly #root .header-moving .btn-settings.btn-round:hover i {
 }
 
 body.Deuteranomaly #root .header-static {
-  background-color: #292929;
+  background-color: transparent;
 }
 body.Deuteranomaly #root .header-moving {
   background-color: #292929;
@@ -598,7 +598,7 @@ body.Deuteranomaly #root .header-moving .btn-settings.btn-round:hover i {
 }
 
 body.Tritanomaly #root .header-static {
-  background-color: #292929;
+  background-color: transparent;
 }
 body.Tritanomaly #root .header-moving {
   background-color: #292929;
@@ -631,7 +631,7 @@ body.Tritanomaly #root .header-moving .btn-settings.btn-round:hover i {
 }
 
 body.Achromatomaly #root .header-static {
-  background-color: #292929;
+  background-color: transparent;
 }
 body.Achromatomaly #root .header-moving {
   background-color: #292929;
@@ -2001,7 +2001,7 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
   padding: 0 6px;
   width: 100%;
   height: 78%;
-  overflow-y: scroll;
+  overflow-y: auto;
   /* Width */
   /* Track */
   /* Handle */
@@ -2057,6 +2057,25 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
   border-radius: 0 0 0.55vw 0.55vw;
   position: absolute;
 }
+#root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card.added::before, #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card.added::before {
+  font-family: "Font Awesome 5 Free";
+  font-weight: 900;
+  text-align: center;
+  line-height: 5;
+  content: "\f00c";
+  font-size: 48px;
+  color: #F3E8EE;
+  background: rgba(32, 125, 44, 0.681);
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+  border-radius: 0 0 0.55vw 0.55vw;
+  position: absolute;
+}
+#root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card.added .book-meta .book-btn, #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card.added .book-meta .book-btn {
+  background-color: #4f4f4f;
+  color: gray;
+}
 #root .collections .collection-section-wrap.loading, #root .reader-section .collection-section-wrap.loading {
   visibility: hidden;
   position: relative;
@@ -2068,10 +2087,9 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
   top: 15vh;
   left: 0;
   right: 0;
-  border: 0.075vw solid white;
-  border-top: rgb(50, 50, 50) 0.3vw solid;
+  border: 0.25vw solid white;
+  border-top: rgb(50, 50, 50) 0.35vw solid;
   /* Blue */
-  box-shadow: 0 0 0.8vw 0.3vw rgba(0, 0, 0, 0.799), inset 0 0 0 0.125vw #475B63;
   border-radius: 50%;
   width: 10vw;
   height: 10vw;
@@ -2215,7 +2233,7 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
     padding: 0 7.5px;
     width: 100%;
     height: 78%;
-    overflow-y: scroll;
+    overflow-y: auto;
     /* Width */
     /* Track */
     /* Handle */
@@ -2271,6 +2289,25 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
     border-radius: 0 0 0.55vw 0.55vw;
     position: absolute;
   }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card.added::before, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card.added::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    text-align: center;
+    line-height: 5;
+    content: "\f00c";
+    font-size: 60px;
+    color: #F3E8EE;
+    background: rgba(32, 125, 44, 0.681);
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 0.55vw 0.55vw;
+    position: absolute;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card.added .book-meta .book-btn, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card.added .book-meta .book-btn {
+    background-color: #4f4f4f;
+    color: gray;
+  }
   body #root .collections .collection-section-wrap.loading, body #root .reader-section .collection-section-wrap.loading {
     visibility: hidden;
     position: relative;
@@ -2282,10 +2319,9 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
     top: 15vh;
     left: 0;
     right: 0;
-    border: 0.075vw solid white;
-    border-top: rgb(50, 50, 50) 0.3vw solid;
+    border: 0.25vw solid white;
+    border-top: rgb(50, 50, 50) 0.35vw solid;
     /* Blue */
-    box-shadow: 0 0 0.8vw 0.3vw rgba(0, 0, 0, 0.799), inset 0 0 0 0.125vw #475B63;
     border-radius: 50%;
     width: 10vw;
     height: 10vw;
@@ -2903,7 +2939,7 @@ body.Achromatomaly #root .collections .collection-section-wrap .collection-secti
     padding: 0 6.5px;
     width: 100%;
     height: 78%;
-    overflow-y: scroll;
+    overflow-y: auto;
     /* Width */
     /* Track */
     /* Handle */
@@ -2959,6 +2995,25 @@ body.Achromatomaly #root .collections .collection-section-wrap .collection-secti
     border-radius: 0 0 0.55vw 0.55vw;
     position: absolute;
   }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card.added::before, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card.added::before {
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    text-align: center;
+    line-height: 5;
+    content: "\f00c";
+    font-size: 52px;
+    color: #EFEAEC;
+    background: rgba(32, 125, 44, 0.681);
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+    border-radius: 0 0 0.55vw 0.55vw;
+    position: absolute;
+  }
+  body #root .collections .collection-section-wrap .collection-section .book-cards-wrap .book-card.added .book-meta .book-btn, body #root .reader-section .collection-section-wrap .collection-section .book-cards-wrap .book-card.added .book-meta .book-btn {
+    background-color: #4f4f4f;
+    color: gray;
+  }
   body #root .collections .collection-section-wrap.loading, body #root .reader-section .collection-section-wrap.loading {
     visibility: hidden;
     position: relative;
@@ -2970,10 +3025,9 @@ body.Achromatomaly #root .collections .collection-section-wrap .collection-secti
     top: 15vh;
     left: 0;
     right: 0;
-    border: 0.075vw solid white;
-    border-top: rgb(50, 50, 50) 0.3vw solid;
+    border: 0.25vw solid white;
+    border-top: rgb(50, 50, 50) 0.35vw solid;
     /* Blue */
-    box-shadow: 0 0 0.8vw 0.3vw rgba(0, 0, 0, 0.799), inset 0 0 0 0.125vw #4F585B;
     border-radius: 50%;
     width: 10vw;
     height: 10vw;

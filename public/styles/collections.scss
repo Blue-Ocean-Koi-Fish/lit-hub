@@ -161,7 +161,7 @@ $darkGray: #4f4f4f;
                   width: 100%;
                   height: 78%;
                   // margin-bottom: $collectionsFontSize;
-                  overflow-y: scroll;
+                  overflow-y: auto;
                   /* Width */
                   &::-webkit-scrollbar {
                     width: 1vw;
@@ -227,7 +227,32 @@ $darkGray: #4f4f4f;
                   height: 100%;
                   border-radius: 0 0 0.55vw 0.55vw;
                   position: absolute;
+                }
+              }
 
+              &.added {
+                &::before {
+                // f00c
+                font-family: "Font Awesome 5 Free";
+                font-weight: 900;
+                text-align: center;
+                line-height: 5;
+                content: '\f00c';
+                font-size: $collectionsFontSize * 2;
+                color: $light;
+                background: rgba(32, 125, 44, 0.681);
+                display: inline-block;
+                width: 100%;
+                height: 100%;
+                border-radius: 0 0 0.55vw 0.55vw;
+                position: absolute;
+                }
+
+                .book-meta  {
+                  .book-btn {
+                    background-color: $darkGray;
+                    color: gray;
+                  }
                 }
               }
             }
@@ -244,13 +269,11 @@ $darkGray: #4f4f4f;
             content: '';
             position: absolute;
             top: 15vh;
-            // bottom: 0;
             left: 0;
             right: 0;
 
-            border: 0.075vw solid white;
-            border-top: rgb(50, 50, 50) 0.3vw solid; /* Blue */
-            box-shadow: 0 0 0.8vw 0.3vw rgba(0, 0, 0, 0.799), inset 0 0 0 0.125vw $button;
+            border: 0.25vw solid white;
+            border-top: rgb(50, 50, 50) 0.35vw solid; /* Blue */
             border-radius: 50%;
             width: 10vw;
             height: 10vw;
