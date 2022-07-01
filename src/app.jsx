@@ -6,18 +6,18 @@ import Header from './header';
 import SearchDisplay from './search/searchdisplay';
 import SearchSection from './search/searchsection';
 import { getCurrentBook } from '../browser_db/books';
-import Collection from './collection';
-import Reader from './reader/reader';
-
+import { getAllBooks } from '../browser_db/books';
+import Popular from './popular';
 import '../public/styles/unified.css';
 import Logout from './logout';
+import Collection from './collection';
 // import Reader from "./reader";
 
 // Translator
 import './i18n';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [searchTerms, setSearchTerms] = useState({
     title: '',
     author: '',
@@ -36,8 +36,18 @@ function App() {
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
   const [showReader, setShowReader] = useState(true);
-  const [currentBook, setCurrentBook] = useState('');
-  const [username, setUsername] = useState('');
+
+  const [collectionLength, setCollectionLength] = useState(0);
+  const [currentBook, setCurrentBook] = useState([]);
+  const [username, setUsername] = useState([]);
+
+  getAllBooks()
+    .then((res) => {
+      setCollectionLength(res.length);
+    });
+  // document.cookie.s_id === 'guest';
+
+  const Switch = collectionLength !== 0 ? Collection : Popular;
 
   useEffect(() => {
     if (document.cookie) {
@@ -82,7 +92,7 @@ function App() {
               username={username}
             />
           ) : (
-            <Collection
+            <Switch
               currentBook={currentBook}
             />
           )}
@@ -97,6 +107,19 @@ function App() {
           )
             : null}
         </section>
+          {showSearchResults ? (
+          <SearchDisplay
+          setCount={setCount}
+          setBookList={setBookList}
+            setUserBooks={setUserBooks}
+            searchTerms={searchTerms}
+            setSearchTerms={setSearchTerms}
+            count={count}
+            bookList={bookList}
+            showBook={showBook}
+            username={username}
+          />
+        ) : null}
 
         {/* {showReader ? <Reader book={currentBook} /> : null} */}
         {/* {<Reader book={testBook} /> || null} */}

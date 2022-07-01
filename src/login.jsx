@@ -12,6 +12,7 @@ function Login({
 
   const { t } = useTranslation();
   const loginUser = () => {
+
     axios.post('/frontEndLogin', { username, password })
       .then((res) => {
         document.cookie = `s_id=${res.data.token}`;
@@ -30,6 +31,7 @@ function Login({
   };
 
   const registerUser = () => {
+
     axios.post('/frontEndRegister', { username, password })
       .then(() => {
         alert('Registration Successful, please login normally.');
