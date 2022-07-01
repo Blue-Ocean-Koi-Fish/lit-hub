@@ -10,7 +10,7 @@ import { getCurrentBook, getAllBooks, clearTable, addBook } from '../browser_db/
 import Popular from './popular';
 import Logout from './logout';
 import Collection from './collection';
-import './i18n';
+import i18n from './i18n';
 import Reader from './reader/reader';
 
 import '../public/styles/unified.css';
