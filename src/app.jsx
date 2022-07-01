@@ -28,8 +28,10 @@ function App() {
   const [bookList, setBookList] = useState();
   const [count, setCount] = useState(0);
   const [settings, setSettings] = useState({
-    language: 'english',
+    language: 'English',
     'color-blindedness': 'none',
+    font: 'Times',
+    fontSize: '24',
   });
   const [showSearchResults, setShowSearchResults] = useState(false);
   const [showSettings, setShowSettings] = useState(false);
@@ -101,7 +103,12 @@ function App() {
       </Suspense>
     ) : (
       <Suspense fallback="loading">
-        <Login setLoggedIn={setLoggedIn} username={username} setUsername={setUsername} />
+        <Login
+          setLoggedIn={setLoggedIn}
+          username={username}
+          setUsername={setUsername}
+          setSettings={setSettings}
+        />
       </Suspense>
     )
   );

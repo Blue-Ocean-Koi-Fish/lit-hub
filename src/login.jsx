@@ -2,7 +2,12 @@ import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import axios from 'axios';
 
-function Login({ setLoggedIn, username, setUsername }) {
+function Login({
+  setLoggedIn,
+  username,
+  setUsername,
+  setSettings,
+}) {
   const [password, setPassword] = useState('');
 
   const { t } = useTranslation();
@@ -11,6 +16,13 @@ function Login({ setLoggedIn, username, setUsername }) {
       .then((res) => {
         document.cookie = `s_id=${res.data.token}`;
         setLoggedIn(true);
+
+        setSettings({
+          language: res.data.settings.language,
+          'color-blindness': res.data.settings['color-blindedness'],
+          font: res.data.settings.font,
+          fontSize: res.data.settings.fontSize,
+        });
       })
       .catch((err) => {
         console.log(err);
