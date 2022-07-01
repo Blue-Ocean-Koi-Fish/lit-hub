@@ -9,7 +9,7 @@ function Header({ setShowSettings, setShowSearchResults }) {
       <header className="header-moving">
         <div className="logo">
           <h2 className="title">
-            LitHub
+            Lit-Hub
           </h2>
           <div className="img" />
         </div>
