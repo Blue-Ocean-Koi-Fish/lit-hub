@@ -90,14 +90,11 @@ A highly accessable website that serves books from the gutendex api that can be 
 
 ### Built With
 
-* [Next.js](https://nextjs.org/)
+* [express.js](https://expressjs.com/)
 * [React.js](https://reactjs.org/)
-* [Vue.js](https://vuejs.org/)
-* [Angular](https://angular.io/)
-* [Svelte](https://svelte.dev/)
-* [Laravel](https://laravel.com)
-* [Bootstrap](https://getbootstrap.com)
-* [JQuery](https://jquery.com)
+* [axios](https://axios-http.com/docs/intro)
+* [sass](https://sass-lang.com/)
+* [mongoDB](https://www.mongodb.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
