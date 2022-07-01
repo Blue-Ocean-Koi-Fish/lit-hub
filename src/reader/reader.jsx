@@ -4,8 +4,12 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'html-react-parser';
+<<<<<<< HEAD
 import { cancel } from './speech';
 // import { startText } from './speech';
+=======
+import { startText } from './speech';
+>>>>>>> 473490504ea4d3a7aa37c552a9c1259051f957c9
 
 function Reader({ book }) {
   const [font, setFont] = useState('Times');
@@ -93,6 +97,15 @@ function Reader({ book }) {
     // Maybe needed, not sure.
     // setFontSize((size) => Number(size));
     setBookContent(newBookContent);
+
+    document.addEventListener('keypress', (event) => {
+      // console.log(event.keyCode, event.ctrlKey);
+      if (event.keyCode === 20) {
+        event.preventDefault();
+        // eslint-disable-next-line no-use-before-define
+        startText();
+      }
+    }, false);
   }, [book]);
 
   const increaseFont = (event) => {

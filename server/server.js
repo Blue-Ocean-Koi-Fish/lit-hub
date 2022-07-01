@@ -88,7 +88,7 @@ app.get('/collection/:username', (req, res) => {
       res.status(200).send(data.data);
     })
     .catch((err) => {
-      console.log(err);
+      console.log(`GET /collection/${req.params.username} Error`, err);
       res.sendStatus(500);
     });
 });
