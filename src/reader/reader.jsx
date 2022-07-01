@@ -264,7 +264,7 @@ function Reader({ book }) {
             }}
           >
             {bookContent.map((node) => {
-              console.log('render')
+              console.log('render');
               const uniqueNode = assignLineIndex(node);
               return uniqueNode;
             })}
