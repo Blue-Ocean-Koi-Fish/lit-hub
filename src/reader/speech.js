@@ -27,12 +27,9 @@ let paused = false;
 const startText = () => {
   if (started) {
     pause(paused);
-    // eslint-disable-next-line no-unused-expressions
-    paused ? document.getElementById('tts').textContent = 'Pause Reading' : document.getElementById('tts').textContent = 'Start Reading';
     paused = !paused;
   } else {
     started = true;
-    document.getElementById('tts').textContent = 'Pause Reading';
     // started = read(document.getElementById('big'));
     const doc = document.getElementById('content');
     for (let i = 0; i < doc.children.length; i += 1) {
@@ -40,21 +37,21 @@ const startText = () => {
         .onend = () => {
           if (i === doc.children.length - 1) {
             started = false;
-            document.getElementById('tts').textContent = 'Start Reading';
           }
         };
     }
   }
 };
 
-document.addEventListener('keypress', (event) => {
-  // console.log(event.keyCode, event.ctrlKey);
-  if (event.keyCode === 20 && event.ctrlKey) {
-    event.preventDefault();
-    // eslint-disable-next-line no-use-before-define
-    startText();
-  }
-}, false);
+// document.addEventListener('keypress', (event) => {
+//   // console.log(event.keyCode, event.ctrlKey);
+//   console.log(event.keyCode, event.ctrlKey);
+//   if (event.keyCode === 20 && event.ctrlKey) {
+//     event.preventDefault();
+//     // eslint-disable-next-line no-use-before-define
+//     startText();
+//   }
+// }, false);
 
 // use this function to set up pauseing on spacebar press.
 // let started = false;
