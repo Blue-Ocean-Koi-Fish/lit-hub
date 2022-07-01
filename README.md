@@ -221,5 +221,5 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 [issues-url]: https://github.com/Blue-Ocean-Koi-Fish/lit-hub/issues
 [license-shield]: https://img.shields.io/github/license/Blue-Ocean-Koi-Fish/lit-hub.svg?style=for-the-badge
 [license-url]: https://github.com/Blue-Ocean-Koi-Fish/lit-hub/blob/master/LICENSE.txt
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: ./public/assets/Screen-Shot-2022-07-01-at-4.17.39-PM.png
 
