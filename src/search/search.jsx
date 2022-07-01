@@ -31,7 +31,7 @@ const SearchBooks = function SearchBooks({
     }
 
     axios
-      .get('http://107.20.126.146:8080/search', {
+      .get('/search', {
         params: {
           search: searchTerm,
           topic,

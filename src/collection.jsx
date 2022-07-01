@@ -3,9 +3,8 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getAllBooks, removeBook } from '../browser_db/books';
 
-function Collection({ currentBook, showBook }) {
+function Collection({ currentBook, collection, setCollection, showBook }) {
   const { t } = useTranslation();
-  const [collection, setCollection] = useState([]);
 
   useEffect(() => {
     getAllBooks().then((res) => {
