@@ -37,7 +37,7 @@ const SearchDisplay = function SearchDisplay({
     <div className="collection-section-wrap">
       <section className="collection-section">
         <h4 className="title">
-          {`${t('collections.popular')}:`}
+          {`${t('collections.search')}:`}
           {count}
         </h4>
         {/* Search labels, secondary feature */}
