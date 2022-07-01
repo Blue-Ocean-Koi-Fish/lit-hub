@@ -23,7 +23,7 @@ i18n
       english: { translation: translationEn },
       русский: { translation: translationRu },
       українська: { translation: translationUk },
-      中国人: { translation: translationZh },
+      中文: { translation: translationZh },
     },
     fallbackLng: 'english',
 
