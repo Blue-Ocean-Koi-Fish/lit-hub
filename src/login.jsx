@@ -17,7 +17,7 @@ function Login({
         document.cookie = `s_id=${res.data.token}`;
         setSettings({
           language: res.data.settings.language,
-          'color-blindness': res.data.settings['color-blindedness'],
+          'color-blindedness': res.data.settings['color-blindedness'],
           font: res.data.settings.font,
           fontSize: res.data.settings.fontSize,
         });
