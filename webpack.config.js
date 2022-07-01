@@ -29,6 +29,7 @@ module.exports = {
   plugins: [
     new HtmlWebpackPlugin({
       template: path.join(__dirname, 'src', 'index.html'),
+      favicon: './public/assets/images/favicon.ico',
     }),
     new WorkboxWebpackPlugin.InjectManifest({
       swSrc: './src/src-sw.js',
