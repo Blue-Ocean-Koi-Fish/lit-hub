@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 import React, { useState, useEffect, Suspense } from 'react';
 import axios from 'axios';
 import Login from './login';
@@ -5,8 +6,7 @@ import Settings from './settings';
 import Header from './header';
 import SearchDisplay from './search/searchdisplay';
 import SearchSection from './search/searchsection';
-import { getCurrentBook } from '../browser_db/books';
-import { getAllBooks } from '../browser_db/books';
+import { getCurrentBook, getAllBooks, clearTable, addBook } from '../browser_db/books';
 import Popular from './popular';
 import '../public/styles/unified.css';
 import Logout from './logout';
@@ -24,7 +24,6 @@ function App() {
     language: '',
     topic: '',
   });
-  const [userBooks, setUserBooks] = useState([]);
   const [bookList, setBookList] = useState();
   const [count, setCount] = useState(0);
   const [settings, setSettings] = useState({
@@ -40,14 +39,13 @@ function App() {
   const [collectionLength, setCollectionLength] = useState(0);
   const [currentBook, setCurrentBook] = useState([]);
   const [username, setUsername] = useState([]);
+  const [collection, setCollection] = useState([]);
 
-  getAllBooks()
-    .then((res) => {
-      setCollectionLength(res.length);
-    });
+  // getAllBooks()
+  //   .then((res) => {
+  //     setCollectionLength(res.length);
+  //   });
   // document.cookie.s_id === 'guest';
-
-  const Switch = collectionLength !== 0 ? Collection : Popular;
 
   useEffect(() => {
     if (document.cookie) {
@@ -73,7 +71,24 @@ function App() {
     if (loggedIn) {
       axios.get(`/collection/${username}`)
         .then((res) => {
-          // console.log(res.data);
+          const mongoBooks = res.data;
+          console.log(mongoBooks);
+          clearTable()
+            .then(() => {
+              const promiseArray = [];
+              mongoBooks.forEach((book) => {
+                promiseArray.push(
+                  axios.get(`/txt?url=${book.meta.formats['text/html']}`)
+                    .then((res2) => (
+                      addBook(book.meta.title, res2.data, book.meta, book.meta.id)
+                    )),
+                );
+              });
+              return Promise.all(promiseArray);
+            })
+            .then(() => {
+              setCollectionLength(mongoBooks.length);
+            });
         });
     }
   }, [loggedIn]);
@@ -92,7 +107,6 @@ function App() {
           />
           {showSearchResults ? (
             <SearchDisplay
-              setUserBooks={setUserBooks}
               searchTerms={searchTerms}
               setSearchTerms={setSearchTerms}
               count={count}
@@ -100,11 +114,13 @@ function App() {
               showBook={showBook}
               username={username}
             />
-          ) : (
-            <Switch
+          ) : (collectionLength ? (
+            <Collection
               currentBook={currentBook}
+              collection={collection}
+              setCollection={setCollection}
             />
-          )}
+          ) : <Popular />)}
 
           {showSettings ? (
             <Settings
@@ -116,20 +132,6 @@ function App() {
           )
             : null}
         </section>
-          {showSearchResults ? (
-          <SearchDisplay
-          setCount={setCount}
-          setBookList={setBookList}
-            setUserBooks={setUserBooks}
-            searchTerms={searchTerms}
-            setSearchTerms={setSearchTerms}
-            count={count}
-            bookList={bookList}
-            showBook={showBook}
-            username={username}
-          />
-        ) : null}
-
         {/* {showReader ? <Reader book={currentBook} /> : null} */}
         {/* {<Reader book={testBook} /> || null} */}
       </Suspense>
