@@ -78,11 +78,10 @@ const SearchDisplay = function SearchDisplay({
                           .then((res) => (
                             addBook(book.title, res.data, book, book.id)
                           ))
-                          .then(() => {
-                            console.log('SHOWING: ', book.id);
-                            // showBook(book.id);
-                            setUserBooks((books) => [...books, book.id]);
-                          })
+                          // .then(() => {
+                          //   // showBook(book.id);
+                          //   // setUserBooks((books) => [...books, book.id]);
+                          // })
                       ));
                     }}
                   >

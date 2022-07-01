@@ -61,12 +61,13 @@ function App() {
   }, []);
 
   const showBook = (bookId) => {
-    console.log('getting book', bookId);
-    getCurrentBook(bookId)
+    // console.log('getting book', typeof bookId);
+    // bookId = ;
+    getCurrentBook(Number(bookId))
       .then((res) => {
-        console.log(res);
-        setCurrentBook(res);
-        setShowReader(true);
+        console.log('FROM DB', res);
+        setCurrentBook(res.text);
+        // setShowReader(true);
       });
   };
 
@@ -136,8 +137,10 @@ function App() {
           )
             : null}
         </section>
-        {showReader ? <Reader book={currentBook} /> : null}
-        {/* {<Reader book={testBook} /> || null} */}
+        {/* {showReader ? <Reader book={currentBook} /> : null} */}
+        {/* {currentBook ? <Reader book={currentBook} /> : null} */}
+        <Reader book={currentBook} />
+
       </Suspense>
     ) : (
       <Suspense fallback="loading">

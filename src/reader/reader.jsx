@@ -4,67 +4,84 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'html-react-parser';
-import './readerTemp.css';
-import { startText } from './speech';
-// import { Speech, pause, cancel} from './speech';
+// import { startText } from './speech';
 
 function Reader({ book }) {
-  const bookSchema = {
-    title: [],
-    author: [],
-    chapters: [],
-    text: [],
-  };
+  console.log('NEW BOOK', book);
 
   const [font, setFont] = useState('Times');
   const [fontSize, setFontSize] = useState(24);
-  const [bookContent, setBookContent] = useState(bookSchema);
   const [currentPage, setCurrentPage] = useState(0);
+  const [bookContent, setBookContent] = useState([]);
 
   // Component Did Mount
-  useEffect(() => {
-    // const contentDiv = document.getElementById('content');
-    // const linePosition = document.querySelector(`[data-line="207"]`);
-    // console.log(linePosition);
-    // console.log(document.querySelector('#content'));
-    // contentDiv.scrollTop = 7000;
-    // setCurrentPage(7000);
-  }, []);
+  // useEffect(() => {
+  //   // const contentDiv = document.getElementById('content');
+  //   // const linePosition = document.querySelector(`[data-line="207"]`);
+  //   // console.log(linePosition);
+  //   // console.log(document.querySelector('#content'));
+  //   // contentDiv.scrollTop = 7000;
+  //   // setCurrentPage(7000);
+  // }, []);
 
-  useEffect(() => {
-    const rawDiv = ReactHtmlParser(book).props.children[1].props.children;
-    const newBook = {
-      title: [],
-      author: [],
-      chapters: [],
-      text: [],
-    };
-
-    rawDiv.forEach((node) => {
-      // First filter carriage returns and breaks,
-      if (node !== '\n' && node.type !== 'hr') {
-        // then the title is the h1 tag,
-        if (node.type === 'h1') {
-          newBook.title.push(node);
-        } else if (node.type === 'h2') {
-          // the author is the h2 tag,
-          newBook.author.push(node);
-        } else if (node.type === 'table') {
-          // the chapters are in the table tag,
-          // console.log('table', node);
-          // node.props.children.props.children.forEach((child) => {
-          //   newBook.chapters.push(child.props.children.props.children);
-          // });
-          // console.log(newBook.chapters);
-        } else if (node.props && node.props.className === 'chapter') {
-          // and thhe text is split up into divs with the chapter class name.
-          newBook.text.push(node);
-        }
+  const getContent = (node) => {
+    if (typeof node.props.children !== 'string') {
+      if (node.props.className) {
+        console.log(node.props.className);
       }
-    });
-    setBookContent(newBook);
-    // setFontSize((size) => Number(size)); //?
-  }, [book]);
+
+      if (Array.isArray(node.props.children)) {
+        // console.log(node.props.children);
+        const nodesFound = [];
+        for (let i = 0; i < node.props.children.length; i += 1) {
+          if (typeof node.props.children[i] !== 'string') {
+            console.log('F', node.props.children[i]);
+            nodesFound.push(node.props.children[i]);
+          }
+        }
+        return nodesFound;
+      }
+    }
+  };
+
+  // // Get a new book HTML string and run it through a parser to get it's contents.
+  // // NOTE: NOT EVERY BOOK IS FORMATTED THE SAME!!!
+  // useEffect(() => {
+  //   // If there is a new book,
+  //   console.log('UE NEW BOOK');
+  //   const newBookContent = [];
+
+  //   // if (book.length > 0) {
+  //   //   const rawDiv = ReactHtmlParser(book);
+  //   //   // Do a first pass to get the body's children.
+  //   //   let rawContent;
+  //   //   try {
+  //   //     rawContent = rawDiv.props.children;
+  //   //   } catch {
+  //   //     console.log('parsing error');
+  //   //   }
+  //   //   console.log(rawDiv);
+
+  //   //   rawContent.forEach((node) => {
+  //   //     if (typeof node !== 'string') {
+  //   //       if (node.type === 'div') {
+  //   //         // console.log('DIV: ', node);
+  //   //         const newNode = getContent(node);
+  //   //         console.log(newNode);
+  //   //         newBookContent.push(newNode);
+  //   //       } else if (node.type !== 'blockquote' && node.type !== 'hr') {
+  //   //         // console.log(node);
+  //   //         newBookContent.push(node);
+  //   //       }
+  //   //     }
+  //   //   });
+  //   //   console.log(newBookContent);
+  //   // }
+
+  //   // Update states
+  //   // setFontSize((size) => Number(size));
+  //   // setBookContent(newBookContent);
+  // }, []);
 
   const increaseFont = (event) => {
     setFontSize((size) => size + 4);
@@ -184,78 +201,79 @@ function Reader({ book }) {
 
   // Used to assign a unique line to each element in the reader body
   // for reader's session progress retention
-  let index = -1;
-  const assignLineIndex = (node) => {
-    index += 1;
-    const lastIndex = index;
-    let children = [];
-    if (typeof node !== 'string') {
-      if (Array.isArray(node?.props?.children)) {
-        const lastIndexInner = index;
-        children = node?.props?.children.map((childNode) => (assignLineIndex(childNode)));
-        return React.cloneElement(node, { children, 'data-line': lastIndexInner });
-      }
-      return React.cloneElement(node, { 'data-line': lastIndex });
-    }
-    return node;
-  };
+  // let index = -1;
+  // const assignLineIndex = (node) => {
+  //   index += 1;
+  //   const lastIndex = index;
+  //   let children = [];
+  //   if (typeof node !== 'string') {
+  //     if (Array.isArray(node?.props?.children)) {
+  //       const lastIndexInner = index;
+  //       children = node?.props?.children.map((childNode) => (assignLineIndex(childNode)));
+  //       return React.cloneElement(node, { children, 'data-line': lastIndexInner });
+  //     }
+  //     return React.cloneElement(node, { 'data-line': lastIndex });
+  //   }
+  //   return node;
+  // };
 
-  return (
-    <section className="e-reader-section">
+  // return (
+  //   <section className="e-reader-section">
 
-      <div className="book-controls">
-        <button id="dark-mode" className="btn" type="button" onClick={toggleDarkMode}>
-          <i className="fa-solid fa-moon" />
-        </button>
-        <button type="button" onClick={startText} id="tts">Start Reading</button>
-        <select onChange={updateFont}>
-          {['Baskerville', 'Bookerly', 'Georgia', 'Helvetica', 'Futura', 'Arial', 'Courier', 'Times'].map((fontOption, i) => (
-            <option value={fontOption.toLowerCase()} key={i}>{fontOption}</option>))}
-        </select>
-        {/* <button className="expand"></button> */}
-        {/* <select onChange={updateChapter}>
-          {bookContent.chapters
-            ? bookContent.chapters.map((chapter, i) => (
-              <option key={i} value={chapter.props.href}>{chapter.props.children}</option>))
-            : null}
-        </select> */}
-        <button id="font-size-plus" className="btn" type="button" onClick={decreaseFont}>
-          <i className="fa-solid fa-minus" />
-        </button>
-        <button id="font-size-minus" className="btn" type="button" onClick={increaseFont}>
-          <i className="fa-solid fa-plus" />
-        </button>
-        <button className="btn" id="expand-view" type="button" onClick={toggleExpandView}>
-          <i className="fa-solid fa-expand" />
-        </button>
-      </div>
+  //     <div className="book-controls">
+  //       <button id="dark-mode" className="btn" type="button" onClick={toggleDarkMode}>
+  //         <i className="fa-solid fa-moon" />
+  //       </button>
+  //       {/* <button type="button" onClick={startText} id="tts">Start Reading</button> */}
+  //       <select onChange={updateFont}>
+  //         {['Baskerville', 'Bookerly', 'Georgia', 'Helvetica', 'Futura', 'Arial', 'Courier', 'Times'].map((fontOption, i) => (
+  //           <option value={fontOption.toLowerCase()} key={i}>{fontOption}</option>))}
+  //       </select>
+  //       {/* <button className="expand"></button> */}
+  //       {/* <select onChange={updateChapter}>
+  //         {bookContent.chapters
+  //           ? bookContent.chapters.map((chapter, i) => (
+  //             <option key={i} value={chapter.props.href}>{chapter.props.children}</option>))
+  //           : null}
+  //       </select> */}
+  //       <button id="font-size-plus" className="btn" type="button" onClick={decreaseFont}>
+  //         <i className="fa-solid fa-minus" />
+  //       </button>
+  //       <button id="font-size-minus" className="btn" type="button" onClick={increaseFont}>
+  //         <i className="fa-solid fa-plus" />
+  //       </button>
+  //       <button className="btn" id="expand-view" type="button" onClick={toggleExpandView}>
+  //         <i className="fa-solid fa-expand" />
+  //       </button>
+  //     </div>
 
-      <div className="read-body-wrap">
-        <div className="content-wrap" onMouseDown={grabMouseDown}>
-          <div
-            id="content"
-            style={{
-              fontSize: `${fontSize}px`,
-              fontFamily: `${font}`,
-            }}
-          >
-            {bookContent.text.map((node) => {
-              const uniqueNode = assignLineIndex(node);
-              return uniqueNode;
-            })}
-          </div>
-          <div className="page-nav-btns-wrap">
-            <button id="page-prev-btn" className="nav-btn" type="button" onClick={pageBackward}>
-              <i className="fa-solid fa-angle-up" />
-            </button>
-            <button id="page-next-btn" className="nav-btn" type="button" onClick={pageForward}>
-              <i className="fa-solid fa-angle-down" />
-            </button>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
+  //     <div className="read-body-wrap">
+  //       <div className="content-wrap" onMouseDown={grabMouseDown}>
+  //         <div
+  //           id="content"
+  //           style={{
+  //             fontSize: `${fontSize}px`,
+  //             fontFamily: `${font}`,
+  //           }}
+  //         >
+  //           {/* {bookContent.map((node) => {
+  //             const uniqueNode = assignLineIndex(node);
+  //             return uniqueNode;
+  //           })} */}
+  //         </div>
+  //         <div className="page-nav-btns-wrap">
+  //           <button id="page-prev-btn" className="nav-btn" type="button" onClick={pageBackward}>
+  //             <i className="fa-solid fa-angle-up" />
+  //           </button>
+  //           <button id="page-next-btn" className="nav-btn" type="button" onClick={pageForward}>
+  //             <i className="fa-solid fa-angle-down" />
+  //           </button>
+  //         </div>
+  //       </div>
+  //     </div>
+  //   </section>
+  // );
+  return (<div>test</div>);
 }
 
 export default Reader;

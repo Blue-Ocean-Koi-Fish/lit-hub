@@ -4,8 +4,8 @@ const express = require('express');
 const path = require('path');
 
 const app = express();
-const backendURL = 'http://localhost:8080';
-
+const backendURL = process.env.BACKEND_URL;
+console.log(backendURL);
 app.use(express.static(path.join(__dirname, '../public')));
 app.use(express.json());
 
