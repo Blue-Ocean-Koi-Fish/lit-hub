@@ -17,7 +17,7 @@ import Collection from './collection';
 import './i18n';
 
 function App() {
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
   const [searchTerms, setSearchTerms] = useState({
     title: '',
     author: '',
@@ -79,9 +79,6 @@ function App() {
             setCount={setCount}
             setBookList={setBookList}
           />
-                 <Switch
-            currentBook={currentBook}
-          />
           {showSearchResults ? (
             <SearchDisplay
               setUserBooks={setUserBooks}
@@ -93,13 +90,9 @@ function App() {
               username={username}
             />
           ) : (
-            /*   <Collection
+            <Switch
               currentBook={currentBook}
-            /> */
-   /*          <Switch
-              currentBook={currentBook}
-            /> */
-
+            />
           )}
 
           {showSettings ? (
