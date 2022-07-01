@@ -45,9 +45,9 @@ const getAllBooks = () => {
 };
 
 // remove book
-const removeBook = (bookId) => {
-  booksDb.books.delete(bookId);
-};
+const removeBook = (bookId) => (
+  booksDb.books.delete(bookId)
+);
 
 const clearTable = () => (
   booksDb.books.clear()

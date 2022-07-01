@@ -3372,6 +3372,19 @@ body.Achromatomaly #root .collections .collection-section-wrap .collection-secti
   #root .e-reader-section-wrap .e-reader-section .book-controls .btn i {
     font-size: 16px;
   }
+  #root .e-reader-section-wrap #reader-close-btn {
+    padding: 2.4px 18px;
+    font-family: "Garet";
+    font-size: 26.4px;
+    color: #EFEAEC;
+    background-color: #4F585B;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+  }
+  #root .e-reader-section-wrap #reader-close-btn:hover {
+    background-color: black;
+  }
 }
 @media (pointer: coarse) {
   #root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap #content {

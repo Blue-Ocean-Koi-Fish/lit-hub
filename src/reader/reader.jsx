@@ -4,6 +4,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'html-react-parser';
+import { cancel } from './speech';
 // import { startText } from './speech';
 
 function Reader({ book }) {
@@ -80,6 +81,11 @@ function Reader({ book }) {
       });
       // Show off what ya got.
       // console.log(newBookContent);
+      const eReader = document.querySelector('.e-reader-section-wrap');
+      if (eReader !== null) {
+        eReader.style.display = 'block';
+      }
+
       console.log('NEW BOOK');
     }
 
@@ -230,6 +236,8 @@ function Reader({ book }) {
 
     const eReaderModal = document.querySelector('.e-reader-section-wrap');
     eReaderModal.style.display = 'none';
+    cancel();
+    // eReaderModal.remove();
   };
 
   return (
@@ -241,7 +249,7 @@ function Reader({ book }) {
           </button>
           {/* <button type="button" onClick={startText} id="tts">Start Reading</button> */}
           <select onChange={updateFont}>
-            {['Baskerville', 'Bookerly', 'Georgia', 'Helvetica', 'Futura', 'Arial', 'Courier', 'Times'].map((fontOption, i) => (
+            {['Bookerly', 'Baskerville', 'Georgia', 'Helvetica', 'Futura', 'Arial', 'Courier', 'Times'].map((fontOption, i) => (
               <option value={fontOption.toLowerCase()} key={i}>{fontOption}</option>))}
           </select>
           {/* <select onChange={updateChapter}>

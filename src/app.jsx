@@ -158,7 +158,7 @@ function App() {
           )
             : null}
         </section>
-        {showReader ? <Reader book={currentBook} style={{ display: 'initial' }} /> : null}
+        {showReader ? <Reader book={currentBook} /> : null}
         {/* {currentBook ? <Reader book={currentBook} /> : null} */}
         {/* <Reader book={currentBook} /> */}
       </Suspense>

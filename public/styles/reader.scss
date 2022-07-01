@@ -307,6 +307,21 @@
           }
         }
       }
+
+      #reader-close-btn {
+        padding: $settingsFontSize * 0.1 $settingsFontSize * 0.75;
+        font-family: 'Garet';
+        font-size: $settingsFontSize * 1.1;
+        color: $light;
+        background-color: $button;
+        border: 0;
+        outline: 0;
+        cursor: pointer;
+
+        &:hover {
+          background-color: black;
+        }
+      }
     }
   }
 }
