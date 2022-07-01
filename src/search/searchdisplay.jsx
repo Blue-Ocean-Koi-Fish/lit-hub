@@ -50,6 +50,7 @@ const SearchDisplay = function SearchDisplay({
                     className="toggle_status_btn book-btn book-btn-add"
                     onClick={(e) => {
                       e.preventDefault();
+                      console.log(username);
                       axios.post('/addToCollection', {
                         username,
                         bookId: book.id,
