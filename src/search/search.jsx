@@ -4,8 +4,6 @@ import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import langList from './resources';
 
-
-
 const SearchBooks = function SearchBooks({
   setBookList,
   setCount,

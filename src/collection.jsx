@@ -3,14 +3,16 @@ import React, { useState, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { getAllBooks, removeBook } from '../browser_db/books';
 
-function Collection({ currentBook, collection, setCollection }) {
+function Collection({ currentBook, collection, setCollection, showBook }) {
   const { t } = useTranslation();
 
   useEffect(() => {
     getAllBooks().then((res) => {
       setCollection(res);
     });
-  }, [currentBook, collection]);
+  }, []);
+  // Adding these to useEffect was causing collection to re-render non-stop
+  // currentBook, collection
 
   const removeCurrentBook = (bookId) => {
     removeBook(bookId).then(() => {
@@ -28,6 +30,15 @@ function Collection({ currentBook, collection, setCollection }) {
     return null;
   };
 
+  // Make sure to only allow click events for cards,
+  // or anything with a data-book-id attribute.
+  const handleClick = (event) => {
+    event.preventDefault();
+    if (event.target.getAttribute('data-book-id')) {
+      showBook(event.target.getAttribute('data-book-id'));
+    }
+  }
+
   return (
     // Book Collection Cards
     <div className="collection-section-wrap">
@@ -35,15 +46,14 @@ function Collection({ currentBook, collection, setCollection }) {
         <h4 className="title">
           {t('collections.main')}
         </h4>
-        <div className="book-cards-wrap">
+        <div className="book-cards-wrap" onClick={handleClick}>
           {collection.map((book) => (
-            <div className="book-card" style={getHQ(book)}>
+            <div className="book-card" style={getHQ(book)} data-book-id={book.book_id}>
               <div className="book-meta">
                 <div className="meta-text-wrap">
                   <p>{book.meta.authors[0].name}</p>
                   <p className="book-title">{book.name.slice(0, 25) + '...'}</p>
                 </div>
-
                 <button className="book-btn book-btn-add" type="button" onClick={() => { removeCurrentBook(book.id); }}>
                   {t('collections.cards.remove')}
                   {' '}
