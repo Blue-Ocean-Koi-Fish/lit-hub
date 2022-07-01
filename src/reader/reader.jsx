@@ -4,7 +4,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'html-react-parser';
-import { startText } from './speech';
+import { cancel, startText } from './speech';
 
 function Reader({ book }) {
   const [font, setFont] = useState('Times');
@@ -80,6 +80,11 @@ function Reader({ book }) {
       });
       // Show off what ya got.
       // console.log(newBookContent);
+      const eReader = document.querySelector('.e-reader-section-wrap');
+      if (eReader !== null) {
+        eReader.style.display = 'block';
+      }
+
       console.log('NEW BOOK');
     }
 
@@ -172,6 +177,7 @@ function Reader({ book }) {
   };
 
   const grabMouseDown = (event) => {
+    console.log(event.target?.classList);
     if (event.target?.classList?.contains('nav-btn')) {
       return;
     }
@@ -226,70 +232,82 @@ function Reader({ book }) {
       if (Array.isArray(node?.props?.children)) {
         const lastIndexInner = index;
         children = node?.props?.children.map((childNode) => (assignLineIndex(childNode)));
-        return React.cloneElement(node, { children, 'data-line': lastIndexInner });
+        return React.cloneElement(node, { children, 'data-line': lastIndexInner, key: lastIndexInner });
       }
-      return React.cloneElement(node, { 'data-line': lastIndex });
+      return React.cloneElement(node, { 'data-line': lastIndex, key: lastIndex });
     }
     return node;
   };
 
+  const handleClose = (event) => {
+    event.preventDefault();
+
+    const eReaderModal = document.querySelector('.e-reader-section-wrap');
+    eReaderModal.style.display = 'none';
+    cancel();
+    // eReaderModal.remove();
+  };
+
   return (
-    <section className="e-reader-section">
+    <div className="e-reader-section-wrap">
+      <section className="e-reader-section">
+        <div className="book-controls">
+          <button id="dark-mode" className="btn" type="button" onClick={toggleDarkMode}>
+            <i className="fa-solid fa-moon" />
+          </button>
+          {/* <button type="button" onClick={startText} id="tts">Start Reading</button> */}
+          <select onChange={updateFont}>
+            {['Bookerly', 'Baskerville', 'Georgia', 'Helvetica', 'Futura', 'Arial', 'Courier', 'Times'].map((fontOption, i) => (
+              <option value={fontOption.toLowerCase()} key={i}>{fontOption}</option>))}
+          </select>
+          {/* <select onChange={updateChapter}>
+            {bookContent.chapters
+              ? bookContent.chapters.map((chapter, i) => (
+                <option key={i} value={chapter.props.href}>{chapter.props.children}</option>))
+              : null}
+          </select> */}
+          <button id="font-size-plus" className="btn" type="button" onClick={decreaseFont}>
+            <i className="fa-solid fa-minus" />
+          </button>
+          <button id="font-size-minus" className="btn" type="button" onClick={increaseFont}>
+            <i className="fa-solid fa-plus" />
+          </button>
+          <button className="btn" id="expand-view" type="button" onClick={toggleExpandView}>
+            <i className="fa-solid fa-expand" />
+          </button>
+        </div>
 
-      <div className="book-controls">
-        <button id="dark-mode" className="btn" type="button" onClick={toggleDarkMode}>
-          <i className="fa-solid fa-moon" />
-        </button>
-        {/* <button type="button" onClick={startText} id="tts">Start Reading</button> */}
-        <select onChange={updateFont}>
-          {['Baskerville', 'Bookerly', 'Georgia', 'Helvetica', 'Futura', 'Arial', 'Courier', 'Times'].map((fontOption, i) => (
-            <option value={fontOption.toLowerCase()} key={i}>{fontOption}</option>))}
-        </select>
-        {/* <button className="expand"></button> */}
-        {/* <select onChange={updateChapter}>
-          {bookContent.chapters
-            ? bookContent.chapters.map((chapter, i) => (
-              <option key={i} value={chapter.props.href}>{chapter.props.children}</option>))
-            : null}
-        </select> */}
-        <button id="font-size-plus" className="btn" type="button" onClick={decreaseFont}>
-          <i className="fa-solid fa-minus" />
-        </button>
-        <button id="font-size-minus" className="btn" type="button" onClick={increaseFont}>
-          <i className="fa-solid fa-plus" />
-        </button>
-        <button className="btn" id="expand-view" type="button" onClick={toggleExpandView}>
-          <i className="fa-solid fa-expand" />
-        </button>
-      </div>
-
-      <div className="read-body-wrap">
-        <div className="content-wrap" onMouseDown={grabMouseDown}>
-          <div
-            id="content"
-            style={{
-              fontSize: `${fontSize}px`,
-              fontFamily: `${font}`,
-            }}
-          >
-            {bookContent.map((node) => {
-              console.log('render');
-              const uniqueNode = assignLineIndex(node);
-              return uniqueNode;
-            })}
-            {/* {bookContent} */}
-          </div>
-          <div className="page-nav-btns-wrap">
-            <button id="page-prev-btn" className="nav-btn" type="button" onClick={pageBackward}>
-              <i className="fa-solid fa-angle-up" />
-            </button>
-            <button id="page-next-btn" className="nav-btn" type="button" onClick={pageForward}>
-              <i className="fa-solid fa-angle-down" />
-            </button>
+        <div className="read-body-wrap">
+          <div className="content-wrap" onMouseDown={grabMouseDown}>
+            <div
+              id="content"
+              style={{
+                fontSize: `${fontSize}px`,
+                fontFamily: `${font}`,
+              }}
+            >
+              {bookContent.map((node) => {
+                // console.log('render');
+                const uniqueNode = assignLineIndex(node);
+                return uniqueNode;
+              })}
+              {/* {bookContent} */}
+            </div>
+            <div className="page-nav-btns-wrap">
+              <button id="page-prev-btn" className="nav-btn" type="button" onClick={pageBackward}>
+                <i className="fa-solid fa-angle-up nav-btn" />
+              </button>
+              <button id="page-next-btn" className="nav-btn" type="button" onClick={pageForward}>
+                <i className="fa-solid fa-angle-down nav-btn" />
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/*  onClick={ handleClose, resetTheBook? }  */}
+      <button type="button" id="reader-close-btn" onClick={handleClose}>X</button>
+    </div>
   );
   // return (<div>test</div>);
 }

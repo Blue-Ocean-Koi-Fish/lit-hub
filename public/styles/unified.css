@@ -192,8 +192,11 @@ body.Achromatomaly #root {
   body #root .header-moving {
     flex-direction: column;
   }
+  body #root .header-moving .logo {
+    margin: 0;
+  }
   body #root .header-moving .nav {
-    margin-top: 36px;
+    margin: 0;
   }
   body #root .header-static {
     height: 228px;
@@ -335,8 +338,11 @@ body.Achromatomaly #root {
   body #root .header-moving {
     flex-direction: column;
   }
+  body #root .header-moving .logo {
+    margin: 0;
+  }
   body #root .header-moving .nav {
-    margin-top: 45px;
+    margin: 0;
   }
   body #root .header-static {
     height: 285px;
@@ -686,16 +692,16 @@ body.Achromatomaly #root .header-moving .btn-settings.btn-round:hover i {
 }
 
 @media (max-width: 900px) {
-  #root .header-moving {
+  body #root .header-moving {
     padding: 0;
   }
-  #root .header-moving .logo {
+  body #root .header-moving .logo {
     margin: 0;
   }
-  #root .header-moving .logo .title, #root .header-moving .logo .capital {
+  body #root .header-moving .logo .title, body #root .header-moving .logo .capital {
     font-size: 90px;
   }
-  #root .header-moving .nav {
+  body #root .header-moving .nav {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -704,10 +710,10 @@ body.Achromatomaly #root .header-moving .btn-settings.btn-round:hover i {
     justify-content: space-evenly;
     margin: 0;
   }
-  #root .header-moving .nav .btn {
+  body #root .header-moving .nav .btn {
     display: none;
   }
-  #root .header-moving .btn-settings.btn-round {
+  body #root .header-moving .btn-settings.btn-round {
     display: initial;
     position: fixed;
     bottom: 45px;
@@ -720,18 +726,18 @@ body.Achromatomaly #root .header-moving .btn-settings.btn-round:hover i {
     border: none;
     cursor: pointer;
   }
-  #root .header-moving .btn-settings.btn-round:hover {
+  body #root .header-moving .btn-settings.btn-round:hover {
     background-color: #F3E8EE;
   }
-  #root .header-moving .btn-settings.btn-round:hover i {
+  body #root .header-moving .btn-settings.btn-round:hover i {
     color: #475B63;
   }
-  #root .header-moving .btn-settings.btn-round i {
+  body #root .header-moving .btn-settings.btn-round i {
     color: #F3E8EE;
     font-size: 45px;
   }
-  #root .header-static {
-    height: 117px;
+  body #root .header-static {
+    height: 90px;
   }
 }
 @media (max-width: 550px) {
@@ -765,14 +771,15 @@ body.Achromatomaly #root .header-moving .btn-settings.btn-round:hover i {
   }
 }
 @media (max-width: 450px) {
+  body #root .header-moving {
+    height: 10%;
+  }
   body #root .header-moving .logo {
     margin: 0;
   }
-  body #root .header-moving .logo .title, body #root .header-moving .logo .capital {
-    font-size: 60px;
-  }
   body #root .header-moving .logo .img {
-    display: none;
+    width: 174px;
+    height: 66px;
   }
   body #root .header-moving .nav {
     display: flex;
@@ -786,7 +793,7 @@ body.Achromatomaly #root .header-moving .btn-settings.btn-round:hover i {
     margin: 1.5vh 0;
   }
   body #root .header-static {
-    height: 78px;
+    height: 30px;
   }
 }
 body.None #root .login-section .hero {
@@ -1067,8 +1074,8 @@ body #root .login-section .hero {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.5;
-  border-right: 5px solid black;
+  opacity: 0.8;
+  border-right: 2px solid black;
   position: fixed;
   width: 33vw;
   height: 100vh;
@@ -1186,8 +1193,8 @@ body #root .login-section .login-wrap .login-form .authentication-btns #login-su
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.5;
-    border-right: 5px solid black;
+    opacity: 0.8;
+    border-right: 2px solid black;
     position: fixed;
     width: 33vw;
     height: 100vh;
@@ -1308,8 +1315,8 @@ body #root .login-section .login-wrap .login-form .authentication-btns #login-su
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.5;
-    border-right: 5px solid black;
+    opacity: 0.8;
+    border-right: 2px solid black;
     position: fixed;
     width: 33vw;
     height: 100vh;
@@ -2121,7 +2128,8 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
   left: 0;
   right: 0;
   border: 0.25vw solid white;
-  border-top: rgb(50, 50, 50) 0.35vw solid; /* Blue */
+  border-top: rgb(50, 50, 50) 0.35vw solid;
+  /* Blue */
   border-radius: 50%;
   width: 10vw;
   height: 10vw;
@@ -2352,7 +2360,8 @@ body.Achromatomaly #root .settings-modal-wrap .modal-main #settings-close-btn:ho
     left: 0;
     right: 0;
     border: 0.25vw solid white;
-    border-top: rgb(50, 50, 50) 0.35vw solid; /* Blue */
+    border-top: rgb(50, 50, 50) 0.35vw solid;
+    /* Blue */
     border-radius: 50%;
     width: 10vw;
     height: 10vw;
@@ -3057,7 +3066,8 @@ body.Achromatomaly #root .collections .collection-section-wrap .collection-secti
     left: 0;
     right: 0;
     border: 0.25vw solid white;
-    border-top: rgb(50, 50, 50) 0.35vw solid; /* Blue */
+    border-top: rgb(50, 50, 50) 0.35vw solid;
+    /* Blue */
     border-radius: 50%;
     width: 10vw;
     height: 10vw;
@@ -3120,7 +3130,16 @@ body.Achromatomaly #root .collections .collection-section-wrap .collection-secti
     margin: 0;
   }
 }
-#root .e-reader-section {
+#root .e-reader-section-wrap {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(41, 41, 41, 0.7);
+  z-index: 1000;
+}
+#root .e-reader-section-wrap .e-reader-section {
   width: 80%;
   height: 95%;
   margin: auto;
@@ -3133,104 +3152,158 @@ body.Achromatomaly #root .collections .collection-section-wrap .collection-secti
   border-radius: 3vw;
   position: relative;
 }
-#root .e-reader-section .book-controls {
+#root .e-reader-section-wrap .e-reader-section .book-controls {
   display: flex;
   justify-content: flex-end;
   background-color: black;
   padding: 1vh 1vw;
 }
-#root .e-reader-section .book-controls select {
+#root .e-reader-section-wrap .e-reader-section .book-controls select {
   outline-color: #292929;
 }
-#root .e-reader-section .book-controls .btn {
+#root .e-reader-section-wrap .e-reader-section .book-controls .btn {
   background-color: #292929;
   border: none;
   padding: 0 15px;
 }
-#root .e-reader-section .book-controls .btn#dark-mode {
+#root .e-reader-section-wrap .e-reader-section .book-controls .btn#dark-mode {
   border-radius: 0.4vw;
 }
-#root .e-reader-section .book-controls .btn i {
+#root .e-reader-section-wrap .e-reader-section .book-controls .btn i {
   color: #EFEAEC;
   font-size: 25px;
 }
-#root .e-reader-section .book-controls .btn:hover {
+#root .e-reader-section-wrap .e-reader-section .book-controls .btn:hover {
   background-color: #EFEAEC;
   color: #4F585B;
 }
-#root .e-reader-section .book-controls .btn:hover i {
+#root .e-reader-section-wrap .e-reader-section .book-controls .btn:hover i {
   background-color: #EFEAEC;
   color: #4F585B;
 }
-#root .e-reader-section .book-controls > * {
+#root .e-reader-section-wrap .e-reader-section .book-controls > * {
   margin-left: 2%;
 }
-#root .e-reader-section .read-body-wrap {
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap {
   background-color: #EFEAEC;
   color: #292929;
 }
-#root .e-reader-section .read-body-wrap .content-wrap {
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap {
   color: inherit;
   display: flex;
   flex-wrap: nowrap;
+  height: 85vh;
   justify-content: space-between;
   position: relative;
 }
-#root .e-reader-section .read-body-wrap .content-wrap::before {
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap::before {
   content: "";
   display: inline-block;
   position: absolute;
   width: 100%;
-  height: 7.5%;
+  height: 3.5%;
   background: rgb(1, 0, 0);
   background: linear-gradient(0deg, rgba(1, 0, 0, 0) 0%, rgba(41, 41, 41, 0.825) 100%);
 }
-#root .e-reader-section .read-body-wrap .content-wrap::after {
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap::after {
   content: "";
   display: inline-block;
   position: absolute;
   bottom: 0;
   width: 100%;
-  height: 7.5%;
+  height: 3.5%;
   background: rgb(1, 0, 0);
   background: linear-gradient(0deg, rgba(41, 41, 41, 0.825) 0%, rgba(1, 0, 0, 0) 100%);
 }
-#root .e-reader-section .read-body-wrap .content-wrap #content {
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap #content {
   color: inherit;
-  height: 70vh;
+  height: 83vh;
   width: 92.5%;
   overflow: hidden;
   margin-left: 1vw;
   padding: 0.25vh 0.5vw;
   cursor: grab;
-}
-#root .e-reader-section .read-body-wrap .content-wrap #content .chapter {
-  color: inherit;
   font-size: inherit;
   font-family: inherit;
 }
-#root .e-reader-section .read-body-wrap .content-wrap #content .chapter > * {
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap #content > * {
   color: inherit;
   font-size: inherit;
   font-family: inherit;
   line-height: 1.5;
   user-select: none;
 }
-#root .e-reader-section .read-body-wrap .content-wrap #content .chapter > * > * {
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap #content > * > * {
   user-select: none;
   color: inherit;
   font-size: inherit;
   font-family: inherit;
 }
-#root .e-reader-section .read-body-wrap .content-wrap #content .chapter > h2 {
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap #content > h1 {
+  font-size: 1.5em;
+  width: 90%;
+  margin: 2.5% auto 1.5% auto;
+  padding-bottom: 0.75%;
+  text-align: center;
+}
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap #content > h2 {
   font-size: 1.35em;
-  width: 50%;
+  width: 90%;
   margin: 2.5% auto 1.5% auto;
   padding-bottom: 0.75%;
   border-bottom: 0.2em double black;
   text-align: center;
 }
-#root .e-reader-section .read-body-wrap .content-wrap .page-nav-btns-wrap {
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap #content table {
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: 1.5;
+  user-select: none;
+}
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap #content table tbody {
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: 1.5;
+  user-select: none;
+}
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap #content table tbody tr {
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: 1.5;
+  user-select: none;
+}
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap #content table tbody tr td {
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: 1.5;
+  user-select: none;
+}
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap #content table tbody tr td > * {
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: 1.5;
+  user-select: none;
+}
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap #content table tbody tr td > * > * {
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: 1.5;
+  user-select: none;
+}
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap #content table tbody tr td > * > * > * {
+  color: inherit;
+  font-size: inherit;
+  font-family: inherit;
+  line-height: 1.5;
+  user-select: none;
+}
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap .page-nav-btns-wrap {
   margin-right: 1vw;
   display: flex;
   flex-direction: column;
@@ -3238,27 +3311,44 @@ body.Achromatomaly #root .collections .collection-section-wrap .collection-secti
   justify-content: center;
   align-items: center;
 }
-#root .e-reader-section .read-body-wrap .content-wrap .page-nav-btns-wrap .nav-btn {
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap .page-nav-btns-wrap .nav-btn {
   margin: 2vh 0;
   height: 10%;
   padding: 0 0.9vw;
   background-color: #292929;
 }
-#root .e-reader-section .read-body-wrap .content-wrap .page-nav-btns-wrap .nav-btn i {
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap .page-nav-btns-wrap .nav-btn i {
   color: #EFEAEC;
   font-size: 2vw;
 }
-#root .e-reader-section .read-body-wrap.dark-mode-reader {
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap.dark-mode-reader {
   background-color: #292929;
   color: rgb(198, 198, 198);
 }
-#root .e-reader-section .read-body-wrap.dark-mode-reader .content-wrap .page-nav-btns-wrap .nav-btn {
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap.dark-mode-reader .content-wrap .page-nav-btns-wrap .nav-btn {
   background-color: rgb(226, 226, 226);
 }
-#root .e-reader-section .read-body-wrap.dark-mode-reader .content-wrap .page-nav-btns-wrap .nav-btn i {
+#root .e-reader-section-wrap .e-reader-section .read-body-wrap.dark-mode-reader .content-wrap .page-nav-btns-wrap .nav-btn i {
   color: rgb(28, 28, 28);
 }
-#root .e-reader-section.expanded {
+#root .e-reader-section-wrap #reader-close-btn {
+  z-index: 1000;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 2.4px 25.2px;
+  font-family: "Garet";
+  font-size: 30px;
+  color: #EFEAEC;
+  background-color: #4F585B;
+  border: 0;
+  outline: 0;
+  cursor: pointer;
+}
+#root .e-reader-section-wrap #reader-close-btn:hover {
+  background-color: black;
+}
+#root .e-reader-section-wrap .e-reader-section.expanded {
   margin: 0;
   padding: 0;
   box-shadow: none;
@@ -3266,31 +3356,45 @@ body.Achromatomaly #root .collections .collection-section-wrap .collection-secti
   border-radius: 0;
   width: 100%;
   height: 94.5vh;
+  z-index: 1001;
 }
-#root .e-reader-section.expanded .read-body-wrap {
+#root .e-reader-section-wrap .e-reader-section.expanded .read-body-wrap {
   height: 100%;
 }
-#root .e-reader-section.expanded .read-body-wrap .content-wrap {
+#root .e-reader-section-wrap .e-reader-section.expanded .read-body-wrap .content-wrap {
   height: 100%;
 }
-#root .e-reader-section.expanded .read-body-wrap .content-wrap #content {
+#root .e-reader-section-wrap .e-reader-section.expanded .read-body-wrap .content-wrap #content {
   height: 100%;
 }
 
 @media (max-width: 725px) {
-  #root .e-reader-section .book-controls select {
+  #root .e-reader-section-wrap .e-reader-section .book-controls select {
     outline-color: #292929;
     font-size: 16px;
   }
-  #root .e-reader-section .book-controls .btn {
+  #root .e-reader-section-wrap .e-reader-section .book-controls .btn {
     padding: 0 8px;
   }
-  #root .e-reader-section .book-controls .btn i {
+  #root .e-reader-section-wrap .e-reader-section .book-controls .btn i {
     font-size: 16px;
+  }
+  #root .e-reader-section-wrap #reader-close-btn {
+    padding: 2.4px 18px;
+    font-family: "Garet";
+    font-size: 26.4px;
+    color: #EFEAEC;
+    background-color: #4F585B;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+  }
+  #root .e-reader-section-wrap #reader-close-btn:hover {
+    background-color: black;
   }
 }
 @media (pointer: coarse) {
-  #root .e-reader-section .read-body-wrap .content-wrap #content {
+  #root .e-reader-section-wrap .e-reader-section .read-body-wrap .content-wrap #content {
     overflow: scroll;
   }
 }
