@@ -6,7 +6,9 @@ import Settings from './settings';
 import Header from './header';
 import SearchDisplay from './search/searchdisplay';
 import SearchSection from './search/searchsection';
-import { getCurrentBook, getAllBooks, clearTable, addBook } from '../browser_db/books';
+import {
+  getCurrentBook, getAllBooks, clearTable, addBook,
+} from '../browser_db/books';
 import Popular from './popular';
 import Logout from './logout';
 import Collection from './collection';
@@ -155,7 +157,7 @@ function App() {
           )
             : null}
         </section>
-        {showReader ? <Reader book={currentBook} /> : null}
+        {showReader ? <Reader book={currentBook} style={{ display: 'initial' }} /> : null}
         {/* {currentBook ? <Reader book={currentBook} /> : null} */}
         {/* <Reader book={currentBook} /> */}
       </Suspense>

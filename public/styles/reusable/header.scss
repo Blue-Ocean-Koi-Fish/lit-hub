@@ -161,8 +161,11 @@ $lightGray: #BCBCBC;
       #root {
         .header-moving {
           flex-direction: column;
+          .logo {
+            margin: 0;
+          }
           .nav {
-            margin-top: $headerFontSize * 1.5;
+            margin: 0;
           }
         }
         .header-static {
