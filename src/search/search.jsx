@@ -4,6 +4,8 @@ import axios from 'axios';
 import { useTranslation } from 'react-i18next';
 import langList from './resources';
 
+
+
 const SearchBooks = function SearchBooks({
   setBookList,
   setCount,
@@ -34,7 +36,7 @@ const SearchBooks = function SearchBooks({
     collectionSection?.classList?.add('loading');
 
     axios
-      .get('/search', {
+      .get('http://107.20.126.146:8080/search', {
         params: {
           search: searchTerm,
           topic,
@@ -42,7 +44,6 @@ const SearchBooks = function SearchBooks({
         },
       })
       .then((res) => {
-        console.log(res);
         setSearchTerms({
           author,
           title,
