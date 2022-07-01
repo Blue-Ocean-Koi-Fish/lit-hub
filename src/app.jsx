@@ -174,7 +174,7 @@ function App() {
               setCollection={setCollection}
               username={username}
             />
-          ) : <Popular popularBooks={popularBooks} />)}
+          ) : <Popular popularBooks={popularBooks} username={username} />)}
 
           {showSettings ? (
             <Settings
