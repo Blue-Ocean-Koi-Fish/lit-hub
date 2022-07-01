@@ -4,7 +4,6 @@ import { useTranslation } from 'react-i18next';
 import React, { useState, useEffect } from 'react';
 
 function Popular({ popularBooks }) {
-
   const getHQ = (book) => {
     if (book.formats['image/jpeg']) {
       const url = `url(${book.formats['image/jpeg'].replace('small', 'medium')})`;

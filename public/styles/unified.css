@@ -692,16 +692,16 @@ body.Achromatomaly #root .header-moving .btn-settings.btn-round:hover i {
 }
 
 @media (max-width: 900px) {
-  #root .header-moving {
+  body #root .header-moving {
     padding: 0;
   }
-  #root .header-moving .logo {
+  body #root .header-moving .logo {
     margin: 0;
   }
-  #root .header-moving .logo .title, #root .header-moving .logo .capital {
+  body #root .header-moving .logo .title, body #root .header-moving .logo .capital {
     font-size: 90px;
   }
-  #root .header-moving .nav {
+  body #root .header-moving .nav {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
@@ -710,10 +710,10 @@ body.Achromatomaly #root .header-moving .btn-settings.btn-round:hover i {
     justify-content: space-evenly;
     margin: 0;
   }
-  #root .header-moving .nav .btn {
+  body #root .header-moving .nav .btn {
     display: none;
   }
-  #root .header-moving .btn-settings.btn-round {
+  body #root .header-moving .btn-settings.btn-round {
     display: initial;
     position: fixed;
     bottom: 45px;
@@ -726,18 +726,18 @@ body.Achromatomaly #root .header-moving .btn-settings.btn-round:hover i {
     border: none;
     cursor: pointer;
   }
-  #root .header-moving .btn-settings.btn-round:hover {
+  body #root .header-moving .btn-settings.btn-round:hover {
     background-color: #F3E8EE;
   }
-  #root .header-moving .btn-settings.btn-round:hover i {
+  body #root .header-moving .btn-settings.btn-round:hover i {
     color: #475B63;
   }
-  #root .header-moving .btn-settings.btn-round i {
+  body #root .header-moving .btn-settings.btn-round i {
     color: #F3E8EE;
     font-size: 45px;
   }
-  #root .header-static {
-    height: 117px;
+  body #root .header-static {
+    height: 90px;
   }
 }
 @media (max-width: 550px) {
@@ -771,14 +771,15 @@ body.Achromatomaly #root .header-moving .btn-settings.btn-round:hover i {
   }
 }
 @media (max-width: 450px) {
+  body #root .header-moving {
+    height: 10%;
+  }
   body #root .header-moving .logo {
     margin: 0;
   }
-  body #root .header-moving .logo .title, body #root .header-moving .logo .capital {
-    font-size: 60px;
-  }
   body #root .header-moving .logo .img {
-    display: none;
+    width: 174px;
+    height: 66px;
   }
   body #root .header-moving .nav {
     display: flex;
@@ -792,7 +793,7 @@ body.Achromatomaly #root .header-moving .btn-settings.btn-round:hover i {
     margin: 1.5vh 0;
   }
   body #root .header-static {
-    height: 78px;
+    height: 30px;
   }
 }
 body.None #root .login-section .hero {
@@ -1073,8 +1074,8 @@ body #root .login-section .hero {
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  opacity: 0.5;
-  border-right: 5px solid black;
+  opacity: 0.8;
+  border-right: 2px solid black;
   position: fixed;
   width: 33vw;
   height: 100vh;
@@ -1190,8 +1191,8 @@ body #root .login-section .login-wrap .login-form .authentication-btns #login-su
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.5;
-    border-right: 5px solid black;
+    opacity: 0.8;
+    border-right: 2px solid black;
     position: fixed;
     width: 33vw;
     height: 100vh;
@@ -1310,8 +1311,8 @@ body #root .login-section .login-wrap .login-form .authentication-btns #login-su
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    opacity: 0.5;
-    border-right: 5px solid black;
+    opacity: 0.8;
+    border-right: 2px solid black;
     position: fixed;
     width: 33vw;
     height: 100vh;

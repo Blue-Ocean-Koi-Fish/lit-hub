@@ -117,7 +117,7 @@ $lightGray: #BCBCBC;
             color: $button;
           }
         }
-
+        
         // .btn {
         //   font-family: 'Garet';
         //   font-size: $headerFontSize * 1.15;
@@ -307,65 +307,67 @@ $lightGray: #BCBCBC;
 // Mobile view
 @media (max-width: 900px) {
   $headerFontSize: 18px;
-  #root {
-    .header-moving {
-      padding: 0;
+  body {
+    #root {
+      .header-moving {
+        padding: 0;
 
-      .logo {
-        margin: 0;
-        .title, .capital {
-          font-size: $headerFontSize * 5;
+        .logo {
+          margin: 0;
+          .title, .capital {
+            font-size: $headerFontSize * 5;
+          }
         }
-      }
 
-      .nav {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        flex-shrink: 0;
-        align-items: center;
-        justify-content: space-evenly;
-        margin: 0;
+        .nav {
+          display: flex;
+          flex-direction: column;
+          flex-wrap: wrap;
+          flex-shrink: 0;
+          align-items: center;
+          justify-content: space-evenly;
+          margin: 0;
 
-        .btn {
-          display: none;
+          .btn {
+            display: none;
+          }
         }
-      }
 
-      .btn-settings {
-        &.btn-round {
-          display: initial;
-          position: fixed;
-          bottom: $headerFontSize * 2.5;
-          right: $headerFontSize * 2.5;
-          padding: $headerFontSize * 0.55 $headerFontSize * 0.625;
-          // background: $button;
-          box-shadow: 0vw 0vh 0.6vw 0.4vw #000000b7;
-          background-color: rgba($button, 0.5);
-          border: 0.2vw $dark outset;
-          border-radius: 50%;
-          border: none;
-          cursor: pointer;
+        .btn-settings {
+          &.btn-round {
+            display: initial;
+            position: fixed;
+            bottom: $headerFontSize * 2.5;
+            right: $headerFontSize * 2.5;
+            padding: $headerFontSize * 0.55 $headerFontSize * 0.625;
+            // background: $button;
+            box-shadow: 0vw 0vh 0.6vw 0.4vw #000000b7;
+            background-color: rgba($button, 0.5);
+            border: 0.2vw $dark outset;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
 
-          &:hover {
-            background-color: $light;
+            &:hover {
+              background-color: $light;
+              i {
+                color: $button;
+              }
+            }
+
             i {
-              color: $button;
+              color: $light;
+              font-size: $headerFontSize * 2.5;
             }
           }
-
-          i {
-            color: $light;
-            font-size: $headerFontSize * 2.5;
-          }
         }
       }
-    }
 
-    .header-static {
-      height: $headerFontSize * 6.5;
-    }
+      .header-static {
+        height: $headerFontSize * 5;
+      }
 
+    }
   }
 }
 
@@ -422,15 +424,15 @@ $lightGray: #BCBCBC;
   body {
     #root {
       .header-moving {
-
+        height: 10%;
         .logo {
           margin: 0;
-          .title, .capital {
-            font-size: $headerFontSize * 5;
-          }
-
+          // .title, .capital {
+          //   font-size: $headerFontSize * 5;
+          // }
           .img {
-            display: none;
+            width: $headerFontSize * 14.5;
+            height: $headerFontSize * 5.5;
           }
         }
 
@@ -449,7 +451,7 @@ $lightGray: #BCBCBC;
       }
 
       .header-static {
-        height: $headerFontSize * 6.5;
+        height: $headerFontSize * 2.5;
       }
     }
   }

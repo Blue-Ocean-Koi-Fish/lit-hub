@@ -4,12 +4,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useState, useEffect } from 'react';
 import ReactHtmlParser from 'html-react-parser';
-<<<<<<< HEAD
-import { cancel } from './speech';
-// import { startText } from './speech';
-=======
-import { startText } from './speech';
->>>>>>> 473490504ea4d3a7aa37c552a9c1259051f957c9
+import { cancel, startText } from './speech';
 
 function Reader({ book }) {
   const [font, setFont] = useState('Times');

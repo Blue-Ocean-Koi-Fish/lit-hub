@@ -41,9 +41,7 @@ function Login({
   return (
     <section className="login-section">
 
-      <div className="hero">
-        bubbly-animation
-      </div>
+      <div className="hero" />
 
       <div className="login-wrap">
         <div className="logo-wrap">
