@@ -89,7 +89,7 @@ app.get('/collection/:username', (req, res) => {
       res.status(200).send(data.data);
     })
     .catch((err) => {
-      console.log(err);
+      console.log(`GET /collection/username Error`);
       res.sendStatus(500);
     });
 });
