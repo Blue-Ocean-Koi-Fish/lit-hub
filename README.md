@@ -82,7 +82,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://lit-hub.herokuapp.com/)
 
-A highly accessable website that serves books from the gutendex api that can be read and stored through the app, even when offline.
+A highly accessable website that serves books from the Gutendex API that can be read and stored through the app, even when offline.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -90,15 +90,15 @@ A highly accessable website that serves books from the gutendex api that can be 
 
 ### Built With
 
-* [express.js](https://expressjs.com/)
+* [Express.js](https://expressjs.com/)
 * [React.js](https://reactjs.org/)
-* [axios](https://axios-http.com/docs/intro)
-* [sass](https://sass-lang.com/)
-* [mongoDB](https://www.mongodb.com/)
+* [Axios](https://axios-http.com/docs/intro)
+* [Sass](https://sass-lang.com/)
+* [MongoDB](https://www.mongodb.com/)
 * [workbox](https://www.workbox.com/)
-* [bcrypt](https://bcrypt.online/)
-* [jwt](https://jwt.io/)
-* [gutendex](https://gutendex.com/)
+* [Bcrypt](https://bcrypt.online/)
+* [JWT](https://jwt.io/)
+* [Gutendex](https://gutendex.com/)
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -107,7 +107,6 @@ A highly accessable website that serves books from the gutendex api that can be 
 <!-- GETTING STARTED -->
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
 To get a local copy up and running follow these simple example steps.
 
 Lit-Hub is a Progressive Web App
@@ -120,23 +119,23 @@ This app is simple and designed to run on almost any system or browser without a
 
 ### Installation
 
-1. Fork this Repo as well as the database.
+1. Fork this Repo as well as the backend Repo.
 2. Clone the Repo.
    ```sh
    git clone https://github.com/Blue-Ocean-Koi-Fish/lit-hub
    ```
-3. Dont forget the database.
+3. Dont forget the backend.
    ```sh
    git clone https://github.com/Blue-Ocean-Koi-Fish/lit-hub-db
    ```
-4. Run npm install on both repos.
+4. Run `npm install` on both repos.
 
-5. Run the command npm touch `.env` in the lit-hub repo.
+5. Run the command `npm touch .env` in the frontend repo and fill the file like so.
    ```js
    PORT='Fill me in!'
    BACKEND_URL='Fill me in!'
    ```
-5. Run the same coommand on the database repo
+5. Run the same command on the backend repo and fill the file like so.
    ```js
    PORT='Fill me in!'
    JWT_SECRET='Fill me in!'
@@ -145,11 +144,15 @@ This app is simple and designed to run on almost any system or browser without a
    mongoPass='Fill me in!'
    ```
 6. In the server repo run the commands:
-    npm run start
+    ```
     npm run build
-
-7. In the database repo run the commands:
     npm run start
+    ```
+
+7. In the database repo run the command:
+    ```
+    npm run start
+    ```
 
 8. Open your localhost to the port chosen in step 5.
 
@@ -163,7 +166,7 @@ This app is simple and designed to run on almost any system or browser without a
 
 Search for books on the Gutendex, save the books locally, read books while online or offline.
 
-_For more examples, please refer to the [Documentation](https://gutendex.com/)
+_For more examples, please refer to the [Documentation](https://gutendex.com/)_
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
