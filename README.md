@@ -82,7 +82,7 @@
 
 [![Product Name Screen Shot][product-screenshot]](https://lit-hub.herokuapp.com/)
 
-A highly accessable website that serves books from the Gutendex API that can be read and stored through the app, even when offline.
+A highly accessible website that serves books from the Gutendex API that can be read and stored through the app, even when offline.
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -95,7 +95,7 @@ A highly accessable website that serves books from the Gutendex API that can be 
 * [Axios](https://axios-http.com/docs/intro)
 * [Sass](https://sass-lang.com/)
 * [MongoDB](https://www.mongodb.com/)
-* [workbox](https://www.workbox.com/)
+* [Workbox](https://www.workbox.com/)
 * [Bcrypt](https://bcrypt.online/)
 * [JWT](https://jwt.io/)
 * [Gutendex](https://gutendex.com/)
