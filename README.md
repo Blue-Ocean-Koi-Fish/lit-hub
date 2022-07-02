@@ -176,8 +176,8 @@ _For more examples, please refer to the [Documentation](https://gutendex.com/)_
 ## Roadmap
 
 - [ ] allow for guests to access the website but not use certain features 
-- [ ] make the collection accessible from the populer page
-- [ ] tts in multipule languages 
+- [ ] make the collection accessible from the Popular page
+- [ ] text-to-speech in multiple languages 
 
 See the [open issues](https://github.com/github_username/repo_name/issues) for a full list of proposed features (and known issues).
 
