@@ -227,7 +227,7 @@ Project Link: [Beastie Kois](https://github.com/Blue-Ocean-Koi-Fish)
 ## Acknowledgments
 
 * Justin Kirk [@intern-jck](https://github.com/intern-jck)
-* Wei-Teck Lee [@arkteck](https://github.com/arkteck)
+* Wei-Teck Lee [@weitecklee](https://github.com/weitecklee)
 * Levi Walker [@lwcaveman](https://github.com/lwcaveman)
 * Cam Estep [@Thunderpig851](https://github.com/Thunderpig851)
 * Davyd Zakorchennyi [@Diza41a](https://github.com/Diza41a)
